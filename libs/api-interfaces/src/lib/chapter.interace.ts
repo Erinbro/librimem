@@ -1,9 +1,9 @@
 import { ISubject } from "./subject.interface";
+import { IEntity, IEntityType } from './entity.interface';
 
-export interface IChapter {
+export interface IChapter extends IEntity { // IEntity adds pages, read
   id?: number;
-  /**
-   * List of subjects that appear in the chapter
-   */
-  subjects: ISubject[];
+  type: IEntityType.CHAPTER;
 }
+
+

@@ -1,9 +1,7 @@
-import { IEntity } from "./entity.interface";
-
+import { IEntityType } from './entity.interface';
 export interface IWord {
   id?: number;
   type: IWordType;
-  entity: IEntity;
 }
 
 enum IWordType {

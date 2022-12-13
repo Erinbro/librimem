@@ -1,7 +1,8 @@
+import { IEntity } from './entity.interface';
 /**
  * Interface for the Book
  */
-export interface IBook {
+export interface IBook extends IEntity {
   id?: number;
   title: string;
   author_prename: string;
@@ -14,4 +15,11 @@ export interface IBook {
    * A number from 1 to 5
    */
   rating: number;
+}
+
+// TODO --> IEntityStatus
+enum IBookStatus {
+  READ = 'READ',
+  READING = 'READING',
+  TO_READ = 'TO_READ'
 }

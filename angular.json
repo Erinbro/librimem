@@ -5,6 +5,7 @@
     "api": "apps/api",
     "api-interfaces": "libs/api-interfaces",
     "librimem": "apps/librimem",
-    "librimem-e2e": "apps/librimem-e2e"
+    "librimem-e2e": "apps/librimem-e2e",
+    "visitor": "libs/visitor"
   }
 }

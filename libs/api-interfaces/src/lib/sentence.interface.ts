@@ -1,14 +1,13 @@
 import { IEntity } from "./entity.interface";
 
 export interface ISentence extends Partial<IEntity> {
-    id?: number;
+  /**
+   * Content of the sentence
+   */
+  data: {
     /**
-     * Content of the sentence
+     * NOTE The value is the ID of the word.
      */
-    words: {
-        /**
-         * NOTE The value is the ID of the word.
-         */
-        [position: number]: number
-    }
+    [position: number]: number
+  }
 }

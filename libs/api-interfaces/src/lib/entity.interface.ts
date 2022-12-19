@@ -24,16 +24,16 @@ enum IEntityAttribute {
  * Could be a Collection, Book or Chapter
  */
 export interface IEntity {
-  id?: number;
+  id: string | number;
   type: IEntityType;
   /**
    * Each entity can be whole read or not.
    */
   read: boolean;
   /**
-   * Each entity has an amount of pages.
+   * Each entity could have an amount of pages.
    */
-  pages: number;
+  pages?: string;
   status: IEntityStatus;
   progres: number;
   /**

@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@librimem/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@librimem/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@librimem/visitor": ["libs/visitor/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

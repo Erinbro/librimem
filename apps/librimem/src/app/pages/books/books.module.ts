@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { BooksRoutingModule } from './books-routing.module';
 import { StoreModule } from '@ngrx/store';
-import { reducers } from '../../state/index';
+import { bookStore } from '../../state';
 import { BookListComponent } from './components/BooksList/book-list.component';
 
 @NgModule({
@@ -12,7 +12,7 @@ import { BookListComponent } from './components/BooksList/book-list.component';
     CommonModule,
     BooksRoutingModule,
     // lazy load and attach to root store
-    StoreModule.forFeature('book', { reducers }),
+    StoreModule.forFeature(bookStore.bookStoreReducer.featureName, bookStore.bookStoreReducer.bookReducer),
   ],
 })
 export class BooksModule { }

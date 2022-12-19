@@ -1,6 +1,7 @@
 import { ISummary } from './summary.interface';
 import { ICommentary } from './commentary.interface';
 import { IOpinion } from './opinion.interface';
+
 export enum IEntityType {
   COLLECTION = "COLLECTION",
   BOOK = "BOOK",
@@ -34,27 +35,27 @@ export interface IEntity {
    * Each entity could have an amount of pages.
    */
   pages?: string;
-  status: IEntityStatus;
-  progres: number;
+  status?: IEntityStatus;
+  progres?: number;
   /**
    * Decides if the entity is part of the favorits.
    */
-  favorite: boolean;
+  favorite?: boolean;
   /**
    * List of subjects that are related DIRECTLY to the entity
    */
-  subjects: number[];
-  commentary: ICommentary;
-  comments: number[];
-  opinion: IOpinion;
-  citations: number[];
-  events: number[];
-  flashcards: number[];
-  notes: number[];
-  questions: number[];
+  subjects?: number[];
+  commentary?: ICommentary;
+  comments?: number[];
+  opinion?: IOpinion;
+  citations?: number[];
+  events?: number[];
+  flashcards?: number[];
+  notes?: number[];
+  questions?: number[];
   /**
    * There is only one summary for each entity.
    */
-  summary: ISummary;
-  words: number[];
+  summary?: ISummary;
+  words?: number[];
 }

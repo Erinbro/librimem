@@ -7,14 +7,14 @@ export interface IBook extends IEntity {
   author_prename: string;
   author_name: string;
   currentPage?: number;
-  publishingHouse: string;
+  publishingHouse?: string;
   // TODO ? time
   language?: string;
   /**
    * A number from 1 to 5
    */
-  rating: number;
-  cover: string;
+  rating?: number;
+  cover?: string;
 }
 
 // TODO --> IEntityStatus

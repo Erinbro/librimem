@@ -6,7 +6,7 @@ import { ICollection } from "./collection.interface"
 import { ICitation } from "./citation.interface"
 import { IComment } from "./comment.interface"
 import { ICommentary } from "./commentary.interface"
-import { IEntity } from "./entity.interface"
+import { IEntity, IEntityType } from "./entity.interface"
 import { IEvent } from "./event.inerface"
 import { IFlashcard } from "./flashcard.interface"
 import { IGenre } from "./genre.interface"
@@ -20,4 +20,5 @@ import { ISummary } from "./summary.interface"
 import { ITeaching } from "./teaching.interface"
 import { IWord } from "./word.interface"
 
-export { IArticle, IAuthor, IBook, IChapter, ICitation, IComment, ICommentary, IEntity, IEvent, IFlashcard, IGenre, INote, IOpinion, IParagraph, IQuestion, ISentence, ISubject, ISummary, ITeaching, IWord, ICollection };
+export { IArticle, IAuthor, IBook, IChapter, ICitation, IComment, ICommentary, IEntity, IEvent, IFlashcard, IGenre, INote, IOpinion, IParagraph, IQuestion, ISentence, ISubject, ISummary, ITeaching, IWord, ICollection, IEntityType };
+

@@ -3,7 +3,7 @@ import { IBook } from '@librimem/api-interfaces';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { IStore } from '../../state/store';
-import { LOAD_BOOKS } from '../../state/actions/book.action';
+import { bookStore } from '../../state';
 
 @Component({
   selector: 'librimem-books-page',
@@ -17,12 +17,17 @@ export class BooksPageComponent implements OnInit {
   constructor(private store: Store<IStore>) { }
 
   ngOnInit(): void {
-    this.store.dispatch(LOAD_BOOKS())
-    this.store.select<any>((state) => {
-      return state
-    }).subscribe((state) => {
-      console.log(state)
+
+    // this.store.select(bookStore.bookStoreSelectors.selectBookStateData).subscribe((data) => {
+    //   console.log(data)
+    // })
+    // this.store.select('book').subscribe((data) => {
+    //   console.log(data)
+    // })
+    this.store.subscribe((data) => {
+      console.log(data)
     })
+    // this.store.dispatch(LOAD_BOOKS())
   }
 
 

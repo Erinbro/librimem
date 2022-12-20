@@ -1,7 +1,7 @@
 import { IBook } from '@librimem/api-interfaces';
 import { IStoreEntity } from '../store';
 import { createReducer, on } from '@ngrx/store';
-import { LOAD_BOOKS, LOAD_BOOKS_FAILURE, LOAD_BOOKS_SUCCESS } from './book.action';
+import { bookStoreActions } from '.';
 import { IEntityType } from "@librimem/api-interfaces"
 
 export const featureName = 'book';
@@ -11,23 +11,33 @@ export const initialBookState: IStoreEntity<IBook> = {
     "1": { "id": 1, "title": "Gabby Douglas Story, The", "pages": "54", "author_name": "Gouth", "author_prename": "Starr", "language": "Swati", "cover": "http://dummyimage.com/182x100.png/cc0000/ffffff", "read": false, "type": IEntityType.BOOK },
     "2": { "id": 2, "title": "Ghost", "pages": "1493", "author_name": "Horburgh", "author_prename": "Vita", "language": "Assamese", "cover": "http://dummyimage.com/232x100.png/dddddd/000000", "read": false, "type": IEntityType.BOOK },
   },
-  filter: null,
-  selection: null,
-  search: null,
-  error: null,
+  filter: {
+    data: [],
+    isFiltering: false
+  },
+  selection: {
+    data: null,
+    isSelecting: false
+  },
+  search: {
+    isSearching: false,
+    data: []
+  },
+  error: "",
   loaded: false,
   loading: false
 }
 
 export const bookReducer = createReducer(
   initialBookState,
-  on(LOAD_BOOKS, (state, _) => {
+  // ANCHOR Book List
+  on(bookStoreActions.LOAD_BOOKS, (state, _) => {
     return {
       ...state,
       loading: true
     }
   }),
-  on(LOAD_BOOKS_FAILURE, (state, _) => {
+  on(bookStoreActions.LOAD_BOOKS_FAILURE, (state, _) => {
     return {
       ...state,
       loading: false,
@@ -35,7 +45,7 @@ export const bookReducer = createReducer(
       error: 'some error'
     }
   }),
-  on(LOAD_BOOKS_SUCCESS, (state, { books }) => {
+  on(bookStoreActions.LOAD_BOOKS_SUCCESS, (state, { books }) => {
     return {
       ...state,
       loading: false,
@@ -45,6 +55,31 @@ export const bookReducer = createReducer(
         ...acc,
         [book.id]: book
       }), {})
+    }
+  }),
+  // ANCHOR Book Card
+  on(bookStoreActions.OPEN_BOOK_MODAL, (state, { bookID }) => {
+    return {
+      ...state,
+      selection: {
+        isSelecting: true,
+        data: bookID
+      }
+    }
+  }),
+  // ANCHOR Book Modal
+  on(bookStoreActions.UPDATE_BOOK, (state, { updatedBook }) => {
+    state.data[updatedBook.id] = updatedBook;
+    return state;
+  }
+  ),
+  on(bookStoreActions.CLOSE_BOOK_MODAL, (state) => {
+    return {
+      ...state,
+      selection: {
+        isSelecting: false,
+        data: null
+      }
     }
   })
 )

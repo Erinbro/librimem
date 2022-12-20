@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { IStore } from '../../state/store';
 import { bookStore } from '../../state';
+import { selectBookStateIsSelecting } from '../../state/book/book.selector';
 
 @Component({
   selector: 'librimem-books-page',
@@ -12,22 +13,13 @@ import { bookStore } from '../../state';
 })
 export class BooksPageComponent implements OnInit {
 
-  books$!: Observable<Partial<IBook>>
+  // NOTE We need to know if a book was selected in order to 'invoke' BookDialogComponent
+  isSelecting$!: Observable<boolean>;
 
   constructor(private store: Store<IStore>) { }
 
   ngOnInit(): void {
-
-    // this.store.select(bookStore.bookStoreSelectors.selectBookStateData).subscribe((data) => {
-    //   console.log(data)
-    // })
-    // this.store.select('book').subscribe((data) => {
-    //   console.log(data)
-    // })
-    this.store.subscribe((data) => {
-      console.log(data)
-    })
-    // this.store.dispatch(LOAD_BOOKS())
+    this.isSelecting$ = this.store.select(selectBookStateIsSelecting)
   }
 
 

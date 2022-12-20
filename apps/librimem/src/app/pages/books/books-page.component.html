@@ -1,6 +1,5 @@
 <div class="books">
   <!-- TODO Book Listing -->
-  <ul>
-    <!-- <li *ngFor="let book of " -->
-  </ul>
+  <librimem-book-list></librimem-book-list>
+  <librimem-book-modal *ngIf="isSelecting$ | async"></librimem-book-modal>
 </div>

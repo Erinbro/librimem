@@ -5,7 +5,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/visitor"],
+      "outputs": [
+        "coverage/libs/visitor"
+      ],
       "options": {
         "jestConfig": "libs/visitor/jest.config.ts",
         "passWithNoTests": true
@@ -14,7 +16,10 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["libs/visitor/**/*.ts", "libs/visitor/**/*.html"]
+        "lintFilePatterns": [
+          "libs/visitor/**/*.ts",
+          "libs/visitor/**/*.html"
+        ]
       }
     }
   },

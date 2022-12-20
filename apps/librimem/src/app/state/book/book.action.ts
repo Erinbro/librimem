@@ -10,4 +10,14 @@ export const LOAD_BOOKS_FAILURE = createAction('[Book List] Load Books Success')
 
 // ANCHOR Book Modal
 
-export const UPDATE_BOOK = createAction('[Book Modal] Update Book')
+export const UPDATE_BOOK = createAction('[Book Modal] Update Book', props<{ updatedBook: IBook }>())
+
+export const CLOSE_BOOK_MODAL = createAction('[Book Modal] Close Modal')
+
+// ANCHOR Book Card
+
+// A book has been selected
+export const OPEN_BOOK_MODAL = createAction('[Book Card] Open Modal', props<{ bookID: IBook['id'] }>())
+
+// ANCHOR Book Contaienr
+

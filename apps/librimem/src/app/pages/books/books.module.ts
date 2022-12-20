@@ -3,16 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { BooksRoutingModule } from './books-routing.module';
 import { StoreModule } from '@ngrx/store';
-import { bookStore } from '../../state';
-import { BookListComponent } from './components/BooksList/book-list.component';
+import { reducers } from '../../state/reducers';
 
 @NgModule({
-  declarations: [BookListComponent],
+  declarations: [],
   imports: [
     CommonModule,
     BooksRoutingModule,
     // lazy load and attach to root store
-    StoreModule.forFeature(bookStore.bookStoreReducer.featureName, bookStore.bookStoreReducer.bookReducer),
+    StoreModule.forFeature('book', reducers.book),
   ],
 })
 export class BooksModule { }

@@ -1,8 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IBook } from '@librimem/api-interfaces';
 import { Store } from '@ngrx/store';
-import { IStore } from 'apps/librimem/src/app/state/store';
-import { OPEN_BOOK_MODAL } from '../../../../state/book/book.action';
+import { OPEN_BOOK_MODAL, UPDATE_BOOK } from '../../../../state/book/book.action';
+import { IStore } from '../../../../state/store';
+import { MatDialog } from '@angular/material/dialog';
+import { selectBookStateIsSelecting } from '../../../../state/book/book.selector';
+import { BookModalComponent } from '../BookModal/book-modal.component';
 
 /**
  * A visual component that showcases a book
@@ -17,12 +20,29 @@ export class BookCardComponent implements OnInit {
   // NOTE A visual component does not need a reactive variable because it does not treat data
   @Input() book!: IBook
 
-  constructor(private store: Store<IStore>) { }
+  constructor(private store: Store<IStore>, private dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.store.select(selectBookStateIsSelecting).subscribe((data) => {
+      console.log("from page: ", data)
+      if (data) this.openDialog()
+    })
   }
 
-  openModal() {
+  openDialog() {
     this.store.dispatch(OPEN_BOOK_MODAL({ bookID: this.book.id }))
+    const dialogRef = this.dialog.open(BookModalComponent,)
+
+    dialogRef.afterClosed().subscribe((res) => {
+      // this.store.dispatch(UPDATE_BOOK({ updatedBook: res }))
+      console.log("from parent closed: ", res)
+    })
+
   }
+
+  closeModal() {
+    // this.dialogRef.close()
+
+  }
+
 }

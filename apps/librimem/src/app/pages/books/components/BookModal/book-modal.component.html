@@ -1,3 +1,8 @@
 <mat-dialog-content>
-  <form [formGroup]="updatedBook"></form>
+  <form [formGroup]="updatedBook">
+    <input formControlName="title" />
+  </form>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close="">Update</button>
+  </mat-dialog-actions>
 </mat-dialog-content>

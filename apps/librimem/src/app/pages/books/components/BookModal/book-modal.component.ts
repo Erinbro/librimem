@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { selectBookStateIsSelecting, selectBookStateSelection } from '../../../../state/book/book.selector';
 import { IBook } from '@librimem/api-interfaces';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UPDATE_BOOK } from '../../../../state/book/book.action';
 
 @Component({
   selector: 'librimem-book-modal',
@@ -14,7 +15,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class BookModalComponent implements OnInit {
 
-  isSelecting$!: Observable<boolean>
   /**
    * The current book
    */
@@ -24,19 +24,24 @@ export class BookModalComponent implements OnInit {
    */
   updatedBook!: FormGroup;
 
-  constructor(private dialog: MatDialog, private store: Store<IStore>, private builder: FormBuilder) { }
+  constructor(private store: Store<IStore>, private builder: FormBuilder, private dialogRef: MatDialogRef<BookModalComponent>) { }
 
   ngOnInit(): void {
-    this.isSelecting$ = this.store.select(selectBookStateIsSelecting)
-    this.isSelecting$.subscribe((data) => {
-      if (data) {
-        this.dialog.open(BookModalComponent)
-      }
-    })
     this.selection$ = this.store.select(selectBookStateSelection)
     this.selection$.subscribe((data) => {
       console.log(data)
+      this.updatedBook = this.builder.group(data)
+      this.updatedBook.valueChanges.subscribe((data) => {
+        console.log("changes: ", data)
+      })
     })
-    // this.updatedBook = this.builder.group(
   }
+
+  closeModal() {
+    console.log(`close`);
+    this.store.dispatch(UPDATE_BOOK({ updatedBook: this.updatedBook.value }))
+  }
+
+
+
 }

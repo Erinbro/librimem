@@ -14,10 +14,11 @@ export const UPDATE_BOOK = createAction('[Book Modal] Update Book', props<{ upda
 
 export const CLOSE_BOOK_MODAL = createAction('[Book Modal] Close Modal')
 
-// ANCHOR Book Card
-
-// A book has been selected
 export const OPEN_BOOK_MODAL = createAction('[Book Card] Open Modal', props<{ bookID: IBook['id'] }>())
+
+// export const TOGGLE_BOOK_MODAL
+
+
 
 // ANCHOR Book Contaienr
 

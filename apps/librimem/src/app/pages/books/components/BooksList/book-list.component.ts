@@ -24,6 +24,7 @@ export class BookListComponent implements OnInit {
   ngOnInit(): void {
     // Before assigning the data to books$ I want to transform it to IBook[]
     this.books$ = this.store.select(selectBookStateData);
+
   }
 
 }

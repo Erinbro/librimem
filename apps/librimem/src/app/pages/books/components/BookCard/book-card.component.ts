@@ -23,10 +23,6 @@ export class BookCardComponent implements OnInit {
   constructor(private store: Store<IStore>, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.store.select(selectBookStateIsSelecting).subscribe((data) => {
-      console.log("from page: ", data)
-      if (data) this.openDialog()
-    })
   }
 
   openDialog() {
@@ -37,11 +33,6 @@ export class BookCardComponent implements OnInit {
       // this.store.dispatch(UPDATE_BOOK({ updatedBook: res }))
       console.log("from parent closed: ", res)
     })
-
-  }
-
-  closeModal() {
-    // this.dialogRef.close()
 
   }
 

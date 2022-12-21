@@ -27,21 +27,19 @@ export class BookModalComponent implements OnInit {
   constructor(private store: Store<IStore>, private builder: FormBuilder, private dialogRef: MatDialogRef<BookModalComponent>) { }
 
   ngOnInit(): void {
+    // Get the selected book from the store
     this.selection$ = this.store.select(selectBookStateSelection)
+
+    // We have a subscriber
     this.selection$.subscribe((data) => {
       console.log(data)
       this.updatedBook = this.builder.group(data)
-      this.updatedBook.valueChanges.subscribe((data) => {
-        console.log("changes: ", data)
+      // Another subscriber
+      this.updatedBook.valueChanges.subscribe((data: IBook) => {
+        // NOTE update the selection after each change
+        this.store.dispatch(UPDATE_BOOK({ updatedBook: data }))
       })
     })
   }
-
-  closeModal() {
-    console.log(`close`);
-    this.store.dispatch(UPDATE_BOOK({ updatedBook: this.updatedBook.value }))
-  }
-
-
 
 }

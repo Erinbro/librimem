@@ -1,5 +1,5 @@
 import { IBook } from '@librimem/api-interfaces';
-import { IStoreEntity } from '../store';
+import { IStoreEntity, IStore } from '../store';
 import { createReducer, on } from '@ngrx/store';
 import { bookStoreActions } from '.';
 import { IEntityType } from "@librimem/api-interfaces"
@@ -69,8 +69,12 @@ export const bookReducer = createReducer(
   }),
   // ANCHOR Book Modal
   on(bookStoreActions.UPDATE_BOOK, (state, { updatedBook }) => {
-    state.data[updatedBook.id] = updatedBook;
-    return state;
+    const storeCopy = JSON.parse(JSON.stringify(state)) as IStoreEntity<IBook>;
+
+    storeCopy.data[updatedBook.id] = updatedBook;
+
+    return storeCopy;
+
   }
   ),
   on(bookStoreActions.CLOSE_BOOK_MODAL, (state) => {

@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { IStore } from '../../state/store';
 import { MatDialog } from '@angular/material/dialog';
+import { BookModalComponent } from './components/BookModal/book-modal.component';
 
 @Component({
   selector: 'librimem-books-page',
@@ -20,6 +21,10 @@ export class BooksPageComponent implements OnInit {
 
   }
 
+  openModal() {
+    this.dialog.open(BookModalComponent, { data: { isEditing: false, id: undefined } })
+
+  }
 
 
 

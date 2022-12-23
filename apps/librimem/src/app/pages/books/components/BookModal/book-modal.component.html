@@ -1,8 +1,23 @@
 <mat-dialog-content>
-  <form [formGroup]="updatedBook">
-    <input formControlName="title" />
-  </form>
-  <mat-dialog-actions>
-    <button mat-button mat-dialog-close>Update</button>
-  </mat-dialog-actions>
+  <!-- NOTE if we have no selection then we have show empty inputs -->
+  <!-- NOTE Show this if we want to edit a book -->
+  <ng-container *ngIf="data.isEditing">
+    <h3>Edit the book</h3>
+    <form [formGroup]="book">
+      <input formControlName="title" />
+    </form>
+    <mat-dialog-actions>
+      <button mat-button mat-dialog-close>Update</button>
+    </mat-dialog-actions>
+  </ng-container>
+  <!-- NOTE Show this if we want to add a book -->
+  <ng-container *ngIf="!data.isEditing">
+    <h3>Add a new book</h3>
+    <form [formGroup]="book">
+      <input formControlName="title" />
+    </form>
+    <mat-dialog-actions>
+      <button mat-button mat-dialog-close (click)="addBook()">Add</button>
+    </mat-dialog-actions>
+  </ng-container>
 </mat-dialog-content>

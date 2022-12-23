@@ -26,11 +26,9 @@ export class BookCardComponent implements OnInit {
   }
 
   openDialog() {
-    this.store.dispatch(OPEN_BOOK_MODAL({ bookID: this.book.id }))
-    const dialogRef = this.dialog.open(BookModalComponent,)
+    const dialogRef = this.dialog.open(BookModalComponent, { data: { isEditing: true, id: this.book.id } })
 
     dialogRef.afterClosed().subscribe((res) => {
-      // this.store.dispatch(UPDATE_BOOK({ updatedBook: res }))
       console.log("from parent closed: ", res)
     })
 

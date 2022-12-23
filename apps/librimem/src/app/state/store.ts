@@ -6,6 +6,10 @@ export interface IStoreEntity<T> {
   data: {
     [id: string]: T;
   };
+  add: {
+    data: T | null,
+    isAdding: boolean
+  }
   selection: {
     /**
      * ID of the selected entity
@@ -42,6 +46,19 @@ export interface IStoreEntity<T> {
 }
 
 export interface IStore {
+  reader: {
+    // TODO Decided data format
+    data: any;
+    /**
+     * The selected chapter
+     */
+    selection: {
+      id: number | string;
+    };
+    search: {
+      data: any;
+    }
+  }
   collection: IStoreEntity<ICollection>;
   book: IStoreEntity<IBook>;
   /**
@@ -64,32 +81,14 @@ export interface IStore {
   word: IStoreEntity<IWord>;
 }
 
-/**
- * The central state of the app
- */
-// export const store: IStore = {
-//   /**
-//    * Contains everything related to the collection page i.e. '/collection'
-//    */
-//   collection: {
-
-
-//   },
-//   /**
-//    * Contains everything related to book page i.e. '/book', '/book/:bookId' or '/collection/book/', '/collection/book/:bookId'
-//    */
-//   book: {
-
-//   },
-//   chapter: {
-//   },
-
-// }
-
 export function storeEntityGenerator<T>(): IStoreEntity<T> {
 
   return {
     data: {},
+    add: {
+      data: null,
+      isAdding: false
+    },
     filter: {
       data: [],
       isFiltering: false
@@ -110,6 +109,7 @@ export function storeEntityGenerator<T>(): IStoreEntity<T> {
 
 // export const store = {} as IStore;
 export const globalStore: IStore = {
+  reader: { data: {}, search: { data: {} }, selection: { id: '' } },
   book: initialBookState,
   collection: storeEntityGenerator<ICollection>(),
   chapter: storeEntityGenerator<IChapter>(),

@@ -23,7 +23,8 @@ import { CollectionModalComponent } from './pages/collection/components/collecti
 import { ReaderPageComponent } from './pages/reader/reader-page.component';
 import { ReaderInputComponent } from './pages/reader/components/reader-input/reader-input.component';
 import { AppRoutingModule } from './app-routing.module';
-import { QuillModule } from "ngx-quill"
+import { QuillModule } from 'ngx-quill';
+import { ReaderEffects } from './pages/reader/+state/reader.effects';
 
 @NgModule({
   declarations: [
@@ -44,12 +45,13 @@ import { QuillModule } from "ngx-quill"
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([BookEffects]),
+    // NOTE Store
+    EffectsModule.forRoot([BookEffects, ReaderEffects]),
     BrowserAnimationsModule,
     MatCardModule,
     MatDialogModule,
     ReactiveFormsModule,
-    QuillModule.forRoot()
+    QuillModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

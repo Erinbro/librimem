@@ -1,0 +1,8 @@
+<mat-sidenav-container class="sidenav">
+  <!-- NOTE Content -->
+  <mat-sidenav #sidenav [(opened)]="opened">content </mat-sidenav>
+  <!-- NOTE Main Content -->
+  <mat-sidenav-content>
+    <button (click)="sidenav.toggle()">TOGGLE</button></mat-sidenav-content
+  >
+</mat-sidenav-container>

@@ -7,7 +7,7 @@ import { selectBookStateIsSelecting, selectBookStateSelection, selectBookStateBo
 import { IBook } from '@librimem/api-interfaces';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UPDATE_BOOK } from '../../../../state/book/book.action';
-import { NewBook } from "@librimem/api-interfaces"
+import { Book } from 'apps/librimem/src/app/models/Book';
 import { Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from "@angular/material/dialog"
 import { BookPersistence } from '../../../../services/storage/book.storage';
@@ -39,7 +39,7 @@ export class BookModalComponent implements OnInit {
     // If we are adding a new book
     if (!this.data.isEditing) {
       console.log(`We are adding`)
-      this.book = this.builder.group(new NewBook());
+      this.book = this.builder.group(new Book());
     }
 
     // If we are editing a book

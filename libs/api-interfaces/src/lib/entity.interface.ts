@@ -9,7 +9,7 @@ export enum IEntityType {
   GENRE = "GENRE"
 }
 
-enum IEntityStatus {
+export enum IEntityStatus {
   READ = 'READ',
   READING = 'READING',
   TO_READ = 'TO_READ'

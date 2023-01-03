@@ -1,0 +1,35 @@
+.app__toolbar {
+  li {
+    list-style-type: none;
+  }
+
+  .entities {
+    .entity {
+      width: fit-content;
+      &:hover {
+        background-color: rgb(196, 208, 196);
+      }
+    }
+  }
+
+  user-select: none;
+  .toolbar__row2 {
+    &.hidden {
+      display: none;
+    }
+
+    .row2__listing {
+      display: flex;
+
+      .listing__link {
+        cursor: pointer;
+      }
+
+      .listing__link:not(:first-child) {
+        margin-left: 3rem;
+      }
+    }
+  }
+}
+
+// TODO Animation

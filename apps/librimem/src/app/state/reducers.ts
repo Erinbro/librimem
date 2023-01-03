@@ -6,12 +6,12 @@ import * as fromReader from "../pages/reader/+state/reader.reducer";
 
 interface IGlobalState {
   book: IStoreEntity<IBook>,
-  reader: fromReader.ReaderState
+  // reader: fromReader.ReaderState
 }
 
 export const reducers: ActionReducerMap<IGlobalState> = {
   book: bookReducer,
-  reader: fromReader.reducer
+  // reader: fromReader.reducer
 }
 
 

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Quill from "quill"
-import { Converter } from '../../services/converter/converter.service';
-import * as PDF from "pdfjs-dist"
+import { ReaderClient } from '../../services/http/reader.client';
 
 @Component({
   selector: 'librimem-reader-page',
@@ -11,11 +10,12 @@ import * as PDF from "pdfjs-dist"
 export class ReaderPageComponent implements OnInit {
 
   content = '';
-  constructor(private converter: Converter) {
+  constructor(private readerClient: ReaderClient) {
   }
 
   ngOnInit(): void {
   }
+
 
 
 }

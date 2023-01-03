@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IBook } from '@librimem/api-interfaces';
 import { Store } from '@ngrx/store';
-import { OPEN_BOOK_MODAL, UPDATE_BOOK } from '../../../../state/book/book.action';
+import { SELECT_BOOK, UPDATE_BOOK } from '../../../../state/book/book.action';
 import { IStore } from '../../../../state/store';
 import { MatDialog } from '@angular/material/dialog';
 import { selectBookStateIsSelecting } from '../../../../state/book/book.selector';
@@ -26,12 +26,9 @@ export class BookCardComponent implements OnInit {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(BookModalComponent, { data: { isEditing: true, id: this.book.id } })
+    this.store.dispatch(SELECT_BOOK({ id: this.book.id }));
 
-    dialogRef.afterClosed().subscribe((res) => {
-      console.log("from parent closed: ", res)
-    })
-
+    this.dialog.open(BookModalComponent, { data: { isEditing: true, id: this.book.id } })
   }
 
 }

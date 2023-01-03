@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IBook } from '@librimem/api-interfaces';
-import { Observable, map, tap, from } from 'rxjs';
+import { Observable, map, tap, from, share } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { IStore } from '../../../../state/store';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries

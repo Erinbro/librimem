@@ -3,7 +3,7 @@ import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { switchMap, catchError, map, mergeMap, tap, concatMap, exhaustMap } from 'rxjs/operators';
 import { of, from } from 'rxjs';
 import { LOAD_BOOKS, LOAD_BOOKS_SUCCESS, LOAD_BOOKS_FAILURE } from './book.action';
-import { BookAPI } from '../../services/http/book.api';
+import { BookClient } from '../../services/http/book.client';
 import { IBook } from "@librimem/api-interfaces"
 import { BookPersistence } from '../../services/storage/book.storage';
 
@@ -13,7 +13,7 @@ import { BookPersistence } from '../../services/storage/book.storage';
 @Injectable()
 export class BookEffects {
 
-  constructor(private actions$: Actions, private bookAPI: BookAPI, private bookPersistence: BookPersistence) { }
+  constructor(private actions$: Actions, private bookClient: BookClient, private bookPersistence: BookPersistence) { }
 
   /*
   To handle the behaviour of the Effect when different Action instances
@@ -23,6 +23,7 @@ export class BookEffects {
   // effect from simulating an API call success
   loadBooksEffect$ = createEffect(
     () => this.actions$.pipe(
+      // NOTE We grap the LOAD_BOOKS event
       ofType(LOAD_BOOKS),
       tap(() => { console.log('new LOAD_BOOKS effect occurred in queue') }),
       mergeMap((action) => {
@@ -32,7 +33,7 @@ export class BookEffects {
 
         // If online we only fetch from the API
         if (navigator.onLine) {
-          return of(this.bookAPI.getBooks() as unknown as IBook[]).pipe(
+          return of(this.bookClient.getBooks() as unknown as IBook[]).pipe(
             map((res) => LOAD_BOOKS_SUCCESS({ books: res })),
             catchError(err => of(LOAD_BOOKS_FAILURE())),
             tap(() => { console.log('LOAD_BOOKS online effect finished') })

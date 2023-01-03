@@ -12,9 +12,8 @@ export const LOAD_BOOKS_FAILURE = createAction('[Book List] Load Books Success')
 
 export const UPDATE_BOOK = createAction('[Book Modal] Update Book', props<{ updatedBook: IBook }>())
 
-export const CLOSE_BOOK_MODAL = createAction('[Book Modal] Close Modal')
-
-export const OPEN_BOOK_MODAL = createAction('[Book Card] Open Modal', props<{ bookID: IBook['id'] }>())
+export const SELECT_BOOK = createAction('[Book Card] Open Modal', props<{ id: string | number }>())
 
 export const ADD_BOOK = createAction('[Book Modal] Add Book', props<{ newBook: IBook }>())
+
 

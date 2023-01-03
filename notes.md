@@ -13,10 +13,13 @@
 - `FileReader`
 - `ProgressEvent`
 - `EventTarget`
+- `FormData`
+- `Headers`: class that creates a header
 
 ## ANGULAR
 
 - `RouterModule`: module to register a routing module
+- `HttpHeaders`: use HttpHeaders instead of Headers from javascript
 
 ### QUILLJS
 
@@ -33,3 +36,9 @@ The way to extract the value of a route parameter is to use the @Param() decorat
 ## PDF.JS
 
 - `PDFWorker`
+
+## CSS
+
+- `cursor: pointer`
+- `.listing__link:not(:last-child`: does not select the last child
+- `list-style-type: none`

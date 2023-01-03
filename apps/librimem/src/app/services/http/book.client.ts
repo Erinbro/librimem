@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class BookAPI {
+export class BookClient {
 
   constructor(private http: HttpClient) { }
 

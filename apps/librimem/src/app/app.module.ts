@@ -12,6 +12,7 @@ import { BookCardComponent } from './pages/books/components/BookCard/book-card.c
 import { BookModalComponent } from './pages/books/components/BookModal/book-modal.component';
 // ANCHOR Angular Material
 import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
@@ -25,6 +26,9 @@ import { ReaderInputComponent } from './pages/reader/components/reader-input/rea
 import { AppRoutingModule } from './app-routing.module';
 import { QuillModule } from 'ngx-quill';
 import { ReaderEffects } from './pages/reader/+state/reader.effects';
+import { ToolbarComponent } from './shared/toolbar/toolbar.component';
+
+const material = [MatToolbarModule];
 
 @NgModule({
   declarations: [
@@ -39,6 +43,7 @@ import { ReaderEffects } from './pages/reader/+state/reader.effects';
     CollectionModalComponent,
     ReaderPageComponent,
     ReaderInputComponent,
+    ToolbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,14 +51,15 @@ import { ReaderEffects } from './pages/reader/+state/reader.effects';
     HttpClientModule,
     StoreModule.forRoot(reducers),
     // NOTE Store
-    EffectsModule.forRoot([BookEffects, ReaderEffects]),
+    EffectsModule.forRoot([BookEffects]),
     BrowserAnimationsModule,
     MatCardModule,
     MatDialogModule,
     ReactiveFormsModule,
     QuillModule.forRoot(),
+    material,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from "@angular/material/dialog"
 import { Store } from '@ngrx/store';
 import { IStore } from '../../../../state/store';
-import { Observable, Subject, BehaviorSubject, share, shareReplay } from 'rxjs';
+import { Observable, Subject, BehaviorSubject, share, shareReplay, from, of } from 'rxjs';
 import { selectBookStateIsSelecting, selectBookStateSelection, selectBookStateBookById } from '../../../../state/book/book.selector';
 import { IBook } from '@librimem/api-interfaces';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -35,6 +35,12 @@ export class BookModalComponent implements OnInit {
   * we must ascertain whether we are editing or adding
   */
   ngOnInit(): void {
+    // NOTE If there is a change in the selection then we get it
+    // from(this.store.select(selectBookStateSelection)).subscribe((book) => {
+    //   this.selection$ = of(book);
+    // })
+    this.selection$ = (this.store.select(selectBookStateBookById(this.data.id)) as Observable<IBook>).pipe(share())
+
 
     // If we are adding a new book
     if (!this.data.isEditing) {
@@ -45,19 +51,20 @@ export class BookModalComponent implements OnInit {
     // If we are editing a book
     else {
       console.log(`We are editing, id: ${this.data.id}`)
-      this.selection$.subscribe((book) => console.log(`Editing: ${book}`))
-      this.selection$ = (this.store.select(selectBookStateBookById(this.data.id)) as Observable<IBook>).pipe(share())
-
 
       this.selection$.subscribe((selectedBook) => {
+        if (!selectedBook) return;
         console.log(`Here the selection: ${selectedBook}`)
         // We cast to 'IBook' because we know that it will be 'IBook'
         this.book = this.builder.group(selectedBook as IBook)
+
+        // If the user is editing the book we want to change the state
         this.book.valueChanges.subscribe((updatedBook) => {
+          console.log("updated: ", updatedBook)
           // store
           this.store.dispatch(UPDATE_BOOK(updatedBook))
           // storage
-          this.bookPersistence.updateBook(this.book as unknown as IBook)
+          // await this.bookPersistence.updateBook(this.book as unknown as IBook)
         })
       })
     }

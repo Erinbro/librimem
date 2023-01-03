@@ -4,6 +4,7 @@ import { db } from '../../storage/storage';
 import { Store } from '@ngrx/store';
 import { ADD_BOOK } from '../../state/book/book.action';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -38,10 +39,17 @@ export class BookPersistence {
   }
 
   public async updateBook(book: IBook): Promise<IBook> {
-    const id = await db.books.put(book).then((id) => id)
+    const bookWithoutId = this.getRidOfId(book);
+    const id = await db.books.put(bookWithoutId).then((id) => id)
     return await this.getBookAfterInsertion(id);
   }
 
+  public getRidOfId(book: IBook): Omit<IBook, "id"> {
+    const copy = { ...book };
+    // @ts-ignore
+    delete copy.id;
+    return book
+  }
 
   // async deleteBook(id: number | string): Promise<any> {
 

@@ -1,5 +1,5 @@
 import { IBook } from '@librimem/api-interfaces';
-import { IStoreEntity, IStore } from '../store';
+import { IStoreEntity, } from '../store';
 import { createReducer, on } from '@ngrx/store';
 import { bookStoreActions } from '.';
 import { IEntityType } from "@librimem/api-interfaces"
@@ -59,9 +59,17 @@ export const bookReducer = createReducer(
     }
   }),
   // ANCHOR Book Modal
+  // on(bookStoreActions.SELECT_BOOK, (state, { id }) => {
+  //   console.log("select_book called")
+  //   const storeCopy = JSON.parse(JSON.stringify(state)) as IStoreEntity<IBook>;
+  //   storeCopy.selection.data = id;
+  //   return storeCopy;
+  // })
   on(bookStoreActions.UPDATE_BOOK, (state, { updatedBook }) => {
+    console.log("update book");
+
     const storeCopy = JSON.parse(JSON.stringify(state)) as IStoreEntity<IBook>;
-    storeCopy.data[updatedBook.id] = updatedBook;
+    storeCopy.data[updatedBook.id.toString()] = updatedBook;
     return storeCopy;
   }
   ),
@@ -69,5 +77,6 @@ export const bookReducer = createReducer(
     const storeCopy = JSON.parse(JSON.stringify(state)) as IStoreEntity<IBook>;
     storeCopy.data[newBook.id] = newBook;
     return storeCopy;
-  })
+  }),
+
 )

@@ -26,6 +26,16 @@ export class BookListComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(LOAD_BOOKS())
-    this.books$ = this.store.select(selectBookStateData)
+    this.books$ = this.store.select(selectBookStateData).pipe(
+      tap(() => console.log("change")),
+      map((data) => {
+        return this.arrayToEntities(data)
+      }))
+  }
+
+  arrayToEntities(entities: { [id: string]: IBook }) {
+    const keys = Object.keys(entities)
+
+    return keys.map((key) => entities[key])
   }
 }

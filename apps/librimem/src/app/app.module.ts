@@ -27,8 +27,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { QuillModule } from 'ngx-quill';
 import { ReaderEffects } from './pages/reader/+state/reader.effects';
 import { ToolbarComponent } from './shared/toolbar/toolbar.component';
+import { ChapterPageModule } from './pages/chapter/chapter-page.module';
 
 const material = [MatToolbarModule];
+const pages = [ChapterPageModule]
 
 @NgModule({
   declarations: [
@@ -58,8 +60,9 @@ const material = [MatToolbarModule];
     ReactiveFormsModule,
     QuillModule.forRoot(),
     material,
+    pages
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

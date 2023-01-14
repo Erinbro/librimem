@@ -1,5 +1,5 @@
 <div class="books">
   <button (click)="openModal()">add book</button>
   <librimem-book-list></librimem-book-list>
-  <librimem-book-modal *ngIf="isSelecting$ | async"></librimem-book-modal>
+  <librimem-book-modal *ngIf="openModalBol"></librimem-book-modal>
 </div>

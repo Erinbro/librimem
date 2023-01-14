@@ -7,10 +7,10 @@ import { selectBookStateIsSelecting, selectBookStateSelection, selectBookStateBo
 import { IBook } from '@librimem/api-interfaces';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UPDATE_BOOK } from '../../../../state/book/book.action';
-import { Book } from 'apps/librimem/src/app/models/Book';
 import { Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from "@angular/material/dialog"
 import { BookPersistence } from '../../../../services/storage/book.storage';
+import { Book } from '../../../../models/Book';
 
 @Component({
   selector: 'librimem-book-modal',
@@ -35,10 +35,7 @@ export class BookModalComponent implements OnInit {
   * we must ascertain whether we are editing or adding
   */
   ngOnInit(): void {
-    // NOTE If there is a change in the selection then we get it
-    // from(this.store.select(selectBookStateSelection)).subscribe((book) => {
-    //   this.selection$ = of(book);
-    // })
+
     this.selection$ = (this.store.select(selectBookStateBookById(this.data.id)) as Observable<IBook>).pipe(share())
 
 
@@ -61,13 +58,18 @@ export class BookModalComponent implements OnInit {
         // If the user is editing the book we want to change the state
         this.book.valueChanges.subscribe((updatedBook) => {
           console.log("updated: ", updatedBook)
-          // store
           this.store.dispatch(UPDATE_BOOK(updatedBook))
-          // storage
-          // await this.bookPersistence.updateBook(this.book as unknown as IBook)
         })
+
       })
     }
+  }
+
+  updateBook() {
+    console.log(`Update book: ${this.book.getRawValue()}`)
+
+    // this.store.dispatch(UPDATE_BOOK(this.book))
+
   }
 
   async addBook(): Promise<IBook> {

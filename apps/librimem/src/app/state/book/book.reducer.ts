@@ -4,7 +4,7 @@ import { createReducer, on } from '@ngrx/store';
 import { bookStoreActions } from '.';
 import { IEntityType } from "@librimem/api-interfaces"
 
-export const featureName = 'book';
+export const bookFeatureName = 'book';
 
 export const initialBookState: IStoreEntity<IBook> = {
   data: {
@@ -31,7 +31,6 @@ export const initialBookState: IStoreEntity<IBook> = {
 
 export const bookReducer = createReducer(
   initialBookState,
-  // ANCHOR Book List
   on(bookStoreActions.LOAD_BOOKS, (state) => {
     return {
       ...state,
@@ -47,15 +46,16 @@ export const bookReducer = createReducer(
     }
   }),
   on(bookStoreActions.LOAD_BOOKS_SUCCESS, (state, { books }) => {
+    const bookEntities = books.reduce((acc, book) => ({
+      ...acc,
+      [book.id]: book
+    }), {})
+
     return {
       ...state,
       loading: false,
       loaded: true,
-      // NOTE I love that
-      data: books.reduce((acc, book) => ({
-        ...acc,
-        [book.id]: book
-      }), {})
+      data: bookEntities
     }
   }),
   // ANCHOR Book Modal
@@ -67,10 +67,13 @@ export const bookReducer = createReducer(
   // })
   on(bookStoreActions.UPDATE_BOOK, (state, { updatedBook }) => {
     console.log("update book");
-
-    const storeCopy = JSON.parse(JSON.stringify(state)) as IStoreEntity<IBook>;
-    storeCopy.data[updatedBook.id.toString()] = updatedBook;
-    return storeCopy;
+    return {
+      ...state,
+      data: {
+        ...state.data,
+        [updatedBook.id.toString()]: updatedBook
+      }
+    }
   }
   ),
   on(bookStoreActions.ADD_BOOK, (state, { newBook }) => {

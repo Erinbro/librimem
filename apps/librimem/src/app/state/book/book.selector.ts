@@ -2,18 +2,16 @@ import { IBook } from '@librimem/api-interfaces';
 import { IStore, IStoreEntity } from '../store';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { db } from '../../storage/storage';
+import { bookFeatureName } from './book.reducer';
 
 const selectBookState = (state: IStore) => {
   return state.book;
 }
 
-export const selectBookStateData = createSelector(selectBookState, (state) => {
-  // store
-  const data = state.data;
-  const keys = Object.keys(data)
-  const result = keys.map((key) => state.data[key])
 
-  return result;
+export const selectBookStateData = createSelector(selectBookState, (state) => {
+  console.log(`state: ${JSON.stringify(state)}`)
+  return state.data;
 })
 
 export const selectBookStateSelection = createSelector(selectBookState, (state) => {

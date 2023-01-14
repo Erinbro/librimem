@@ -12,8 +12,7 @@ import { BookModalComponent } from './components/BookModal/book-modal.component'
 })
 export class BooksPageComponent implements OnInit {
 
-  // NOTE We need to know if a book was selected in order to 'invoke' BookDialogComponent
-  isSelecting$!: Observable<boolean>;
+  openModalBol = false
 
   constructor(private store: Store<IStore>, private dialog: MatDialog) { }
 
@@ -22,7 +21,10 @@ export class BooksPageComponent implements OnInit {
   }
 
   openModal() {
-    this.dialog.open(BookModalComponent, { data: { isEditing: false, id: undefined } })
+    this.openModalBol = true
+    this.dialog.open(BookModalComponent, { data: { isEditing: false, id: undefined } }).afterClosed().subscribe(() => {
+      this.openModalBol = false
+    })
 
   }
 

@@ -29,25 +29,11 @@ export class BookEffects {
       mergeMap((action) => {
         console.log('new LOAD_BOOKS effect running')
 
-        // NOTE We consider the case that the app is offline PWA
-
-        // If online we only fetch from the API
-        if (navigator.onLine) {
-          return of(this.bookClient.getBooks() as unknown as IBook[]).pipe(
-            map((res) => LOAD_BOOKS_SUCCESS({ books: res })),
-            catchError(err => of(LOAD_BOOKS_FAILURE())),
-            tap(() => { console.log('LOAD_BOOKS online effect finished') })
-          )
-        }
-
-        // Else we only fetch from indexedDB
-        else {
-          return from(this.bookPersistence.getBooks()).pipe(
-            map((res) => LOAD_BOOKS_SUCCESS({ books: res })),
-            catchError(err => of(LOAD_BOOKS_FAILURE())),
-            tap(() => { console.log('LOAD_BOOKS offline effect finished') })
-          )
-        }
+        return of(this.bookClient.getBooks() as unknown as IBook[]).pipe(
+          map((res) => LOAD_BOOKS_SUCCESS({ books: res })),
+          catchError(err => of(LOAD_BOOKS_FAILURE())),
+          tap(() => { console.log('LOAD_BOOKS online effect finished') })
+        )
       }
       )
     )

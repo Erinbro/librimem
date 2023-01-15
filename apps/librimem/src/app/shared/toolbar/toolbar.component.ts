@@ -6,15 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent implements OnInit {
+  inRow1 = false
   showRow2 = false
   constructor() { }
 
   ngOnInit(): void { }
 
-  toggleShowRow2() {
-    console.log("hovered")
-    this.showRow2 = !this.showRow2;
-  }
+
+
 
   openRow2() {
 

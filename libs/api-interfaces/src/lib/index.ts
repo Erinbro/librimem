@@ -1,7 +1,7 @@
 import { IArticle } from "./article.interface"
 import { IAuthor } from "./author.interface"
 import { IBook } from "./book.interface"
-import { IChapter } from "./chapter.interace"
+import { IChapter } from "./chapter.interface"
 import { ICollection } from "./collection.interface"
 import { ICitation } from "./citation.interface"
 import { IComment } from "./comment.interface"

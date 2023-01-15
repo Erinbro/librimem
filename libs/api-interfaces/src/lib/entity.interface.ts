@@ -21,12 +21,12 @@ enum IEntityAttribute {
   CITATION = 'CITATION',
 }
 
+
 /**
  * Could be a Collection, Book or Chapter
  */
 export interface IEntity {
   id: string | number;
-  type: IEntityType;
   /**
    * Each entity can be whole read or not.
    */

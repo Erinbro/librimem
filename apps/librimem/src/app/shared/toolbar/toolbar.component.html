@@ -1,9 +1,13 @@
-<mat-toolbar class="app__toolbar" (mouseleave)="toggleShowRow2()">
-  <ul class="entities" (click)="toggleShowRow2()">
+<mat-toolbar
+  class="app__toolbar"
+  (mouseenter)="inRow1 = true"
+  (mouseleave)="inRow1 = false"
+>
+  <ul class="entities" (click)="showRow2 = true">
     <li class="entity">Book</li>
   </ul>
   <mat-toolbar-row
-    [ngClass]="showRow2 ? 'toolbar__row2' : 'toolbar__row2 hidden'"
+    [ngClass]="inRow1 && showRow2 ? 'toolbar__row2' : 'toolbar__row2 hidden'"
     class="toolbar__row2"
   >
     <ul class="row2__listing">

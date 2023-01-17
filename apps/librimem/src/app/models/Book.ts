@@ -9,7 +9,7 @@ export class Book implements IBook {
   language?: string | undefined;
   rating?: number | undefined;
   cover?: string | undefined;
-  id: string | number = 0;
+  id = new Date().getTime();
   type: IEntityType = IEntityType.BOOK;
   read = false;
   pages?: string | undefined;

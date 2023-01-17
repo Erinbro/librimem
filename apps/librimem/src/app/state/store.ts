@@ -84,7 +84,8 @@ export interface IStore {
 export function storeEntityGenerator<T>(): IStoreEntity<T> {
 
   return {
-    data: {},
+    data: {
+    },
     add: {
       data: null,
       isAdding: false

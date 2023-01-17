@@ -24,7 +24,7 @@ enum IEntityAttribute {
  * Could be a Collection, Book or Chapter
  */
 export interface IEntity {
-  id: string | number;
+  id: number;
   /**
    * Each entity can be whole read or not.
    */

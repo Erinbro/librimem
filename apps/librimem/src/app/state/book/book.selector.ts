@@ -47,3 +47,7 @@ export const selectBookStateIsAdding = createSelector(selectBookState, (state) =
 export const selectBookStateNewBook = createSelector(selectBookState, (state) => {
   return state.add.data;
 })
+
+export const selectSelectedBookId = createSelector(selectBookState, (state) => {
+  return state.selection.data;
+})

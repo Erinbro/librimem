@@ -5,9 +5,10 @@ import { Store } from '@ngrx/store';
 import { IStore } from '../../../../state/store';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { selectBookStateData } from '../../../../state/book/book.selector';
-import { db } from '../../../../storage/storage';
 import { BookPersistence } from '../../../../services/storage/book.storage';
 import { LOAD_BOOKS } from '../../../../state/book/book.action';
+import { arrayToEntities } from '../../../../utils/arrayToEntities';
+import { entitiesToArray } from '../../../../utils/entitiesToArray';
 
 /**
  * Responsible to showcase the books
@@ -27,15 +28,11 @@ export class BookListComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(LOAD_BOOKS())
     this.books$ = this.store.select(selectBookStateData).pipe(
-      tap(() => console.log("change")),
+      tap(() => console.log("BookStateData")),
       map((data) => {
-        return this.arrayToEntities(data)
+        return entitiesToArray(data)
       }))
   }
 
-  arrayToEntities(entities: { [id: string]: IBook }) {
-    const keys = Object.keys(entities)
 
-    return keys.map((key) => entities[key])
-  }
 }

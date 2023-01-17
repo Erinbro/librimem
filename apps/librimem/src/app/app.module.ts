@@ -28,8 +28,12 @@ import { QuillModule } from 'ngx-quill';
 import { ReaderEffects } from './pages/reader/+state/reader.effects';
 import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 import { ChapterPageModule } from './pages/chapter/chapter-page.module';
+import { MatIconModule } from "@angular/material/icon"
+import { MatSidenavModule } from "@angular/material/sidenav"
+import { SidenavComponent } from './shared/sidenav/sidenav.component';
+import { SidenavService } from './shared/sidenav/sidenav.service';
 
-const material = [MatToolbarModule];
+const materialModules = [MatToolbarModule, MatIconModule, MatSidenavModule];
 const pages = [ChapterPageModule]
 
 @NgModule({
@@ -45,6 +49,7 @@ const pages = [ChapterPageModule]
     CollectionModalComponent,
     ReaderPageComponent,
     ReaderInputComponent,
+    SidenavComponent,
     ToolbarComponent,
   ],
   imports: [
@@ -59,10 +64,10 @@ const pages = [ChapterPageModule]
     MatDialogModule,
     ReactiveFormsModule,
     QuillModule.forRoot(),
-    material,
+    materialModules,
     pages
   ],
-  providers: [],
+  providers: [SidenavService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

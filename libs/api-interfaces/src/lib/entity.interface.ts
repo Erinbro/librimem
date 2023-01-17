@@ -3,10 +3,8 @@ import { ICommentary } from './commentary.interface';
 import { IOpinion } from './opinion.interface';
 
 export enum IEntityType {
-  COLLECTION = "COLLECTION",
   BOOK = "BOOK",
   CHAPTER = "CHAPTER",
-  GENRE = "GENRE"
 }
 
 export enum IEntityStatus {

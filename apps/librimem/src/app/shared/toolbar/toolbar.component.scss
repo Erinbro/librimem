@@ -1,25 +1,44 @@
+@use '@angular/material' as mat;
+@import '../../sass/variables.scss';
+
 .app__toolbar {
+  display: none;
+  @media screen and (min-width: $breakpoint-sm) {
+    display: show;
+  }
+  @include mat.elevation(6);
+
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .toolbar__burger {
+    width: fit-content;
+    height: fit-content;
+    &:hover {
+      cursor: pointer;
+    }
+    // NOTE We do not show the burger after 576px
+    @media screen and (min-width: $breakpoint-sm) {
+      display: none;
+    }
+  }
+
   li {
     list-style-type: none;
   }
 
-  .entities {
-    .entity {
-      width: fit-content;
-      &:hover {
-        background-color: rgb(196, 208, 196);
-      }
-    }
-  }
-
   user-select: none;
-  .toolbar__row2 {
-    &.hidden {
-      display: none;
+  .toolbar__listing__container {
+    display: none;
+    @media screen and (min-width: $breakpoint-sm) {
+      display: block;
     }
-
-    .row2__listing {
+    .toolbar__listing {
       display: flex;
+      flex-wrap: wrap;
 
       .listing__link {
         cursor: pointer;
@@ -31,5 +50,3 @@
     }
   }
 }
-
-// TODO Animation

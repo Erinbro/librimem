@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { SidenavService } from '../sidenav/sidenav.service';
+import { LINKS } from '../../constants/links';
 
 @Component({
   selector: 'librimem-toolbar',
@@ -6,20 +8,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent implements OnInit {
-  inRow1 = false
-  showRow2 = false
-  constructor() { }
+  links = LINKS
+  constructor(private sidenav: SidenavService) { }
 
-  ngOnInit(): void { }
+  /**
+   * Decides if we open the sidenav.
+   * We use it under the breakpoint 576px.
+   */
+  sidenavOpened = false
 
-
-
-
-  openRow2() {
-
+  ngOnInit(): void {
+    console.log(`sidenav service: ${this.sidenav}`);
   }
 
-  closeRow2() {
-
+  openSidenav() {
+    // if (this.sidenavOpened) this.sidenav.close()
+    // else this.sidenav.open()
+    this.sidenav.toggle()
+    this.sidenavOpened = !this.sidenavOpened
   }
+
 }

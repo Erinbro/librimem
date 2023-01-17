@@ -1,23 +1,13 @@
-<mat-toolbar
-  class="app__toolbar"
-  (mouseenter)="inRow1 = true"
-  (mouseleave)="inRow1 = false"
->
-  <ul class="entities" (click)="showRow2 = true">
-    <li class="entity">Book</li>
-  </ul>
-  <mat-toolbar-row
-    [ngClass]="inRow1 && showRow2 ? 'toolbar__row2' : 'toolbar__row2 hidden'"
-    class="toolbar__row2"
-  >
-    <ul class="row2__listing">
-      <li class="listing__link">Collections</li>
-      <li class="listing__link">Chapters</li>
-      <li class="listing__link">Summaries</li>
-      <li class="listing__link">Flashcards</li>
-      <li class="listing__link">Words</li>
-      <li class="listing__link">Subjects</li>
-      <li class="listing__link">Notes</li>
+<mat-toolbar class="app__toolbar">
+  <!-- NOTE We use the button only under 576px  -->
+  <button mat-icon-button class="toolbar__burger" (click)="openSidenav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <div class="toolbar__listing__container">
+    <ul class="toolbar__listing">
+      <li *ngFor="let link of links">
+        <a routerLink="{{ link.url }}">{{ link.title }}</a>
+      </li>
     </ul>
-  </mat-toolbar-row>
+  </div>
 </mat-toolbar>

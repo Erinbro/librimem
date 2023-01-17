@@ -1,6 +1,10 @@
 mat-sidenav-container {
-  // The sidenav should take the whole height
-  height: 100%;
+  mat-sidenav {
+    .sidenav__listing {
+      .listing__link {
+      }
+    }
+  }
 }
 
 mat-sidenav,

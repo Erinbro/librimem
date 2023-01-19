@@ -1,0 +1,9 @@
+<div class="book-page">
+  <librimem-breadcrumb></librimem-breadcrumb>
+  <form [formGroup]="book" class="book__form" *ngIf="book">
+    <div class="book__title">
+      <input formControlName="title" />
+    </div>
+    <div class="book__read"></div>
+  </form>
+</div>

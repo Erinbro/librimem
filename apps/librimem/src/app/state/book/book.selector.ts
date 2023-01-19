@@ -15,6 +15,7 @@ export const selectBookStateData = createSelector(selectBookState, (state) => {
 })
 
 export const selectBookStateSelection = createSelector(selectBookState, (state) => {
+  if (state.selection.data) return
   // NOTE We can go sure that it will contain a number because BookCardComponent won't show unless there is a selection
   const id = state.selection.data;
   if (id) return state.data[id];
@@ -48,6 +49,7 @@ export const selectBookStateNewBook = createSelector(selectBookState, (state) =>
   return state.add.data;
 })
 
-export const selectSelectedBookId = createSelector(selectBookState, (state) => {
+export const selectSelectedBook = createSelector(selectBookState, (state) => {
   return state.selection.data;
 })
+

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'librimem-chapter-page',
@@ -7,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
   providers: [],
 })
 export class ChapterPageComponent implements OnInit {
-  constructor() { }
+  params = []
+  constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe((params: Params) => {
+      console.log(params['book'])
+    })
   }
 }

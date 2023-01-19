@@ -3,6 +3,7 @@
 
 .app__toolbar {
   display: none;
+  position: fixed;
   @media screen and (min-width: $breakpoint-sm) {
     display: show;
   }

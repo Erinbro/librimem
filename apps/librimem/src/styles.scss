@@ -1,5 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  ul {
+    list-style: none;
+    list-style-type: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    cursor: auto;
+  }
+}
+
 html,
 body {
   height: 100%;

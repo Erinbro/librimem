@@ -6,6 +6,7 @@ import { IStore } from '../../../../state/store';
 import { MatDialog } from '@angular/material/dialog';
 import { selectBookStateIsSelecting } from '../../../../state/book/book.selector';
 import { BookModalComponent } from '../BookModal/book-modal.component';
+import { Router, ActivatedRoute } from '@angular/router';
 
 /**
  * A visual component that showcases a book
@@ -20,15 +21,23 @@ export class BookCardComponent implements OnInit {
   // NOTE A visual component does not need a reactive variable because it does not treat data
   @Input() book!: IBook
 
-  constructor(private store: Store<IStore>, private dialog: MatDialog) { }
+  constructor(private store: Store<IStore>, private dialog: MatDialog, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
   }
 
-  openDialog() {
-    this.store.dispatch(SELECT_BOOK({ id: this.book.id }));
+  // openDialog() {
+  //   this.store.dispatch(SELECT_BOOK({ id: this.book.id }));
 
-    this.dialog.open(BookModalComponent, { data: { isEditing: true, id: this.book.id } })
+  //   this.dialog.open(BookModalComponent, { data: { isEditing: true, id: this.book.id } })
+  // }
+
+  navigateToBookPage() {
+    console.log(`navigate`);
+    this.store.dispatch(SELECT_BOOK({ id: this.book.id }))
+
+    // NOTE We have to specify 'relativeTo' becauce we go to a child component
+    this.router.navigate(["./book"], { relativeTo: this.activatedRoute })
   }
 
 }

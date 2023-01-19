@@ -58,13 +58,13 @@ export const bookReducer = createReducer(
       data: bookEntities
     }
   }),
-  // ANCHOR Book Modal
-  // on(bookStoreActions.SELECT_BOOK, (state, { id }) => {
-  //   console.log("select_book called")
-  //   const storeCopy = JSON.parse(JSON.stringify(state)) as IStoreEntity<IBook>;
-  //   storeCopy.selection.data = id;
-  //   return storeCopy;
-  // })
+  on(bookStoreActions.SELECT_BOOK, (state, { id }) => {
+    console.log("select_book called")
+    const selectedBook = state.data[id]
+    const storeCopy = JSON.parse(JSON.stringify(state)) as IStoreEntity<IBook>;
+    storeCopy.selection.data = selectedBook;
+    return storeCopy;
+  }),
   on(bookStoreActions.UPDATE_BOOK, (state, { updatedBook }) => {
     console.log("update book");
     return {

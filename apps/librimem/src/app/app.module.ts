@@ -14,7 +14,7 @@ import { BookModalComponent } from './pages/books/components/BookModal/book-moda
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { BookEffects } from './state/book/book.effect';
 import { CollectionsPageComponent } from './pages/collection/collections-page.component';
@@ -28,13 +28,18 @@ import { QuillModule } from 'ngx-quill';
 import { ReaderEffects } from './pages/reader/+state/reader.effects';
 import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 import { ChapterPageModule } from './pages/chapter/chapter-page.module';
-import { MatIconModule } from "@angular/material/icon"
-import { MatSidenavModule } from "@angular/material/sidenav"
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidenavComponent } from './shared/sidenav/sidenav.component';
 import { SidenavService } from './shared/sidenav/sidenav.service';
+import { BookPageModule } from './pages/book/book.module';
+import { BreadcrumbComponent } from './shared/breadcrumb/breadcrumb.component';
+import { BookPageComponent } from './pages/book/book-page.component';
 
 const materialModules = [MatToolbarModule, MatIconModule, MatSidenavModule];
-const pages = [ChapterPageModule]
+const pages = [ChapterPageModule, BookPageModule];
+const pagesComponent = [BookPageComponent]
+const sharedComponents = [BreadcrumbComponent]
 
 @NgModule({
   declarations: [
@@ -51,6 +56,8 @@ const pages = [ChapterPageModule]
     ReaderInputComponent,
     SidenavComponent,
     ToolbarComponent,
+    sharedComponents,
+    pagesComponent
   ],
   imports: [
     BrowserModule,
@@ -63,9 +70,10 @@ const pages = [ChapterPageModule]
     MatCardModule,
     MatDialogModule,
     ReactiveFormsModule,
+    FormsModule,
     QuillModule.forRoot(),
     materialModules,
-    pages
+    pages,
   ],
   providers: [SidenavService],
   bootstrap: [AppComponent],

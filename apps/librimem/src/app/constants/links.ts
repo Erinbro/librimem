@@ -1,12 +1,8 @@
 export const LINKS: ILinkObject[] = [
   {
     url: "/books",
-    title: "Books"
+    title: "Books",
   },
-  {
-    url: "/chapters",
-    title: "Chapters"
-  }
 ]
 
 interface ILinkObject {

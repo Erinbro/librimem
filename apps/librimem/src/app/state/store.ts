@@ -14,7 +14,7 @@ export interface IStoreEntity<T> {
     /**
      * ID of the selected entity
      */
-    data: IBook['id'] | null;
+    data: T | null;
     // TODO Do we need it? We can just say <data ? true : false>
     isSelecting: boolean;
   };

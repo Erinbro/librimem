@@ -1,15 +1,14 @@
-import { NgModule } from '@angular/core';
+import { NgModule } from "@angular/core";
 import { CommonModule } from '@angular/common';
-
+import { BookPageComponent } from './book-page.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from '../../state/reducers';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    // lazy load and attach to root store
-    StoreModule.forFeature('book', reducers.book),
-  ],
+  ]
 })
-export class BooksModule { }
+export class BookPageModule { }

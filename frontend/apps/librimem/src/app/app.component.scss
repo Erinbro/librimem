@@ -1,0 +1,43 @@
+.app {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 10vh 90vh;
+  grid-template-areas:
+    'header'
+    'body'
+    'footer';
+
+  header {
+    width: 100%;
+    height: fit-content;
+  }
+
+  body {
+    width: 100%;
+    height: 100%;
+    grid-area: body;
+    display: grid;
+    grid-auto-rows: minmax(min-content, max-content);
+    grid-template-areas:
+      'breadcrumb'
+      'sidenav'
+      'main';
+    .body__breadcrumb {
+      width: 100%;
+      max-height: fit-content;
+      grid-area: breadcrumb;
+    }
+
+    .body-sidenav {
+      grid-area: sidenav;
+    }
+
+    .body__main {
+      grid-area: main;
+    }
+  }
+  footer {
+    grid-area: footer;
+  }
+}

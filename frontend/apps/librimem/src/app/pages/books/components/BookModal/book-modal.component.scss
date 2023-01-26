@@ -1,0 +1,23 @@
+.book-modal {
+  .modal__adding {
+    width: 100%;
+    height: 100%;
+    .adding__title {
+      display: flex;
+      justify-content: center;
+    }
+    form {
+      display: flex;
+      justify-content: left;
+      mat-form-field {
+        margin-right: 1rem;
+      }
+    }
+    .adding__add {
+      display: flex;
+      justify-content: center;
+      button {
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+<mat-toolbar class="app__toolbar">
+  <!-- NOTE We use the button only under 576px  -->
+  <button mat-icon-button class="toolbar__burger" (click)="openSidenav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <div class="toolbar__listing__container">
+    <ul class="toolbar__listing">
+      <li *ngFor="let link of links">
+        <a routerLink="{{ link.url }}">{{ link.title }}</a>
+      </li>
+    </ul>
+  </div>
+</mat-toolbar>

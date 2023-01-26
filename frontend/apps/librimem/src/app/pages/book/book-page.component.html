@@ -1,0 +1,8 @@
+<div class="book-page">
+  <form [formGroup]="book" class="book__form" *ngIf="book ? true : false">
+    <div class="book__title">
+      <input formControlName="title" />
+    </div>
+    <div class="book__read"></div>
+  </form>
+</div>

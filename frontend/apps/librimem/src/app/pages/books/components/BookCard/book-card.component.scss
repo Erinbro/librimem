@@ -1,0 +1,47 @@
+@import '../../../../sass/variables.scss';
+
+.book__card {
+  width: fit-content;
+
+  margin: 1rem;
+  padding: 1rem;
+
+  position: relative;
+  display: grid;
+  grid-template-areas:
+    'title'
+    'subtitle'
+    'header'
+    'content';
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  mat-card-title {
+    grid-area: title;
+  }
+  mat-card-subtitle {
+    grid-area: subtitle;
+  }
+
+  mat-card-header {
+    grid-area: header;
+    .card__delete {
+      position: absolute;
+      top: 0;
+      right: 0;
+      mat-icon {
+        color: red;
+        &:hover {
+          color: white;
+          background-color: black;
+        }
+      }
+    }
+  }
+
+  mat-card-content {
+    grid-area: content;
+  }
+}

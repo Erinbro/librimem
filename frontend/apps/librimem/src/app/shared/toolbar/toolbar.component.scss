@@ -1,0 +1,54 @@
+@use '@angular/material' as mat;
+@import '../../sass/variables.scss';
+
+.app__toolbar {
+  width: 100%;
+  min-height: 10vh;
+  max-height: 10vh;
+  display: none;
+  position: fixed;
+  @media screen and (min-width: $breakpoint-sm) {
+    display: show;
+  }
+  @include mat.elevation(6);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .toolbar__burger {
+    width: fit-content;
+    height: fit-content;
+    &:hover {
+      cursor: pointer;
+    }
+    // NOTE We do not show the burger after 576px
+    @media screen and (min-width: $breakpoint-sm) {
+      display: none;
+    }
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  user-select: none;
+  .toolbar__listing__container {
+    display: none;
+    @media screen and (min-width: $breakpoint-sm) {
+      display: block;
+    }
+    .toolbar__listing {
+      display: flex;
+      flex-wrap: wrap;
+
+      .listing__link {
+        cursor: pointer;
+      }
+
+      .listing__link:not(:first-child) {
+        margin-left: 3rem;
+      }
+    }
+  }
+}

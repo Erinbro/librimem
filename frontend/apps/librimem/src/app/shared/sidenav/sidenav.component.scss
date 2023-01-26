@@ -1,0 +1,13 @@
+mat-sidenav-container {
+  mat-sidenav {
+    .sidenav__listing {
+      .listing__link {
+      }
+    }
+  }
+}
+
+mat-sidenav,
+mat-sidenav-content {
+  padding: 1rem;
+}

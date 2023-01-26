@@ -1,0 +1,17 @@
+<mat-sidenav-container class="sidenav">
+  <!-- NOTE Content -->
+  <mat-sidenav #sidenav mode="over" fixedInViewport="true">
+    <ul class="sidenav__listing">
+      <li
+        *ngFor="let link of links"
+        style="list-style: none"
+        class="listing__link"
+      >
+        <a routerLink="{{ link.url }}">
+          {{ link.title }}
+        </a>
+      </li>
+    </ul>
+  </mat-sidenav>
+  <!-- NOTE Main Content -->
+</mat-sidenav-container>

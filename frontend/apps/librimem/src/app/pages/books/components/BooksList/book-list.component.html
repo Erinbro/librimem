@@ -1,0 +1,6 @@
+<h3>List</h3>
+<div class="books__listing">
+  <ng-container *ngFor="let book of books$ | async">
+    <librimem-book-card [book]="book"></librimem-book-card>
+  </ng-container>
+</div>

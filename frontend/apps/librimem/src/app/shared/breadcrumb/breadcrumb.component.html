@@ -1,0 +1,10 @@
+<div class="breadcrumb">
+  <ul class="breadcrumb__unit" aria-label="list">
+    <li *ngFor="let param of params">
+      <span>/</span>
+      <a aria-label="link" (click)="navigate(param)" class="breadcrumb__link">{{
+        param.param
+      }}</a>
+    </li>
+  </ul>
+</div>

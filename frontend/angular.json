@@ -1,0 +1,10 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "api-interfaces": "libs/api-interfaces",
+    "librimem": "apps/librimem",
+    "librimem-e2e": "apps/librimem-e2e",
+    "visitor": "libs/visitor"
+  }
+}

@@ -1,0 +1,38 @@
+version: "3.7"
+
+services:
+  librimem_db:
+    container_name: librimem_db
+    image: postgres:13
+    networks:
+      - librimem_network
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: erinbro
+      POSTGRES_PASSWORD: erinbro
+      PGDATA: /data/postgres
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: email@email.com
+      PGADMIN_DEFAULT_PASSWORD: erinbro
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - "5050:80"
+    networks:
+      - librimem_network
+
+volumes:
+  postgres:
+  pgadmin:
+
+networks:
+  librimem_network:
+    driver: bridge

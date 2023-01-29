@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router, Event as RouterEvent, NavigationEnd } from '@angular/router';
 import { BreadcrumbService } from './breadcrumb.service';
 
+/**
+ * Breadcrumb that shows the current position in the app.
+ */
 @Component({
   selector: 'librimem-breadcrumb',
   templateUrl: './breadcrumb.component.html',

@@ -9,7 +9,7 @@ import { BookModalComponent } from '../BookModal/book-modal.component';
 import { Router, ActivatedRoute } from '@angular/router';
 
 /**
- * A visual component that showcases a book
+ * @tutorial breadcrumb here tutorial
  */
 @Component({
   selector: 'librimem-book-card',

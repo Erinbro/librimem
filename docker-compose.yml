@@ -1,0 +1,15 @@
+version: 3.7
+
+services:
+  librimem-frontend:
+    container_name: librime-frontend
+    build: ./frontend
+    ports:
+      - "8081:80"
+    depends_on: librimem-api-book
+
+  librimem-api-book:
+    container_name: librimem-api-book
+    build: ./api/book
+
+

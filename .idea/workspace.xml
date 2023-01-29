@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="03b88287-410e-4164-b7ad-987b4fe4c193" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/api/book/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/book/src/main/java/com/erinbro/librimem/book/service/BookService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/user/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.$Entity Relationship.drawio.bkp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.prettierignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.prettierrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/extensions.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity Relationship.drawio" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem-e2e/.eslintrc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem-e2e/cypress.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem-e2e/project.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem-e2e/src/e2e/app.cy.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem-e2e/src/fixtures/example.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem-e2e/src/support/app.po.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem-e2e/src/support/commands.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem-e2e/src/support/e2e.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem-e2e/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/.browserslistrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/.eslintrc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/docs/entities.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/docs/library.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/jest.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/project.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/proxy.conf.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/app-routing.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/app.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/app.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/app.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/app.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/constants/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/constants/links.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/models/Book.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/models/chapter.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/book/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/book/book-page.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/book/book-page.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/book/book-page.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/book/book.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/book/components/BookPresentation/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/books/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/books/books-page.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/books/books-page.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/books/books-page.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/books/books.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/books/components/BookCard/book-card.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/books/components/BookCard/book-card.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/books/components/BookCard/book-card.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/books/components/BookCard/book-card.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/books/components/BookModal/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/books/components/BookModal/book-modal.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/books/components/BookModal/book-modal.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/books/components/BookModal/book-modal.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/books/components/BooksList/book-list.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/books/components/BooksList/book-list.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/books/components/BooksList/book-list.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/books/components/BooksList/book-list.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/chapter/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/chapter/chapter-page-routing.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/chapter/chapter-page.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/chapter/chapter-page.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/chapter/chapter-page.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/chapter/chapter-page.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/chapter/components/chapter-list/chapter-list.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/chapter/components/chapter-list/chapter-list.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/chapter/components/chapter-list/chapter-list.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/chapter/state/chapter.actions.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/chapter/state/chapter.effects.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/chapter/state/chapter.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/chapter/state/chapter.selector.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/collection/collections-page.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/collection/collections-page.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/collection/collections-page.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/collection/collections-page.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/collection/components/collection-modal/collection-modal.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/collection/components/collection-modal/collection-modal.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/collection/components/collection-modal/collection-modal.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/collection/components/collection-modal/collection-modal.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/collection/components/collections-list/collections-list.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/collection/components/collections-list/collections-list.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/collection/components/collections-list/collections-list.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/collection/components/collections-list/collections-list.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/collection/components/collections-table/collections-table.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/collection/components/collections-table/collections-table.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/collection/components/collections-table/collections-table.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/collection/components/collections-table/collections-table.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/editor/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/events/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/flashcard/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/output/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/reader/+state/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/reader/+state/reader.actions.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/reader/+state/reader.effects.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/reader/+state/reader.effects.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/reader/+state/reader.models.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/reader/+state/reader.reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/reader/+state/reader.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/reader/+state/reader.selectors.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/reader/+state/reader.selectors.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/reader/components/reader-input/reader-input.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/reader/components/reader-input/reader-input.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/reader/components/reader-input/reader-input.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/reader/components/reader-input/reader-input.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/reader/reader-page.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/reader/reader-page.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/reader/reader-page.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/reader/reader-page.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/reader/reader.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/statistics/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/pages/summary/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/sass/main.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/sass/variables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/sass/vendors/_overwrite.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/services/converter/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/services/converter/converter.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/services/converter/interfaces/extended-paragraph.interface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/services/editor/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/services/editor/book.properties.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/services/editor/editor-navigator.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/services/editor/editor.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/services/editor/interfaces/IParagraph.editor.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/services/http/book.client.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/services/http/chapter.client.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/services/http/reader.client.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/services/storage/book.storage.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/shared/breadcrumb/breadcrumb.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/shared/breadcrumb/breadcrumb.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/shared/breadcrumb/breadcrumb.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/shared/path/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/shared/sidenav/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/shared/sidenav/sidenav.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/shared/sidenav/sidenav.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/shared/sidenav/sidenav.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/shared/sidenav/sidenav.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/shared/toolbar/toolbar.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/shared/toolbar/toolbar.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/shared/toolbar/toolbar.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/state/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/state/book/book.action.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/state/book/book.effect.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/state/book/book.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/state/book/book.selector.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/state/book/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/state/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/state/reducers.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/state/store.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/storage/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/storage/storage.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/utils/arrayToEntities.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/app/utils/entitiesToArray.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/assets/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/assets/books.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/assets/chapters.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/environments/environment.prod.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/environments/environment.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/main.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/polyfills.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/styles.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/src/test-setup.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/tsconfig.app.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/tsconfig.editor.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/librimem/tsconfig.spec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/decorate-angular-cli.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/.$librimem.bkp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/entities" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/entities.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/librimem" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/state" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jest.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jest.preset.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/.babelrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/.eslintrc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/project.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/src/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/src/lib/api-interfaces.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/src/lib/article.interface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/src/lib/author.interface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/src/lib/book.interface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/src/lib/chapter.interface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/src/lib/citation.interface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/src/lib/collection.interface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/src/lib/comment.interface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/src/lib/commentary.interface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/src/lib/entity.interface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/src/lib/event.inerface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/src/lib/flashcard.interface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/src/lib/genre.interface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/src/lib/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/src/lib/note.interface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/src/lib/opinion.interface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/src/lib/paragraph.interface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/src/lib/question.interface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/src/lib/sentence.interface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/src/lib/subject.interface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/src/lib/summary.interface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/src/lib/teaching.interface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/src/lib/word.interface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/api-interfaces/tsconfig.lib.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/visitor/.eslintrc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/visitor/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/visitor/jest.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/visitor/project.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/visitor/src/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/visitor/src/lib/visitor.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/visitor/src/test-setup.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/visitor/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/visitor/tsconfig.lib.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/visitor/tsconfig.spec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nx.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/generators/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/tsconfig.tools.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.base.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Record" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2KgKuAUWjN9sV6KasWtREyiqKuN" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "jdk.selected.JAVA_MODULE": "17",
+    "last_opened_file_path": "/home/josemagne/Documents/code/erinbro/portfolio/librimem/api/book/src/main/resources",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api/book/src/main/resources" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.BookServiceTests.getAllBooks">
+    <configuration name="BookApplicationTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="book" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.erinbro.librimem.api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.erinbro.librimem.api" />
+      <option name="MAIN_CLASS_NAME" value="com.erinbro.librimem.api.BookApplicationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BookApplicationTest (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="book" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.erinbro.librimem.book.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.erinbro.librimem.book" />
+      <option name="MAIN_CLASS_NAME" value="com.erinbro.librimem.book.BookApplicationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BookApplicationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="book" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.erinbro.librimem.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.erinbro.librimem" />
+      <option name="MAIN_CLASS_NAME" value="com.erinbro.librimem.BookApplicationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BookServiceTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="book" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.erinbro.librimem.book.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.erinbro.librimem.book.service" />
+      <option name="MAIN_CLASS_NAME" value="com.erinbro.librimem.book.service.BookServiceTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BookServiceTests.getAllBooks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="book" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.erinbro.librimem.book.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.erinbro.librimem.book.service" />
+      <option name="MAIN_CLASS_NAME" value="com.erinbro.librimem.book.service.BookServiceTests" />
+      <option name="METHOD_NAME" value="getAllBooks" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.BookServiceTests.getAllBooks" />
+        <item itemvalue="JUnit.BookServiceTests" />
+        <item itemvalue="JUnit.BookApplicationTest (2)" />
+        <item itemvalue="JUnit.BookApplicationTest (1)" />
+        <item itemvalue="JUnit.BookApplicationTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="03b88287-410e-4164-b7ad-987b4fe4c193" name="Changes" comment="" />
+      <created>1674391005293</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1674391005293</updated>
+    </task>
+    <servers />
+  </component>
+</project>

@@ -2,6 +2,8 @@ import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/cor
 import { SidenavService } from './sidenav.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import { LINKS } from '../../constants';
+import { IStore, } from '../../state/store';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'librimem-sidenav',
@@ -13,11 +15,10 @@ export class SidenavComponent implements AfterViewInit {
 
   @ViewChild('sidenav') public sidenav!: MatSidenav;
 
-  constructor(private sidenavService: SidenavService) { }
+  constructor(private sidenavService: SidenavService, store: Store<IStore>) { }
 
   ngAfterViewInit(): void {
     console.log(`Sidenav : ${this.sidenav}`);
     this.sidenavService.setSidenav(this.sidenav)
-
   }
 }

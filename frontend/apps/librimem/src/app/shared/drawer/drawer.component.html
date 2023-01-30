@@ -1,0 +1,11 @@
+<mat-drawer-container class="drawer mat-elevation-z10">
+  <mat-drawer mode="side" opened> </mat-drawer>
+  <mat-drawer-content>
+    <div class="drawer__icons">
+      <librimem-drawer-icon
+        *ngFor="let icon of icons"
+        [icon]="icon"
+      ></librimem-drawer-icon>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

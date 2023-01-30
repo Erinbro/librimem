@@ -3,6 +3,24 @@
     <div class="book__title">
       <input formControlName="title" />
     </div>
-    <div class="book__read"></div>
+    <div class="book__read">
+      <mat-slide-toggle>read</mat-slide-toggle>
+    </div>
+    <div class="book__status">
+      <mat-form-field class="status__field">
+        <label matLabel>Status</label>
+        <input matInput formControlName="status" />
+      </mat-form-field>
+    </div>
+    <div class="book_author">
+      <div class="author__prename"></div>
+      <div class="author__name"></div>
+    </div>
+    <div class="book__chapters">
+      <div class="chapters__link"></div>
+    </div>
+    <div class="book__current-page"></div>
+    <div class="book__language"></div>
+    <div class="book__rating"></div>
   </form>
 </div>

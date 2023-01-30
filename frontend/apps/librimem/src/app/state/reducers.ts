@@ -2,7 +2,7 @@ import { IBook, IChapter } from '@librimem/api-interfaces';
 import { IStoreEntity, IStore } from './store';
 import { ActionReducerMap } from '@ngrx/store';
 import { bookReducer } from './book/book.reducer';
-import { chapterReducer } from '../pages/chapter/state/chapter.reducer';
+import { chapterReducer } from './chapter/chapter.reducer';
 
 interface IGlobalState {
   book: IStoreEntity<IBook>,

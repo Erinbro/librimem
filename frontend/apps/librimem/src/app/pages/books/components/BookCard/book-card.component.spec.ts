@@ -1,43 +1,32 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideMockStore } from "@ngrx/store/testing"
+import { TestBed } from '@angular/core/testing';
 import { BookCardComponent } from './book-card.component';
+import { BreadcrumbComponent } from '../../../../shared/breadcrumb/breadcrumb.component';
+import { Book } from '../../../../models/Book';
+import { IBook } from '@librimem/api-interfaces';
+describe("BookcardComponent", () => {
 
-describe('BookCardComponent', () => {
-  let component: BookCardComponent;
-  let fixture: ComponentFixture<BookCardComponent>;
+  const book = (new Book() as IBook)
+  book.id = 3
+  book.title = "title"
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
+    TestBed.configureTestingModule({
       declarations: [BookCardComponent],
-      providers: [provideMockStore({ initialState: {} })],
-
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(BookCardComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should be created', () => {
-    expect(component).toBeTruthy();
-  });
-
-  // READ
-  it("should show the data of the book", () => {
-
+    }).compileComponents()
   })
 
 
-  // CREATE
-  it("should open the dialog to create a new book", () => {
-
+  it("should be rendered", () => {
+    const fixture = TestBed.createComponent(BreadcrumbComponent)
+    const breadcrumbComponent = fixture.debugElement.componentInstance;
+    breadcrumbComponent.
+      expect(breadcrumbComponent).toBeTruthy();
   })
 
-  // DELETE
-  it("should delete a book", () => {
-
+  it("should have the correct title", () => {
+    const fixture = TestBed.createComponent(BreadcrumbComponent)
+    const breadcrumbComponent = fixture.debugElement.componentInstance
+    breadcrumbComponent.book = book
+    expect(breadcrumbComponent.book.title).toEqual(book.title)
   })
-
-
-
-});
+})

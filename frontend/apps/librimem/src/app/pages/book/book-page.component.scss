@@ -1,2 +1,39 @@
 .book-page {
+  .book__form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & > * {
+      margin: 1rem 0 1rem 0;
+    }
+
+    .book__title {
+    }
+    .book__read {
+    }
+    .book__author {
+      .author__prename {
+      }
+      .author__name {
+      }
+    }
+    .book__chapters {
+      .chapters__link {
+      }
+    }
+    .book__current-page {
+    }
+    .book__language {
+    }
+    .book__rating {
+    }
+    .book__status {
+      .status__field {
+      }
+    }
+  }
 }

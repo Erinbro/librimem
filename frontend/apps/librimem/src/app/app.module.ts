@@ -17,20 +17,15 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { BookEffects } from './state/book/book.effect';
-import { CollectionsListComponent } from './pages/collection/components/collections-list/collections-list.component';
-import { CollectionsTableComponent } from './pages/collection/components/collections-table/collections-table.component';
-import { CollectionModalComponent } from './pages/collection/components/collection-modal/collection-modal.component';
 import { ReaderPageComponent } from './pages/reader/reader-page.component';
 import { ReaderInputComponent } from './pages/reader/components/reader-input/reader-input.component';
 import { AppRoutingModule } from './app-routing.module';
 import { QuillModule } from 'ngx-quill';
 import { ToolbarComponent } from './shared/toolbar/toolbar.component';
-import { ChapterPageModule } from './pages/chapter/chapter-page.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidenavComponent } from './shared/sidenav/sidenav.component';
 import { SidenavService } from './shared/sidenav/sidenav.service';
-import { BookPageModule } from './pages/book/book.module';
 import { BreadcrumbComponent } from './shared/breadcrumb/breadcrumb.component';
 import { BookPageComponent } from './pages/book/book-page.component';
 import { MatInputModule } from '@angular/material/input';
@@ -41,22 +36,11 @@ import { NotePageComponent } from './pages/note/note-page.component';
 import { WordsPageComponent } from './pages/words/words-page.component';
 import { SummariesPageComponent } from './pages/summaries/summaries-page.component';
 import { WordPageComponent } from './pages/word/word-page.component';
-import { CollectionsComponent } from './pages/collections/collections.component';
 import { ChapterPageComponent } from './pages/chapter/chapter-page.component';
-import { CollectionPageComponent } from './pages/collection/collection-page.component';
-import { CollectionsModule } from './pages/collections/collections.module';
-import { CollectionPageModule } from './pages/collection/collection-page.module';
-
-const materialModules = [
-  MatToolbarModule,
-  MatIconModule,
-  MatSidenavModule,
-  MatInputModule,
-  MatTooltipModule,
-];
-const pages = [ChapterPageModule, BookPageModule];
-const pagesComponent = [BookPageComponent];
-const sharedComponents = [BreadcrumbComponent];
+import { ChapterListComponent } from './pages/chapter/components/chapter-list/chapter-list.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { DrawerComponent } from './shared/drawer/drawer.component';
+import { DrawerIconComponent } from './shared/drawer/components/drawer-icon/drawer-icon.component';
 
 @NgModule({
   declarations: [
@@ -65,27 +49,32 @@ const sharedComponents = [BreadcrumbComponent];
     BookListComponent,
     BookCardComponent,
     BookModalComponent,
-    CollectionsPageComponent,
-    CollectionsListComponent,
-    CollectionsTableComponent,
-    CollectionModalComponent,
     ReaderPageComponent,
     ReaderInputComponent,
     SidenavComponent,
     ToolbarComponent,
-    sharedComponents,
-    pagesComponent,
-    ChaptersPageComponent,
+    BreadcrumbComponent,
     NotesPageComponent,
     NotePageComponent,
     WordsPageComponent,
     SummariesPageComponent,
     WordPageComponent,
-    CollectionsComponent,
+    ChaptersPageComponent,
     ChapterPageComponent,
-    CollectionPageComponent
+    ChapterListComponent,
+    BookPageComponent,
+    DrawerComponent,
+    DrawerIconComponent,
   ],
   imports: [
+    MatToolbarModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatCardModule,
+    MatDialogModule,
+    MatInputModule,
+    MatTooltipModule,
+    MatSlideToggleModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -93,19 +82,11 @@ const sharedComponents = [BreadcrumbComponent];
     // NOTE Store
     EffectsModule.forRoot([BookEffects]),
     BrowserAnimationsModule,
-    MatCardModule,
-    MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
     QuillModule.forRoot(),
-    materialModules,
-    pages,
-    ReactiveFormsModule,
-    ChapterPageModule,
-    CollectionsModule,
-    CollectionPageModule
   ],
   providers: [SidenavService],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

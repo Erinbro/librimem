@@ -3,7 +3,6 @@ import { render, screen } from "@testing-library/angular"
 import { BreadcrumbComponent } from './breadcrumb.component';
 import { RouterModule } from '@angular/router';
 import { BreadcrumbService } from "./breadcrumb.service";
-import userEvent from "@testing-library/user-event"
 
 describe("BreadcrumbComponent", () => {
   const params = [

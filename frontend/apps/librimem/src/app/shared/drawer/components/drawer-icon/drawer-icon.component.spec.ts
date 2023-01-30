@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CollectionsComponent } from './collections.component';
+import { DrawerIconComponent } from './drawer-icon.component';
 
-describe('CollectionsComponent', () => {
-  let component: CollectionsComponent;
-  let fixture: ComponentFixture<CollectionsComponent>;
+describe('DrawerIconComponent', () => {
+  let component: DrawerIconComponent;
+  let fixture: ComponentFixture<DrawerIconComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CollectionsComponent],
+      declarations: [DrawerIconComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CollectionsComponent);
+    fixture = TestBed.createComponent(DrawerIconComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,18 +1,22 @@
-FROM node:17-alpine AS builder
+FROM node:18-alpine AS builder
 ARG CONFIGURATION='dev'
 ARG ENVIRONMENT='prod'
 
 WORKDIR /app
 
-COPY package.json .
+COPY ./* ./
 
-RUN npm install yarn
+RUN ls
 
-RUN yarn
+RUN apk add g++ make py3-pip
 
-COPY ./dist/apps/librimem .
+RUN npm install -g @angular/cli@latest
 
-RUN npm run build
+RUN npm i yarn
+
+RUN yarn install
+
+RUN npx nx build librimem
 
 FROM nginx:stable-alpine
 

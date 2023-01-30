@@ -5,9 +5,9 @@ import { Observable, of } from 'rxjs';
 import { selectSelectedBook } from '../../../../state/book/book.selector';
 import { IStore } from '../../../../state/store';
 import { ChapterClient } from '../../../../services/http/chapter.client';
-import { LOAD_CHAPTERS } from '../../state/chapter.actions';
-import { selectChapterStateData } from '../../state/chapter.selector';
+import { LOAD_CHAPTERS } from '../../../../state/chapter/chapter.actions';
 import { entitiesToArray } from '../../../../utils/entitiesToArray';
+import { selectChapterStateData } from '../../../../state/chapter/chapter.selectors';
 
 @Component({
   selector: 'librimem-chapter-list',
@@ -28,7 +28,6 @@ export class ChapterListComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.select(selectChapterStateData).subscribe((chapters) => {
-
       this.chapters = of(entitiesToArray(chapters));
     })
     this.store.select(selectSelectedBook).subscribe((book) => {

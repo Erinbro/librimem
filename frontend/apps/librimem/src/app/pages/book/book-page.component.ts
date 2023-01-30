@@ -14,15 +14,13 @@ export class BookPageComponent implements OnInit {
 
   book!: FormGroup;
 
-  constructor(private store: Store<IStore>, private formBuilder: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private store: Store<IStore>, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    console.log(`[BookPageComponent] in book page`);
-    console.log(`[BookPageComponent] ${this.router.url}`);
-    console.log(`[BookPageComponent] book title ${this.activatedRoute.snapshot.params['book']}`);
-
     this.store.select(selectSelectedBook).subscribe((selectedBook) => {
       if (!selectedBook) return;
+      console.log(`[BookPageComponent] book: ${JSON.stringify(selectedBook)}`);
+
       this.book = this.formBuilder.group(selectedBook);
     })
   }

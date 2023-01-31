@@ -29,4 +29,4 @@ jobs:
           context: ./frontend
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME/librimem-frontend:latest }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/librimem-frontend:latest

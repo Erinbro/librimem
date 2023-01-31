@@ -1,0 +1,47 @@
+.chapters-list {
+  width: 100%;
+  height: 100%;
+
+  & > * {
+    background-color: rgb(199, 199, 255);
+  }
+
+  .chapters-list__titles {
+    display: flex;
+    & > * {
+      width: 30%;
+      margin-right: 2%;
+    }
+  }
+
+  .chapters-list__grouping {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    & > * {
+      width: 30%;
+      margin-right: 2%;
+    }
+    .list__toread__listing {
+    }
+    .list__reading__listing {
+    }
+    .list__read__listing {
+    }
+  }
+
+  .list__toread {
+    width: 30%;
+    margin-right: 2%;
+  }
+
+  .list__reading {
+    width: 30%;
+    margin-right: 2%;
+  }
+
+  .list__read {
+    width: 30%;
+    margin-right: 2%;
+  }
+}

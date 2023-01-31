@@ -41,6 +41,9 @@ import { ChapterListComponent } from './pages/chapter/components/chapter-list/ch
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { DrawerComponent } from './shared/drawer/drawer.component';
 import { DrawerIconComponent } from './shared/drawer/components/drawer-icon/drawer-icon.component';
+import { DragDropModule } from "@angular/cdk/drag-drop"
+import { ChaptersListComponent } from './pages/chapters/components/chapters-list/chapters-list.component';
+import { ChapterCardComponent } from './pages/chapters/components/chapter-card/chapter-card.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +68,9 @@ import { DrawerIconComponent } from './shared/drawer/components/drawer-icon/draw
     BookPageComponent,
     DrawerComponent,
     DrawerIconComponent,
+    ChaptersPageComponent,
+    ChaptersListComponent,
+    ChapterCardComponent
   ],
   imports: [
     MatToolbarModule,
@@ -85,8 +91,9 @@ import { DrawerIconComponent } from './shared/drawer/components/drawer-icon/draw
     FormsModule,
     ReactiveFormsModule,
     QuillModule.forRoot(),
+    DragDropModule
   ],
   providers: [SidenavService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

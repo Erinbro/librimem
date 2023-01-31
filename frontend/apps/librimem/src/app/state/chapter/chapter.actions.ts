@@ -24,3 +24,9 @@ export const DELETE_CHAPTER = createAction("[Delete Chapter]", props<{ deletedCh
 export const DELETE_CHAPTER_SUCCESS = createAction("[Delete Chapter]")
 
 export const DELETE_CHAPTER_FAILURE = createAction("[Delete Chapter]")
+
+/**
+ * Action that inserts the provided chapter into
+ * selection.data
+ */
+export const SELECT_CHAPTER = createAction("[Select Chapter]", props<{ selectedChapter: IChapter }>())

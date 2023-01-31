@@ -1,12 +1,12 @@
 import { IEntity, IEntityType } from './entity.interface';
+import { IAttribute } from './attribute.interface';
 
 export interface IChapter extends IEntity { // IEntity adds pages, read
-  type: IEntityType
-  title: string
+  title: string,
   /**
-   * HTML
+   * ID of the book
    */
-  content?: string;
+  entityId: number;
 }
 
 

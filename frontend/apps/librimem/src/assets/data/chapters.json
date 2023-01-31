@@ -2,9 +2,11 @@
   "chapters": [
     {
       "id": 1,
+      "entityId": 1,
       "title": "introduction",
       "read": false,
-      "type": "CHAPTER"
+      "status": "TO_READ",
+      "progress": 66
     }
   ]
 }

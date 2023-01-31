@@ -3,8 +3,11 @@ import { IStoreEntity, storeEntityGenerator } from '../store';
 import { createReducer, on } from '@ngrx/store';
 import * as chapterStoreActions from "./chapter.actions"
 import { arrayToEntities } from '../../utils/arrayToEntities';
+import chapters from "../../../assets/data/chapters.json";
 
 export const initialChapterState: IStoreEntity<IChapter> = storeEntityGenerator<IChapter>();
+
+initialChapterState.data = arrayToEntities(chapters.chapters)
 
 export const chapterReducer = createReducer(
   initialChapterState,

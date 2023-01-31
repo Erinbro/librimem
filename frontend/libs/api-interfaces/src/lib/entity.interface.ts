@@ -31,7 +31,8 @@ export interface IEntity {
    * Each entity could have an amount of pages.
    */
   pages?: string;
-  status?: IEntityStatus;
+  // TODO implement IEntityStatus
+  status?: string;
   progres?: number;
   summary?: ISummary;
   favorite?: boolean;

@@ -10,18 +10,22 @@ import { timeStamp } from 'console';
   styleUrls: ['./drawer.component.scss'],
 })
 export class DrawerComponent implements OnInit {
-  icons = [
-    {
-      src: "./assets/icons/books.png", name: "Books",
-      path: "/books"
-    },
-
-  ]
+  icons: { name: string, path: string, src: string }[]
+    = [
+      {
+        src: "./assets/icons/books.png", name: "Books",
+        path: "books"
+      },
+    ]
 
   /**
    * Decides if a book was selected
    */
   hasSelectedBook = false
+  /**
+   * Decides if a chapter is selected
+   */
+  hasSelectedChapter = false
 
   constructor(private store: Store<IStore>) { }
 
@@ -47,30 +51,38 @@ export class DrawerComponent implements OnInit {
     this.hasSelectedBook = true
     this.icons =
       this.icons.concat(
-        [{
-          src: "../../../assets/icons/flashcard.png",
-          name: "Flashcards",
-          path: "books"
-        },
-        {
-          src: "../../../assets/icons/notes.png",
-          name: "Notes",
-          path: "books/book/chapters/chapter/notes"
-        },
-        {
-          src: "../../../assets/icons/profile.png",
-          name: "Profile",
-          path: "profile"
-        },
-        {
-          src: "../../../assets/icons/quotation.png",
-          name: "Quotation",
-          path: "books/book/chapters/chapter/quotations"
-        },
-        {
-          src: "../../../assets/icons/summary.png",
-          name: "Summary",
-          path: "books/book/chapters/chapter/summaries"
-        }])
+        [
+          {
+            src: "../../../assets/icons/chapters.png",
+            name: "Chapters",
+            path: "books/book/chapters"
+          },
+          {
+            src: "../../../assets/icons/flashcard.png",
+            name: "Flashcards",
+            path: "books/book/chapters/chapter/flashcards"
+          },
+          {
+            src: "../../../assets/icons/notes.png",
+            name: "Notes",
+            path: "books/book/chapters/chapter/notes"
+          },
+          {
+            src: "../../../assets/icons/quotation.png",
+            name: "Quotation",
+            path: "books/book/chapters/chapter/quotations"
+          },
+          {
+            src: "../../../assets/icons/summary.png",
+            name: "Summary",
+            path: "books/book/chapters/chapter/summaries"
+          },
+          {
+            src: "../../../assets/icons/profile.png",
+            name: "Profile",
+            path: "profile"
+          },
+        ]
+      )
   }
 }

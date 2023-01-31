@@ -1,8 +1,8 @@
+import { IAttribute } from './attribute.interface';
 /**
  * Interface for Flashcard
  */
-export interface IFlashcard {
-  id?: number;
+export interface IFlashcard extends IAttribute {
   question: string;
   answer?: string;
 }

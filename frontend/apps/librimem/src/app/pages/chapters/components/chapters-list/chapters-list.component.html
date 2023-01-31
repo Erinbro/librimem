@@ -1,0 +1,63 @@
+<div class="chapters-list">
+  <div class="chapters-list__titles">
+    <h3>To Read</h3>
+    <h3>Reading</h3>
+    <h3>Read</h3>
+  </div>
+  <div cdkDropListGroup class="chapters-list__grouping">
+    <div
+      id="toRead"
+      data-id="TO_READ"
+      cdkDropList
+      #toReadList="cdkDropList"
+      [cdkDropListData]="toRead"
+      [cdkDropListConnectedTo]="[readingList, readList]"
+      class="list__toread__listing"
+      (cdkDropListDropped)="dropedItem($event)"
+    >
+      <librimem-chapter-card
+        id="{{ chapter.id }}"
+        cdkDrag
+        *ngFor="let chapter of toRead"
+        [chapter]="chapter"
+      >
+      </librimem-chapter-card>
+    </div>
+    <div
+      id="reading"
+      data-id="READING"
+      cdkDropList
+      #readingList="cdkDropList"
+      [cdkDropListData]="reading"
+      [cdkDropListConnectedTo]="[toReadList, readList]"
+      class="list__reading__listing"
+      (cdkDropListDropped)="dropedItem($event)"
+    >
+      <librimem-chapter-card
+        id="{{ chapter.id }}"
+        cdkDrag
+        *ngFor="let chapter of reading"
+        [chapter]="chapter"
+      >
+      </librimem-chapter-card>
+    </div>
+    <div
+      id="read"
+      data-id="READ"
+      cdkDropList
+      #readList="cdkDropList"
+      [cdkDropListData]="read"
+      [cdkDropListConnectedTo]="[toReadList, readingList]"
+      class="list__read__listing"
+      (cdkDropListDropped)="dropedItem($event)"
+    >
+      <librimem-chapter-card
+        id="{{ chapter.id }}"
+        cdkDrag
+        *ngFor="let chapter of read"
+        [chapter]="chapter"
+      >
+      </librimem-chapter-card>
+    </div>
+  </div>
+</div>

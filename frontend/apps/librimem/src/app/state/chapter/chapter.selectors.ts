@@ -13,3 +13,9 @@ export const selectChapterStateSelection = createSelector(selectChapterState, (s
   return state.selection.data
 })
 
+/**
+ * Selects a particular chapter from the store with Id
+ */
+export const selectChapterById = (id: number) => createSelector(selectChapterState, (state) => {
+  return state.data[id]
+})

@@ -4,7 +4,7 @@ ARG ENVIRONMENT='prod'
 
 WORKDIR /app
 
-COPY ./* ./
+COPY ./ ./
 
 RUN ls
 
@@ -26,4 +26,4 @@ COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 
 COPY --from=builder /app/dist/apps/librimem /usr/share/nginx/html
 
-CMD ["nginx" "-g" "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]

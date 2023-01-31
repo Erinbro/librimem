@@ -41,9 +41,16 @@ import { ChapterListComponent } from './pages/chapter/components/chapter-list/ch
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { DrawerComponent } from './shared/drawer/drawer.component';
 import { DrawerIconComponent } from './shared/drawer/components/drawer-icon/drawer-icon.component';
-import { DragDropModule } from "@angular/cdk/drag-drop"
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ChaptersListComponent } from './pages/chapters/components/chapters-list/chapters-list.component';
 import { ChapterCardComponent } from './pages/chapters/components/chapter-card/chapter-card.component';
+import { DeleteDialogComponent } from './shared/dialog/delete-dialog/delete-dialog.component';
+import { ErrorDialogComponent } from './shared/dialog/error-dialog/error-dialog.component';
+import { InfoDialogComponent } from './shared/dialog/info-dialog/info-dialog.component';
+import { FlashcardsPageComponent } from './pages/flashcards/flashcards-page.component';
+import { FlashcardDialogComponent } from './pages/flashcards/components/flashcard-dialog/flashcard-dialog.component';
+import { FlashcardsTableComponent } from './pages/flashcards/components/flashcards-table/flashcards-table.component';
+import { FlashcardCardComponent } from './pages/flashcards/components/flashcard-card/flashcard-card.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +77,14 @@ import { ChapterCardComponent } from './pages/chapters/components/chapter-card/c
     DrawerIconComponent,
     ChaptersPageComponent,
     ChaptersListComponent,
-    ChapterCardComponent
+    ChapterCardComponent,
+    DeleteDialogComponent,
+    ErrorDialogComponent,
+    InfoDialogComponent,
+    FlashcardsPageComponent,
+    FlashcardDialogComponent,
+    FlashcardsTableComponent,
+    FlashcardCardComponent,
   ],
   imports: [
     MatToolbarModule,
@@ -91,9 +105,9 @@ import { ChapterCardComponent } from './pages/chapters/components/chapter-card/c
     FormsModule,
     ReactiveFormsModule,
     QuillModule.forRoot(),
-    DragDropModule
+    DragDropModule,
   ],
   providers: [SidenavService],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

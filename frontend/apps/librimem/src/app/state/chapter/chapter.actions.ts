@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { IChapter } from '@librimem/api-interfaces';
 
-export const LOAD_CHAPTERS = createAction('[Chapters Load]', props<{ bookId: number }>())
+export const LOAD_CHAPTERS = createAction('[Chapters Load]', props<{ bookId: string }>())
 
 export const LOAD_CHAPTERS_SUCCESS = createAction('[Chapters Load Success]', props<{ chapters: IChapter[] }>())
 

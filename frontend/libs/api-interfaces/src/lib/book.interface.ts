@@ -3,7 +3,7 @@ import { IEntity, IEntityType } from './entity.interface';
  * Interface for the Book
  */
 export interface IBook extends IEntity {
-  type: IEntityType
+  type: string
   title: string;
   author_prename: string;
   author_name: string;

@@ -22,7 +22,7 @@ export type IEntityAttribute =
  * Could be a Collection, Book or Chapter
  */
 export interface IEntity {
-  id: number;
+  id: string;
   /**
    * Each entity can be whole read or not.
    */

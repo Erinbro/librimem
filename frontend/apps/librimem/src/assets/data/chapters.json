@@ -1,11 +1,19 @@
 {
   "chapters": [
     {
-      "id": 1,
+      "id": "1",
       "entityId": 1,
       "title": "introduction",
       "read": false,
       "status": "TO_READ",
+      "progress": 1
+    },
+    {
+      "id": "2",
+      "entityId": 1,
+      "title": "some title",
+      "read": false,
+      "status": "READING",
       "progress": 66
     }
   ]

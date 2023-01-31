@@ -1,0 +1,22 @@
+{
+  "flashcards": [
+    {
+      "id": "1",
+      "type": "FLASHCARD",
+      "entityId": 1,
+      "chapterId": 1,
+      "favorite": false,
+      "question": "question1",
+      "answer": "answer1"
+    },
+    {
+      "id": "1",
+      "type": "FLASHCARD",
+      "entityId": 1,
+      "chapterId": 1,
+      "favorite": false,
+      "question": "question2",
+      "answer": "answer2"
+    }
+  ]
+}

@@ -2,8 +2,14 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment: { production: boolean } = {
+export const environment: {
+  production: boolean
+  host: string,
+  port: string
+} = {
   production: false,
+  host: "localhost",
+  port: "8080"
 };
 
 /*

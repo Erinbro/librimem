@@ -46,7 +46,7 @@ export interface IStoreEntity<T> {
 }
 
 export interface IStore {
-  reader: {
+  reader?: {
     // TODO Decided data format
     data: any;
     /**
@@ -59,7 +59,7 @@ export interface IStore {
       data: any;
     }
   }
-  collection: IStoreEntity<ICollection>;
+  collection?: IStoreEntity<ICollection>;
   book: IStoreEntity<IBook>;
   /**
    * Contains everything related to the chapter page i.e. '/book/chapter', '/book/chapter/:chapterId' or '/collection/book/chapter/', '/collection/book/chapter/:chapterId'
@@ -69,16 +69,16 @@ export interface IStore {
   // NOTE From here on begin the attributes of the entities. think abstractly!
   //
   flashcard: IStoreEntity<IFlashcard>;
-  commentary: IStoreEntity<ICommentary>;
-  comment: IStoreEntity<IComment>;
-  summary: IStoreEntity<ISummary>;
-  citation: IStoreEntity<ICitation>;
-  event: IStoreEntity<IEvent>;
-  note: IStoreEntity<INote>;
-  question: IStoreEntity<IQuestion>;
-  opinion: IStoreEntity<IOpinion>;
-  subject: IStoreEntity<ISubject>;
-  word: IStoreEntity<IWord>;
+  word?: IStoreEntity<IWord>;
+  note?: IStoreEntity<INote>;
+  summary?: IStoreEntity<ISummary>;
+  citation?: IStoreEntity<ICitation>;
+  commentary?: IStoreEntity<ICommentary>;
+  comment?: IStoreEntity<IComment>;
+  event?: IStoreEntity<IEvent>;
+  question?: IStoreEntity<IQuestion>;
+  opinion?: IStoreEntity<IOpinion>;
+  subject?: IStoreEntity<ISubject>;
 }
 
 /**

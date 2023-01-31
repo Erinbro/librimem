@@ -10,7 +10,9 @@ import { BookPersistence } from '../../services/storage/book.storage';
 /**
  * Service that mediates between IndexedDB and the API.
  */
-@Injectable()
+@Injectable({
+  providedIn: "root"
+})
 export class BookEffects {
 
   constructor(private actions$: Actions, private bookClient: BookClient, private bookPersistence: BookPersistence) { }
@@ -26,7 +28,7 @@ export class BookEffects {
       // NOTE We grap the LOAD_BOOKS event
       ofType(LOAD_BOOKS),
       tap(() => { console.log('new LOAD_BOOKS effect occurred in queue') }),
-      mergeMap((action) => {
+      mergeMap((_) => {
         return this.bookClient.getBooks().pipe(
           tap((res) => console.log(`res: ${res}`)),
           map((res) => LOAD_BOOKS_SUCCESS({ books: res })),

@@ -2,11 +2,11 @@ export interface IAttribute {
   /**
    * ID of the attribute
    */
-  id: number;
+  id: string;
   /**
    * Type of the attribute
    */
-  type: "SUMMARY" | "NOTE" | "FLASHCARD" | "CITATION";
+  type: string
   /**
    * ID of the entity it corresponds to
    */

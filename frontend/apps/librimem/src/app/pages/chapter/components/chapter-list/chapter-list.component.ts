@@ -17,7 +17,7 @@ import { selectChapterStateData } from '../../../../state/chapter/chapter.select
 })
 export class ChapterListComponent implements OnInit {
   chapters!: Observable<IChapter[]>
-  selectedBookId!: number
+  selectedBookId!: string;
   /**
    * Decides if a book is selected.
    * If no book is selected then we show an error modal/dialog.

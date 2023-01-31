@@ -16,7 +16,7 @@ describe('ChapterCardComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should be rendered', () => {
     expect(component).toBeTruthy();
   });
 });

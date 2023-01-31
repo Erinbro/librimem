@@ -23,6 +23,15 @@ export const chapterReducer = createReducer(
       ...state,
       data: chapterEntities
     }
+  }),
+  on(chapterStoreActions.SELECT_CHAPTER, (state, { selectedChapter }) => {
+    return {
+      ...state,
+      selection: {
+        ...state.selection,
+        data: selectedChapter
+      }
+    }
   })
   // TODO LOAD_CHAPTERS_FAILURE
 )

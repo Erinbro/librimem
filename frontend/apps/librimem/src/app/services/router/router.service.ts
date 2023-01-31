@@ -37,13 +37,17 @@ export class RouterService {
   }
 
   replaceBookString(route: string): string {
-    if (!this.selectedBookTitle) return "book"
+    if (!this.selectedBookTitle) {
+      return route.replace(new RegExp("\\b" + "book" + "\\b", "gi"), this.replaceWhitespace("book"))
+    }
 
     return route.replace(new RegExp("\\b" + "book" + "\\b", "gi"), this.replaceWhitespace(this.selectedBookTitle))
   }
 
   replaceChapterString(route: string): string {
-    if (!this.selectedChapterTitle) return "chapter"
+    if (!this.selectedChapterTitle) {
+      return route.replace(new RegExp("\\b" + "chapter" + "\\b", "gi"), "chapter")
+    }
 
     return route.replace(new RegExp("\\b" + "chapter" + "\\b", "gi"), this.replaceWhitespace(this.selectedChapterTitle))
   }
@@ -54,7 +58,7 @@ export class RouterService {
    * @returns
    */
   replaceWhitespace(title: string): string {
-    return title.replace(new RegExp("\\b" + " " + "\\b"), "%20")
+    return title.replace(new RegExp("\\b" + "\\s" + "\\b"), "%20")
   }
 
   // TODO

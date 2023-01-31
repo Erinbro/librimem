@@ -37,7 +37,6 @@ import { WordsPageComponent } from './pages/words/words-page.component';
 import { SummariesPageComponent } from './pages/summaries/summaries-page.component';
 import { WordPageComponent } from './pages/word/word-page.component';
 import { ChapterPageComponent } from './pages/chapter/chapter-page.component';
-import { ChapterListComponent } from './pages/chapter/components/chapter-list/chapter-list.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { DrawerComponent } from './shared/drawer/drawer.component';
 import { DrawerIconComponent } from './shared/drawer/components/drawer-icon/drawer-icon.component';
@@ -71,7 +70,6 @@ import { FlashcardCardComponent } from './pages/flashcards/components/flashcard-
     WordPageComponent,
     ChaptersPageComponent,
     ChapterPageComponent,
-    ChapterListComponent,
     BookPageComponent,
     DrawerComponent,
     DrawerIconComponent,
@@ -110,4 +108,4 @@ import { FlashcardCardComponent } from './pages/flashcards/components/flashcard-
   providers: [SidenavService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

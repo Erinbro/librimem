@@ -1,5 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { IChapter } from '@librimem/api-interfaces';
+import { Router, ActivatedRoute } from '@angular/router';
+import { RouterService } from '../../../../services/router/router.service';
+import { Store } from '@ngrx/store';
+import { SELECT_CHAPTER } from '../../../../state/chapter/chapter.actions';
 
 @Component({
   selector: 'librimem-chapter-card',
@@ -9,8 +13,18 @@ import { IChapter } from '@librimem/api-interfaces';
 export class ChapterCardComponent {
   @Input() chapter!: IChapter
 
-  navigateToChapterPage() {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private routerService: RouterService, private store: Store) { }
 
+  navigateToChapterPage() {
+    this.store.dispatch(SELECT_CHAPTER({ selectedChapter: this.chapter }))
+    const route = this.routerService.navigate(
+      "books/book/chapters/chapter"
+    )
+    console.log(`route: ${route}`);
+
+
+
+    this.router.navigate(route)
   }
 
 }

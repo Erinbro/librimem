@@ -4,12 +4,14 @@
 
 export const environment: {
   production: boolean
-  host: string,
-  port: string
+  bookAPI: string
+  chapterAPI: string
+  userAPI: string
 } = {
   production: false,
-  host: "localhost",
-  port: "8080"
+  bookAPI: "http://localhost:8080/api/v1/book",
+  chapterAPI: "http://localhost:8081/api/v1/chapter",
+  userAPI: "http://localhost:8082/api/v1/user"
 };
 
 /*

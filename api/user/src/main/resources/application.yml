@@ -1,21 +1,13 @@
 info:
   app:
-    name: LibriMem Book
-    description: Manage your lecture
+    name: LibriMem User
+    description: Manage the users of LM
     version: 1.0.0
   company:
     name: Erinbro
 
-management:
-  endpoint:
-    health:
-      show-details: always
-    web:
-      exposure:
-        include: prometheus
-
 server:
-  port: 8080
+  port: 8082
   error:
     include-message: always
     include-binding-error: always
@@ -23,10 +15,10 @@ server:
 
 spring:
   application:
-    name: book
+    name: user
   datasource:
     username: erinbro
-    url: jdbc:postgresql://localhost:5432/book
+    url: jdbc:postgresql://localhost:5432/user
     password: erinbro
   jpa:
     hibernate:
@@ -35,4 +27,4 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
-    show_sql: true
+      show_sql: true

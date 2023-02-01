@@ -5,7 +5,7 @@ services:
     container_name: librimem_db
     image: postgres:13
     networks:
-      - librimem_network
+      - postgres_network
     volumes:
       - postgres:/data/postgres
     ports:
@@ -27,7 +27,33 @@ services:
     ports:
       - "5050:80"
     networks:
+      - postgres_network
+
+  # librimem-frontend
+  librimem_client:
+    container_name: librimem_client
+    image: josemagne/librimem-frontend:latest
+    networks:
       - librimem_network
+
+  librimem_book:
+    container_name: librimem_book
+    image: josemagne/book:latest
+    networks:
+      - librimem_network
+    ports:
+      - "8080:8080"
+
+  librimem_chapter:
+    container_name: librimem_chapter
+    image: josemagne/chapter:latest
+    networks:
+      - librimem_network
+
+  librimem_user:
+    container_name: librimem_user
+    image: josemagne/user:latest
+
 
 volumes:
   postgres:
@@ -35,4 +61,6 @@ volumes:
 
 networks:
   librimem_network:
+    driver: bridge
+  postgres_network:
     driver: bridge

@@ -34,8 +34,8 @@ jobs:
       -
         name: Build and push with Google JIB
         run: |
-          cd ./backend \
-         mvn dependency:copy-dependencies \
+          cd ./backend
+         mvn dependency:copy-dependencies
          mvn compile com.google.cloud.tools:jib-maven-plugin:3.2.0:build
 
 

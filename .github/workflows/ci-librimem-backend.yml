@@ -33,7 +33,7 @@ jobs:
 
       - name: Build and push with Google JIB
         run: |
-         cd ./backend
+         cd ./api
          mvn dependency:copy-dependencies
          mvn compile com.google.cloud.tools:jib-maven-plugin:3.2.0:build
 

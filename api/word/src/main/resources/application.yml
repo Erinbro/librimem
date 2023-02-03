@@ -1,0 +1,30 @@
+info:
+  app:
+    name: Word
+    description: Mange the special words for a chapter
+    version: 1.0.0
+  company:
+    name: Erinbro
+
+server:
+  port: 8086
+  error:
+    include-message: always
+    include-binding-error: always
+    include-stacktrace: always
+
+spring:
+  application:
+    name: word
+  datasource:
+    username: erinbro
+    url: jdbc:postgresql://localhost:5432/word
+    password: erinbro
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show_sql: true

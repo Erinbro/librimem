@@ -36,8 +36,8 @@ public class BookService {
     }
 
     public Book addBook(Book newBook) {
-        log.info("Received new book: ", newBook);
        Book addedBook = bookRepository.save(newBook);
+        log.info("Received new book: ", newBook);
        return addedBook;
     }
 

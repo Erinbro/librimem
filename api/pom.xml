@@ -17,6 +17,10 @@
 		<module>book</module>
         <module>user</module>
         <module>chapter</module>
+        <module>flashcard</module>
+        <module>note</module>
+		<module>summary</module>
+        <module>word</module>
     </modules>
 	<properties>
 		<java.version>17</java.version>

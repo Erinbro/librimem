@@ -28,6 +28,37 @@ services:
       - "5050:80"
     networks:
       - postgres_network
+  librimem_nosql_db:
+    container_name: librimem_nosql_db
+    image: mongo:5.0
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=erinbro
+      - MONGO_INITDB_ROOT_PASSWORD=erinbro
+    volumes:
+      - mongo:/data/db
+    ports:
+      - 27017:27017
+    networks:
+      - mongo-network
+
+  mongo-express:
+    image: mongo-express
+    depends_on:
+      - librimem_nosql_db
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=librimem_nosql_db
+      - ME_CONFIG_MONGODB_PORT=27017
+      - ME_CONFIG_MONGODB_ENABLE_ADMIN=false
+      - ME_CONFIG_MONGODB_AUTH_DATABASE=admin
+      - ME_CONFIG_MONGODB_AUTH_USERNAME=erinbro
+      - ME_CONFIG_MONGODB_AUTH_PASSWORD=erinbro
+      - ME_CONFIG_BASICAUTH_USERNAME=erinbro
+      - ME_CONFIG_BASICAUTH_PASSWORD=erinbro
+    ports:
+      - "8888:8081"
+    networks:
+      - mongo-network
+
 
   # librimem-frontend
   librimem_client:
@@ -35,6 +66,11 @@ services:
     image: josemagne/librimem-frontend:latest
     networks:
       - librimem_network
+    depends_on:
+      - librimem_db
+      - librimem_user
+      - librimem_book
+      - librimem_chapter
 
   librimem_book:
     container_name: librimem_book
@@ -49,18 +85,27 @@ services:
     image: josemagne/chapter:latest
     networks:
       - librimem_network
+    ports:
+      - "8081:8081"
 
   librimem_user:
     container_name: librimem_user
     image: josemagne/user:latest
+    networks:
+      - librimem_network
+    ports:
+      - "8082:8082"
 
 
 volumes:
   postgres:
   pgadmin:
+  mongo:
 
 networks:
   librimem_network:
     driver: bridge
   postgres_network:
+    driver: bridge
+  mongo-network:
     driver: bridge

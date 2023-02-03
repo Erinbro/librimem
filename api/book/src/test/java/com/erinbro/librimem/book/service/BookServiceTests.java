@@ -54,7 +54,7 @@ public class BookServiceTests {
         int numberOfRowsAfter = underTest.getAllBooks().size();
 
         // NOTE Then
-        assertEquals(numberOfRowsBefore + 1,numberOfRowsAfter + 1);
+        assertEquals(numberOfRowsBefore ,numberOfRowsAfter);
     }
 
     @Test

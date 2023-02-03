@@ -1,0 +1,29 @@
+info:
+  app:
+    name: Note
+    description: Manage the notes of the chapters
+    version: 1.0.0
+  company:
+    name: Erinbro
+
+server:
+  port: 8085
+  error:
+    include-message: always
+    include-binding-error: always
+    include-stacktrace: always
+
+spring:
+  application:
+    name: book
+  datasource:
+    username: erinbro
+    url: jdbc:postgresql://localhost:5432/note
+    password: erinbro
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show_sql: true

@@ -4,14 +4,13 @@ import { createReducer, on } from '@ngrx/store';
 import { bookStoreActions } from '.';
 import { IEntityType } from "@librimem/api-interfaces"
 import { arrayToEntities } from '../../utils/arrayToEntities';
+import bookMocks from "../../../assets/data/books.json"
+
 
 export const bookFeatureName = 'book';
 
 export const initialBookState: IStoreEntity<IBook> = {
-  data: {
-    "1": { "id": "1", "title": "Gabby Douglas Story, The", "pages": "54", "author_name": "Gouth", "author_prename": "Starr", "language": "Swati", "cover": "http://dummyimage.com/182x100.png/cc0000/ffffff", "read": false, "type": "BOOK", "status": "TO_READ" },
-    "2": { "id": "2", "title": "Ghost", "pages": "1493", "author_name": "Horburgh", "author_prename": "Vita", "language": "Assamese", "cover": "http://dummyimage.com/232x100.png/dddddd/000000", "read": false, "type": "BOOK", "status": "TO_READ" },
-  },
+  data: arrayToEntities(bookMocks),
   add: { data: null, isAdding: false },
   filter: {
     data: [],

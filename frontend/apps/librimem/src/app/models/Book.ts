@@ -2,6 +2,7 @@ import { Language, IEntityType, ICommentary, IOpinion, ISummary, IEntityStatus, 
 
 /**
  * Book for creating a book without id
+ * It is created on the client side.
  */
 export class Book implements Omit<IBook, "id"> {
   type: IEntityType = "BOOK";
@@ -21,6 +22,8 @@ export class Book implements Omit<IBook, "id"> {
   favorite?: boolean | undefined;
   subjects?: number[] | undefined;
   commentary?: ICommentary | undefined;
+  createdAt = new Date().toJSON();
+  updatedAt = new Date().toJSON();
   // comments?: number[] | undefined;
   // citations?: number[] | undefined;
   // events?: number[] | undefined;

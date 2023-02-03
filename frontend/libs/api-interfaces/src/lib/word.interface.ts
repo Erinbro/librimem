@@ -1,7 +1,19 @@
 import { IEntityType } from './entity.interface';
+
 export interface IWord {
-  id?: number;
-  type: IWordType;
+  id: number;
+  /**
+   * Possibilities: "TERM"
+   */
+  type: string;
+  /**
+   * The actual word
+   */
+  word: string;
+  /**
+   * The meaning of the word
+   */
+  meaning: string;
 }
 
 enum IWordType {
@@ -13,8 +25,4 @@ enum IWordType {
    * A word that is part of the terminology
    */
   TERM = "TERM",
-  /**
-   * Could be a person, company, animal, ...
-   */
-  SUBJECT = "SUBJECT"
 }

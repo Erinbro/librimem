@@ -5,6 +5,8 @@ export interface IAttribute {
   id: string;
   /**
    * Type of the attribute
+   * Possible values are: "WORD" | "SUMMARY" | "NOTE"
+   * | "FLASHCARD"
    */
   type: string
   /**
@@ -19,4 +21,6 @@ export interface IAttribute {
    * Decides if it is a favorite
    */
   favorite: boolean;
+  createdAt: string;
+  updatedAt: string;
 }

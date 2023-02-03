@@ -36,14 +36,6 @@ export interface IEntity {
   progres?: number;
   summary?: ISummary;
   favorite?: boolean;
-  // subjects?: number[];
-  // commentary?: ICommentary;
-  // comments?: number[];
-  // opinion?: IOpinion;
-  // citations?: number[];
-  // events?: number[];
-  // flashcards?: number[];
-  // notes?: number[];
-  // questions?: number[];
-  // words?: number[];
+  createdAt: string;
+  updatedAt: string;
 }

@@ -8,7 +8,9 @@
     "author_name": "Gouth",
     "author_prename": "Starr",
     "language": "Swati",
-    "cover": "http://dummyimage.com/182x100.png/cc0000/ffffff"
+    "cover": "http://dummyimage.com/182x100.png/cc0000/ffffff",
+    "createdAt": "2023-02-03T15:10:55.834Z",
+    "updatedAt": "2023-02-03T15:10:55.834Z"
   },
   {
     "id": "2",
@@ -19,7 +21,9 @@
     "author_name": "Horburgh",
     "author_prename": "Vita",
     "language": "Assamese",
-    "cover": "http://dummyimage.com/232x100.png/dddddd/000000"
+    "cover": "http://dummyimage.com/232x100.png/dddddd/000000",
+    "createdAt": "2023-02-03T15:10:55.834Z",
+    "updatedAt": "2023-02-03T15:10:55.834Z"
   },
   {
     "id": "3",
@@ -30,7 +34,9 @@
     "author_name": "Coatsworth",
     "author_prename": "Reinaldos",
     "language": "Hungarian",
-    "cover": "http://dummyimage.com/164x100.png/cc0000/ffffff"
+    "cover": "http://dummyimage.com/164x100.png/cc0000/ffffff",
+    "createdAt": "2023-02-03T15:10:55.834Z",
+    "updatedAt": "2023-02-03T15:10:55.834Z"
   },
   {
     "id": "4",
@@ -41,7 +47,9 @@
     "author_name": "Beers",
     "author_prename": "Shelly",
     "language": "Mongolian",
-    "cover": "http://dummyimage.com/179x100.png/ff4444/ffffff"
+    "cover": "http://dummyimage.com/179x100.png/ff4444/ffffff",
+    "createdAt": "2023-02-03T15:10:55.834Z",
+    "updatedAt": "2023-02-03T15:10:55.834Z"
   },
   {
     "id": "5",
@@ -52,7 +60,9 @@
     "author_name": "Matyja",
     "author_prename": "Valentia",
     "language": "Moldovan",
-    "cover": "http://dummyimage.com/236x100.png/ff4444/ffffff"
+    "cover": "http://dummyimage.com/236x100.png/ff4444/ffffff",
+    "createdAt": "2023-02-03T15:10:55.834Z",
+    "updatedAt": "2023-02-03T15:10:55.834Z"
   },
   {
     "id": "6",
@@ -63,7 +73,9 @@
     "author_name": "Sink",
     "author_prename": "Maggie",
     "language": "Gujarati",
-    "cover": "http://dummyimage.com/169x100.png/ff4444/ffffff"
+    "cover": "http://dummyimage.com/169x100.png/ff4444/ffffff",
+    "createdAt": "2023-02-03T15:10:55.834Z",
+    "updatedAt": "2023-02-03T15:10:55.834Z"
   },
   {
     "id": "7",
@@ -74,7 +86,9 @@
     "author_name": "Huleatt",
     "author_prename": "Kermit",
     "language": "Punjabi",
-    "cover": "http://dummyimage.com/185x100.png/ff4444/ffffff"
+    "cover": "http://dummyimage.com/185x100.png/ff4444/ffffff",
+    "createdAt": "2023-02-03T15:10:55.834Z",
+    "updatedAt": "2023-02-03T15:10:55.834Z"
   },
   {
     "id": "8",
@@ -85,7 +99,9 @@
     "author_name": "Gorbell",
     "author_prename": "Dorette",
     "language": "Oriya",
-    "cover": "http://dummyimage.com/246x100.png/ff4444/ffffff"
+    "cover": "http://dummyimage.com/246x100.png/ff4444/ffffff",
+    "createdAt": "2023-02-03T15:10:55.834Z",
+    "updatedAt": "2023-02-03T15:10:55.834Z"
   },
   {
     "id": "9",
@@ -96,7 +112,9 @@
     "author_name": "Crollman",
     "author_prename": "Netti",
     "language": "Māori",
-    "cover": "http://dummyimage.com/124x100.png/cc0000/ffffff"
+    "cover": "http://dummyimage.com/124x100.png/cc0000/ffffff",
+    "createdAt": "2023-02-03T15:10:55.834Z",
+    "updatedAt": "2023-02-03T15:10:55.834Z"
   },
   {
     "id": "10",
@@ -107,6 +125,8 @@
     "author_name": "Benoix",
     "author_prename": "Mehetabel",
     "language": "German",
-    "cover": "http://dummyimage.com/207x100.png/dddddd/000000"
+    "cover": "http://dummyimage.com/207x100.png/dddddd/000000",
+    "createdAt": "2023-02-03T15:10:55.834Z",
+    "updatedAt": "2023-02-03T15:10:55.834Z"
   }
 ]

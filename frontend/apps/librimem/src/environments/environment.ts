@@ -7,11 +7,20 @@ export const environment: {
   bookAPI: string
   chapterAPI: string
   userAPI: string
+  flashcardAPI: string;
+  noteAPI: string;
+  summaryAPI: string;
+  wordAPI: string;
 } = {
   production: false,
-  bookAPI: "http://localhost:8080/api/v1/book",
-  chapterAPI: "http://localhost:8081/api/v1/chapter",
-  userAPI: "http://localhost:8082/api/v1/user"
+  bookAPI: "http://localhost:8080/api/v1/books",
+  chapterAPI: "http://localhost:8081/api/v1/chapters",
+  userAPI: "http://localhost:8082/api/v1/users",
+  flashcardAPI: "http://localhost:8083/api/v1/flashcards",
+  noteAPI: "http://localhost:8085/api/v1/notes",
+  summaryAPI: "http://localhost:8084/api/v1/summaries",
+  wordAPI: "http://localhost:8086/api/v1/words"
+
 };
 
 /*

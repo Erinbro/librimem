@@ -7,6 +7,14 @@ export interface IChapter extends IEntity { // IEntity adds pages, read
    * ID of the book
    */
   entityId: number;
+  /**
+   * e.g. 1.1.1
+   */
+  index: string;
+  /**
+   * Number of page where chapter starts
+   */
+  page?: number;
 }
 
 

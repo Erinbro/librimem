@@ -31,4 +31,4 @@ This are the taks of the ChapterDenominatorComponent:
 
 This are the tasks of ChapterDenominatorService:
 
-- 1. [ ] Group related chapters together in a string with the chapter parent at the top of the map.
+- 1. [ ] Turn the array of chapters into a tree.

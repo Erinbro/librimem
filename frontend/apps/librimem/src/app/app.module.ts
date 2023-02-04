@@ -50,6 +50,7 @@ import { FlashcardsPageComponent } from './pages/flashcards/flashcards-page.comp
 import { FlashcardDialogComponent } from './pages/flashcards/components/flashcard-dialog/flashcard-dialog.component';
 import { FlashcardsTableComponent } from './pages/flashcards/components/flashcards-table/flashcards-table.component';
 import { FlashcardCardComponent } from './pages/flashcards/components/flashcard-card/flashcard-card.component';
+import { ChapterDenominatorComponent } from './shared/chapter-denominator/chapter-denominator.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { FlashcardCardComponent } from './pages/flashcards/components/flashcard-
     FlashcardDialogComponent,
     FlashcardsTableComponent,
     FlashcardCardComponent,
+    ChapterDenominatorComponent,
   ],
   imports: [
     MatToolbarModule,
@@ -108,4 +110,4 @@ import { FlashcardCardComponent } from './pages/flashcards/components/flashcard-
   providers: [SidenavService],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

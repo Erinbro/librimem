@@ -1,16 +1,24 @@
 import { Injectable } from '@angular/core';
 import { IChapter } from '@librimem/api-interfaces';
+import { ChapterDenominatorUtils } from './chapter-denominator.utils';
+import { ChapterService } from '../../services/common/chapter.service';
 
 @Injectable()
 export class ChapterDenominatorService {
-  /**
-* All the chapters of the selected book
-*/
-  chapters!: IChapter[];
 
-  /**
-   * Set of all the indexes of the chapters
-   */
-  indexes!: Set<string>
+  chapters!: IChapter[]
+
+  constructor(private chapterDenominatorUtils: ChapterDenominatorUtils, private chapterService: ChapterService) {
+    chapterService.getChaptersObservable().subscribe({
+      next: (chapters) => {
+        this.chapters = chapters
+      }
+    })
+
+  }
+
+  getChapterTree(chapters: IChapter[]) {
+    return this.chapterDenominatorUtils.arrayToTree(chapters)
+  }
 
 }

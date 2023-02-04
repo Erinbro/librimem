@@ -12,11 +12,11 @@ export interface IAttribute {
   /**
    * ID of the entity it corresponds to
    */
-  entityId: number;
+  entityId: string;
   /**
    * ID of the chapter this attribute belongs to
    */
-  chapterId: number;
+  chapterId: string;
   /**
    * Decides if it is a favorite
    */

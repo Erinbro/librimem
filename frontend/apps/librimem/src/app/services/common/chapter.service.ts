@@ -29,8 +29,5 @@ export class ChapterService {
     })
   }
 
-  getChaptersObservable(): Observable<IChapter[]> {
-    return this.chapters.asObservable()
-  }
 
 }

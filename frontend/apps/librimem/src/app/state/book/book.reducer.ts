@@ -67,6 +67,16 @@ export const bookReducer = createReducer(
       }
     }
   }),
+  on(bookStoreActions.DESELECT_BOOK, (state) => {
+    return {
+      ...state,
+      selection: {
+        ...state.selection,
+        data: null
+      }
+    }
+  })
+  ,
   on(bookStoreActions.UPDATE_BOOK, (state, { updateBook }) => {
     console.log("update book");
     return {

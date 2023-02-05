@@ -6,6 +6,13 @@ import { selectChapterStateData, selectChapterById } from '../../../../state/cha
 import { entitiesToArray } from '../../../../utils/entitiesToArray';
 import { CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { UPDATE_CHAPTER } from '../../../../state/chapter/chapter.actions';
+import { ChapterService } from '../../../../services/common/chapter.service';
+import { ChapterDenominatorService } from '../../../../shared/chapter-denominator/chapter-denominator.service';
+
+interface IChaptersWithParent {
+  parent: IChapter;
+  children: IChapter[];
+}
 
 /**
  * List of chapters with drag and drop functionality.
@@ -31,13 +38,19 @@ export class ChaptersListComponent implements OnInit {
    */
   read: IChapter[] = []
 
-  constructor(private store: Store<IStore>) {
+
+  constructor(private store: Store<IStore>, private chapterDenominatorService: ChapterDenominatorService) {
   }
 
   ngOnInit(): void {
     this.store.select(selectChapterStateData).subscribe({
       next: (chapters) => {
-        this.distributeByStatus(entitiesToArray(chapters))
+        const indexedChapters = this.chapterDenominatorService
+          .getSortedChapterIndexes(entitiesToArray(chapters))
+
+        console.log(`[ChaptersListComponent.ngOnInit()] indexedChapters: ${JSON.stringify(indexedChapters)}`);
+
+        this.distributeByStatus(entitiesToArray(chapters), indexedChapters)
       }
     })
 
@@ -47,8 +60,15 @@ export class ChaptersListComponent implements OnInit {
    * Distributes the chapters to the their list.
    * The list is either toRead, reading or read
    */
-  distributeByStatus(chapters: IChapter[]) {
+  distributeByStatus(chapters: IChapter[], indexes: number[][]) {
+    const sortedChapters: IChapter[] = new Array(chapters.length)
+
     chapters.forEach((ch, i) => {
+      sortedChapters[i] = ch;
+    })
+
+
+    sortedChapters.forEach((ch, i) => {
       switch (ch.status) {
         case "TO_READ":
           this.toRead.push(ch)
@@ -62,6 +82,7 @@ export class ChaptersListComponent implements OnInit {
       }
     })
   }
+
 
   dropedItem(ev: CdkDragDrop<IChapter[], any, any>) {
 

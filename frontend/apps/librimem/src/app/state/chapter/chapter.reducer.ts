@@ -32,6 +32,15 @@ export const chapterReducer = createReducer(
         data: selectedChapter
       }
     }
+  }),
+  on(chapterStoreActions.DESELECT_CHAPTER, (state) => {
+    return {
+      ...state,
+      selection: {
+        ...state.selection,
+        data: null
+      }
+    }
   })
   // TODO LOAD_CHAPTERS_FAILURE
 )

@@ -51,6 +51,7 @@ import { FlashcardDialogComponent } from './pages/flashcards/components/flashcar
 import { FlashcardsTableComponent } from './pages/flashcards/components/flashcards-table/flashcards-table.component';
 import { FlashcardCardComponent } from './pages/flashcards/components/flashcard-card/flashcard-card.component';
 import { ChapterDenominatorComponent } from './shared/chapter-denominator/chapter-denominator.component';
+import { MatExpansionModule } from "@angular/material/expansion"
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { ChapterDenominatorComponent } from './shared/chapter-denominator/chapte
   imports: [
     MatToolbarModule,
     MatIconModule,
+    MatExpansionModule,
     MatSidenavModule,
     MatCardModule,
     MatDialogModule,
@@ -110,4 +112,4 @@ import { ChapterDenominatorComponent } from './shared/chapter-denominator/chapte
   providers: [SidenavService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

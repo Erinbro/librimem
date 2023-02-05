@@ -62,10 +62,7 @@ export class DrawerComponent implements OnInit {
 
 
 
-  /**
-   * Decides if a book was selected
-   */
-  hasSelectedBook = false
+  hasSelectedBook = false;
   /**
    * The selected book
    */
@@ -88,8 +85,8 @@ export class DrawerComponent implements OnInit {
         console.log(`[Drawer] selectedBook: ${JSON.stringify(selectedBook)}`);
 
         // If a book is selected
-        if (selectedBook && !this.hasSelectedBook) {
-          this.hasSelectedBook = true
+        if (selectedBook) {
+          this.hasSelectedBook = true;
           this.selectedBookTitle = selectedBook.title
           this.addBookAttributes()
           this.updateBookAttributes()
@@ -118,12 +115,10 @@ export class DrawerComponent implements OnInit {
 
   removeBookAttributes() {
     this.icons = [this.icons[0]]
-    this.hasSelectedBook = false;
   }
 
 
   addBookAttributes() {
-    this.hasSelectedBook = true
     this.icons =
       this.icons.concat(
         this.bookAttributes
@@ -141,7 +136,7 @@ export class DrawerComponent implements OnInit {
   }
 
   updateBookAttributes() {
-    switch (this.hasSelectedBook) {
+    switch (this.selectedBookTitle !== undefined) {
       case false:
         break;
 

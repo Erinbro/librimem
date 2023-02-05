@@ -2,7 +2,7 @@ export interface IAttribute {
   /**
    * ID of the attribute
    */
-  id: string;
+  id: number;
   /**
    * Type of the attribute
    * Possible values are: "WORD" | "SUMMARY" | "NOTE"
@@ -12,11 +12,11 @@ export interface IAttribute {
   /**
    * ID of the entity it corresponds to
    */
-  entityId: string;
+  entityId: number;
   /**
    * ID of the chapter this attribute belongs to
    */
-  chapterId: string;
+  chapterId: number;
   /**
    * Decides if it is a favorite
    */

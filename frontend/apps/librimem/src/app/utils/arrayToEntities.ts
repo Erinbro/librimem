@@ -1,4 +1,4 @@
-export function arrayToEntities<T extends { id: string }>(entities: T[], idSelector?: (entity: T) => number): { [id: string]: T } {
+export function arrayToEntities<T extends { id: number }>(entities: T[], idSelector?: (entity: T) => number): { [id: string]: T } {
 
   return entities.reduce((acc, item: T) => {
     const newObject: { [id: string]: T } = Object.assign({}, { ...acc })

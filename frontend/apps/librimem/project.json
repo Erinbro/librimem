@@ -1,11 +1,14 @@
 {
+  "name": "librimem",
   "projectType": "application",
   "sourceRoot": "apps/librimem/src",
   "prefix": "librimem",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/librimem",
         "index": "apps/librimem/src/index.html",
@@ -13,7 +16,10 @@
         "polyfills": "apps/librimem/src/polyfills.ts",
         "tsConfig": "apps/librimem/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/librimem/src/favicon.ico", "apps/librimem/src/assets"],
+        "assets": [
+          "apps/librimem/src/favicon.ico",
+          "apps/librimem/src/assets"
+        ],
         "styles": [
           "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
           "apps/librimem/src/styles.scss"
@@ -77,12 +83,17 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["apps/librimem/**/*.ts", "apps/librimem/**/*.html"]
+        "lintFilePatterns": [
+          "apps/librimem/**/*.ts",
+          "apps/librimem/**/*.html"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/librimem"],
+      "outputs": [
+        "coverage/apps/librimem"
+      ],
       "options": {
         "jestConfig": "apps/librimem/jest.config.ts",
         "passWithNoTests": true
@@ -104,7 +115,9 @@
     },
     "build-storybook": {
       "executor": "@storybook/angular:build-storybook",
-      "outputs": ["{options.outputDir}"],
+      "outputs": [
+        "{options.outputDir}"
+      ],
       "options": {
         "outputDir": "dist/storybook/librimem",
         "configDir": "apps/librimem/.storybook",
@@ -115,6 +128,15 @@
         "ci": {
           "quiet": true
         }
+      }
+    },
+    "component-test": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/librimem/cypress.config.ts",
+        "testingType": "component",
+        "skipServe": true,
+        "devServerTarget": "librimem:build"
       }
     }
   },

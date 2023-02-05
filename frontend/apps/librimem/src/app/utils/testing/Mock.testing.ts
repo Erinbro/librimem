@@ -1,5 +1,5 @@
 import { storeEntityGenerator, IStore } from '../../state/store';
-import { flashcards, chapters, books } from 'apps/librimem/src/assets/data';
+import { flashcards, chapters, books } from '../../../assets/data/index';
 import { arrayToEntities } from '../arrayToEntities';
 import { IFlashcard, IChapter, IBook } from '@librimem/api-interfaces';
 

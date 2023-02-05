@@ -30,3 +30,8 @@ export const DELETE_CHAPTER_FAILURE = createAction("[Delete Chapter]")
  * selection.data
  */
 export const SELECT_CHAPTER = createAction("[Select Chapter]", props<{ selectedChapter: IChapter }>())
+/**
+ * Deselects the current chapter.
+ * chapters.selection.data will be empty
+ */
+export const DESELECT_CHAPTER = createAction("[Deselect Chapter]")

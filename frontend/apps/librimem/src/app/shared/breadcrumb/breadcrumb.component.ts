@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, Event as RouterEvent, NavigationEnd } from '@angular/router';
+import { Router, Event as RouterEvent, NavigationEnd, NavigationStart } from '@angular/router';
 import { BreadcrumbService } from './breadcrumb.service';
+import { RouterService } from '../../services/router/router.service';
 
 /**
  * Breadcrumb that shows the current position in the app.
@@ -20,27 +21,26 @@ export class BreadcrumbComponent implements OnInit {
      */
     joinedParam: string
   }[];
-  constructor(private router: Router, private breadcrumbService: BreadcrumbService) { }
+  constructor(private router: Router, private breadcrumbService: BreadcrumbService, private routerService: RouterService) { }
 
   ngOnInit(): void {
     this.router.events.subscribe({
       next: (ev) => {
+        if (ev instanceof NavigationStart) {
+
+          this.routerService.deselect(this.params, ev.url)
+        }
+
         if (!(ev instanceof NavigationEnd)) return
-        console.log(`ev: `, ev);
 
         const routerParams = (ev as NavigationEnd).urlAfterRedirects.split("/")
 
-        console.log(`[BreadcrumComponent.ngOnInit] routerParams: ${routerParams}`);
 
         const [params, joinedParams] = this.breadcrumbService.format(routerParams)
-        console.log(`[BreadcrumComponent.ngOnInit] params: ${params}`);
-        console.log(`[BreadcrumComponent.ngOnInit] joinedParams: ${joinedParams}`);
 
         this.params = this.distribute(params, joinedParams)
       },
-      complete: () => {
-        console.log(`[BreadcrumComponent.ngOnInit()] router event stream finished.`);
-      }
+
 
     })
   }

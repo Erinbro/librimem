@@ -1,7 +1,7 @@
 {
   "chapters": [
     {
-      "id": "1",
+      "id": 1,
       "entityId": 1,
       "title": "introduction",
       "read": false,
@@ -13,7 +13,7 @@
       "type": "CHAPTER"
     },
     {
-      "id": "2",
+      "id": 2,
       "entityId": 1,
       "title": "some title",
       "read": false,
@@ -25,7 +25,7 @@
       "type": "CHAPTER"
     },
     {
-      "id": "3",
+      "id": 3,
       "entityId": 1,
       "title": "some title",
       "read": false,
@@ -37,7 +37,7 @@
       "type": "CHAPTER"
     },
     {
-      "id": "4",
+      "id": 4,
       "entityId": 1,
       "title": "some title",
       "read": false,

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IChapter } from '@librimem/api-interfaces';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RouterService } from '../../../../services/router/router.service';
@@ -14,6 +14,7 @@ export class ChapterCardComponent {
   @Input() chapter!: IChapter
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private routerService: RouterService, private store: Store) { }
+
 
   navigateToChapterPage() {
     this.store.dispatch(SELECT_CHAPTER({ selectedChapter: this.chapter }))

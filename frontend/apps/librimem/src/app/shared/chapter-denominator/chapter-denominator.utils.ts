@@ -4,8 +4,8 @@ import { Store } from '@ngrx/store';
 import { IStore } from '../../state/store';
 import { selectChapterStateData } from '../../state/chapter/chapter.selectors';
 import { entitiesToArray } from '../../utils/entitiesToArray';
-import { ChapterNode, IChapterTree, ChapterTree, IChapterNode } from '../../utils/data-structures/ChapterTree';
 
+@Injectable({ providedIn: "root" })
 /**
  * Class with utility methods for ChapterDenominatorService
  */
@@ -17,7 +17,7 @@ export class ChapterDenominatorUtils {
    * @param chapters
    * @returns
    */
-  public arrayToTree(chapters: IChapter[]) {
+  public sortArray(chapters: IChapter[]): number[][] {
 
     const collectedIndexes = this.collectAllChapterIndexes(chapters)
     const groupedIndexes = this.groupIndexes(collectedIndexes)
@@ -151,7 +151,7 @@ export class ChapterDenominatorUtils {
  * Sorts the indexes by their number
  * @param indexes
  */
-  public sortIndexByNumber(indexes: number[][][]): number[][][] {
+  public sortIndexByNumber(indexes: number[][][]): number[][] {
     const sortedFinalIndexes: number[][][] = []
 
     indexes.forEach((group) => {
@@ -172,7 +172,18 @@ export class ChapterDenominatorUtils {
       sortedFinalIndexes.push(sortedGroup)
     })
 
-    return sortedFinalIndexes;
+    return this.flatten(sortedFinalIndexes);
+  }
+
+  flatten(indexes: number[][][]): number[][] {
+    const flattenedIndexes: number[][] = []
+    indexes.forEach((group) => {
+      group.forEach((index) => {
+        flattenedIndexes.push(index)
+      })
+    })
+
+    return flattenedIndexes
   }
 
   // public convertArrayToTree(indexes: number[][][], chapters: IChapter[]): IChapterTree {

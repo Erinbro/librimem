@@ -75,27 +75,17 @@ describe("ChapterDenominatorService", () => {
 
   })
 
-  // it("[convertArrayToTree() should convert array of indexes to tree data structure.", () => {
-  //   const indexes = [
-  //     [[1], [1, 1], [1, 3]],
-  //     [[3, 5]]
-  //   ]
+  it("[flatten()] should flatten the array", () => {
+    const indexGroups = [
+      [[1, 1], [1, 3], [1]],
+      [[3, 5]]
+    ]
 
-  //   const result = chapterDenominatorUtils.convertArrayToTree(indexes, chapters.chapters);
+    const result = chapterDenominatorUtils.flatten(indexGroups)
 
-  //   expect(result)
-
-  // })
-
-  // it("[findChildrenChapters()] should return the chapters with the provided indexes.", () => {
-  //   const indexes = [
-  //     [1], [1, 1], [1, 3],
-  //     [3, 5]
-  //   ]
-
-  //   const result = chapterDenominatorUtils.findChildrenChapters(indexes, chapters.chapters);
-
-  //   expect(result.length === chapters.chapters.length).toBeTruthy()
-  // })
+    expect(result).toEqual(
+      [[1, 1], [1, 3], [1], [3, 5]]
+    )
+  })
 
 })

@@ -1,0 +1,5 @@
+clients:
+  book:
+    url: "http://book"
+  chapter:
+    url: "http://chapter"

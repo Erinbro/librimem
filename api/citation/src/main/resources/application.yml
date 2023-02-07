@@ -1,24 +1,20 @@
 info:
   app:
-    name: LibriMem Chapter
-    description: Manage the chapters of your books
+    name: Citation
+    description: Manage the citations of a section
     version: 1.0.0
   company:
     name: Erinbro
 
 server:
-  port: 8081
-  error:
-    include-message: always
-    include-binding-error: always
-    include-stacktrace: always
+  port: 8087
 
 spring:
   application:
-    name: chapter
+    name: citation
   datasource:
     username: erinbro
-    url: jdbc:postgresql://localhost:5432/chapter
+    url: jdbc:postgresql://localhost:5432/citation
     password: erinbro
   jpa:
     hibernate:
@@ -27,4 +23,4 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
-      show_sql: true
+    show_sql: true

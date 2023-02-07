@@ -4,15 +4,26 @@ import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.List;
+
+/**
+ * Entity for Chapter
+ */
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity
+@Entity(name = "Chapter")
 @Table(name = "chapter", uniqueConstraints = {
         @UniqueConstraint(name = "index", columnNames= "index")
 })
@@ -21,7 +32,11 @@ public class Chapter {
     @GeneratedValue(
             strategy = GenerationType.IDENTITY
     )
+    @Column(name = "id")
     private Integer id;
+
+    @Column(name = "user_id",  nullable = false)
+    private Integer userId;
 
     @Column(name = "entity_id")
     private Integer entityId;
@@ -42,8 +57,25 @@ public class Chapter {
      */
     private Integer page;
 
-    @NotNull(message = "Read property can't be null" )
-    @Column()
-    private boolean read;
+    @NotNull
+    private Integer progress;
+
+    private String type;
+
+    @NotEmpty
+    @Column(nullable = false)
+    private String status;
+
+    @CreatedDate
+    @Column(name = "created_at")
+    private Instant createdAt;
+
+    @LastModifiedDate
+    @Column(name = "updated_at")
+    private Instant updatedAt;
+
+    // connections
+
+
 
 }

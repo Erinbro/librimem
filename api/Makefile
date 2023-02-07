@@ -1,0 +1,2 @@
+docs:
+	mvn javadoc:javadoc

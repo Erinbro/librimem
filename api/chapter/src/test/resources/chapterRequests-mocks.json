@@ -1,0 +1,46 @@
+[
+  {
+    "entityId": 1,
+    "title": "introduction",
+    "read": false,
+    "status": "TO_READ",
+    "progress": 1,
+    "index": "1.1",
+    "createdAt": "2023-02-03T15:10:55.834Z",
+    "updatedAt": "2023-02-03T15:10:55.834Z",
+    "type": "CHAPTER"
+  },
+  {
+    "entityId": 1,
+    "title": "some title",
+    "read": false,
+    "status": "READING",
+    "progress": 66,
+    "index": "1.3",
+    "createdAt": "2023-02-03T15:10:55.834Z",
+    "updatedAt": "2023-02-03T15:10:55.834Z",
+    "type": "CHAPTER"
+  },
+  {
+    "entityId": 1,
+    "title": "some title",
+    "read": false,
+    "status": "READING",
+    "progress": 90,
+    "index": "3.5",
+    "createdAt": "2023-02-03T15:10:55.834Z",
+    "updatedAt": "2023-02-03T15:10:55.834Z",
+    "type": "CHAPTER"
+  },
+  {
+    "entityId": 1,
+    "title": "some title",
+    "read": false,
+    "status": "READING",
+    "progress": 90,
+    "index": "1",
+    "createdAt": "2023-02-03T15:10:55.834Z",
+    "updatedAt": "2023-02-03T15:10:55.834Z",
+    "type": "CHAPTER"
+  }
+]

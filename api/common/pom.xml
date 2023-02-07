@@ -6,10 +6,10 @@
     <parent>
         <groupId>com.erinbro.librimem</groupId>
         <artifactId>api</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
 
-    <artifactId>section</artifactId>
+    <artifactId>common</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

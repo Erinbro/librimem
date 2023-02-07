@@ -7,6 +7,8 @@ import com.erinbro.librimem.book.service.BookService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -51,4 +53,10 @@ public class BookController {
     public Book updateBook(@Valid @RequestBody Book book) {
         return bookService.updateBook(book);
     }
+
+    @DeleteMapping(path = "{bookId}")
+    public Book deleteBook(@PathVariable("bookId") Integer bookId) {
+        return bookService.deleteBook(bookId);
+    }
+
 }

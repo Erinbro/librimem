@@ -1,5 +1,6 @@
 package com.erinbro.librimem.book.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
@@ -8,7 +9,10 @@ import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 
 @Builder
@@ -16,7 +20,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity
+@Entity(name = "Book")
 @Table(name = "book", uniqueConstraints = {
         @UniqueConstraint(name = "id", columnNames="id")
 })
@@ -25,7 +29,11 @@ public class Book {
     @GeneratedValue(
             strategy = GenerationType.IDENTITY
     )
+    @Column(name = "id")
     private Integer id;
+
+    @Column(nullable = false, name = "user_id")
+    private Integer userId;
 
     @NotBlank(message = "The type must not be empty")
     private String type;
@@ -33,8 +41,6 @@ public class Book {
     @NotBlank(message = "The title must not be empty")
     private String title;
 
-    @Column(name = "read", nullable = false)
-    private Boolean read;
 
     @NotBlank(message = "The author name must not be empty")
     private String author_name;
@@ -55,14 +61,17 @@ public class Book {
     private String publishingHouse;
 
     @Column(name = "rating", nullable = true)
-    private String rating;
+    private  byte rating;
 
     @CreatedDate
     @Column(name = "created_at")
-    private Date createdAt;
+    private Instant createdAt;
 
     @LastModifiedDate
     @Column(name = "updated_at")
-    private Date updatedAt;
+    private Instant updatedAt;
+
+    // connections
+
 
 }

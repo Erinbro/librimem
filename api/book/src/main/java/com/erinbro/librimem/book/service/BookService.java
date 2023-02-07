@@ -8,7 +8,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,12 +21,11 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class BookService {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(BookService.class);
 
-    private final BookRepository bookRepository;
+     private final BookRepository bookRepository;
 
     public List<Book> getAllBooks() {
-        LOGGER.warn("All books are fetched");
+        log.warn("All books are fetched");
         List<Book> requestedBooks = bookRepository.findAll();
         return requestedBooks;
     }
@@ -44,4 +46,20 @@ public class BookService {
     public Book updateBook(Book updatedBook) {
         return bookRepository.save(updatedBook);
     }
+
+    public Book deleteBook(int bookId) {
+        Optional<Book> deletedBook =  bookRepository.findById(bookId);
+        bookRepository.deleteById(bookId);
+        log.info("Deleted book with id {} and title {}", deletedBook.get().getId(), deletedBook.get().getTitle());
+
+        // TODO Delete all chapters
+        //Mono<ChapterDeleteResponse> chapterDeleteResponseMono = chapterClient.deleteAllChaptersFromBook(bookId);
+
+        // TODO Delete all flashcards
+        // TODO Delete all notes
+        // TODO Delete all words
+        // TODO Delete all citations
+        return deletedBook.get();
+    }
+
 }

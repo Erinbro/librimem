@@ -1,5 +1,6 @@
 package com.erinbro.librimem.note.configuration;
 
+import com.erinbro.librimem.note.dto.NoteRequestDto;
 import com.erinbro.librimem.note.model.Note;
 import com.erinbro.librimem.note.repository.NoteRepository;
 import com.github.javafaker.Faker;

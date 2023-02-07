@@ -1,9 +1,12 @@
 package com.erinbro.librimem.chapter.service;
 
+import com.erinbro.librimem.chapter.converter.ChapterConverter;
 import com.erinbro.librimem.chapter.dto.ChapterRequest;
+import com.erinbro.librimem.chapter.exception.NotFoundException;
 import com.erinbro.librimem.chapter.model.Chapter;
 import com.erinbro.librimem.chapter.repository.ChapterRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -11,25 +14,22 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class ChapterService {
 
-    private final Logger LOGGER  = LoggerFactory.getLogger(ChapterService.class);
     private final ChapterRepository chapterRepository;
-
+    private final ChapterConverter chapterConverter;
 
     /**
      * Saves Chapter
      */
-    public void saveChapter(ChapterRequest req) {
-        Chapter newChapter = Chapter.builder()
-                .entityId(req.getEntityId())
-                .title(req.getTitle())
-                        .build();
-
-        chapterRepository.save(newChapter);
-        LOGGER.info("Saved chapter: " + newChapter.getTitle());
+    public Chapter saveChapter(ChapterRequest req) {
+        Chapter newChapter = chapterConverter.convertDtoToChapter(req);
+        Chapter addedChapter = chapterRepository.save(newChapter);
+        log.info("Saved chapter: " + newChapter.getTitle());
+        return addedChapter;
     }
 
     // TODO Add pagination
@@ -37,17 +37,29 @@ public class ChapterService {
      * Returns all the chapters from
      * @return List<Cha
      */
-    public List<Chapter> getChapters(){
-        return chapterRepository.findAll();
+    public List<Chapter> getChaptersFromBook(Integer bookId) {
+
+       List<Chapter> chapters =chapterRepository.findChaptersByEntityId(bookId);
+       log.info("Retrieved chapters from book with id {}", bookId);
+
+       return chapters;
     }
 
     /**
      * Get a particular chapter
-     * @param id
+     * @param chapterId
      * @return Optional<Chapter>
      */
-    public Optional<Chapter> getChapter(Integer id) {
-        return chapterRepository.findById(id);
+    public Chapter getChapter(Integer chapterId) throws NotFoundException {
+        Optional<Chapter> chapter =  chapterRepository.findById(chapterId);
+
+        if (chapter.isPresent()) {
+            return chapter.get();
+        }
+
+        else {
+            throw new NotFoundException("Chapter with id " + chapterId  +  " was nout found");
+        }
     }
 
     /**
@@ -64,10 +76,27 @@ public class ChapterService {
      * @param id
      * @return
      */
-    public void deleteChapter(Integer id) {
+    public Chapter deleteChapter(Integer id) throws NotFoundException {
+        Optional<Chapter> deletedChapter = chapterRepository.findById(id);
         chapterRepository.deleteById(id);
-        // TODO Try to retrieve chapter and see if it is really deleted
-        LOGGER.info("Deleted chapter with id: " + id);
+        log.info("Deleted chapter with id: " + id);
+
+        if (deletedChapter.isPresent()) {
+            return deletedChapter.get();
+        }
+
+        else {
+            throw new NotFoundException("Chapter with id " + id+ " not found");
+        }
+    }
+
+
+    public List<Chapter> deleteAllChaptersFromBook(int bookId) {
+        List<Chapter> deletedChapters = chapterRepository.findChaptersByEntityId(bookId);
+        chapterRepository.deleteAllByEntityId(bookId);
+        log.info("Deleted all chapters of entityId {}", bookId);
+
+        return deletedChapters;
     }
 
 

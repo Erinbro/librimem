@@ -12,10 +12,6 @@ RUN apk add g++ make py3-pip
 
 RUN npm install -g @angular/cli@latest
 
-RUN npm i -g yarn
-
-RUN yarn install
-
 RUN npx nx build librimem
 
 FROM nginx:stable-alpine

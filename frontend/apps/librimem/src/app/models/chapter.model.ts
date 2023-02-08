@@ -6,6 +6,7 @@ import { IChapter, ICommentary, IEntityStatus, IEntityType, IOpinion, ISummary }
  * send to the backend
  */
 export class Chapter implements Omit<IChapter, "id"> {
+  userId = 0
   entityId = 0;
   type = "CHAPTER"
   index = ""

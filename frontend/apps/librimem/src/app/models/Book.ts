@@ -5,6 +5,7 @@ import { Language, IEntityType, ICommentary, IOpinion, ISummary, IEntityStatus, 
  * It is created on the client side.
  */
 export class Book implements Omit<IBook, "id"> {
+  userId = 0;
   type: IEntityType = "BOOK";
   read = false;
   title = "";

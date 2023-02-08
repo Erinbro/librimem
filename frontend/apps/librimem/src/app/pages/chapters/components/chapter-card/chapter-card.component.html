@@ -1,9 +1,13 @@
-<div class="chapter__card mat-elevation-z10">
+<div
+  mat-card
+  class="chapter__card mat-elevation-z10"
+  (click)="navigateToChapterPage()"
+>
   <div class="chapter__card__index">{{ chapter.index }}</div>
   <div class="chapter__card__title">{{ chapter.title }}</div>
-  <div class="chapter__card__delete">x</div>
   <!-- NOTE The background shows the progress of the chapter -->
   <div class="chapter__card__background"></div>
+
   <!-- <mat-accordion>
     <mat-expansion-panel>
       <mat-expansion-panel-header>

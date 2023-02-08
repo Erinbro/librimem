@@ -89,7 +89,7 @@ export class DrawerComponent implements OnInit {
           this.hasSelectedBook = true;
           this.selectedBookTitle = selectedBook.title
           this.addBookAttributes()
-          this.updateBookAttributes()
+          this.updateAttributes()
         } else {
           this.hasSelectedBook = false
           this.selectedBookTitle = undefined
@@ -103,12 +103,12 @@ export class DrawerComponent implements OnInit {
           this.hasSelectedChapter = true
           this.selectedChapterTitle = selectedChapter.title
           this.addChapterAttributes()
-          this.updateBookAttributes()
+          this.updateAttributes()
         }
         else {
           this.hasSelectedChapter = false
           this.selectedChapterTitle = undefined
-          // TODO removeChapterAttributes()
+          this.removeChapterAttributes()
         }
       })
   }
@@ -127,15 +127,19 @@ export class DrawerComponent implements OnInit {
   }
 
   addChapterAttributes() {
-    this.hasSelectedChapter = true
     this.icons = this.icons.concat(this.chapterAttributes)
   }
 
   removeChapterAttributes() {
-    return
+    this.icons = this.icons.slice(0, 2)
+    console.log(`new icons: ${JSON.stringify(this.icons)}`);
+
   }
 
-  updateBookAttributes() {
+  /**
+   * Replaces the param placeholder
+   */
+  updateAttributes() {
     switch (this.selectedBookTitle !== undefined) {
       case false:
         break;
@@ -164,7 +168,7 @@ export class DrawerComponent implements OnInit {
             // eslint-disable-next-line no-case-declarations
             const newIcons = this.icons.map((ic) => {
               if (!this.selectedChapterTitle) return
-              const updatedPath = ic.path.replace("chapter", this.selectedChapterTitle)
+              const updatedPath = ic.path.replace(new RegExp("\\b" + "chapter" + "\\b", "gi"), this.selectedChapterTitle)
               ic.path = updatedPath
               return ic
             })

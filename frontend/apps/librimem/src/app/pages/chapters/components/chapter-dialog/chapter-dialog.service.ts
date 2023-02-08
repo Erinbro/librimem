@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { IStore } from 'apps/librimem/src/app/state/store';
 import { IChapter } from '@librimem/api-interfaces';
 import { selectChapterStateData } from '../../../../state/chapter/chapter.selectors';
 import { entitiesToArray } from '../../../../utils/entitiesToArray';
+import { IStore } from '../../../../state/store';
 
 @Injectable({
   providedIn: "root"
@@ -33,6 +33,14 @@ export class ChapterDialogService {
     })
 
     return false;
+  }
+
+  /**
+   * A chapter can have only a single index number
+   * @param index
+   */
+  public checkIfChapterIndexIsSingular(index: string) {
+
   }
 
 

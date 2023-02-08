@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
+    "userId": 1,
     "type": "BOOK",
-    "read": false,
     "title": "Gabby Douglas Story, The",
     "pages": "54",
     "author_name": "Gouth",
@@ -14,8 +14,9 @@
   },
   {
     "id": 2,
+    "userId": 1,
     "type": "BOOK",
-    "read": false,
+
     "title": "Ghost",
     "pages": "1493",
     "author_name": "Horburgh",
@@ -27,8 +28,9 @@
   },
   {
     "id": 3,
+    "userId": 1,
     "type": "BOOK",
-    "read": false,
+
     "title": "Matchstick Men",
     "pages": "3871",
     "author_name": "Coatsworth",
@@ -40,8 +42,9 @@
   },
   {
     "id": 4,
+    "userId": 1,
     "type": "BOOK",
-    "read": false,
+
     "title": "American Astronaut, The",
     "pages": "781",
     "author_name": "Beers",
@@ -53,8 +56,9 @@
   },
   {
     "id": 5,
+    "userId": 1,
     "type": "BOOK",
-    "read": false,
+
     "title": "To Sir with Love",
     "pages": "048",
     "author_name": "Matyja",
@@ -66,8 +70,9 @@
   },
   {
     "id": 6,
+    "userId": 1,
     "type": "BOOK",
-    "read": false,
+
     "title": "Juno and the Paycock",
     "pages": "7431",
     "author_name": "Sink",
@@ -79,8 +84,9 @@
   },
   {
     "id": 7,
+    "userId": 1,
     "type": "BOOK",
-    "read": false,
+
     "title": "I Want You",
     "pages": "0064",
     "author_name": "Huleatt",
@@ -92,8 +98,9 @@
   },
   {
     "id": 8,
+    "userId": 1,
     "type": "BOOK",
-    "read": false,
+
     "title": "Shanghai Gesture, The",
     "pages": "91",
     "author_name": "Gorbell",
@@ -105,8 +112,9 @@
   },
   {
     "id": 9,
+    "userId": 1,
     "type": "BOOK",
-    "read": false,
+
     "title": "Smile",
     "pages": "6",
     "author_name": "Crollman",
@@ -118,8 +126,9 @@
   },
   {
     "id": 10,
+    "userId": 1,
     "type": "BOOK",
-    "read": false,
+
     "title": "Little Miss Sunshine",
     "pages": "81698",
     "author_name": "Benoix",

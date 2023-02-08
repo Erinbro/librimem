@@ -24,9 +24,9 @@ export type IEntityAttribute =
 export interface IEntity {
   id: number;
   /**
-   * Each entity can be whole read or not.
+   * ID of user
    */
-  read: boolean;
+  userId: number;
   /**
    * Each entity could have an amount of pages.
    */

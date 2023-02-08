@@ -17,7 +17,7 @@ export class ChapterDenominatorUtils {
    * @param chapters
    * @returns
    */
-  public sortArray(chapters: IChapter[]): number[][] {
+  public sortArray(chapters: IChapter[]): number[][][] {
 
     const collectedIndexes = this.collectAllChapterIndexes(chapters)
     const groupedIndexes = this.groupIndexes(collectedIndexes)
@@ -151,7 +151,7 @@ export class ChapterDenominatorUtils {
  * Sorts the indexes by their number
  * @param indexes
  */
-  public sortIndexByNumber(indexes: number[][][]): number[][] {
+  public sortIndexByNumber(indexes: number[][][]): number[][][] {
     const sortedFinalIndexes: number[][][] = []
 
     indexes.forEach((group) => {
@@ -172,7 +172,7 @@ export class ChapterDenominatorUtils {
       sortedFinalIndexes.push(sortedGroup)
     })
 
-    return this.flatten(sortedFinalIndexes);
+    return sortedFinalIndexes
   }
 
   flatten(indexes: number[][][]): number[][] {

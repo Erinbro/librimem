@@ -23,20 +23,22 @@ interface IChaptersWithParent {
   styleUrls: ['./chapters-list.component.scss'],
 })
 export class ChaptersListComponent implements OnInit {
-  /**
- * Chapters that must be read
- */
-  toRead: IChapter[] = []
+  //   /**
+  //  * Chapters that must be read
+  //  */
+  //   toRead: IChapter[] = []
 
-  /**
-   * Chapters that are being read
-   */
-  reading: IChapter[] = []
+  //   /**
+  //    * Chapters that are being read
+  //    */
+  //   reading: IChapter[] = []
 
-  /**
-   * Chapters that have been read
-   */
-  read: IChapter[] = []
+  //   /**
+  //    * Chapters that have been read
+  //    */
+  //   read: IChapter[] = []
+  sortedChapters: IChapter[][] = []
+  colors: string[] = ["red", "blue", "green", "yellow"]
 
 
   constructor(private store: Store<IStore>, private chapterDenominatorService: ChapterDenominatorService) {
@@ -45,16 +47,41 @@ export class ChaptersListComponent implements OnInit {
   ngOnInit(): void {
     this.store.select(selectChapterStateData).subscribe({
       next: (chapters) => {
+        const chaptersArray = entitiesToArray(chapters)
         const indexedChapters = this.chapterDenominatorService
-          .getSortedChapterIndexes(entitiesToArray(chapters))
+          .getSortedChapterIndexes(chaptersArray)
 
         console.log(`[ChaptersListComponent.ngOnInit()] indexedChapters: ${JSON.stringify(indexedChapters)}`);
 
-        this.distributeByStatus(entitiesToArray(chapters), indexedChapters)
+        this.sortedChapters = this.getSortedChapters(indexedChapters, chaptersArray)
+        // this.distributeByStatus(entitiesToArray(chapters), indexedChapters)
       }
     })
 
   }
+
+  /**
+   * Sorts the chapters by index
+   * @param indexes
+   * @param chapters
+   * @returns
+   */
+  getSortedChapters(indexes: number[][][], chapters: IChapter[]): IChapter[][] {
+    const currentSortedChapters: IChapter[][] = []
+    indexes.forEach((group) => {
+      const currentSortedChapterGroup: IChapter[] = []
+      group.forEach((chapter) => {
+        const currentChapter = chapters.find((ch) => ch.index === chapter.join("."))
+        if (currentChapter) {
+          currentSortedChapterGroup.push(currentChapter)
+        }
+      })
+      currentSortedChapters.push(currentSortedChapterGroup)
+    })
+
+    return currentSortedChapters
+  }
+
 
   /**
    * Distributes the chapters to the their list.
@@ -68,19 +95,19 @@ export class ChaptersListComponent implements OnInit {
     })
 
 
-    sortedChapters.forEach((ch, i) => {
-      switch (ch.status) {
-        case "TO_READ":
-          this.toRead.push(ch)
-          break;
-        case "READING":
-          this.reading.push(ch)
-          break;
-        case "READ":
-          this.read.push(ch)
-          break;
-      }
-    })
+    // sortedChapters.forEach((ch, i) => {
+    //   switch (ch.status) {
+    //     case "TO_READ":
+    //       this.toRead.push(ch)
+    //       break;
+    //     case "READING":
+    //       this.reading.push(ch)
+    //       break;
+    //     case "READ":
+    //       this.read.push(ch)
+    //       break;
+    //   }
+    // })
   }
 
 

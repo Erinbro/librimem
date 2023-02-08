@@ -27,8 +27,6 @@ export class ChapterDenominatorComponent implements OnInit {
       next: (chapters) => this.chapters = entitiesToArray(chapters)
     })
 
-    this.chapterTree = this.chapterDenominatorService.getSortedChapterIndexes(this.chapters)
-    console.log(`chapterTre: ${this.chapterTree}`);
 
   }
 

@@ -2,6 +2,7 @@
   "flashcards": [
     {
       "id": 1,
+      "userId": 1,
       "type": "FLASHCARD",
       "entityId": 1,
       "chapterId": 1,
@@ -13,6 +14,7 @@
     },
     {
       "id": 1,
+      "userId": 1,
       "type": "FLASHCARD",
       "entityId": 1,
       "chapterId": 1,

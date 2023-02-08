@@ -7,18 +7,22 @@ import { IStore } from '../../state/store';
 import { SELECT_BOOK } from '../../state/book/book.action';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { MatSidenavModule } from "@angular/material/sidenav"
+import { DrawerIconComponent } from './components/drawer-icon/drawer-icon.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('DrawerComponent', () => {
   let component: DrawerComponent;
   let fixture: ComponentFixture<DrawerComponent>;
-  const globalStore = new Mock().mockGlobalStore()
+  const initialState = new Mock().mockGlobalStore()
   let store: MockStore<IStore>
 
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DrawerComponent],
-      providers: [provideMockStore({ initialState: globalStore })]
+      declarations: [DrawerComponent, DrawerIconComponent],
+      providers: [provideMockStore({ initialState })],
+      imports: [MatSidenavModule, BrowserAnimationsModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(DrawerComponent);
@@ -27,12 +31,18 @@ describe('DrawerComponent', () => {
   });
 
   it('should be rendered', () => {
+    // Arrange
+    // Act
+    // Assert
     expect(component).toBeTruthy();
   });
 
   it("should only show the book icon at the beginning", () => {
+    // Arrange
+    // Act
     const drawerComponent = fixture.debugElement.queryAll(By.css(".drawer__icons"))
 
+    // Assert
     expect(drawerComponent.length === 1).toBeTruthy()
     expect(drawerComponent[0].children.length === 1).toBeTruthy()
     expect(drawerComponent[0].children[0].nativeElement.id === "Books")

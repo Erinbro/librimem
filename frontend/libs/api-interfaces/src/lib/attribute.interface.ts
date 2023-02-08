@@ -4,6 +4,10 @@ export interface IAttribute {
    */
   id: number;
   /**
+   * ID of the user
+   */
+  userId: number;
+  /**
    * Type of the attribute
    * Possible values are: "WORD" | "SUMMARY" | "NOTE"
    * | "FLASHCARD"

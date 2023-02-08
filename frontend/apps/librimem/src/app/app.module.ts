@@ -51,7 +51,18 @@ import { FlashcardDialogComponent } from './pages/flashcards/components/flashcar
 import { FlashcardsTableComponent } from './pages/flashcards/components/flashcards-table/flashcards-table.component';
 import { FlashcardCardComponent } from './pages/flashcards/components/flashcard-card/flashcard-card.component';
 import { ChapterDenominatorComponent } from './shared/chapter-denominator/chapter-denominator.component';
-import { MatExpansionModule } from "@angular/material/expansion"
+import { MatExpansionModule } from '@angular/material/expansion';
+import {
+  NavigationActionTiming,
+  StoreRouterConnectingModule,
+} from '@ngrx/router-store';
+import { RouterSerializer } from './state/router/route-serializer';
+import { ChapterDialogComponent } from './pages/chapters/components/chapter-dialog/chapter-dialog.component';
+import { MatTable, MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { InfoButtonComponent } from './shared/buttons/info-button/info-button.component';
+import { SecondaryButtonComponent } from './shared/buttons/secondary-button/secondary-button.component';
+import { PrimaryButtonComponent } from './shared/buttons/primary-button/primary-button.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +97,10 @@ import { MatExpansionModule } from "@angular/material/expansion"
     FlashcardsTableComponent,
     FlashcardCardComponent,
     ChapterDenominatorComponent,
+    ChapterDialogComponent,
+    InfoButtonComponent,
+    PrimaryButtonComponent,
+    SecondaryButtonComponent,
   ],
   imports: [
     MatToolbarModule,
@@ -106,8 +121,14 @@ import { MatExpansionModule } from "@angular/material/expansion"
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    QuillModule.forRoot(),
+    QuillModule.forRoot({}),
     DragDropModule,
+    StoreRouterConnectingModule.forRoot({
+      navigationActionTiming: NavigationActionTiming.PostActivation,
+      serializer: RouterSerializer,
+    }),
+    MatTableModule,
+    MatCheckboxModule,
   ],
   providers: [SidenavService],
   bootstrap: [AppComponent],

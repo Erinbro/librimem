@@ -6,6 +6,35 @@ import { selectSelectedBook } from '../../state/book/book.selector';
 import { selectChapterStateSelection } from '../../state/chapter/chapter.selectors';
 import { DESELECT_BOOK } from '../../state/book/book.action';
 import { DESELECT_CHAPTER } from '../../state/chapter/chapter.actions';
+import { DESELECT_FLASHCARD } from '../../pages/flashcards/state/flashcard.actions';
+import { selectSelectedFlashcard } from '../../pages/flashcards/state/flashcard.selectors';
+
+const IEntityRouteMappingEnum = {
+  "2": "book",
+  "4": "chapter",
+  "6": "section",
+  "8": [
+    "flashcard",
+    "summary",
+    "note",
+    "word",
+    "citation"
+  ]
+}
+
+interface IEntitySelectionMapping {
+  book: boolean
+  chapter: boolean
+  section: boolean
+}
+
+interface IRouteState {
+  /**
+   * The selection before
+   */
+  before: IEntitySelectionMapping,
+  after: IEntitySelectionMapping
+}
 
 @Injectable({
   providedIn: "root"
@@ -17,18 +46,23 @@ export class RouterService {
 
   selectedBookTitle: string | undefined;
   selectedChapterTitle: string | undefined;
-  selectedFlashcardTitle: string | undefined;
   selectedNoteTitle: string | undefined;
 
   constructor(private store: Store<IStore>) {
     store.select(selectSelectedBook).subscribe((selectedBook) => {
-      if (!selectedBook) return
+      if (!selectedBook) {
+        this.selectedBookTitle = undefined
+        return
+      }
       this.selectedBookTitle =
         selectedBook.title
     })
 
     store.select(selectChapterStateSelection).subscribe((selectedChatper) => {
-      if (!selectedChatper) return
+      if (!selectedChatper) {
+        this.selectedChapterTitle = undefined
+        return
+      }
       this.selectedChapterTitle = selectedChatper.title
     })
 
@@ -40,6 +74,7 @@ export class RouterService {
 
     return correctedRoute.split("/")
   }
+
 
   replaceBookString(route: string): string {
     if (!this.selectedBookTitle) {
@@ -55,17 +90,6 @@ export class RouterService {
     }
 
     return route.replace(new RegExp("\\b" + "chapter" + "\\b", "gi"), this.replaceWhitespace(this.selectedChapterTitle))
-  }
-
-  replaceFlashcardString(route: string): string {
-    if (!this.selectedFlashcardTitle) {
-      return route.replace(new RegExp("\\b" + "flashcard" + "\\b", "gi"), "chapter")
-    }
-
-    return route.replace(new RegExp("\\b" + "flashcard" + "\\b", "gi"), this.replaceWhitespace(
-      this.selectedFlashcardTitle
-    ))
-
   }
 
   /**
@@ -95,37 +119,23 @@ export class RouterService {
    *
    * then we deselect the book
    */
-  deselect(params: { param: string, joinedParam: string }[], newUrl: string) {
+  deselect(newUrl: string) {
     const splittedUrl = newUrl.split("/")
 
-    // We do not need to do anything
-    if (params.length === 1) return
-    if (params.length === splittedUrl.length && splittedUrl.length !== 2) return
-
-    const lastParam = params[params.length - 1].param
-
-    switch (lastParam) {
+    switch (splittedUrl[splittedUrl.length - 1]) {
       case "books": {
         this.store.dispatch(DESELECT_BOOK())
         this.store.dispatch(DESELECT_CHAPTER())
-
+        this.store.dispatch(DESELECT_FLASHCARD())
       }
         break;
       case "chapters": {
-        this.store.dispatch(DESELECT_BOOK())
         this.store.dispatch(DESELECT_CHAPTER())
       }
         break;
       case "flashcards": {
-        this.store.dispatch(DESELECT_BOOK())
-        this.store.dispatch(DESELECT_CHAPTER())
-        // this.store.dispatch(DESELECT_FLASHCARD())
-
+        this.store.dispatch(DESELECT_FLASHCARD())
       }
     }
-
   }
-
-
-
 }

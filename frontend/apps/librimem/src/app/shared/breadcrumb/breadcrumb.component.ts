@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, Event as RouterEvent, NavigationEnd, NavigationStart } from '@angular/router';
 import { BreadcrumbService } from './breadcrumb.service';
 import { RouterService } from '../../services/router/router.service';
@@ -12,7 +12,7 @@ import { RouterService } from '../../services/router/router.service';
   styleUrls: ['./breadcrumb.component.scss'],
   providers: [BreadcrumbService]
 })
-export class BreadcrumbComponent implements OnInit {
+export class BreadcrumbComponent implements OnInit, OnDestroy {
   params!: {
     param: string,
 
@@ -21,18 +21,15 @@ export class BreadcrumbComponent implements OnInit {
      */
     joinedParam: string
   }[];
+  stateSubscription: { [key: string]: any } = {}
   constructor(private router: Router, private breadcrumbService: BreadcrumbService, private routerService: RouterService) { }
 
   ngOnInit(): void {
-    this.router.events.subscribe({
+    this.stateSubscription = this.router.events.subscribe({
       next: (ev) => {
-        if (ev instanceof NavigationStart) {
-
-          this.routerService.deselect(this.params, ev.url)
-        }
-
         if (!(ev instanceof NavigationEnd)) return
 
+        this.routerService.deselect(ev.url)
         const routerParams = (ev as NavigationEnd).urlAfterRedirects.split("/")
 
 
@@ -43,6 +40,10 @@ export class BreadcrumbComponent implements OnInit {
 
 
     })
+  }
+
+  ngOnDestroy() {
+    this.stateSubscription['unsubscribe']()
   }
 
   /**

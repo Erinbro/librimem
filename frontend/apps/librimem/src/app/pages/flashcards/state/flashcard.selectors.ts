@@ -8,3 +8,7 @@ const selectFlashcardState = (store: IStore) => {
 export const selectFlashcardStateData = createSelector(selectFlashcardState, (state) => {
   return state.data
 })
+
+export const selectSelectedFlashcard = createSelector(selectFlashcardState, (state) => {
+  return state.selection.data;
+})

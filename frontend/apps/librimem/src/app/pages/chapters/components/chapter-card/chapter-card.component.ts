@@ -21,9 +21,6 @@ export class ChapterCardComponent {
     const route = this.routerService.navigate(
       "books/book/chapters/chapter"
     )
-    console.log(`route: ${route}`);
-
-
 
     this.router.navigate(route)
   }

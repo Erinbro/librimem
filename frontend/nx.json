@@ -1,18 +1,16 @@
 {
-  "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "npmScope": "librimem",
-  "affected": {
-    "defaultBase": "main"
-  },
-  "cli": {
-    "packageManager": "yarn"
-  },
   "implicitDependencies": {
     "package.json": {
       "dependencies": "*",
       "devDependencies": "*"
     },
     ".eslintrc.json": "*"
+  },
+  "npmScope": "librimem",
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"]
+    }
   },
   "tasksRunnerOptions": {
     "default": {
@@ -24,17 +22,17 @@
           "test",
           "e2e",
           "build-storybook",
-          "component-test"
+          "component-test",
+          "typedoc"
         ]
       }
     }
   },
-  "targetDefaults": {
-    "build": {
-      "dependsOn": [
-        "^build"
-      ]
-    }
+  "affected": {
+    "defaultBase": "main"
+  },
+  "cli": {
+    "packageManager": "yarn"
   },
   "generators": {
     "@nrwl/angular:application": {

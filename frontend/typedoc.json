@@ -1,0 +1,9 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "tsconfig": "./apps/librimem/tsconfig.app.json",
+  "entryPointStrategy": "expand",
+  "entryPoints": ["./apps/librimem/src/app"],
+  "out": "docs",
+  "theme": "default",
+  "name": "Librimem Docoumentation"
+}

@@ -10,7 +10,9 @@
     "test": "nx test",
     "test:watch": "nx test --watch",
     "test:coverage": "nx test --coverage",
-    "docs": "npx jsdoc -c jsdoc.conf.json -u docs/tutorials"
+    "docs:setup": "nx g @enio.ai/typedoc.config",
+    "docs:create": "nx typedoc -- --options typedoc.json ./apps/librimem/src/app",
+    "storybook:build": "npx ng run librimem:build-storybook"
   },
   "private": true,
   "dependencies": {
@@ -53,6 +55,7 @@
     "@angular/compiler-cli": "^15.0.2",
     "@angular/language-service": "^15.0.2",
     "@cypress/webpack-dev-server": "^2.0.0",
+    "@enio.ai/typedoc": "^1.0.6",
     "@ngrx/schematics": "^15.0.2",
     "@ngrx/store-devtools": "^15.0.2",
     "@nrwl/cli": "15.6.3",
@@ -73,7 +76,6 @@
     "@types/pdf": "^0.0.31",
     "@typescript-eslint/eslint-plugin": "~5.33.1",
     "@typescript-eslint/parser": "~5.33.1",
-    "better-docs": "^2.7.2",
     "cypress": "^12.2.0",
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
@@ -83,11 +85,13 @@
     "jest": "28.1.1",
     "jest-environment-jsdom": "28.1.1",
     "jest-preset-angular": "~12.2.0",
-    "jsdoc": "^4.0.0",
     "nx": "15.6.3",
     "prettier": "^2.6.2",
     "ts-jest": "28.0.5",
     "ts-node": "10.9.1",
+    "typedoc": "^0.23.24",
+    "typedoc-plugin-rename-defaults": "^0.6.4",
+    "typedoc-theme-hierarchy": "^3.0.0",
     "typescript": "~4.8.0",
     "webpack": "^5.64.0"
   }

@@ -1,3 +1,4 @@
+# NOTE See https://blog.mayadata.io/openebs/steps-to-deploy-angular-application-on-kubernetes
 FROM node:18-alpine AS builder
 ARG CONFIGURATION='dev'
 ARG ENVIRONMENT='prod'

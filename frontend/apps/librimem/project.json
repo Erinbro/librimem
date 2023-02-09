@@ -117,6 +117,14 @@
           "quiet": true
         }
       }
+    },
+    "typedoc": {
+      "executor": "@enio.ai/typedoc:typedoc",
+      "outputs": ["docs/apps/librimem"],
+      "options": {
+        "options": "typedoc.json"
+      },
+      "configurations": {}
     }
   },
   "tags": []

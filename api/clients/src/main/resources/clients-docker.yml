@@ -1,5 +1,0 @@
-clients:
-  book:
-    url: "http://librimem_book:8080"
-  chapter:
-    url: "http://librimem_chapter:8081"

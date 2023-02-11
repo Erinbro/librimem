@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BooksPageComponent } from './pages/books/books-page.component';
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, Store } from '@ngrx/store';
 import { BookListComponent } from './pages/books/components/BooksList/book-list.component';
 import { reducers } from './state/reducers';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -63,6 +63,17 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { InfoButtonComponent } from './shared/buttons/info-button/info-button.component';
 import { SecondaryButtonComponent } from './shared/buttons/secondary-button/secondary-button.component';
 import { PrimaryButtonComponent } from './shared/buttons/primary-button/primary-button.component';
+import { DeleteButtonComponent } from './shared/buttons/delete-button/delete-button.component';
+import { RegisterPageComponent } from './pages/auth/components/registration/register-page.component';
+import { LoginPageComponent } from './pages/auth/components/login/login-page.component';
+import { AuthPageComponent } from './pages/auth/auth-page.component';
+import { HomePageComponent } from './pages/home/home-page.component';
+import { BaseButtonComponent } from './shared/buttons/base-button.component';
+import { MatButtonModule } from '@angular/material/button';
+import { CloseButtonComponent } from './shared/buttons/close-button/close-button.component';
+import { BaseDialogComponent } from './shared/dialog/base-dialog.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { AuthService } from './services/auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -101,6 +112,12 @@ import { PrimaryButtonComponent } from './shared/buttons/primary-button/primary-
     InfoButtonComponent,
     PrimaryButtonComponent,
     SecondaryButtonComponent,
+    DeleteButtonComponent,
+    RegisterPageComponent,
+    LoginPageComponent,
+    AuthPageComponent,
+    HomePageComponent,
+    CloseButtonComponent,
   ],
   imports: [
     MatToolbarModule,
@@ -121,7 +138,19 @@ import { PrimaryButtonComponent } from './shared/buttons/primary-button/primary-
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    QuillModule.forRoot({}),
+    QuillModule.forRoot({
+      modules: {
+        toolbar: [
+          ['bold', 'italic', 'underline', 'strike'],
+          ['blockquote'],
+          [{ header: [1, 2, 3, 4] }],
+          [{ color: [] }, { background: [] }],
+          [{ font: [] }],
+          [{ align: [] }],
+          ['clean'],
+        ],
+      },
+    }),
     DragDropModule,
     StoreRouterConnectingModule.forRoot({
       navigationActionTiming: NavigationActionTiming.PostActivation,
@@ -129,6 +158,12 @@ import { PrimaryButtonComponent } from './shared/buttons/primary-button/primary-
     }),
     MatTableModule,
     MatCheckboxModule,
+    MatButtonModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => sessionStorage.getItem("token"),
+      }
+    })
   ],
   providers: [SidenavService],
   bootstrap: [AppComponent],

@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { switchMap, catchError, map, mergeMap, tap, concatMap, exhaustMap } from 'rxjs/operators';
 import { of, from } from 'rxjs';
-import { LOAD_BOOKS, LOAD_BOOKS_SUCCESS, LOAD_BOOKS_FAILURE, ADD_BOOK, ADD_BOOK_SUCCESS, UPDATE_BOOK, UPDATE_BOOK_SUCCESS } from './book.action';
+import { LOAD_BOOKS, LOAD_BOOKS_SUCCESS, LOAD_BOOKS_FAILURE, ADD_BOOK, ADD_BOOK_SUCCESS, UPDATE_BOOK, UPDATE_BOOK_SUCCESS, DELETE_BOOK, DELETE_BOOK_SUCCESS } from './book.action';
 import { BookClient } from '../../services/http/book.client';
 import { IBook } from "@librimem/api-interfaces"
 import { BookPersistence } from '../../services/storage/book.storage';
+import { BookStorageApi } from '../../storage/features/book.storage';
 
 /**
  * Service that mediates between IndexedDB and the API.
@@ -14,8 +15,11 @@ import { BookPersistence } from '../../services/storage/book.storage';
   providedIn: "root"
 })
 export class BookEffects {
+  private bookStorageApi!: BookStorageApi
 
-  constructor(private actions$: Actions, private bookClient: BookClient, private bookPersistence: BookPersistence) { }
+  constructor(private actions$: Actions, private bookClient: BookClient, private bookPersistence: BookPersistence,) {
+    this.bookStorageApi = new BookStorageApi();
+  }
 
   /*
   To handle the behaviour of the Effect when different Action instances
@@ -43,8 +47,12 @@ export class BookEffects {
     () => this.actions$.pipe(
       ofType(ADD_BOOK),
       mergeMap((action) => {
+        // Add to IndexedDB
+        this.bookStorageApi.addBook(action.newBook)
         return this.bookClient.addBook(action.newBook).pipe(
-          tap(() => console.log(`Book added to backend`)),
+          tap(() => {
+            console.log(`Book added to backend`)
+          }),
           map((res) => ADD_BOOK_SUCCESS({ addedBook: res }))
         )
       })
@@ -63,9 +71,19 @@ export class BookEffects {
     )
   )
 
-  // addBookEffect$ = createEffect();
-  // updateBookEffect$ = createEffect();
+  // TODO addBookEffect$ = createEffect();
+  // TODO updateBookEffect$ = createEffect();
   // deleteBookEffect$ = createEffect();
+  deleteBookEffect$ = createEffect(
+    () => this.actions$.pipe(
+      ofType(DELETE_BOOK),
+      mergeMap((action) => {
+        return this.bookClient.deleteBook(action.bookId).pipe(
+          map((res) => DELETE_BOOK_SUCCESS({ book: res }))
+        )
+      })
+    )
+  )
 
 
 }

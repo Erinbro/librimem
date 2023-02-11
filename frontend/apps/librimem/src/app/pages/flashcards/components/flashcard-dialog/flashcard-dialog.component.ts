@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IFlashcard } from '@librimem/api-interfaces';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -13,9 +13,12 @@ import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
   templateUrl: './flashcard-dialog.component.html',
   styleUrls: ['./flashcard-dialog.component.scss'],
 })
-export class FlashcardDialogComponent {
+export class FlashcardDialogComponent implements OnDestroy {
 
   flashcardFormGroup!: FormGroup
+  isEditing = false
+  question = "";
+  answer = "";
 
   constructor(
     public dialogRef: MatDialogRef<FlashcardDialogComponent>,
@@ -23,7 +26,13 @@ export class FlashcardDialogComponent {
     , private store: Store<IStore>) {
 
     if (data.editing && data.selectedFlashcard) {
+      this.isEditing = true
       this.flashcardFormGroup = new FormBuilder().group(data.selectedFlashcard)
+
+      // Set the current question and answer
+      this.question = data.selectedFlashcard.question
+      if (!data.selectedFlashcard.answer) return
+      this.answer = data.selectedFlashcard.answer
     }
     else {
       this.flashcardFormGroup = new FormBuilder().group(new Flashcard())
@@ -32,19 +41,23 @@ export class FlashcardDialogComponent {
     this.data.updatedFlashcard = this.flashcardFormGroup.getRawValue() as unknown as IFlashcard
   }
 
+  /**
+   * Is triggered when the flashcard content changes
+   * @param e
+   */
   updateForm(e: EditorChangeContent | EditorChangeSelection) {
 
     console.log(`c: ${e.editor.getContents()}`);
-
-
   }
 
   updateFlashcard() {
-    this.store.dispatch(UPDATE_FLASHCARD({ updatedFlashcard: this.flashcardFormGroup.getRawValue() }))
+    const flashcardCopy = this.flashcardFormGroup.getRawValue() as IFlashcard
+    this.store.dispatch(UPDATE_FLASHCARD({ updatedFlashcard: flashcardCopy }))
   }
 
   addFlashcard() {
-    this.store.dispatch(ADD_FLASHCARD({ newFlashcard: this.flashcardFormGroup.getRawValue() }))
+    const flashcardCopy = this.flashcardFormGroup.getRawValue() as IFlashcard
+    this.store.dispatch(ADD_FLASHCARD({ newFlashcard: flashcardCopy }))
   }
 
   /**
@@ -52,5 +65,14 @@ export class FlashcardDialogComponent {
    */
   close() {
     this.dialogRef.close();
+  }
+
+  ngOnDestroy() {
+    if (this.isEditing) {
+      this.updateFlashcard()
+    }
+    else {
+      this.addFlashcard()
+    }
   }
 }

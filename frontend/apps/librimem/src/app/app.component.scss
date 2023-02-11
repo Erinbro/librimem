@@ -1,26 +1,27 @@
 @import './sass/variables.scss';
 
 .app {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: grid;
-  grid-template-rows: 10vh 90vh;
-  grid-template-columns: 10vw 90vw;
+  overflow: scroll;
+  position: relative;
+  grid-template-columns: 1fr 9fr;
+  grid-template-rows: 1fr 9fr;
   grid-template-areas:
     'drawer header'
-    'drawer body'
-    'drawer footer';
+    'drawer body';
 
   @media screen and (min-width: $breakpoint-sm) {
-    grid-template-columns: 7.5vw 92.5vw;
+    grid-template-columns: 0.75fr 9.25fr;
   }
 
   @media screen and (min-width: $breakpoint-md) {
-    grid-template-columns: 7.5vw 92.5vw;
+    grid-template-columns: 0.75fr 9.25fr;
   }
 
   @media screen and (min-width: $breakpoint-lg) {
-    grid-template-columns: 5vw 95vw;
+    grid-template-columns: 0.5fr 9.5fr;
   }
 
   .drawer {
@@ -30,14 +31,15 @@
   }
 
   header {
+    grid-area: 'header';
     width: 100%;
     height: fit-content;
   }
 
   main {
+    grid-area: 'body';
     width: 100%;
     height: 100%;
-    grid-area: body;
     display: grid;
     grid-auto-rows: minmax(min-content, max-content);
     grid-template-areas:
@@ -58,7 +60,7 @@
       grid-area: main;
     }
   }
-  footer {
-    grid-area: footer;
-  }
+  // footer {
+  //   grid-area: footer;
+  // }
 }

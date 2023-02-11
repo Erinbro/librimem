@@ -39,4 +39,4 @@ spring:
 
 clients:
   chapter:
-    url: "http://localhost:8081/api/v1/book"
+    url: http://localhost:8081/api/v1/book

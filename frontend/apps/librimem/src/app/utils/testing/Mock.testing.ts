@@ -15,7 +15,7 @@ export class Mock {
    * Creates global store for mocking
    * @returns Global store
    */
-  mockGlobalStore(): IStore {
+  static mockGlobalStore(): IStore {
     const book = storeEntityGenerator<IBook>()
     book.data = bookEntities
     const chapter = storeEntityGenerator<IChapter>()

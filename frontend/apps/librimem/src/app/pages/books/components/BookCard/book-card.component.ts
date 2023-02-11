@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IBook } from '@librimem/api-interfaces';
 import { Store } from '@ngrx/store';
-import { SELECT_BOOK } from '../../../../state/book/book.action';
+import { SELECT_BOOK, DELETE_BOOK } from '../../../../state/book/book.action';
 import { IStore } from '../../../../state/store';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -10,7 +10,25 @@ import { Router, ActivatedRoute } from '@angular/router';
  */
 @Component({
   selector: 'librimem-book-card',
-  templateUrl: './book-card.component.html',
+  template: `
+  <mat-card class="book__card" (click)="navigateToBookPage()">
+    <mat-card-title>
+      {{ book.title }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      <img mat-card-image src="{{ book.cover }}" />
+    </mat-card-subtitle>
+    <mat-card-header>
+      <!-- NOTE icon that deletes the book -->
+      <div class="card__delete" (click)="deleteBook($event)">
+        <librimem-delete-button></librimem-delete-button>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <p>language: {{ book.language }}</p>
+    </mat-card-content>
+  </mat-card>
+  `,
   styleUrls: ['./book-card.component.scss'],
 })
 export class BookCardComponent implements OnInit {
@@ -35,6 +53,7 @@ export class BookCardComponent implements OnInit {
   deleteBook(ev: MouseEvent) {
     ev.preventDefault();
     ev.stopPropagation()
+    this.store.dispatch(DELETE_BOOK({ bookId: this.book.id }))
   }
 
 

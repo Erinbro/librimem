@@ -1,6 +1,7 @@
 import { IFlashcard, IChapter, ICommentary, ICitation, ISummary, IComment, IEvent, INote, IQuestion, IOpinion, IWord, IBook, ICollection, ISubject } from "@librimem/api-interfaces"
 import { initialBookState } from "./book/book.reducer";
 import { IEntityType } from "@librimem/api-interfaces";
+import { initialUserState, InitialUserState } from './user/user.reducer';
 
 export interface IStoreEntity<T> {
   data: {
@@ -79,6 +80,7 @@ export interface IStore {
   question?: IStoreEntity<IQuestion>;
   opinion?: IStoreEntity<IOpinion>;
   subject?: IStoreEntity<ISubject>;
+  user: InitialUserState;
 }
 
 /**
@@ -115,6 +117,7 @@ export function storeEntityGenerator<T>(): IStoreEntity<T> {
 
 // export const store = {} as IStore;
 export const globalStore: IStore = {
+  user: initialUserState,
   reader: { data: {}, search: { data: {} }, selection: { id: '' } },
   book: initialBookState,
   collection: storeEntityGenerator<ICollection>(),

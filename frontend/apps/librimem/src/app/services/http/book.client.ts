@@ -13,8 +13,7 @@ import { IBook } from '@librimem/api-interfaces';
 })
 export class BookClient {
 
-  url = "http://localhost:8080/api/v1/book"
-  environment = environment.production ? "PRODUCTION" : "DEVELOPMENT";
+  url = environment.bookAPI
 
   constructor(private http: HttpClient) { }
 
@@ -30,7 +29,9 @@ export class BookClient {
     return this.http.get<IBook[]>(this.url);
   }
 
-  public getBook() { }
+  public getBook() {
+    return
+  }
 
   // NOTE UPDATE
   public updateBook(updatedBook: IBook) {
@@ -38,6 +39,8 @@ export class BookClient {
   }
 
   // NOTE DELETE
-  public deleteBook() { }
+  public deleteBook(bookId: number) {
+    return this.http.delete<IBook>(this.url + `/${bookId}`)
+  }
 
 }

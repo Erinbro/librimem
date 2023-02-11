@@ -20,4 +20,8 @@ export const DESELECT_BOOK = createAction("[Deselect Book]")
 export const ADD_BOOK = createAction('[Book Modal] Add Book', props<{ newBook: IBook }>())
 export const ADD_BOOK_SUCCESS = createAction(`[Book Modal] Add Book success`, props<{ addedBook: IBook }>())
 
+export const DELETE_BOOK = createAction("[Delete Book]", props<{ bookId: number }>())
+export const DELETE_BOOK_SUCCESS = createAction("[Delete Book]", props<{ book: IBook }>())
+export const DELETE_BOOK_FAILURE = createAction("[Delete Book]")
+
 

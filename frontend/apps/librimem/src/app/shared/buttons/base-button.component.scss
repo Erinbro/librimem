@@ -1,0 +1,8 @@
+.lm-base-button {
+  --color: red;
+  padding: 0.5rem;
+  &:hover {
+    cursor: pointer;
+    background-color: var(--color);
+  }
+}

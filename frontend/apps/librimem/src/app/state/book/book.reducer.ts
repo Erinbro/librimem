@@ -116,6 +116,19 @@ export const bookReducer = createReducer(
         [addedBook.id]: addedBook
       }
     };
+  }),
+  on(bookStoreActions.DELETE_BOOK, (state, { bookId }) => {
+    const newData = { ...state.data }
+    delete newData[bookId]
+    console.log(`new data: ${newData}`);
+
+    return {
+      ...state,
+      data: {
+        ...state.data,
+        ...newData
+      }
+    }
   })
 
 )

@@ -10,4 +10,5 @@ export class Flashcard implements Omit<IFlashcard, "id">{
   favorite = false;
   createdAt = new Date().toJSON();
   updatedAt = new Date().toJSON();
+  status = "TODO"
 }

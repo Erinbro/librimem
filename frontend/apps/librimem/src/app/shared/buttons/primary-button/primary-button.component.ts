@@ -1,8 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { BaseButtonComponent } from '../base-button.component';
 
 @Component({
   selector: 'librimem-primary-button',
-  templateUrl: './primary-button.component.html',
-  styleUrls: ['./primary-button.component.scss'],
+  templateUrl: "../base-button.component.html",
+  styleUrls: ["../base-button.component.scss"],
+  styles: [`
+
+  `]
 })
-export class PrimaryButtonComponent {}
+export class PrimaryButtonComponent extends BaseButtonComponent {
+  override  color = "green"
+
+  @Input() override classes = ["lm-primary-button"]
+
+  constructor() {
+    super()
+  }
+
+}

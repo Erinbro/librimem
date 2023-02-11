@@ -6,8 +6,13 @@ import { ChapterPageComponent } from './pages/chapter/chapter-page.component';
 import { BookPageComponent } from './pages/book/book-page.component';
 import { ChaptersPageComponent } from './pages/chapters/chapters-page.component';
 import { FlashcardsPageComponent } from './pages/flashcards/flashcards-page.component';
+import { AuthPageComponent } from './pages/auth/auth-page.component';
+import { RegisterPageComponent } from './pages/auth/components/registration/register-page.component';
+import { LoginPageComponent } from './pages/auth/components/login/login-page.component';
+import { HomePageComponent } from './pages/home/home-page.component';
 
 const routes: Routes = [
+  { path: "", component: HomePageComponent },
   {
     path: 'books', component: BooksPageComponent, title: "Books",
   },
@@ -21,8 +26,10 @@ const routes: Routes = [
   // {path: "books/:book/chapters/:chapter/words/:word", component: WordPageComponent},
   // {path: "books/:book/chapters/:chapter/summaries", component: SummariesPageComponetn},
   // {path: "books/:book/chapters/:chapter/summaries/:summary", component: SummaryPageComponent},
-
-  { path: '**', redirectTo: 'books' }
+  { path: "auth", component: AuthPageComponent },
+  { path: "auth/register", component: RegisterPageComponent },
+  { path: "auth/login", component: LoginPageComponent },
+  { path: '**', redirectTo: '' }
 ]
 
 @NgModule({

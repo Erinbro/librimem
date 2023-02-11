@@ -20,6 +20,12 @@ export class DrawerComponent implements OnInit {
       },
     ]
 
+  profileIcon = {
+    src: "../../../assets/icons/profile.png",
+    name: "Profile",
+    path: "auth"
+  }
+
   /**
    * The direct attributes for a book
    */
@@ -53,11 +59,7 @@ export class DrawerComponent implements OnInit {
       name: "Summary",
       path: "books/book/chapters/chapter/summaries"
     },
-    {
-      src: "../../../assets/icons/profile.png",
-      name: "Profile",
-      path: "profile"
-    },
+
   ]
 
 

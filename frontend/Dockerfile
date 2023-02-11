@@ -11,7 +11,7 @@ RUN ls
 
 RUN apk add g++ make py3-pip
 
-RUN npm install
+RUN yarn
 
 RUN npx nx build librimem
 

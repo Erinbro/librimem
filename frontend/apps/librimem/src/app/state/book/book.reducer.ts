@@ -12,6 +12,7 @@ export const bookFeatureName = 'book';
 
 export const initialBookState: IStoreEntity<IBook> = {
   data: arrayToEntities(bookMocks),
+  dataMap: new Map<number, IBook>(),
   add: { data: null, isAdding: false },
   filter: {
     data: [],
@@ -113,7 +114,6 @@ export const bookReducer = createReducer(
     };
   }),
   on(bookStoreActions.ADD_BOOK_SUCCESS, (state, { addedBook }) => {
-    console.log(`success, ${JSON.stringify(addedBook)}`);
     // We add the book with iid in indexedDB
     return {
       ...state,
@@ -128,8 +128,6 @@ export const bookReducer = createReducer(
   on(bookStoreActions.DELETE_BOOK, (state, { bookId }) => {
     const newData = { ...state.data }
     delete newData[bookId]
-    console.log(`new data: ${newData}`);
-
     return {
       ...state,
       data: {

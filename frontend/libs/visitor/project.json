@@ -1,4 +1,5 @@
 {
+  "name": "visitor",
   "projectType": "library",
   "sourceRoot": "libs/visitor/src",
   "prefix": "librimem",

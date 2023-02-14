@@ -34,6 +34,14 @@ export class ChapterService {
 
   }
 
+  /**
+   * Checks if the index of a chapter already exists
+   * in a book
+   */
+  checkIfIndexAlreadyExists(chapter: IChapter) {
+
+  }
+
 
 
 

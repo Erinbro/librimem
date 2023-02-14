@@ -3,14 +3,21 @@
   <div class="chapter-presentation__title">
     <mat-form-field>
       <mat-label>Title</mat-label>
-      <input matInput [placeholder]="chapter.title" />
+      <input matInput [(ngModel)]="chapter.title" />
     </mat-form-field>
   </div>
   <!-- favorite -->
   <div class="chapter-presentation__favorite">
-    <librimem-favorite-button />
+    <librimem-favorite-button (click)="toggleFavorite()" />
   </div>
   <!-- index -->
+  <!-- TODO Check if chapter index already exists -->
+  <div class="chapter-presentation__index">
+    <mat-form-field>
+      <mat-label>Index</mat-label>
+      <input matInput [(ngModel)]="chapter.index" />
+    </mat-form-field>
+  </div>
   <!-- page start -->
   <!-- amount of pages (end next chapter - start actual chapter) -->
   <!-- status (to_read, reading, read) -->

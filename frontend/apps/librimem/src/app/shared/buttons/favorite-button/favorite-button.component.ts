@@ -1,10 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { BaseButtonComponent } from '../base-button.component';
 
 @Component({
   selector: 'librimem-favorite-button',
   template: `
-  <div class="favorite-icon-button" (click)="toggleSelected()">
+  <div class="favorite-icon-button" (click)="clicked($event)">
     <librimem-primary-button *ngIf="selected">
       <mat-icon>
         favorite
@@ -21,9 +21,19 @@ import { BaseButtonComponent } from '../base-button.component';
 })
 export class FavoriteButtonComponent {
   selected = false
+  @Output() click = new EventEmitter()
+
+  clicked(ev: MouseEvent) {
+    ev.preventDefault()
+    ev.stopPropagation()
+    this.toggleSelected()
+    this.click.emit("clicked")
+  }
 
 
   toggleSelected() {
+    console.log(`clicked`);
+
     this.selected = !this.selected
   }
 }

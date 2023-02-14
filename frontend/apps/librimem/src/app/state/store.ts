@@ -8,6 +8,7 @@ export interface IStoreEntity<T> {
     // [id: string]: T;
     [id: string]: T;
   };
+  dataMap: Map<number, T>;
   add: {
     data: T | null,
     isAdding: boolean
@@ -93,6 +94,7 @@ export function storeEntityGenerator<T>(): IStoreEntity<T> {
   return {
     data: {
     },
+    dataMap: new Map<number, T>(),
     add: {
       data: null,
       isAdding: false

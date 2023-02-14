@@ -41,6 +41,15 @@ export const chapterReducer = createReducer(
         data: null
       }
     }
+  }),
+  on(chapterStoreActions.UPDATE_CHAPTER, (state, { updatedChapter }) => {
+    return {
+      ...state,
+      data: {
+        ...state.data,
+        [updatedChapter.id]: updatedChapter
+      }
+    }
   })
   // TODO LOAD_CHAPTERS_FAILURE
 )

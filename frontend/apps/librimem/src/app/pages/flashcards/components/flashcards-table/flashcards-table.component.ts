@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { IStore } from 'apps/librimem/src/app/state/store';
 import { IFlashcard } from '@librimem/api-interfaces';
 import { selectFlashcardStateData } from '../../state/flashcard.selectors';
 import { Subscription } from 'rxjs';
@@ -9,6 +8,7 @@ import { RouterService } from '../../../../services/router/router.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FlashcardDialogComponent } from '../flashcard-dialog/flashcard-dialog.component';
 import { SELECT_FLASHCARD, UPDATE_FLASHCARD } from '../../state/flashcard.actions';
+import { IStore } from '../../../../state/store';
 
 @Component({
   selector: 'librimem-flashcards-table',

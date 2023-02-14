@@ -30,4 +30,11 @@ export class ChapterService {
   }
 
 
+  calculateProgress(chapterId: number) {
+
+  }
+
+
+
+
 }

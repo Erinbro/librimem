@@ -20,8 +20,12 @@ import { Router, ActivatedRoute } from '@angular/router';
     </mat-card-subtitle>
     <mat-card-header>
       <!-- NOTE icon that deletes the book -->
-      <div class="card__delete" (click)="deleteBook($event)">
-        <librimem-delete-button></librimem-delete-button>
+      <div class="card__delete" (click)="deleteBook()">
+        <librimem-delete-button (click)="deleteBook()">
+          <img src="../../../../../assets/icons/delete.png" alt="delete"
+          style="width: 20px; height: 20px;"
+           />
+        </librimem-delete-button>
       </div>
     </mat-card-header>
     <mat-card-content>
@@ -50,9 +54,7 @@ export class BookCardComponent implements OnInit {
   }
 
   // FIXME deletes book
-  deleteBook(ev: MouseEvent) {
-    ev.preventDefault();
-    ev.stopPropagation()
+  deleteBook() {
     this.store.dispatch(DELETE_BOOK({ bookId: this.book.id }))
   }
 

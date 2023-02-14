@@ -1,13 +1,22 @@
-import { IBook, IChapter } from "@librimem/api-interfaces";
+import { IBook, IChapter, IFlashcard, INote } from "@librimem/api-interfaces";
 import Dexie, { Table } from "dexie";
 
+/**
+ * Class for the configuration of dexie.js
+ */
 export class StorageDB extends Dexie {
-  books!: Table<Omit<IBook, "id">, number>;
+  books!: Table<IBook, number>;
   chapters!: Table<IChapter, number>;
+  flashcards!: Table<IFlashcard, number>;
+  notes!: Table<INote, number>;
+
 
   constructor() {
     super('ngdexieliveQuery');
     this.version(3).stores({
+      // NOTE iid stands for indexedDB id
+      // We discriminate between the id that is created in the
+      // backend and the id created in the frontend
       books: '++id',
       chapters: "++id"
     });

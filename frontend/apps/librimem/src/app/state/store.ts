@@ -5,6 +5,7 @@ import { initialUserState, InitialUserState } from './user/user.reducer';
 
 export interface IStoreEntity<T> {
   data: {
+    // [id: string]: T;
     [id: string]: T;
   };
   add: {

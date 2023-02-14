@@ -13,7 +13,7 @@ import { BookModalComponent } from './pages/books/components/BookModal/book-moda
 // ANCHOR Angular Material
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { BookEffects } from './state/book/book.effect';
@@ -74,6 +74,9 @@ import { CloseButtonComponent } from './shared/buttons/close-button/close-button
 import { BaseDialogComponent } from './shared/dialog/base-dialog.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthService } from './services/auth/auth.service';
+import { AddButtonComponent } from './shared/buttons/add-button/add-button.component';
+import { ChapterPresentationComponent } from './pages/chapter/components/chapter-presentation/chapter-presentation.component';
+import { FavoriteButtonComponent } from './shared/buttons/favorite-button/favorite-button.component';
 
 @NgModule({
   declarations: [
@@ -118,6 +121,9 @@ import { AuthService } from './services/auth/auth.service';
     AuthPageComponent,
     HomePageComponent,
     CloseButtonComponent,
+    AddButtonComponent,
+    ChapterPresentationComponent,
+    FavoriteButtonComponent,
   ],
   imports: [
     MatToolbarModule,
@@ -161,11 +167,11 @@ import { AuthService } from './services/auth/auth.service';
     MatButtonModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: () => sessionStorage.getItem("token"),
-      }
-    })
+        tokenGetter: () => sessionStorage.getItem('token'),
+      },
+    }),
   ],
-  providers: [SidenavService],
+  providers: [SidenavService, { provide: MAT_DIALOG_DATA, useValue: {} }],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

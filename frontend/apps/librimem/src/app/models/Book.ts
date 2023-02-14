@@ -20,7 +20,7 @@ export class Book implements Omit<IBook, "id"> {
   pages?: string | undefined;
   status?: IEntityStatus = "TO_READ";
   progres?: number | undefined;
-  favorite?: boolean | undefined;
+  favorite = false
   subjects?: number[] | undefined;
   commentary?: ICommentary | undefined;
   createdAt = new Date().toJSON();

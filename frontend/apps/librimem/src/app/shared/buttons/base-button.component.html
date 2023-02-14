@@ -2,7 +2,9 @@
   #baseButton
   [disabled]="disabled"
   class="lm-base-button"
-  (click)="clicked()"
+  (click)="clicked($event)"
+  [matTooltip]="tooltip"
 >
   {{ content }}
+  <ng-content></ng-content>
 </button>

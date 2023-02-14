@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Optional } from '@angular/core';
 import { MatDialog, MatDialogRef } from "@angular/material/dialog"
 import { Store } from '@ngrx/store';
 import { IStore } from '../../../../state/store';
@@ -9,11 +9,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UPDATE_BOOK, ADD_BOOK } from '../../../../state/book/book.action';
 import { Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from "@angular/material/dialog"
-import { BookPersistence } from '../../../../services/storage/book.storage';
 import { Book } from '../../../../models/Book';
 
 @Component({
-  selector: 'librimem-book-modal',
   templateUrl: './book-modal.component.html',
   styleUrls: ['./book-modal.component.scss'],
 })
@@ -29,7 +27,11 @@ export class BookModalComponent implements OnInit {
    */
   book!: FormGroup;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { isEditing: boolean, id: number }, private store: Store<IStore>, private builder: FormBuilder, private dialogRef: MatDialogRef<BookModalComponent>, private bookPersistence: BookPersistence) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { isEditing: boolean, id: number },
+    private dialogRef: MatDialogRef<BookModalComponent>,
+    private store: Store<IStore>,
+    private builder: FormBuilder,
+  ) { }
 
   /** NOTE Since we use BookModalComponent both for editing and adding a book
   * we must ascertain whether we are editing or adding
@@ -41,14 +43,11 @@ export class BookModalComponent implements OnInit {
 
     // If we are adding a new book
     if (!this.data.isEditing) {
-      console.log(`We are adding`)
       this.book = this.builder.group(new Book());
     }
 
     // If we are editing a book
     else {
-      console.log(`We are editing, id: ${this.data.id}`)
-
       this.selection$.subscribe((selectedBook) => {
         if (!selectedBook) return;
         console.log(`Here the selection: ${selectedBook}`)
@@ -66,17 +65,13 @@ export class BookModalComponent implements OnInit {
   }
 
   updateBook() {
-    console.log(`Update book: ${this.book.getRawValue()}`)
-
-    // this.store.dispatch(UPDATE_BOOK(this.book))
+    this.dialogRef.close(this.data)
+    this.store.dispatch(UPDATE_BOOK({ updateBook: this.book.value }))
 
   }
 
-  async addBook() {
-    console.log(`Adding book`)
+  addBook() {
     this.store.dispatch(ADD_BOOK({ newBook: this.book.value }))
-
-    // await this.bookPersistence.addBook(this.book.value)
     this.dialogRef.close(this.data);
   }
 

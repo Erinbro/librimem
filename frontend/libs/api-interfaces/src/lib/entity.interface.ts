@@ -35,7 +35,7 @@ export interface IEntity {
   status?: string;
   progres?: number;
   summary?: ISummary;
-  favorite?: boolean;
+  favorite: boolean;
   createdAt: string;
   updatedAt: string;
 }

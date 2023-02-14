@@ -4,6 +4,7 @@ import { createReducer, on } from '@ngrx/store';
 import { bookStoreActions } from '.';
 import { IEntityType } from "@librimem/api-interfaces"
 import { arrayToEntities } from '../../utils/arrayToEntities';
+
 import bookMocks from "../../../assets/data/books.json"
 
 
@@ -46,9 +47,12 @@ export const bookReducer = createReducer(
     }
   }),
   on(bookStoreActions.LOAD_BOOKS_SUCCESS, (state, { books }) => {
-    console.log(`Got books: ${books}`);
+    console.log(`got books: ${JSON.stringify(books)}`);
+
 
     const bookEntities = arrayToEntities(books)
+    console.log(`entities: ${bookEntities}`);
+
 
     return {
       ...state,
@@ -89,6 +93,7 @@ export const bookReducer = createReducer(
   }
   ),
   on(bookStoreActions.UPDATE_BOOK_SUCCESS, (state, { updatedBook }) => {
+
     return {
       ...state,
       data: {
@@ -108,12 +113,15 @@ export const bookReducer = createReducer(
     };
   }),
   on(bookStoreActions.ADD_BOOK_SUCCESS, (state, { addedBook }) => {
-    // We add the book with id
+    console.log(`success, ${JSON.stringify(addedBook)}`);
+    // We add the book with iid in indexedDB
     return {
       ...state,
       data: {
         ...state.data,
-        [addedBook.id]: addedBook
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        [addedBook.iid]: addedBook
       }
     };
   }),

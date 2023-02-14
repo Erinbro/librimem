@@ -15,6 +15,7 @@ export class Chapter implements Omit<IChapter, "id"> {
   read = false;
   page = 0;
   progress = 1;
+  favorite = false
   createdAt = new Date().toJSON();
   updatedAt = new Date().toJSON();
 }

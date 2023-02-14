@@ -19,8 +19,6 @@ export class BookPageComponent implements OnInit {
   ngOnInit(): void {
     this.store.select(selectSelectedBook).subscribe((selectedBook) => {
       if (!selectedBook) return;
-      console.log(`[BookPageComponent] book: ${JSON.stringify(selectedBook)}`);
-
       this.book = this.formBuilder.group(selectedBook);
     })
   }

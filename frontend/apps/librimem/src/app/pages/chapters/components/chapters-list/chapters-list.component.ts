@@ -19,8 +19,36 @@ interface IChaptersWithParent {
  */
 @Component({
   selector: 'librimem-chapters-list',
-  templateUrl: './chapters-list.component.html',
-  styleUrls: ['./chapters-list.component.scss'],
+  template: `
+  <div class="chapters-list">
+  <div class="list__chapter" *ngFor="let sortedChapter of sortedChapters">
+    <librimem-chapter-card
+      [chapter]="currentChapter"
+      *ngFor="let currentChapter of sortedChapter"
+    >
+    </librimem-chapter-card>
+  </div>
+</div>
+
+  `,
+  styles: [`
+  .chapters-list {
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  padding: 1rem;
+
+  .list__chapter {
+    width: 100%;
+    max-width: 768px;
+    .chapters__seperation:not(:last-child) {
+      width: 100%;
+      height: 1rem;
+      background-color: black;
+    }
+  }
+}
+  `]
 })
 export class ChaptersListComponent implements OnInit {
   //   /**

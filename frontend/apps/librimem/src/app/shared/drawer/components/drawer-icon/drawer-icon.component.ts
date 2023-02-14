@@ -3,7 +3,13 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'librimem-drawer-icon',
-  templateUrl: './drawer-icon.component.html',
+  template: `
+  <div class="drawer__icon" (click)="clicked()" id="icon.name" [matTooltip]="icon.name"
+  matTooltipPosition="right"
+  >
+    <img src="{{ icon.src }}" alt="icon.name" />
+  </div>
+  `,
   styleUrls: ['./drawer-icon.component.scss'],
 })
 export class DrawerIconComponent {

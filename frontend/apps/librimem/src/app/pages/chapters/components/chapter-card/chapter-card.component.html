@@ -7,6 +7,15 @@
   <div class="chapter__card__title">{{ chapter.title }}</div>
   <!-- NOTE The background shows the progress of the chapter -->
   <div class="chapter__card__background"></div>
+  <div class="chapter__card__delete">
+    <librimem-delete-button (click)="deleteChapter()">
+      <img
+        src="../../../../../assets/icons/delete.png"
+        alt="delete"
+        style="width: 20px; height: 20px"
+      />
+    </librimem-delete-button>
+  </div>
 
   <!-- <mat-accordion>
     <mat-expansion-panel>

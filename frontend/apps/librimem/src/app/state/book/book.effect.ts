@@ -5,7 +5,6 @@ import { of, from } from 'rxjs';
 import { LOAD_BOOKS, LOAD_BOOKS_SUCCESS, LOAD_BOOKS_FAILURE, ADD_BOOK, ADD_BOOK_SUCCESS, UPDATE_BOOK, UPDATE_BOOK_SUCCESS, DELETE_BOOK, DELETE_BOOK_SUCCESS } from './book.action';
 import { BookClient } from '../../services/http/book.client';
 import { IBook } from "@librimem/api-interfaces"
-import { BookPersistence } from '../../services/storage/book.storage';
 import { BookStorageApi } from '../../storage/features/book.storage';
 
 /**
@@ -17,7 +16,7 @@ import { BookStorageApi } from '../../storage/features/book.storage';
 export class BookEffects {
   private bookStorageApi!: BookStorageApi
 
-  constructor(private actions$: Actions, private bookClient: BookClient, private bookPersistence: BookPersistence,) {
+  constructor(private actions$: Actions, private bookClient: BookClient,) {
     this.bookStorageApi = new BookStorageApi();
   }
 
@@ -31,13 +30,15 @@ export class BookEffects {
     () => this.actions$.pipe(
       // NOTE We grap the LOAD_BOOKS event
       ofType(LOAD_BOOKS),
-      tap(() => { console.log('new LOAD_BOOKS effect occurred in queue') }),
       mergeMap((_) => {
-        return this.bookClient.getBooks().pipe(
-          tap((res) => console.log(`res: ${res}`)),
-          map((res) => LOAD_BOOKS_SUCCESS({ books: res })),
-          catchError(() => of(LOAD_BOOKS_FAILURE())),
-        )
+        // NOTE We do not have backend at the moment
+        // return this.bookClient.getBooks().pipe(
+        //   map((res) => LOAD_BOOKS_SUCCESS({ books: res })),
+        //   catchError(() => of(LOAD_BOOKS_FAILURE())),
+        // )
+        return from(this.bookStorageApi.getBooks()).pipe(
+          map((res) => LOAD_BOOKS_SUCCESS({ books: res }))
+        );
       }
       )
     )
@@ -48,13 +49,18 @@ export class BookEffects {
       ofType(ADD_BOOK),
       mergeMap((action) => {
         // Add to IndexedDB
-        this.bookStorageApi.addBook(action.newBook)
-        return this.bookClient.addBook(action.newBook).pipe(
-          tap(() => {
-            console.log(`Book added to backend`)
-          }),
+        return from(this.bookStorageApi.addBook(action.newBook)).pipe(
+          tap((a) => console.log(`newbook: ${JSON.stringify(a)}`)),
           map((res) => ADD_BOOK_SUCCESS({ addedBook: res }))
         )
+
+        // NOTE At the moment we do not have backend
+        // return this.bookClient.addBook(action.newBook).pipe(
+        //   tap(() => {
+        //     console.log(`Book added to backend`)
+        //   }),
+        //   map((res) => ADD_BOOK_SUCCESS({ addedBook: res }))
+        // )
       })
     )
   )
@@ -78,9 +84,15 @@ export class BookEffects {
     () => this.actions$.pipe(
       ofType(DELETE_BOOK),
       mergeMap((action) => {
-        return this.bookClient.deleteBook(action.bookId).pipe(
-          map((res) => DELETE_BOOK_SUCCESS({ book: res }))
-        )
+        return from(this.bookStorageApi.deleteBook(action.bookId))
+          .pipe(
+            map((res) => DELETE_BOOK_SUCCESS())
+          )
+
+        // NOTE At the moment no backend
+        // return this.bookClient.deleteBook(action.bookId).pipe(
+        //   map((res) => DELETE_BOOK_SUCCESS({ book: res }))
+        // )
       })
     )
   )

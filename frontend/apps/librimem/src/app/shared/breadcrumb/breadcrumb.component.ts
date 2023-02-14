@@ -55,6 +55,8 @@ export class BreadcrumbComponent implements OnInit, OnDestroy {
       bindedParams.push({ param: params[i], joinedParam: joinedParams[i] })
     })
 
+    console.log(`joinedParam: ${bindedParams[0]}`);
+
     bindedParams[0].joinedParam
     return bindedParams
   }

@@ -3,7 +3,7 @@ import { IChapter } from '@librimem/api-interfaces';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RouterService } from '../../../../services/router/router.service';
 import { Store } from '@ngrx/store';
-import { SELECT_CHAPTER } from '../../../../state/chapter/chapter.actions';
+import { SELECT_CHAPTER, DELETE_CHAPTER } from '../../../../state/chapter/chapter.actions';
 
 @Component({
   selector: 'librimem-chapter-card',
@@ -23,6 +23,10 @@ export class ChapterCardComponent {
     )
 
     this.router.navigate(route)
+  }
+
+  deleteChapter() {
+    this.store.dispatch(DELETE_CHAPTER({ deletedChapter: this.chapter }))
   }
 
 }

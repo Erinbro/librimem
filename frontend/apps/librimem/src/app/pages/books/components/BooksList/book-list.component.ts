@@ -5,7 +5,6 @@ import { Store } from '@ngrx/store';
 import { IStore } from '../../../../state/store';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { selectBookStateData } from '../../../../state/book/book.selector';
-import { BookPersistence } from '../../../../services/storage/book.storage';
 import { LOAD_BOOKS } from '../../../../state/book/book.action';
 import { arrayToEntities } from '../../../../utils/arrayToEntities';
 import { entitiesToArray } from '../../../../utils/entitiesToArray';
@@ -15,7 +14,14 @@ import { entitiesToArray } from '../../../../utils/entitiesToArray';
  */
 @Component({
   selector: 'librimem-book-list',
-  templateUrl: './book-list.component.html',
+  template: `
+<div class="books__listing">
+  <ng-container *ngFor="let book of books$ | async">
+    <librimem-book-card [book]="book"></librimem-book-card>
+  </ng-container>
+</div>
+
+  `,
   styleUrls: ['./book-list.component.scss'],
 })
 export class BookListComponent implements OnInit {
@@ -23,7 +29,7 @@ export class BookListComponent implements OnInit {
   // NOTE We need books$ as a list to be used by *ngFor
   books$!: Observable<IBook[]>;
 
-  constructor(private store: Store<IStore>, private bookPersistence: BookPersistence) { }
+  constructor(private store: Store<IStore>) { }
 
   ngOnInit(): void {
     this.store.dispatch(LOAD_BOOKS())

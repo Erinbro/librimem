@@ -1,23 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { BaseButtonComponent } from '../base-button.component';
 
 @Component({
   selector: 'librimem-delete-button',
-  template: `
-  <button type="button" class="lm-delete-button">
-    <img src="assets/icons/delete.png" alt="delete" />
-  </button>
-  `,
+  templateUrl: "../base-button.component.html",
   styles: [`
   .lm-delete-button {
     width: 100%;
     min-width: 1rem;
-    max-width: fit-content;
-    height: fit-content !important;
+    height: 100%;
     min-height: 1rem;
-    padding: none !important;
-    margin: none !important;
-    background-color: red;
+    background-color: red !important;
   }
 
 
@@ -32,12 +25,20 @@ import { BaseButtonComponent } from '../base-button.component';
   `],
   styleUrls: ["../base-button.component.scss"]
 })
-export class DeleteButtonComponent extends BaseButtonComponent {
+export class DeleteButtonComponent extends BaseButtonComponent implements AfterViewInit {
 
+  @ViewChild("deleteBtn")
+  private DeleteButton!: ElementRef
+
+  override classes = ["lm-delete-button"]
   override color = "red";
-  override content = "assets/icons/delete.png'"
+
   constructor() {
     super()
+  }
+
+  override ngAfterViewInit(): void {
+
   }
 
 

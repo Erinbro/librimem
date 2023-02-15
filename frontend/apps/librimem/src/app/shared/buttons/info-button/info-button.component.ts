@@ -2,7 +2,13 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'librimem-info-button',
-  templateUrl: './info-button.component.html',
-  styleUrls: ['./info-button.component.scss'],
+  template: `
+  <librimem-primary-button>
+    ?
+  </librimem-primary-button>
+  `,
+  styles: [`
+
+  `]
 })
-export class InfoButtonComponent {}
+export class InfoButtonComponent { }

@@ -12,7 +12,8 @@
     "test:coverage": "nx test --coverage",
     "docs:setup": "nx g @enio.ai/typedoc.config",
     "docs:create": "nx typedoc -- --options typedoc.json ./apps/librimem/src/app",
-    "storybook:build": "npx ng run librimem:build-storybook"
+    "storybook:build": "npx ng run librimem:build-storybook",
+    "storybook:start": "npx ng run librimem:storybook"
   },
   "private": true,
   "dependencies": {

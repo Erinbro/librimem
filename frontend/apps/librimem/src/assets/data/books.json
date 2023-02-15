@@ -8,6 +8,7 @@
     "author_name": "Gouth",
     "author_prename": "Starr",
     "language": "Swati",
+    "favorite": false,
     "cover": "http://dummyimage.com/182x100.png/cc0000/ffffff",
     "createdAt": "2023-02-03T15:10:55.834Z",
     "updatedAt": "2023-02-03T15:10:55.834Z"
@@ -16,7 +17,7 @@
     "id": 2,
     "userId": 1,
     "type": "BOOK",
-
+    "favorite": false,
     "title": "Ghost",
     "pages": "1493",
     "author_name": "Horburgh",
@@ -30,7 +31,7 @@
     "id": 3,
     "userId": 1,
     "type": "BOOK",
-
+    "favorite": false,
     "title": "Matchstick Men",
     "pages": "3871",
     "author_name": "Coatsworth",
@@ -44,7 +45,7 @@
     "id": 4,
     "userId": 1,
     "type": "BOOK",
-
+    "favorite": false,
     "title": "American Astronaut, The",
     "pages": "781",
     "author_name": "Beers",
@@ -58,83 +59,13 @@
     "id": 5,
     "userId": 1,
     "type": "BOOK",
-
+    "favorite": false,
     "title": "To Sir with Love",
     "pages": "048",
     "author_name": "Matyja",
     "author_prename": "Valentia",
     "language": "Moldovan",
     "cover": "http://dummyimage.com/236x100.png/ff4444/ffffff",
-    "createdAt": "2023-02-03T15:10:55.834Z",
-    "updatedAt": "2023-02-03T15:10:55.834Z"
-  },
-  {
-    "id": 6,
-    "userId": 1,
-    "type": "BOOK",
-
-    "title": "Juno and the Paycock",
-    "pages": "7431",
-    "author_name": "Sink",
-    "author_prename": "Maggie",
-    "language": "Gujarati",
-    "cover": "http://dummyimage.com/169x100.png/ff4444/ffffff",
-    "createdAt": "2023-02-03T15:10:55.834Z",
-    "updatedAt": "2023-02-03T15:10:55.834Z"
-  },
-  {
-    "id": 7,
-    "userId": 1,
-    "type": "BOOK",
-
-    "title": "I Want You",
-    "pages": "0064",
-    "author_name": "Huleatt",
-    "author_prename": "Kermit",
-    "language": "Punjabi",
-    "cover": "http://dummyimage.com/185x100.png/ff4444/ffffff",
-    "createdAt": "2023-02-03T15:10:55.834Z",
-    "updatedAt": "2023-02-03T15:10:55.834Z"
-  },
-  {
-    "id": 8,
-    "userId": 1,
-    "type": "BOOK",
-
-    "title": "Shanghai Gesture, The",
-    "pages": "91",
-    "author_name": "Gorbell",
-    "author_prename": "Dorette",
-    "language": "Oriya",
-    "cover": "http://dummyimage.com/246x100.png/ff4444/ffffff",
-    "createdAt": "2023-02-03T15:10:55.834Z",
-    "updatedAt": "2023-02-03T15:10:55.834Z"
-  },
-  {
-    "id": 9,
-    "userId": 1,
-    "type": "BOOK",
-
-    "title": "Smile",
-    "pages": "6",
-    "author_name": "Crollman",
-    "author_prename": "Netti",
-    "language": "Māori",
-    "cover": "http://dummyimage.com/124x100.png/cc0000/ffffff",
-    "createdAt": "2023-02-03T15:10:55.834Z",
-    "updatedAt": "2023-02-03T15:10:55.834Z"
-  },
-  {
-    "id": 10,
-    "userId": 1,
-    "type": "BOOK",
-
-    "title": "Little Miss Sunshine",
-    "pages": "81698",
-    "author_name": "Benoix",
-    "author_prename": "Mehetabel",
-    "language": "German",
-    "cover": "http://dummyimage.com/207x100.png/dddddd/000000",
     "createdAt": "2023-02-03T15:10:55.834Z",
     "updatedAt": "2023-02-03T15:10:55.834Z"
   }

@@ -131,7 +131,6 @@ export const bookReducer = createReducer(
     return {
       ...state,
       data: {
-        ...state.data,
         ...newData
       }
     }

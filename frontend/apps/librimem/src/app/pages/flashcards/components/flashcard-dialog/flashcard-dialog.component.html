@@ -1,34 +1,44 @@
-<mat-dialog-content class="flahscard-dialog">
+<mat-dialog-content class="flashcard-dialog">
+  <div class="flashcard-dialog__close">
+    <librimem-close-button />
+  </div>
   <h1>Flashcard</h1>
   <!-- NOTE EDITING -->
   <ng-container *ngIf="data.editing">
     <ng-container *ngIf="flashcardFormGroup">
-      <form [formGroup]="flashcardFormGroup">
-        <div class="question">
-          <h3>Question</h3>
-          <!-- <quill-view formControlName="question"> </quill-view> -->
-          <quill-editor formControlName="question"></quill-editor>
-        </div>
-        <div class="answer">
-          <h3>Answer</h3>
-          <quill-editor formControlName="answer"></quill-editor>
-        </div>
-      </form>
-      <div class="flashcard-dialog__action">
-        <button type="button" (click)="updateFlashcard()">Update</button>
+      <div class="flashcard-dialog__editing">
+        <form [formGroup]="flashcardFormGroup">
+          <div class="question mat-elevation-z4">
+            <h3>Question</h3>
+            <!-- <quill-view formControlName="question"> </quill-view> -->
+            <quill-editor formControlName="question" />
+          </div>
+          <div class="answer mat-elevation-z4">
+            <h3>Answer</h3>
+            <quill-editor formControlName="answer" />
+          </div>
+        </form>
+        <!-- <div class="flashcard-dialog__action">
+          <librimem-primary-button
+            (click)="updateFlashcard()"
+            content="Update"
+          />
+        </div> -->
       </div>
     </ng-container>
   </ng-container>
   <!-- END EDITING -->
   <!-- NOTE ADDING -->
   <ng-container *ngIf="!data.editing">
-    <form [formGroup]="flashcardFormGroup">
-      <div class="question" formControlName="question"></div>
+    <div class="flashcard-dialog__adding">
+      <form [formGroup]="flashcardFormGroup">
+        <div class="question" formControlName="question"></div>
 
-      <div class="answer" formControlName="question"></div>
-    </form>
-    <div class="flashcard-dialog__action">
-      <button type="button" (click)="addFlashcard()">Add</button>
+        <div class="answer" formControlName="question"></div>
+      </form>
+      <!-- <div class="flashcard-dialog__action">
+        <librimem-primary-button (click)="addFlashcard()" content="Add" />
+      </div> -->
     </div>
   </ng-container>
   <!-- END ADDING -->

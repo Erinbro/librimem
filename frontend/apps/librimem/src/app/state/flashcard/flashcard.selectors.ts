@@ -1,4 +1,4 @@
-import { IStore } from '../../../state/store';
+import { IStore } from './../store';
 import { createSelector } from '@ngrx/store';
 
 const selectFlashcardState = (store: IStore) => {
@@ -12,3 +12,4 @@ export const selectFlashcardStateData = createSelector(selectFlashcardState, (st
 export const selectSelectedFlashcard = createSelector(selectFlashcardState, (state) => {
   return state.selection.data;
 })
+

@@ -2,7 +2,9 @@ import { createAction, props } from '@ngrx/store';
 import { IFlashcard } from '@librimem/api-interfaces';
 
 // READ
-export const LOAD_FLASHCARDS = createAction('[Load Flashcards]')
+export const LOAD_FLASHCARDS = createAction('[Load Flashcards]',
+  props<{ entityId: number, chapterId?: number }>()
+)
 export const LOAD_FLASHCARDS_SUCCESS = createAction('[Load Flashcards Success]', props<{ flashcards: IFlashcard[] }>())
 export const LOAD_FLASHCARDS_FAILURE = createAction('[Load Flashcards Failure]')
 
@@ -28,3 +30,5 @@ export const DELETE_FLASHCARDS_FAILURE = createAction('[Delete Flashcard Failure
 // SELECTION
 export const SELECT_FLASHCARD = createAction("[Select Flashcard]", props<{ selectedFlashcard: IFlashcard }>())
 export const DESELECT_FLASHCARD = createAction("[Select Flashcard]")
+
+export const ADDING_FLASHCARD = createAction("[Adding Flashcard]")

@@ -1,4 +1,9 @@
 .flashcards-list {
   width: 100%;
   height: 100%;
+  user-select: none;
+  .mat-mdc-row:hover {
+    cursor: pointer;
+    background-color: rgb(216, 216, 216);
+  }
 }

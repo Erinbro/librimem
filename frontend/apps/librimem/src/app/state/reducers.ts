@@ -3,9 +3,9 @@ import { IStoreEntity, IStore } from './store';
 import { ActionReducerMap } from '@ngrx/store';
 import { bookReducer } from './book/book.reducer';
 import { chapterReducer } from './chapter/chapter.reducer';
-import { flashcardReducer } from '../pages/flashcards/state/flashcard.reducer';
 import { RouterReducerState, routerReducer } from '@ngrx/router-store';
 import { InitialUserState, userReducer } from './user/user.reducer';
+import { flashcardReducer } from './flashcard/flashcard.reducer';
 
 interface IGlobalState {
   book: IStoreEntity<IBook>,

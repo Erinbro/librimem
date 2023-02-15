@@ -1,3 +1,4 @@
+import { selectSelectedFlashcard } from './../../state/flashcard/flashcard.selectors';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IStore } from '../../state/store';
@@ -6,8 +7,7 @@ import { selectSelectedBook } from '../../state/book/book.selector';
 import { selectChapterStateSelection } from '../../state/chapter/chapter.selectors';
 import { DESELECT_BOOK } from '../../state/book/book.action';
 import { DESELECT_CHAPTER } from '../../state/chapter/chapter.actions';
-import { DESELECT_FLASHCARD } from '../../pages/flashcards/state/flashcard.actions';
-import { selectSelectedFlashcard } from '../../pages/flashcards/state/flashcard.selectors';
+import { DESELECT_FLASHCARD } from '../../state/flashcard/flashcard.actions';
 
 const IEntityRouteMappingEnum = {
   "2": "book",

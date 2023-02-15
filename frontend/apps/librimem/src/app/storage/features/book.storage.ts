@@ -1,6 +1,8 @@
 import { IBook } from '@librimem/api-interfaces';
 import { db } from '../storage';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 /**
  * Class with CRUD methods for the book storage
  * in IndexedDB

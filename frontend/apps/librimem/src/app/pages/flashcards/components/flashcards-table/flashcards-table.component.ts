@@ -1,13 +1,13 @@
+import { selectFlashcardStateData } from './../../../../state/flashcard/flashcard.selectors';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IFlashcard } from '@librimem/api-interfaces';
-import { selectFlashcardStateData } from '../../state/flashcard.selectors';
 import { Subscription } from 'rxjs';
 import { entitiesToArray } from '../../../../utils/entitiesToArray';
 import { RouterService } from '../../../../services/router/router.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FlashcardDialogComponent } from '../flashcard-dialog/flashcard-dialog.component';
-import { SELECT_FLASHCARD, UPDATE_FLASHCARD } from '../../state/flashcard.actions';
+import { SELECT_FLASHCARD, UPDATE_FLASHCARD } from '../../../../state/flashcard/flashcard.actions';
 import { IStore } from '../../../../state/store';
 
 @Component({
@@ -39,20 +39,39 @@ export class FlashcardsTableComponent implements OnInit, OnDestroy {
   }
 
   /**
-   *
+   * Opens dialog to edit flashcard
    * @param id
    */
   editFlashcard(id: number) {
-    console.log(`selected: ${id}`);
     const selectedFlashcard = this.flashcards.find((x) => x.id == id)
     if (!selectedFlashcard) return
 
     this.store.dispatch(SELECT_FLASHCARD({ selectedFlashcard }))
-    const dialogRef = this.dialog.open(FlashcardDialogComponent, {
-      data: { editing: true, updatedFlashcard: undefined, selectedFlashcard }
+    this.dialog.open(FlashcardDialogComponent, {
+      data: { editing: true, updatedFlashcard: undefined, selectedFlashcard },
+      width: "100%",
+      maxWidth: "768px",
+      height: "100%",
+      maxHeight: "768px",
     })
-
   }
+
+  /**
+   * Opens dialog to add flashcard
+   */
+  addFlashcard() {
+    this.dialog.open(FlashcardDialogComponent, {
+      data: { editing: false },
+      width: "100%",
+      maxWidth: "768px",
+      height: "100%",
+      maxHeight: "768px",
+    })
+  }
+
+
+
+
 
 
 

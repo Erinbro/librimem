@@ -5,7 +5,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Flashcard } from '../../../../models';
 import { Store } from '@ngrx/store';
 import { IStore } from '../../../../state/store';
-import { UPDATE_FLASHCARD, ADD_FLASHCARD } from '../../state/flashcard.actions';
+import { UPDATE_FLASHCARD, ADD_FLASHCARD } from '../../../../state/flashcard/flashcard.actions';
 import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
 
 @Component({
@@ -41,14 +41,6 @@ export class FlashcardDialogComponent implements OnDestroy {
     this.data.updatedFlashcard = this.flashcardFormGroup.getRawValue() as unknown as IFlashcard
   }
 
-  /**
-   * Is triggered when the flashcard content changes
-   * @param e
-   */
-  updateForm(e: EditorChangeContent | EditorChangeSelection) {
-
-    console.log(`c: ${e.editor.getContents()}`);
-  }
 
   updateFlashcard() {
     const flashcardCopy = this.flashcardFormGroup.getRawValue() as IFlashcard

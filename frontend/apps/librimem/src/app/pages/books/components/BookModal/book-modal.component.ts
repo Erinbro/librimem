@@ -10,6 +10,7 @@ import { UPDATE_BOOK, ADD_BOOK } from '../../../../state/book/book.action';
 import { Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from "@angular/material/dialog"
 import { Book } from '../../../../models/Book';
+import { OpenLibraryClient } from '../../../../services/http/openlibrary.client';
 
 @Component({
   templateUrl: './book-modal.component.html',
@@ -21,6 +22,12 @@ export class BookModalComponent implements OnInit {
    * The current book
    */
   selection$!: Observable<IBook | undefined>
+  searchTerm = ""
+  searchResults = Observable
+  /**
+   * The book that was selected from the search
+   */
+  bookSelection = undefined
 
   /**
    * The new book
@@ -31,6 +38,7 @@ export class BookModalComponent implements OnInit {
     private dialogRef: MatDialogRef<BookModalComponent>,
     private store: Store<IStore>,
     private builder: FormBuilder,
+    private openLibraryClient: OpenLibraryClient
   ) { }
 
   /** NOTE Since we use BookModalComponent both for editing and adding a book
@@ -62,6 +70,14 @@ export class BookModalComponent implements OnInit {
 
       })
     }
+  }
+
+  searchBook() {
+    this.openLibraryClient.searchBooksByTitle(this.searchTerm)
+  }
+
+  selectBook() {
+
   }
 
   updateBook() {

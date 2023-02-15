@@ -1,9 +1,9 @@
 import { IFlashcard } from '@librimem/api-interfaces';
-import { IStoreEntity, storeEntityGenerator } from '../../../state/store';
+import { IStoreEntity, storeEntityGenerator } from '../../state/store';
 import { createReducer, on } from '@ngrx/store';
 import * as flashcardStateActions from "./flashcard.actions"
-import { arrayToEntities } from '../../../utils/arrayToEntities';
-import flashcards from "../../../../assets/data/flashcards.json"
+import { arrayToEntities } from '../../utils/arrayToEntities';
+import flashcards from "../../../assets/data/flashcards.json"
 
 export const flashcardFeatureName = "flashcard";
 

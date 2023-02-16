@@ -6,7 +6,6 @@ import { Flashcard } from '../../../../models';
 import { Store } from '@ngrx/store';
 import { IStore } from '../../../../state/store';
 import { UPDATE_FLASHCARD, ADD_FLASHCARD } from '../../../../state/flashcard/flashcard.actions';
-import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
 
 @Component({
   selector: 'librimem-flashcard-dialog',

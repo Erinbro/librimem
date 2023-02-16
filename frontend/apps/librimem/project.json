@@ -6,9 +6,7 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/librimem",
         "index": "apps/librimem/src/index.html",
@@ -86,17 +84,12 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "apps/librimem/**/*.ts",
-          "apps/librimem/**/*.html"
-        ]
+        "lintFilePatterns": ["apps/librimem/**/*.ts", "apps/librimem/**/*.html"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/librimem"
-      ],
+      "outputs": ["coverage/apps/librimem"],
       "options": {
         "jestConfig": "apps/librimem/jest.config.ts",
         "passWithNoTests": true
@@ -118,9 +111,7 @@
     },
     "build-storybook": {
       "executor": "@storybook/angular:build-storybook",
-      "outputs": [
-        "{options.outputDir}"
-      ],
+      "outputs": ["{options.outputDir}"],
       "options": {
         "outputDir": "dist/storybook/librimem",
         "configDir": "apps/librimem/.storybook",
@@ -135,9 +126,7 @@
     },
     "typedoc": {
       "executor": "@enio.ai/typedoc:typedoc",
-      "outputs": [
-        "docs/apps/librimem"
-      ],
+      "outputs": ["docs/apps/librimem"],
       "options": {
         "options": "typedoc.json"
       },

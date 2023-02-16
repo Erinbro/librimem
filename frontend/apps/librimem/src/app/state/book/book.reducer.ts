@@ -104,14 +104,7 @@ export const bookReducer = createReducer(
     }
   }),
   on(bookStoreActions.ADD_BOOK, (state, { newBook }) => {
-    // We add the book without id
-    return {
-      ...state,
-      data: {
-        ...state.data,
-        [newBook.id]: newBook
-      }
-    };
+    return state;
   }),
   on(bookStoreActions.ADD_BOOK_SUCCESS, (state, { addedBook }) => {
     // We add the book with iid in indexedDB

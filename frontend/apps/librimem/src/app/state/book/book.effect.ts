@@ -49,7 +49,7 @@ export class BookEffects {
       ofType(ADD_BOOK),
       mergeMap((action) => {
         // Add to IndexedDB
-        return from(this.bookStorageApi.addBook(action.newBook)).pipe(
+        return from(this.bookStorageApi.addBook(action.newBook as IBook)).pipe(
           tap((a) => console.log(`newbook: ${JSON.stringify(a)}`)),
           map((res) => ADD_BOOK_SUCCESS({ addedBook: res }))
         )

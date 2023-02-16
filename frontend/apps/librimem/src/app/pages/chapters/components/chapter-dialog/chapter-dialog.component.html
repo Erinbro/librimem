@@ -1,0 +1,17 @@
+<mat-dialog-content class="chapter-modal">
+  <div class="chapter-modal__title">
+    <h3>Add a Chapter</h3>
+  </div>
+  <mat-form-field>
+    <mat-label>Index</mat-label>
+    <input matInput [(ngModel)]="chapter.index" />
+  </mat-form-field>
+  <mat-form-field matTooltip="E.g. 1.3.4">
+    <mat-label>Title</mat-label>
+    <input matInput [(ngModel)]="chapter.title" />
+  </mat-form-field>
+  <mat-form-field matTooltip="The page where the chapter start">
+    <mat-label>Starting Page</mat-label>
+    <input matInput [(ngModel)]="chapter.page" />
+  </mat-form-field>
+</mat-dialog-content>

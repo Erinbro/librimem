@@ -78,6 +78,17 @@ import { AddButtonComponent } from './shared/buttons/add-button/add-button.compo
 import { ChapterPresentationComponent } from './pages/chapter/components/chapter-presentation/chapter-presentation.component';
 import { FavoriteButtonComponent } from './shared/buttons/favorite-button/favorite-button.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { MatTabsModule } from '@angular/material/tabs';
+import { BookSearchCardComponent } from './pages/books/components/BookModal/components/book-search-card/book-search-card.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AddedBookSnackBarComponent } from './pages/books/components/BookModal/components/added-book-snackbar';
+import { BookPresentationComponent } from './pages/book/components/BookPresentation/book-presentation.component';
+import { BookResourcesComponent } from './pages/book/components/BookResources/book-resources.component';
+import { MatSelectModule } from "@angular/material/select"
+import { ChapterStorageApi } from './storage/features/chapter.storage';
+import { ChapterAddedSnackBar } from './pages/chapters/components/chapter-dialog/components/chapter-added-snackbar';
+import { FlashcardAddedSnackBar } from './pages/flashcards/components/flashcard-dialog/components/flashcard-added-snackbar';
 
 @NgModule({
   declarations: [
@@ -125,6 +136,12 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     AddButtonComponent,
     ChapterPresentationComponent,
     FavoriteButtonComponent,
+    BookSearchCardComponent,
+    AddedBookSnackBarComponent,
+    BookPresentationComponent,
+    BookResourcesComponent,
+    ChapterAddedSnackBar,
+    FlashcardAddedSnackBar
   ],
   imports: [
     MatToolbarModule,
@@ -175,10 +192,14 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
+      registrationStrategy: 'registerWhenStable:30000',
     }),
+    MatTabsModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
+    MatSelectModule
   ],
-  providers: [SidenavService, { provide: MAT_DIALOG_DATA, useValue: {} }],
+  providers: [SidenavService, { provide: MAT_DIALOG_DATA, useValue: {} }, ChapterStorageApi],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

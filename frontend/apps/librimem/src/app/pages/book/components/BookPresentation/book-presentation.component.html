@@ -1,0 +1,32 @@
+<div class="book-presentation">
+  <!-- title -->
+  <div class="book-presentation__title">
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput [(ngModel)]="book.title" name="title" />
+    </mat-form-field>
+  </div>
+  <!-- cover -->
+  <!-- status -->
+  <!-- author_name -->
+  <!-- current page + pages -->
+  <!-- progress -->
+  <!-- language -->
+  <!-- rating -->
+  <!-- resources -->
+  <div class="book-presentation__resources">
+    <librimem-book-resources />
+    <!-- chapters -->
+    <div class="resources__chapters">
+      <ng-container *ngIf="chapters">
+        <p *ngFor="let chapter of chapters">
+          {{ chapter.title }}
+        </p>
+      </ng-container>
+    </div>
+    <!-- flashcards -->
+    <!-- notes -->
+    <!-- citations -->
+    <!-- TODO download (html -->
+  </div>
+</div>

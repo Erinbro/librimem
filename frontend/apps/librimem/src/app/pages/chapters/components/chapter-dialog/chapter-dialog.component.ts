@@ -4,42 +4,44 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Chapter } from '../../../../models/chapter.model';
 import { IStore } from '../../../../state/store';
+import { IChapter } from '@librimem/api-interfaces';
+import { ADD_CHAPTER } from '../../../../state/chapter/chapter.actions';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ChapterAddedSnackBar } from './components/chapter-added-snackbar';
 
 /**
  * Dialog to add chapter
  */
 @Component({
-  template: `
-  <mat-dialog-content class="chapter-modal">
-    <h3>Add a Chapter</h3>
-    <form [formGroup]="chapter">
-      <mat-form-field matTooltip="The title of the chapter">
-        <mat-label>Title</mat-label>
-        <input formControlName="title" matInput />
-      </mat-form-field>
-
-    </form>
-
-
-  </mat-dialog-content>
-  `,
+  templateUrl: "./chapter-dialog.component.html",
   styleUrls: ['./chapter-dialog.component.scss'],
 })
 export class ChapterDialogComponent implements OnInit {
 
-  chapter!: FormGroup
+  chapter!: IChapter
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+  constructor(
     private dialogRef: MatDialogRef<ChapterDialogComponent>,
     private store: Store<IStore>,
-    private builder: FormBuilder
+    private _snackBar: MatSnackBar
   ) {
 
 
   }
 
   ngOnInit(): void {
-    this.chapter = this.builder.group(new Chapter())
+    this.chapter = new Chapter() as unknown as IChapter
+    this.chapter.status = "TO_READ"
+  }
+
+  addChapter() {
+    this.store.dispatch(ADD_CHAPTER({ newChapter: this.chapter }))
+  }
+
+  showSnackBar() {
+    this._snackBar.openFromComponent(ChapterAddedSnackBar, {
+      duration: 2000
+    })
   }
 
 }

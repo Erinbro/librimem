@@ -5,7 +5,6 @@ import { IEntity, IEntityType } from './entity.interface';
 export interface IBook extends IEntity {
   type: string
   title: string;
-  author_prename: string;
   author_name: string;
   currentPage?: number;
   publishingHouse?: string;

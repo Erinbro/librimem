@@ -1,50 +1,63 @@
 <mat-dialog-content class="book-modal">
-  <!-- NOTE Show this if we want to edit a book -->
-  <ng-container *ngIf="data.isEditing">
-    <h3>Edit the book</h3>
-    <form [formGroup]="book">
-      <input formControlName="title" ((input))="updateBook()" />
-    </form>
-    <mat-dialog-actions>
-      <button mat-button mat-dialog-close>Update</button>
-    </mat-dialog-actions>
-  </ng-container>
-  <!-- NOTE Show this if we want to add a book -->
-  <ng-container *ngIf="!data.isEditing">
-    <div class="modal__adding">
-      <div class="adding__title">
-        <h3>Add a new book</h3>
+  <!-- <mat-dialog-actions class="book-modal__header">
+    <div class="book-modal__header__close-btn">
+      <librimem-close-button />
+    </div>
+  </mat-dialog-actions> -->
+  <!-- NOTE Decides if searching or adding manually -->
+  <mat-tab-group class="book-modal__tabs">
+    <mat-tab label="Adding">
+      <div class="modal__adding">
+        <div class="adding__title">
+          <h6>Add a new book manually</h6>
+        </div>
+        <form [formGroup]="book" class="modal__adding__form">
+          <mat-form-field matTooltip="The title of the book">
+            <mat-label>Title</mat-label>
+            <input formControlName="title" matInput />
+          </mat-form-field>
+          <mat-form-field matTooltip="The prename of the author">
+            <mat-label>Prename</mat-label>
+            <input formControlName="author_prename" matInput />
+          </mat-form-field>
+          <mat-form-field matTooltip="The name of the author">
+            <mat-label>Name</mat-label>
+            <input formControlName="author_name" matInput />
+          </mat-form-field>
+        </form>
+        <div class="adding__add">
+          <button mat-button (click)="addBook()">Add</button>
+        </div>
       </div>
-      <div class="adding__search">
-        <div class="adding__search__input">
+    </mat-tab>
+    <mat-tab class="book-modal__tabs__searching" label="Searching">
+      <div class="modal__search">
+        <div class="modal__search__title">
+          <h6>Search for a Book</h6>
+        </div>
+        <div class="modal__search__input">
           <form>
             <mat-form-field>
               <mat-label>Search</mat-label>
               <input matInput [(ngModel)]="searchTerm" name="searchTerm" />
             </mat-form-field>
-            <librimem-primary-button (click)="searchBook()" content="Search" />
+            <div class="modal__search__input__btn">
+              <librimem-primary-button
+                (click)="searchBook()"
+                content="Search"
+              />
+            </div>
           </form>
         </div>
         <!-- NOTE Here we show the results from openlibrary.org -->
-        <div class="adding__search__result"></div>
+        <div class="modal__search__result">
+          <mat-spinner *ngIf="loading" mode="indeterminate" />
+          <librimem-book-search-card
+            *ngFor="let searchBook of searchResults$ | async"
+            [book]="searchBook"
+          />
+        </div>
       </div>
-      <form [formGroup]="book">
-        <mat-form-field matTooltip="The title of the book">
-          <mat-label>Title</mat-label>
-          <input formControlName="title" matInput />
-        </mat-form-field>
-        <mat-form-field matTooltip="The prename of the author">
-          <mat-label>Prename</mat-label>
-          <input formControlName="author_prename" matInput />
-        </mat-form-field>
-        <mat-form-field matTooltip="The name of the author">
-          <mat-label>Name</mat-label>
-          <input formControlName="author_name" matInput />
-        </mat-form-field>
-      </form>
-      <div class="adding__add">
-        <button mat-button (click)="addBook()">Add</button>
-      </div>
-    </div>
-  </ng-container>
+    </mat-tab>
+  </mat-tab-group>
 </mat-dialog-content>

@@ -1,23 +1,117 @@
 .book-modal {
-  .modal__adding {
+  width: 100%;
+  height: 100%;
+  .book-modal__header {
+    .book-modal__header__close-btn {
+    }
+  }
+  mat-tab-group {
     width: 100%;
     height: 100%;
-    .adding__title {
-      display: flex;
-      justify-content: center;
+  }
+}
+
+.modal__adding {
+  & {
+    width: 100%;
+    height: 100%;
+  }
+  width: 100%;
+  height: 100%;
+  display: grid;
+  // grid-template-rows: fit-content fit-content fit-content;
+  grid-auto-rows: auto;
+  grid-template-areas:
+    'title'
+    'form'
+    'add';
+  .adding__title {
+    grid-area: title;
+    width: 100%;
+    height: fit-content;
+    padding: 1rem;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h6 {
+      font-size: 24px;
+      font-weight: bolder;
     }
+  }
+  .modal__adding__form {
+    grid-area: form;
+    width: 100%;
+    height: fit-content;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    mat-form-field {
+      margin-bottom: 1rem;
+    }
+  }
+  .adding__add {
+    grid-area: add;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    button {
+    }
+  }
+}
+
+.modal__search {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  // grid-auto-rows: auto;
+  grid-template-areas:
+    'title'
+    'form'
+    'results';
+  .modal__search__title {
+    grid-area: title;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    margin-top: 1rem;
+    h6 {
+      font-size: 24px;
+      font-weight: bolder;
+    }
+  }
+  // NOTE form
+  .modal__search__input {
+    grid-area: form;
+    padding: 1rem;
+    width: 100%;
+    height: 100%;
     form {
+      width: 100%;
+      height: 100%;
       display: flex;
-      justify-content: left;
-      mat-form-field {
-        margin-right: 1rem;
-      }
-    }
-    .adding__add {
-      display: flex;
+      flex-direction: column;
       justify-content: center;
-      button {
+      align-items: center;
+      .modal__search__input__btn {
+        padding: 1rem;
       }
     }
+  }
+  .modal__search__result {
+    grid-area: results;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }

@@ -1,13 +1,16 @@
 import { IChapter } from '@librimem/api-interfaces';
 import { db } from '../storage';
-import { LOG } from '../../utils/logger';
+import { Injectable } from '@angular/core';
 
 type ChapterWithoutId = Omit<IChapter, "id">
 
+@Injectable({
+  providedIn: "root"
+})
 export class ChapterStorageApi {
   private chapterStorage = db.chapters
 
-  public async addChapter(chapter: ChapterWithoutId) {
+  public async addChapter(chapter: IChapter) {
     return await this.chapterStorage.add(chapter);
   }
 
@@ -15,12 +18,18 @@ export class ChapterStorageApi {
     return await this.chapterStorage.get(id);
   }
 
-  public async getChapters() {
-    return await this.chapterStorage.toArray();
+  public async getChapters(entityId: number) {
+    let result
+    try {
+      result = await this.chapterStorage.where("entityId").equals(entityId).toArray();
+    } catch (err) {
+      console.log(`Error in fetching chapters: ${err}`);
+    }
+    return result;
+
   }
 
   public async updateChapter(updatedChapter: ChapterWithoutId) {
-    LOG.info(`Deleted Chapter in IndexedDB with title: ${updatedChapter.title}`)
     // this.chapterStorage.delete(updatedChapter)
   }
 

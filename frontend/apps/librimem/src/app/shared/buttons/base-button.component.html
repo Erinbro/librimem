@@ -5,6 +5,8 @@
   (click)="clicked($event)"
   [matTooltip]="tooltip"
 >
-  {{ content }}
+  <span>
+    {{ content }}
+  </span>
   <ng-content></ng-content>
 </button>

@@ -1,8 +1,12 @@
 <mat-dialog-content class="flashcard-dialog">
-  <div class="flashcard-dialog__close">
-    <librimem-close-button />
+  <!-- <div class="flashcard-dialog__header">
+    <div class="flashcard-dialog__close">
+      <librimem-close-button />
+    </div>
+  </div> -->
+  <div mat-dialog-title class="flashcard-dialog__title">
+    <p>Flashcard</p>
   </div>
-  <h1>Flashcard</h1>
   <!-- NOTE EDITING -->
   <ng-container *ngIf="data.editing">
     <ng-container *ngIf="flashcardFormGroup">

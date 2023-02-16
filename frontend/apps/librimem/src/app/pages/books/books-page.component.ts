@@ -66,7 +66,12 @@ export class BooksPageComponent implements OnInit {
   }
 
   openModal() {
-    const dialogRef = this.dialog.open(BookModalComponent, { data: { isEditing: false, id: undefined } })
+    const dialogRef = this.dialog.open(BookModalComponent, {
+      width: "100%",
+      maxWidth: "80vw",
+      height: "100%",
+      maxHeight: "80vh"
+    })
   }
 
 

@@ -17,7 +17,7 @@ export const SELECT_BOOK = createAction('[Book Card] Open Modal', props<{ id: st
 export const DESELECT_BOOK = createAction("[Deselect Book]")
 
 // CREATE
-export const ADD_BOOK = createAction('[Book Modal] Add Book', props<{ newBook: IBook }>())
+export const ADD_BOOK = createAction('[Book Modal] Add Book', props<{ newBook: Omit<IBook, "id"> }>())
 export const ADD_BOOK_SUCCESS = createAction(`[Book Modal] Add Book success`, props<{ addedBook: IBook }>())
 
 export const DELETE_BOOK = createAction("[Delete Book]", props<{ bookId: number }>())

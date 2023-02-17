@@ -12,7 +12,7 @@ import { BookModalComponent } from './components/BookModal/book-modal.component'
     <div class="books-page__list">
 
     <div class="books-page__button">
-      <librimem-add-button tooltip="Add Book"
+      <librimem-add-button
       content="+" (click)="openModal()" />
     </div>
     <librimem-book-list></librimem-book-list>

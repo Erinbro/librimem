@@ -22,6 +22,11 @@ export class BookPresentationComponent implements OnInit, OnDestroy {
   notes!: INote[]
   citations!: ICitation[]
   bookSubscription!: Subscription
+  bookStatus = [
+    { value: "TO_READ", viewValue: "to Read" },
+    { value: "READING", viewValue: "Reading" },
+    { value: "READ", viewValue: "Read" }
+  ]
 
   constructor(
     private store: Store<IStore>,

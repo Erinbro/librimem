@@ -82,7 +82,7 @@ export class BookModalComponent implements OnInit {
 
   showSnackBar() {
     this._snackBar.openFromComponent(AddedBookSnackBarComponent, {
-      duration: 2000
+      duration: 1500
     })
   }
 

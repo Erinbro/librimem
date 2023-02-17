@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { switchMap, catchError, map, mergeMap, tap, concatMap, exhaustMap } from 'rxjs/operators';
-import { of, from } from 'rxjs';
+import { of, from, pipe } from 'rxjs';
 import { LOAD_BOOKS, LOAD_BOOKS_SUCCESS, LOAD_BOOKS_FAILURE, ADD_BOOK, ADD_BOOK_SUCCESS, UPDATE_BOOK, UPDATE_BOOK_SUCCESS, DELETE_BOOK, DELETE_BOOK_SUCCESS } from './book.action';
 import { BookClient } from '../../services/http/book.client';
 import { IBook } from "@librimem/api-interfaces"
@@ -70,9 +70,13 @@ export class BookEffects {
     () => this.actions$.pipe(
       ofType(UPDATE_BOOK),
       mergeMap((action) => {
-        return this.bookClient.updateBook(action.updateBook).pipe(
+        return from(this.bookStorageApi.updateBook(action.updateBook)).pipe(
           map((res) => UPDATE_BOOK_SUCCESS({ updatedBook: res }))
         )
+        // NOTE At the moment no backend
+        // return this.bookClient.updateBook(action.updateBook).pipe(
+        //   map((res) => UPDATE_BOOK_SUCCESS({ updatedBook: res }))
+        // )
       })
     )
   )

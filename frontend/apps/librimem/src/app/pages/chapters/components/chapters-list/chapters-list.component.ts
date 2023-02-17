@@ -1,13 +1,15 @@
-import { IChapter } from '@librimem/api-interfaces';
+import { IChapter, IBook } from '@librimem/api-interfaces';
 import { IStore } from './../../../../state/store';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectChapterStateData, selectChapterById } from '../../../../state/chapter/chapter.selectors';
 import { entitiesToArray } from '../../../../utils/entitiesToArray';
 import { CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { UPDATE_CHAPTER } from '../../../../state/chapter/chapter.actions';
+import { UPDATE_CHAPTER, LOAD_CHAPTERS } from '../../../../state/chapter/chapter.actions';
 import { ChapterService } from '../../../../services/common/chapter.service';
 import { ChapterDenominatorService } from '../../../../shared/chapter-denominator/chapter-denominator.service';
+import { Subscription } from 'rxjs';
+import { selectSelectedBook } from '../../../../state/book/book.selector';
 
 interface IChaptersWithParent {
   parent: IChapter;
@@ -50,7 +52,7 @@ interface IChaptersWithParent {
 }
   `]
 })
-export class ChaptersListComponent implements OnInit {
+export class ChaptersListComponent implements OnInit, OnDestroy {
   //   /**
   //  * Chapters that must be read
   //  */
@@ -66,6 +68,9 @@ export class ChaptersListComponent implements OnInit {
   //    */
   //   read: IChapter[] = []
   sortedChapters: IChapter[][] = []
+  chapterStateDataSubscription!: Subscription
+  selectedEntity!: IBook
+  selectedEntitySubscription!: Subscription
   colors: string[] = ["red", "blue", "green", "yellow"]
 
 
@@ -73,9 +78,21 @@ export class ChaptersListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.select(selectChapterStateData).subscribe({
+    this.selectedEntitySubscription = this.store.select(selectSelectedBook).subscribe((s) => {
+      if (!s) return
+      this.selectedEntity = s
+    })
+    this.store.dispatch(LOAD_CHAPTERS({ bookId: this.selectedEntity.id }))
+
+    this.chapterStateDataSubscription = this.store.select(selectChapterStateData).subscribe({
       next: (chapters) => {
+        console.log(`chapters: ${JSON.stringify(chapters)}`);
+
         const chaptersArray = entitiesToArray(chapters)
+        console.log(`chaptersArray: ${chaptersArray}`);
+
+        if (chaptersArray.length === 0) return
+
         const indexedChapters = this.chapterDenominatorService
           .getSortedChapterIndexes(chaptersArray)
 
@@ -86,6 +103,11 @@ export class ChaptersListComponent implements OnInit {
       }
     })
 
+  }
+
+  ngOnDestroy(): void {
+    this.chapterStateDataSubscription.unsubscribe()
+    this.selectedEntitySubscription.unsubscribe()
   }
 
   /**

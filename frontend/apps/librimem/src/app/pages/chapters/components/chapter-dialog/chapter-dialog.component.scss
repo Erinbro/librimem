@@ -5,4 +5,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  .chapter-modal__index {
+  }
+  .chapter-modal__title {
+  }
+  .chapter-modal__starting-page {
+  }
+  .chapter-modal__btn {
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }

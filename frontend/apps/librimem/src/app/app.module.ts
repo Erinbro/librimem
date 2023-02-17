@@ -89,6 +89,9 @@ import { MatSelectModule } from "@angular/material/select"
 import { ChapterStorageApi } from './storage/features/chapter.storage';
 import { ChapterAddedSnackBar } from './pages/chapters/components/chapter-dialog/components/chapter-added-snackbar';
 import { FlashcardAddedSnackBar } from './pages/flashcards/components/flashcard-dialog/components/flashcard-added-snackbar';
+import { MatProgressBarModule } from "@angular/material/progress-bar"
+import { MatSliderModule } from "@angular/material/slider"
+import { ChapterEffects } from './state/chapter/chapter.effects';
 
 @NgModule({
   declarations: [
@@ -158,7 +161,7 @@ import { FlashcardAddedSnackBar } from './pages/flashcards/components/flashcard-
     HttpClientModule,
     StoreModule.forRoot(reducers),
     // NOTE Store
-    EffectsModule.forRoot([BookEffects]),
+    EffectsModule.forRoot([BookEffects, ChapterEffects]),
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
@@ -197,7 +200,9 @@ import { FlashcardAddedSnackBar } from './pages/flashcards/components/flashcard-
     MatTabsModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatProgressBarModule,
+    MatSliderModule
   ],
   providers: [SidenavService, { provide: MAT_DIALOG_DATA, useValue: {} }, ChapterStorageApi],
   bootstrap: [AppComponent],

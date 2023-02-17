@@ -5,13 +5,13 @@ import { bookStoreActions } from '.';
 import { IEntityType } from "@librimem/api-interfaces"
 import { arrayToEntities } from '../../utils/arrayToEntities';
 
-import bookMocks from "../../../assets/data/books.json"
+// import bookMocks from "../../../assets/data/books.json"
 
 
 export const bookFeatureName = 'book';
 
 export const initialBookState: IStoreEntity<IBook> = {
-  data: arrayToEntities(bookMocks),
+  data: {},
   dataMap: new Map<number, IBook>(),
   add: { data: null, isAdding: false },
   filter: {

@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChaptersPageComponent } from './chapters-page.component';
+import { NoteDialogComponent } from './note-dialog.component';
 
-describe('ChaptersPageComponent', () => {
-  let component: ChaptersPageComponent;
-  let fixture: ComponentFixture<ChaptersPageComponent>;
+describe('NoteDialogComponent', () => {
+  let component: NoteDialogComponent;
+  let fixture: ComponentFixture<NoteDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ChaptersPageComponent],
+      declarations: [NoteDialogComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ChaptersPageComponent);
+    fixture = TestBed.createComponent(NoteDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

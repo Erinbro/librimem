@@ -26,7 +26,7 @@ export class ChapterCardComponent {
   }
 
   deleteChapter() {
-    this.store.dispatch(DELETE_CHAPTER({ deletedChapter: this.chapter }))
+    this.store.dispatch(DELETE_CHAPTER({ deletedChapterId: this.chapter.id }))
   }
 
 }

@@ -35,7 +35,6 @@ export class BookStorageApi {
 
   public async deleteBook(id: number) {
     const deletedBook = await this.bookStorage.get(id)
-    if (!deletedBook) return
     await this.bookStorage.delete(id)
     return deletedBook as IBook;
   }

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, combineLatest, of, from, concat, merge } from 'rxjs';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { bookSearchResult, booksSearchResult } from 'apps/librimem/src/assets/data/openlibrary';
+import { filter, map, mergeMap, pluck, tap, catchError, takeUntil } from 'rxjs/operators';
 
 interface ISearchResults {
   docs:
@@ -52,40 +53,82 @@ interface ISearchBookResult {
 })
 export class OpenLibraryClient {
   baseUrl = "https://openlibrary.org/search.json?q="
+  /**
+   * books
+   */
+  searchResults$ = new Observable<ISearchResults>()
+  /**
+   * Cover
+   */
+  bookResults$ = new Observable<ISearchBookResult>()
 
   constructor(private http: HttpClient) { }
 
-  searchBooksByTitle(title: string) {
-    // FIXME Restore
-    // const response = this.http.get<ISearchResults>(this.baseUrl + this.formatTitle(title))
-    // response.subscribe((res) => {
-    //   console.log(res);
-
-    // })
-    // return response
-
-    let formatedResponse = booksSearchResult.docs as ISearchResults['docs']
-    formatedResponse = formatedResponse.map((b) => {
-      if (!b.isbn) return b
-      const cover = this.getBookById(b.isbn[0]).medium
-      b.cover = cover
-      return b
-    })
-
-    return of(
-      formatedResponse
-    )
+  getBooks(title: string) {
+    return this.searchBooksByTitle(title).pipe(
+      mergeMap((c) => {
+        const filtered = c.filter((n) => n ? true : false)
+        return filtered.map((n) => {
+          if (!n) return undefined
+          return this.getBookById(n.isbn[0]).pipe(
+            map((t) => {
+              n.cover = t.medium
+              return n
+            })
+          )
+        })
+      }),
+    ) as unknown as Observable<ISearchResults['docs']>
   }
 
+  searchBooksByTitle(title: string) {
+    console.log(`calelld`);
+
+    return this.http.get<ISearchResults>(this.baseUrl + this.formatTitle(title)).pipe(
+      // map((val) => val.docs),
+      // filter((v) => v ? true : false),
+      // mergeMap((s) => {
+      //   const res = s.map((n) => this.getBookById(n.isbn[0]).pipe(
+      //     map((k) => k.medium),
+      //   ))
+      //   return combineLatest([
+      //     of(s),
+      //     res
+      //   ])
+      // }),
+      // map(([t, v]) => {
+      //   v.pipe(
+      //     map((r) => t.map((x) => x.cover = r))
+      //   )
+      //   return t
+      // })
+      map((v) => v['docs']),
+    )
+
+  }
+
+  /**
+   * Returns cover of book if it exists
+   * @param isbn
+   * @returns
+   */
   getBookById(isbn: string) {
     // FIXME restore
-    // const response = this.http.get(`https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&jscmd=data&format=json`)
-    // response.subscribe((res) => {
-    //   console.log(res);
-    // })
-    const formatedResponse = bookSearchResult['ISBN:9780945001102'].cover
-    return formatedResponse
+    const response = this.http.get<ISearchBookResult>(`https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&jscmd=data&format=json`).pipe(
+      map((val) => {
+        const key = Object.keys(val)
+        const obj = val[key[0]]
+        return obj.cover
+      })
+    )
+
+    // const formatedResponse = bookSearchResult['ISBN:9780945001102'].cover
+    return response
   }
+
+  // getCoverOfBook(coverId: number) {
+
+  // }
 
 
 

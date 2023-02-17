@@ -1,0 +1,10 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "xyz.appmaker.tgixhr",
+      "sha256_cert_fingerprints": ["FE:31:49:15:93:D0:3D:91:D3:F9:84:74:43:7E:80:59:AB:4A:6B:CB:DE:A6:46:AD:F9:8C:FC:98:DB:D8:0D:3D"]
+    }
+  }
+]

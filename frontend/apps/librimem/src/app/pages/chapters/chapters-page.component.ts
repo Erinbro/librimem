@@ -13,7 +13,7 @@ import { ChapterDialogComponent } from './components/chapter-dialog/chapter-dial
   <div class="chapters-page">
   <div class="chapters-page__list">
     <div class="chapters-page__button">
-      <librimem-add-button (click)="openDialog()" tooltip="Add Chapter" />
+      <librimem-add-button (click)="openDialog()"  />
     </div>
     <librimem-chapters-list></librimem-chapters-list>
   </div>

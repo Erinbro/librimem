@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
-import { switchMap, catchError, map, mergeMap, tap, concatMap, exhaustMap } from 'rxjs/operators';
+import { switchMap, catchError, map, mergeMap, tap, concatMap, exhaustMap, take } from 'rxjs/operators';
 import { of, from } from 'rxjs';
 import { BookClient } from '../../services/http/book.client';
 import { IBook, IChapter } from '@librimem/api-interfaces';
 import { BookStorageApi } from '../../storage/features/book.storage';
-import { LOAD_CHAPTERS, LOAD_CHAPTERS_SUCCESS, ADD_CHAPTER, ADD_CHAPTER_SUCCESS, UPDATE_CHAPTER, UPDATE_CHAPTER_SUCCESS, DELETE_CHAPTER, DELETE_CHAPTER_SUCCESS } from './chapter.actions';
+import { LOAD_CHAPTERS, LOAD_CHAPTERS_SUCCESS, ADD_CHAPTER, ADD_CHAPTER_SUCCESS, UPDATE_CHAPTER, UPDATE_CHAPTER_SUCCESS, DELETE_CHAPTER, DELETE_CHAPTER_SUCCESS, UPDATE_CHAPTER_FAILURE } from './chapter.actions';
 import { ChapterStorageApi } from '../../storage/features/chapter.storage';
 import { Chapter } from '../../models/chapter.model';
 
@@ -70,9 +70,13 @@ export class ChapterEffects {
   updateChapterEffect$ = createEffect(
     () => this.actions$.pipe(
       ofType(UPDATE_CHAPTER),
-      mergeMap((action) => {
+      take(1),
+      switchMap((action) => {
+        console.log(`in effect`);
+
         return from(this.chapterStorageApi.updateChapter(action.updatedChapter)).pipe(
-          map((res) => UPDATE_CHAPTER_SUCCESS({ updatedChapter: res }))
+          map((res) => UPDATE_CHAPTER_SUCCESS({ updatedChapter: res })),
+          catchError((err) => of(UPDATE_CHAPTER_FAILURE()))
         )
       })
     )

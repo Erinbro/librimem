@@ -1,14 +1,20 @@
 import { IBook } from '@librimem/api-interfaces';
 import { db } from '../storage';
 import { Injectable } from '@angular/core';
+import { ChapterStorageApi } from './chapter.storage';
 
-@Injectable()
+@Injectable({
+  providedIn: "root"
+})
 /**
  * Class with CRUD methods for the book storage
  * in IndexedDB
  */
 export class BookStorageApi {
   private bookStorage = db.books
+
+  constructor(private chapterStorageApi: ChapterStorageApi) { }
+
   /**
    * Adds book to IndexedDB
    */
@@ -36,6 +42,8 @@ export class BookStorageApi {
   public async deleteBook(id: number) {
     const deletedBook = await this.bookStorage.get(id)
     await this.bookStorage.delete(id)
+    await this.chapterStorageApi.deleteAllChapterofBook(id)
     return deletedBook as IBook;
   }
+
 }

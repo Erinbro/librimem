@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@librimem/api-interfaces": ["libs/api-interfaces/src/index.ts"],
-      "@librimem/visitor": ["libs/visitor/src/index.ts"]
+      "@librimem/visitor": ["libs/visitor/src/index.ts"],
+      "apps/librimem/src/assets/*": ["apps/librimem/src/assets/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -18,7 +18,7 @@ import { selectChapterStateSelection } from '../../state/chapter/chapter.selecto
   providers: [],
 })
 export class ChapterPageComponent implements OnInit {
-  constructor(private activatedRoute: ActivatedRoute,
+  constructor(
   ) { }
 
   ngOnInit(): void {

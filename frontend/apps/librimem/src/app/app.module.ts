@@ -4,7 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BooksPageComponent } from './pages/books/books-page.component';
-import { StoreModule, Store } from '@ngrx/store';
+import { StoreModule, Store, } from '@ngrx/store';
+import { StoreDevtoolsModule } from "@ngrx/store-devtools"
 import { BookListComponent } from './pages/books/components/BooksList/book-list.component';
 import { reducers } from './state/reducers';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -92,6 +93,7 @@ import { FlashcardAddedSnackBar } from './pages/flashcards/components/flashcard-
 import { MatProgressBarModule } from "@angular/material/progress-bar"
 import { MatSliderModule } from "@angular/material/slider"
 import { ChapterEffects } from './state/chapter/chapter.effects';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -160,6 +162,7 @@ import { ChapterEffects } from './state/chapter/chapter.effects';
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot(reducers),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
     // NOTE Store
     EffectsModule.forRoot([BookEffects, ChapterEffects]),
     BrowserAnimationsModule,

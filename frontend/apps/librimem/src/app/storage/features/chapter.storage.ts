@@ -10,7 +10,7 @@ export class ChapterStorageApi {
   private chapterStorage = db.chapters
 
   public async addChapter(chapter: IChapter) {
-    console.log(`called addedChapter`);
+    console.log(`addChapter called`);
 
     const addedChapterId = await this.chapterStorage.add(chapter)
     const addedChapter = await this.chapterStorage.get(addedChapterId)
@@ -22,14 +22,11 @@ export class ChapterStorageApi {
   }
 
   public async getChapters(entityId: number) {
-    let result
-    try {
-      result = await this.chapterStorage.where({ entityId }).toArray();
-    } catch (err) {
-      console.log(`Error in fetching chapters: ${err}`);
-    }
-    return result;
+    let result: IChapter[]
+    const allChapters = await this.chapterStorage.toArray();
+    const filteredChapters = allChapters.filter((c) => c.entityId === entityId)
 
+    return filteredChapters
   }
 
   public async updateChapter(updatedChapter: IChapter) {
@@ -46,8 +43,11 @@ export class ChapterStorageApi {
 
 
   public async deleteAllChapterofBook(entityId: number) {
-    const deletedChapters = await this.chapterStorage.where({ entityId }).toArray()
-    await this.chapterStorage.where({ entityId }).delete()
+    const allChapters = await this.chapterStorage.toArray()
+    const filteredChapters = allChapters.filter((b) => b.entityId !== entityId)
+    const deletedChapters = allChapters.filter((b) => b.entityId === entityId)
+    await this.chapterStorage.clear()
+    await this.chapterStorage.bulkAdd(filteredChapters)
     return deletedChapters
   }
 }

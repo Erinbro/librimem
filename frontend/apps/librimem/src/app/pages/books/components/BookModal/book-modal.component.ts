@@ -37,7 +37,7 @@ interface docsType {
 export class BookModalComponent implements OnInit {
 
   searchTerm = ""
-  searchResults$!: Observable<docsType[]>
+  searchResults$: Observable<docsType[]> = new Observable()
   /**
    * The book that was selected from the search
    */

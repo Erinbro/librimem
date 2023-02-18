@@ -57,6 +57,9 @@ export const chapterReducer = createReducer(
     }
   }),
   on(chapterStoreActions.UPDATE_CHAPTER, (state, { updatedChapter }) => {
+    return state
+  }),
+  on(chapterStoreActions.UPDATE_CHAPTER_SUCCESS, (state, { updatedChapter }) => {
     return {
       ...state,
       data: {
@@ -65,6 +68,13 @@ export const chapterReducer = createReducer(
       }
     }
   }),
+  on(chapterStoreActions.UPDATE_CHAPTER_FAILURE, (state) => {
+    return {
+      ...state,
+      error: "Updating the chapter did not work out."
+    }
+  })
+  ,
   // TODO LOAD_CHAPTERS_FAILURE
   on(chapterStoreActions.DELETE_CHAPTER, (state, { deletedChapterId }) => {
     const filtedredChapters = entitiesToArray(state.data).filter((v) => v.id != deletedChapterId)

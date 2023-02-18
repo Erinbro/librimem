@@ -33,7 +33,13 @@ export class DrawerComponent implements OnInit {
     src: "../../../assets/icons/chapters.png",
     name: "Chapters",
     path: "books/book/chapters"
-  },]
+  },
+    // {
+    //   src: "../../../assets/icons/open-book.png",
+    //   name: "Reader",
+    //   path: "reader"
+    // },
+  ]
 
   /**
    * The direct attributes for a chapter

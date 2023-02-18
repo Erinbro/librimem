@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, combineLatest, of, from, concat, merge } from 'rxjs';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { bookSearchResult, booksSearchResult } from 'apps/librimem/src/assets/data/openlibrary';
-import { filter, map, mergeMap, pluck, tap, catchError, takeUntil } from 'rxjs/operators';
+import { filter, map, mergeMap, pluck, tap, catchError, takeUntil, switchMap } from 'rxjs/operators';
 
 interface ISearchResults {
   docs:
@@ -66,7 +66,7 @@ export class OpenLibraryClient {
 
   getBooks(title: string) {
     return this.searchBooksByTitle(title).pipe(
-      mergeMap((c) => {
+      switchMap((c) => {
         const filtered = c.filter((n) => n ? true : false)
         return filtered.map((n) => {
           if (!n) return undefined

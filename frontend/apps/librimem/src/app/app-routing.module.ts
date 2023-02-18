@@ -29,6 +29,7 @@ const routes: Routes = [
   { path: "auth", component: AuthPageComponent },
   { path: "auth/register", component: RegisterPageComponent },
   { path: "auth/login", component: LoginPageComponent },
+  // { path: "reader", component: ReaderPageComponent },
   { path: '**', redirectTo: '' }
 ]
 

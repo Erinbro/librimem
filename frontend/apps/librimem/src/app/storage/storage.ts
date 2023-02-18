@@ -9,6 +9,7 @@ export class StorageDB extends Dexie {
   chapters!: Table<IChapter, number>;
   flashcards!: Table<IFlashcard, number>;
   notes!: Table<INote, number>;
+  epubs!: Table<Blob, number>
 
 
   constructor() {

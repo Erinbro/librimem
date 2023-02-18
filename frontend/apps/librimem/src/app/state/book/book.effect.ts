@@ -14,11 +14,8 @@ import { BookStorageApi } from '../../storage/features/book.storage';
   providedIn: "root"
 })
 export class BookEffects {
-  private bookStorageApi!: BookStorageApi
 
-  constructor(private actions$: Actions, private bookClient: BookClient,) {
-    this.bookStorageApi = new BookStorageApi();
-  }
+  constructor(private actions$: Actions, private bookClient: BookClient, private bookStorageApi: BookStorageApi) { }
 
   /*
   To handle the behaviour of the Effect when different Action instances

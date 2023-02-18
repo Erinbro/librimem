@@ -4,7 +4,11 @@
   (click)="navigateToChapterPage()"
 >
   <div class="chapter__card__index">{{ chapter.index }}</div>
-  <div class="chapter__card__title">{{ chapter.title }}</div>
+  <div class="chapter__card__title">
+    <p>
+      {{ chapter.title }}
+    </p>
+  </div>
   <!-- NOTE The background shows the progress of the chapter -->
   <div class="chapter__card__background"></div>
   <div class="chapter__card__delete">

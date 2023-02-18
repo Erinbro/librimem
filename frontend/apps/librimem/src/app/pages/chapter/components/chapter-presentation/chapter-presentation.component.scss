@@ -1,6 +1,15 @@
 .chapter-presentation {
   width: 100%;
   height: 100%;
-  .chapter-presentation__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .chapter-presentation__form {
+    .chapter-presentation__title {
+    }
+    .chapter-presentation__favorite {
+    }
+    .chapter-presentation__index {
+    }
   }
 }

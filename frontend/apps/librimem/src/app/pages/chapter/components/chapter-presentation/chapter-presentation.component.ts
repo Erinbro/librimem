@@ -5,6 +5,7 @@ import { IStore } from '../../../../state/store';
 import { Subscription } from 'rxjs';
 import { selectChapterStateSelection } from '../../../../state/chapter/chapter.selectors';
 import { UPDATE_CHAPTER } from '../../../../state/chapter/chapter.actions';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'librimem-chapter-presentation',
@@ -12,20 +13,29 @@ import { UPDATE_CHAPTER } from '../../../../state/chapter/chapter.actions';
   styleUrls: ['./chapter-presentation.component.scss'],
 })
 export class ChapterPresentationComponent implements OnInit, OnDestroy, OnChanges {
-  chapter!: IChapter;
+  chapter!: FormGroup;
   chapterSubscription!: Subscription
+  valueChangesSubscription!: Subscription
 
   constructor(
     private store: Store<IStore>,
+    private builder: FormBuilder
   ) { }
 
   ngOnInit(): void {
     this.chapterSubscription = this.store.select(selectChapterStateSelection)
       .subscribe((ch) => {
+        console.log(`subscribe called`);
 
         if (!ch) return
-        this.chapter = { ...ch }
+        this.chapter = this.builder.group(ch)
       })
+    this.chapter.valueChanges.subscribe((v) => {
+      console.log(`valueChanges called`);
+      const chapter = this.chapter.getRawValue()
+      if (!chapter) return
+      this.updateChapter()
+    })
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -33,19 +43,24 @@ export class ChapterPresentationComponent implements OnInit, OnDestroy, OnChange
   }
 
   ngOnDestroy(): void {
-    this.updateChapter()
     this.chapterSubscription.unsubscribe()
   }
 
 
   toggleFavorite() {
-    this.chapter.favorite = !this.chapter.favorite
+    const chapter = this.chapter.getRawValue()
+    this.chapter.patchValue({
+      favorite: !chapter.favorite
+    })
   }
 
   updateChapter() {
-    console.log(`ch before dispatch: ${JSON.stringify(this.chapter)}`);
+    console.log(`ch before dispatch: ${JSON.stringify(this.chapter.getRawValue())}`);
+    const updatedChapter = this.chapter.getRawValue()
+    console.log(`updatedChapter: ${updatedChapter}`);
 
-    this.store.dispatch(UPDATE_CHAPTER({ updatedChapter: this.chapter }))
+
+    this.store.dispatch(UPDATE_CHAPTER({ updatedChapter }))
   }
 }
 

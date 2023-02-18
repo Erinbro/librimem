@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, AbstractControl } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Chapter } from '../../../../models/chapter.model';
 import { IStore } from '../../../../state/store';
@@ -26,7 +25,7 @@ export class ChapterDialogComponent implements OnInit, OnDestroy {
 
 
   constructor(
-    private dialogRef: MatDialogRef<ChapterDialogComponent>,
+    // private dialogRef: MatDialogRef<ChapterDialogComponent>,
     private store: Store<IStore>,
     private _snackBar: MatSnackBar,
     private builder: FormBuilder

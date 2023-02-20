@@ -13,10 +13,9 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.core.env.Environment;
 
-@SpringBootApplication(
-        scanBasePackages = "com.erinbro.librimem.book"
-)
+@SpringBootApplication()
 @EnableFeignClients()
+@PropertySource("classpath:book-${spring.profiles.active}.properties")
 public class BookApplication {
     public static void main(String[] args) {
         SpringApplication.run(BookApplication.class,args);

@@ -1,0 +1,18 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: User
+  datasource:
+    username: erinbro
+    url: jdbc:postgresql://postgres:5432/librimem
+    password: erinbro
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+      show_sql: true

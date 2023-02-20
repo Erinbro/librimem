@@ -4,10 +4,7 @@ import com.erinbro.librimem.user.dto.UserLoginRequest;
 import com.erinbro.librimem.user.dto.UserRegistrationRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.erinbro.librimem.user.service.UserService;
 
 @RestController
@@ -25,4 +22,13 @@ public class UserController {
     public void login(@Valid @RequestBody UserLoginRequest req) {
         userService.login(req);
     }
+
+    /**
+     * Authorizes a request
+     */
+    @GetMapping()
+    public void authorize() {
+
+    }
+
 }

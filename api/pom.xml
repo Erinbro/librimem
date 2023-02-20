@@ -23,7 +23,6 @@
         <module>word</module>
 		<module>utilities</module>
         <module>citation</module>
-		<module>clients</module>
 		<module>common</module>
 	</modules>
 	<properties>

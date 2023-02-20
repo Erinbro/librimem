@@ -11,6 +11,10 @@ RUN ls
 
 RUN apk add g++ make py3-pip
 
+RUN sudo apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
+
+RUN npm install canvas
+
 RUN npm install --legacy-peer-deps
 
 RUN npx nx build librimem

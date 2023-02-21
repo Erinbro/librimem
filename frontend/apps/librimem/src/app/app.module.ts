@@ -4,8 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BooksPageComponent } from './pages/books/books-page.component';
-import { StoreModule, Store, } from '@ngrx/store';
-import { StoreDevtoolsModule } from "@ngrx/store-devtools"
+import { StoreModule, Store } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BookListComponent } from './pages/books/components/BooksList/book-list.component';
 import { reducers } from './state/reducers';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -86,14 +86,24 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AddedBookSnackBarComponent } from './pages/books/components/BookModal/components/added-book-snackbar';
 import { BookPresentationComponent } from './pages/book/components/BookPresentation/book-presentation.component';
 import { BookResourcesComponent } from './pages/book/components/BookResources/book-resources.component';
-import { MatSelectModule } from "@angular/material/select"
+import { MatSelectModule } from '@angular/material/select';
 import { ChapterStorageApi } from './storage/features/chapter.storage';
 import { ChapterAddedSnackBar } from './pages/chapters/components/chapter-dialog/components/chapter-added-snackbar';
 import { FlashcardAddedSnackBar } from './pages/flashcards/components/flashcard-dialog/components/flashcard-added-snackbar';
-import { MatProgressBarModule } from "@angular/material/progress-bar"
-import { MatSliderModule } from "@angular/material/slider"
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSliderModule } from '@angular/material/slider';
 import { ChapterEffects } from './state/chapter/chapter.effects';
 import { environment } from '../environments/environment';
+import { OauthComponent } from './pages/auth/components/oauth/oauth.component';
+import { InputTextModule } from "primeng/inputtext"
+import { ButtonModule } from "primeng/button"
+import { RippleModule } from "primeng/ripple"
+
+const primengModules = [InputTextModule, ButtonModule, RippleModule]
+/**
+ * The modules from material UI
+ */
+const materialModules = []
 
 @NgModule({
   declarations: [
@@ -146,7 +156,8 @@ import { environment } from '../environments/environment';
     BookPresentationComponent,
     BookResourcesComponent,
     ChapterAddedSnackBar,
-    FlashcardAddedSnackBar
+    FlashcardAddedSnackBar,
+    OauthComponent,
   ],
   imports: [
     MatToolbarModule,
@@ -205,9 +216,14 @@ import { environment } from '../environments/environment';
     MatSnackBarModule,
     MatSelectModule,
     MatProgressBarModule,
-    MatSliderModule
+    MatSliderModule,
+    [...primengModules]
   ],
-  providers: [SidenavService, { provide: MAT_DIALOG_DATA, useValue: {} }, ChapterStorageApi],
+  providers: [
+    SidenavService,
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+    ChapterStorageApi,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

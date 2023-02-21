@@ -1,24 +1,22 @@
 package com.erinbro.librimem.user.dto;
 
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
-public class UserRegistrationRequest {
-
+public class RegistrationRequest {
     @NotBlank
-    private String name;
-
-    @NotBlank
-    private String email;
+    private String username;
 
     @NotBlank
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
-
 }

@@ -19,6 +19,8 @@ import { AuthService } from '../../services/auth/auth.service';
       <librimem-primary-button content="Sign In"   (click)="goToOtherAuthPage('login')" />
     </div>
   </div>
+    <!-- <a href="/auth/oauth">Login with Google</a> -->
+
 </div>
   `,
   styleUrls: ['./auth-page.component.scss'],

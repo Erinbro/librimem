@@ -17,7 +17,7 @@ import { User } from '../../../../models/user.model';
         <div class="registration__username__field">
           <mat-form-field>
             <mat-label>Username</mat-label>
-            <input matInput formControlName="username" type="password" />
+            <input matInput formControlName="username" />
           </mat-form-field>
         </div>
       </div>
@@ -26,7 +26,7 @@ import { User } from '../../../../models/user.model';
         <div class="registration__password__field">
           <mat-form-field>
             <mat-label>Password</mat-label>
-            <input matInput type="password" />
+            <input matInput type="password" formControlName="password" />
           </mat-form-field>
         </div>
       </div>
@@ -56,10 +56,17 @@ export class RegisterPageComponent implements OnInit, OnChanges, OnDestroy {
   ngOnChanges(): void { }
 
   ngOnDestroy(): void {
+    this.authSubscription.unsubscribe()
   }
 
 
   register() {
-    this.authClientService.register(this.userForm.getRawValue())
+    console.log(`user: ${JSON.stringify(this.userForm.getRawValue())}`);
+
+    this.authSubscription = this.authClientService
+      .register(this.userForm.getRawValue()).subscribe((v) => {
+        console.log(v);
+
+      })
   }
 }

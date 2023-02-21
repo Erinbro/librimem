@@ -28,6 +28,7 @@ export class BookEffects {
       // NOTE We grap the LOAD_BOOKS event
       ofType(LOAD_BOOKS),
       mergeMap((_) => {
+        // FIXME Add backend
         // NOTE We do not have backend at the moment
         // return this.bookClient.getBooks().pipe(
         //   map((res) => LOAD_BOOKS_SUCCESS({ books: res })),

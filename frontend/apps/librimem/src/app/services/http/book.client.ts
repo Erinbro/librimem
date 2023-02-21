@@ -22,6 +22,7 @@ export class BookClient {
     return this.http.post<IBook>(this.url, newBook);
   }
 
+  // NOTE READ
   /**
    * Gets all books from the backend
    */

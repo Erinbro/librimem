@@ -17,8 +17,8 @@ export const environment: {
   chapterAPI: "http://localhost:8081/api/v1/chapters",
   userAPI: "http://localhost:8082/api/v1/users",
   flashcardAPI: "http://localhost:8083/api/v1/flashcards",
-  noteAPI: "http://localhost:8085/api/v1/notes",
   summaryAPI: "http://localhost:8084/api/v1/summaries",
+  noteAPI: "http://localhost:8085/api/v1/notes",
   wordAPI: "http://localhost:8086/api/v1/words"
 
 };

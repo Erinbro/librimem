@@ -10,6 +10,7 @@ import { AuthPageComponent } from './pages/auth/auth-page.component';
 import { RegisterPageComponent } from './pages/auth/components/registration/register-page.component';
 import { LoginPageComponent } from './pages/auth/components/login/login-page.component';
 import { HomePageComponent } from './pages/home/home-page.component';
+import { OauthComponent } from './pages/auth/components/oauth/oauth.component';
 
 const routes: Routes = [
   { path: "", component: HomePageComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: "auth", component: AuthPageComponent },
   { path: "auth/register", component: RegisterPageComponent },
   { path: "auth/login", component: LoginPageComponent },
+  // { path: "auth/oauth", component: OauthComponent },
   // { path: "reader", component: ReaderPageComponent },
   { path: '**', redirectTo: '' }
 ]

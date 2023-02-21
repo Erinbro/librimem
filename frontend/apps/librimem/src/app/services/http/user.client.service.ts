@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment.prod';
+import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { IUser } from '@librimem/api-interfaces';
 
@@ -11,7 +11,7 @@ import { IUser } from '@librimem/api-interfaces';
 })
 export class AuthClientService {
 
-  url = environment.bookAPI
+  url = environment.userAPI
 
   constructor(private http: HttpClient) { }
 
@@ -19,17 +19,22 @@ export class AuthClientService {
    * Adds a new user
    */
   public register(user: Omit<IUser, "id">) {
-    this.http.post(this.url + "/register", user);
+    return this.http.post(this.url + "/register", user);
   }
   /**
    * Authenticate user for a session
    */
   public login(user: IUser) {
-    this.http.post(this.url + "/login", user)
+    this.http.post(this.url + "/authenticate", user)
   }
   /**
    * Deletes the account
    */
   public deleteUser() { }
+
+  public oauth2() {
+    return this.http.get(this.url + "/oauth2")
+  }
+
 
 }

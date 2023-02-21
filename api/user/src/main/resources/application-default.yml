@@ -18,7 +18,7 @@ spring:
     name: user
   datasource:
     username: erinbro
-    url: jdbc:postgresql://localhost:5432/users
+    url: jdbc:postgresql://localhost:5432/librimem
     password: erinbro
   jpa:
     hibernate:
@@ -28,3 +28,14 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
       show_sql: true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 16225959959-31ct8du4slpf0phr3a5nfsf2k854llbc.apps.googleusercontent.com
+            clientSecret: 16225959959-31ct8du4slpf0phr3a5nfsf2k854llbc.apps.googleusercontent.com
+            scope:
+              - email
+              - profile

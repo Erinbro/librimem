@@ -1,24 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
 import { State, Store } from '@ngrx/store';
 import { IStore } from '../../state/store';
 import { selectSelectedBook } from '../../state/book/book.selector';
 import { timeStamp } from 'console';
 import { selectChapterStateSelection } from '../../state/chapter/chapter.selectors';
 import { IBook, IChapter } from '@librimem/api-interfaces';
+import { AuthService } from '../../services/auth/auth.service';
+import { Subscription } from 'rxjs';
+import { selectUserStateIsAuthenticated } from '../../state/user/user.selector';
 
 @Component({
   selector: 'librimem-drawer',
   templateUrl: './drawer.component.html',
   styleUrls: ['./drawer.component.scss'],
 })
-export class DrawerComponent implements OnInit {
+export class DrawerComponent implements OnInit, OnDestroy {
   icons: { name: string, path: string, src: string }[]
     = [
-      {
-        src: "./assets/icons/books.png", name: "Books",
-        path: "books"
-      },
+
     ]
+
+  bookIcon = {
+    src: "./assets/icons/books.png", name: "Books",
+    path: "books"
+  }
 
   profileIcon = {
     src: "../../../assets/icons/profile.png",
@@ -85,9 +90,26 @@ export class DrawerComponent implements OnInit {
    */
   selectedChapterTitle: undefined | string;
 
-  constructor(private store: Store<IStore>) { }
+  userIsAuthenticated = false
+  userIsAuthenticatedSubscription!: Subscription
+
+  constructor(private store: Store<IStore>, private authService: AuthService) { }
 
   ngOnInit(): void {
+
+    console.log(`auth: ${this.authService.isAuthenticated()}`);
+    this.userIsAuthenticatedSubscription = this.store.select(selectUserStateIsAuthenticated).subscribe((u) => {
+      this.userIsAuthenticated = u
+      if (u) this.addBookIcon();
+    })
+
+    // FIXME Replace with cookie
+    if (!this.userIsAuthenticated) {
+      return;
+    }
+
+    this.addBookIcon();
+
     this.store.select(selectSelectedBook)
       .subscribe((selectedBook) => {
         console.log(`[Drawer] selectedBook: ${JSON.stringify(selectedBook)}`);
@@ -119,6 +141,11 @@ export class DrawerComponent implements OnInit {
           this.removeChapterAttributes()
         }
       })
+  }
+
+
+  ngOnDestroy(): void {
+    this.userIsAuthenticatedSubscription.unsubscribe();
   }
 
   removeBookAttributes() {
@@ -188,6 +215,17 @@ export class DrawerComponent implements OnInit {
 
             break;
         }
+    }
+  }
+
+  /**
+   * Adds the book icon if it is not already there
+   */
+  private addBookIcon() {
+    const bookIconExists = this.icons.find((i) => i.name === "Books")
+
+    if (!bookIconExists) {
+      this.icons.push(this.bookIcon)
     }
   }
 

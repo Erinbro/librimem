@@ -2,7 +2,7 @@ import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BooksPageComponent } from './pages/books/books-page.component';
 import { StoreModule, Store } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -98,6 +98,7 @@ import { OauthComponent } from './pages/auth/components/oauth/oauth.component';
 import { InputTextModule } from "primeng/inputtext"
 import { ButtonModule } from "primeng/button"
 import { RippleModule } from "primeng/ripple"
+import { AddHeaderInterceptor } from './services/interceptor/header-interceptor';
 
 const primengModules = [InputTextModule, ButtonModule, RippleModule]
 /**
@@ -223,6 +224,7 @@ const materialModules = []
     SidenavService,
     { provide: MAT_DIALOG_DATA, useValue: {} },
     ChapterStorageApi,
+    { provide: HTTP_INTERCEPTORS, useClass: AddHeaderInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],
 })

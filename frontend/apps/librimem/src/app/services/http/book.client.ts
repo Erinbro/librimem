@@ -18,7 +18,7 @@ export class BookClient {
   constructor(private http: HttpClient) { }
 
   // NOTE CREATE
-  public addBook(newBook: IBook) {
+  public addBook(newBook: Omit<IBook, "id">) {
     return this.http.post<IBook>(this.url, newBook);
   }
 

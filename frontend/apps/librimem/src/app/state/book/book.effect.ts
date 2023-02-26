@@ -28,15 +28,13 @@ export class BookEffects {
       // NOTE We grap the LOAD_BOOKS event
       ofType(LOAD_BOOKS),
       mergeMap((_) => {
-        // FIXME Add backend
-        // NOTE We do not have backend at the moment
-        // return this.bookClient.getBooks().pipe(
-        //   map((res) => LOAD_BOOKS_SUCCESS({ books: res })),
-        //   catchError(() => of(LOAD_BOOKS_FAILURE())),
-        // )
-        return from(this.bookStorageApi.getBooks()).pipe(
-          map((res) => LOAD_BOOKS_SUCCESS({ books: res }))
-        );
+        return this.bookClient.getBooks().pipe(
+          map((res) => LOAD_BOOKS_SUCCESS({ books: res })),
+          catchError(() => of(LOAD_BOOKS_FAILURE())),
+        )
+        // return from(this.bookStorageApi.getBooks()).pipe(
+        //   map((res) => LOAD_BOOKS_SUCCESS({ books: res }))
+        // );
       }
       )
     )
@@ -46,19 +44,18 @@ export class BookEffects {
     () => this.actions$.pipe(
       ofType(ADD_BOOK),
       mergeMap((action) => {
-        // Add to IndexedDB
-        return from(this.bookStorageApi.addBook(action.newBook as IBook)).pipe(
-          tap((a) => console.log(`newbook: ${JSON.stringify(a)}`)),
+        return this.bookClient.addBook(action.newBook).pipe(
+          tap(() => {
+            console.log(`Book added to backend`)
+          }),
           map((res) => ADD_BOOK_SUCCESS({ addedBook: res }))
         )
-
-        // NOTE At the moment we do not have backend
-        // return this.bookClient.addBook(action.newBook).pipe(
-        //   tap(() => {
-        //     console.log(`Book added to backend`)
-        //   }),
+        // Add to IndexedDB
+        // return from(this.bookStorageApi.addBook(action.newBook as IBook)).pipe(
+        //   tap((a) => console.log(`newbook: ${JSON.stringify(a)}`)),
         //   map((res) => ADD_BOOK_SUCCESS({ addedBook: res }))
         // )
+
       })
     )
   )

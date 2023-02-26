@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { IUser } from '@librimem/api-interfaces';
+import { Observable } from 'rxjs';
 
 /**
  * Handles the authentication logic
@@ -18,8 +19,8 @@ export class AuthClientService {
   /**
    * Adds a new user
    */
-  public register(user: Omit<IUser, "id">) {
-    return this.http.post(this.url + "/register", user);
+  public register(user: Omit<IUser, "id">): Observable<{ token: string }> {
+    return this.http.post<{ token: string }>(this.url + "/register", user);
   }
   /**
    * Authenticate user for a session
@@ -27,6 +28,8 @@ export class AuthClientService {
   public login(user: IUser) {
     this.http.post(this.url + "/authenticate", user)
   }
+
+  // FIXME
   /**
    * Deletes the account
    */

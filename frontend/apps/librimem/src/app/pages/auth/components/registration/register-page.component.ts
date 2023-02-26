@@ -7,6 +7,8 @@ import { AuthClientService } from '../../../../services/http/user.client.service
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { selectUserStateUser } from '../../../../state/user/user.selector';
 import { User } from '../../../../models/user.model';
+import { REGISTER } from '../../../../state/user/user.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'librimem-register-page',
@@ -45,7 +47,9 @@ export class RegisterPageComponent implements OnInit, OnChanges, OnDestroy {
   authSubscription!: Subscription;
   userForm!: FormGroup
 
-  constructor(private store: Store<IStore>, private authService: AuthService, private authClientService: AuthClientService, private formBuilder: FormBuilder) {
+  constructor(private store: Store<IStore>, private authService: AuthService, private authClientService: AuthClientService, private formBuilder: FormBuilder,
+    private router: Router
+  ) {
   }
 
 
@@ -64,9 +68,12 @@ export class RegisterPageComponent implements OnInit, OnChanges, OnDestroy {
     console.log(`user: ${JSON.stringify(this.userForm.getRawValue())}`);
 
     this.authSubscription = this.authClientService
-      .register(this.userForm.getRawValue()).subscribe((v) => {
-        console.log(v);
-
+      .register(this.userForm.getRawValue()).subscribe((res) => {
+        localStorage.setItem("token", res.token);
+        const user = new User()
+        const username = this.userForm.getRawValue().username;
+        this.store.dispatch(REGISTER({ username }))
+        this.router.navigate(["books"])
       })
   }
 }

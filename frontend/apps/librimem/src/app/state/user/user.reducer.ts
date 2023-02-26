@@ -8,32 +8,38 @@ import { IUser } from '@librimem/api-interfaces';
 export const userFeatureName = "user"
 
 export interface InitialUserState {
-  user: IUser;
+  user: Omit<IUser, "id">;
   isAuthenticated: boolean
 }
 
 export const initialUserState: InitialUserState = {
   user: {
-    id: 0,
     username: "",
-    password: "",
-    token: ""
   },
   isAuthenticated: false
 }
 
 export const userReducer = createReducer(
   initialUserState,
-  on(userStoreActions.REGISTER, (state, { user }) => {
+  on(userStoreActions.REGISTER, (state, { username }) => {
     return {
       ...state,
-      ...user
+      user: {
+        username
+      },
+      isAuthenticated: true
     }
   }),
   on(userStoreActions.LOGIN, (state, { user }) => {
     return {
       ...state,
       ...user
+    }
+  }),
+  on(userStoreActions.AUTHENTICATED, (state) => {
+    return {
+      ...state,
+      isAuthenticated: true
     }
   })
 )

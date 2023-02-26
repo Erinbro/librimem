@@ -10,6 +10,8 @@ import { AuthService } from '../../services/auth/auth.service';
   selector: 'librimem-auth-page',
   template: `
   <div class="auth-page">
+    <ng-container *ngIf="!isAuthenticated">
+
   <p>You are not yet logged in or are not registered.</p>
   <div>
     <div class="auth-page__register">
@@ -19,7 +21,11 @@ import { AuthService } from '../../services/auth/auth.service';
       <librimem-primary-button content="Sign In"   (click)="goToOtherAuthPage('login')" />
     </div>
   </div>
-    <!-- <a href="/auth/oauth">Login with Google</a> -->
+    </ng-container>
+    <ng-container *ngIf="isAuthenticated">
+      <h3>You are logged in!</h3>
+
+    </ng-container>
 
 </div>
   `,

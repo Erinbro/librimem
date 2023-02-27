@@ -1,10 +1,7 @@
 package com.erinbro.librimem.user.service;
 
 import com.erinbro.librimem.user.configuration.JwtService;
-import com.erinbro.librimem.user.dto.AuthenticationRequest;
-import com.erinbro.librimem.user.dto.AuthenticationResponse;
-import com.erinbro.librimem.user.dto.RegistrationRequest;
-import com.erinbro.librimem.user.dto.UserLoginRequest;
+import com.erinbro.librimem.user.dto.*;
 import com.erinbro.librimem.user.model.Role;
 import com.erinbro.librimem.user.model.User;
 import com.erinbro.librimem.user.repository.UserRepository;
@@ -50,6 +47,7 @@ public class UserService implements UserDetailsService {
                                         req.getPassword()
                                 )
                         )
+
                         .role(Role.USER)
                         .enabled(true)
                         .build();
@@ -82,6 +80,21 @@ public class UserService implements UserDetailsService {
 
     public void login(UserLoginRequest req) {
         LOGGER.info("login");
+    }
+
+    public AuthorizationResponse authorize(AuthorizationRequest request) throws Exception {
+        String token = request.getToken();
+        String username = jwtService.extractUsername(token);
+        var user = userRepository.getUserByUsername(username);
+        // If we got the user
+        if (!user.isPresent()) throw new Exception("User not found");
+
+        AuthorizationResponse res = AuthorizationResponse.builder()
+                .userId(user.get().getId())
+                .username(user.get().getUsername())
+                .build();
+
+        return res;
     }
 
     // NOTE For OAuth2

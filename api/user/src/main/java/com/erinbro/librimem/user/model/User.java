@@ -28,7 +28,7 @@ public class User implements UserDetails {
 
     // NOTE For OAuth2
 
-//    @Column(nullable = false)
+    //    @Column(nullable = false)
 //    private String provider;
 //
     @Column(nullable = false)
@@ -45,7 +45,6 @@ public class User implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private Role role;
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

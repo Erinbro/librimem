@@ -20,6 +20,11 @@ public class ApplicationConfiguration {
 
     private final UserRepository userRepository;
 
+    /**
+     * Retrieves the user from the database
+     *
+     * @return User object
+     */
     @Bean
     public UserDetailsService userDetailsService() {
         return username -> userRepository.getUserByUsername(username)

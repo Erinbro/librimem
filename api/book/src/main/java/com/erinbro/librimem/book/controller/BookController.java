@@ -16,15 +16,20 @@ import java.util.Optional;
 
 @Slf4j
 @RestController
-@RequestMapping(path="/api/v1/books")
+@RequestMapping(path = "/api/v1/books")
 @RequiredArgsConstructor
 public class BookController {
 
     private final BookService bookService;
 
+    private String getToken(String header) {
+        return header.substring(7);
+    }
+
     @GetMapping()
-    public List<Book> getAllBooks() {
-        List<Book> books = this.bookService.getAllBooks();
+    public List<Book> getAllBooks(@RequestHeader("Authorization") String authorization) throws Exception {
+        log.info("authorization: " + authorization);
+        List<Book> books = this.bookService.getAllBooks(getToken(authorization));
         log.info("Gets books: ", books);
         return books;
     }
@@ -43,8 +48,9 @@ public class BookController {
     }
 
     @PostMapping()
-    public Book addBook(@Valid @RequestBody Book newBook) {
-        Book addedBook = this.bookService.addBook(newBook);
+    public Book addBook(@Valid @RequestBody Book newBook, @RequestHeader("Authorization") String authorization) {
+
+        Book addedBook = this.bookService.addBook(newBook, getToken(authorization));
         log.info("Added book: ", addedBook);
         return addedBook;
     }

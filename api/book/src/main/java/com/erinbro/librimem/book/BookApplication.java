@@ -16,16 +16,7 @@ import org.springframework.core.env.Environment;
 @PropertySource("classpath:book-${spring.profiles.active}.properties")
 public class BookApplication {
     public static void main(String[] args) {
-        SpringApplication.run(BookApplication.class,args);
+        SpringApplication.run(BookApplication.class, args);
     }
 
-    @Autowired
-    private Environment env;
-
-    @Bean
-    CommandLineRunner commandLineRunner() {
-        return args -> {
-            System.out.println("url: " + env.getProperty("clients.chapter.url"));
-        };
-    }
 }

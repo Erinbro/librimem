@@ -49,8 +49,6 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers("/api/v1/users/**")
                 .permitAll()
-
-
                 .anyRequest()
                 .authenticated()
                 .and()

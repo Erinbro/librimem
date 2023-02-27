@@ -1,6 +1,7 @@
 package com.erinbro.librimem.book.clients.webflux;
 
 import com.erinbro.librimem.book.clients.ChapterDeleteResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -15,19 +16,17 @@ public class ChapterClient {
     @Value("${clients.chapter.url}")
     private String clientUrl;
 
-    @Autowired
-    private Environment environment;
-
-    public ChapterClient(WebClient.Builder builder,
-                         Environment environment) {
-        this.environment = environment;
+    public ChapterClient(WebClient.Builder builder
+    ) {
         this.webClient = builder.baseUrl(this.clientUrl)
                 .build();
     }
 
-    public Mono<ChapterDeleteResponse> deleteAllChaptersFromBook(int id) {
-        return this.webClient.delete().uri("/book/" + id).retrieve()
-                .bodyToMono(ChapterDeleteResponse.class);
+    public ChapterDeleteResponse deleteAllChaptersFromBook(int id) {
+        ChapterDeleteResponse res = this.webClient.delete().uri("/book/" + id).retrieve()
+                .bodyToMono(ChapterDeleteResponse.class).block();
+
+        return res;
     }
 
 }

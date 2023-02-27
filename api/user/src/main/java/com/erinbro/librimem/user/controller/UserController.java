@@ -1,9 +1,6 @@
 package com.erinbro.librimem.user.controller;
 
-import com.erinbro.librimem.user.dto.AuthenticationRequest;
-import com.erinbro.librimem.user.dto.AuthenticationResponse;
-import com.erinbro.librimem.user.dto.RegistrationRequest;
-import com.erinbro.librimem.user.dto.UserLoginRequest;
+import com.erinbro.librimem.user.dto.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +28,15 @@ public class UserController {
             @RequestBody AuthenticationRequest request
     ) {
         return ResponseEntity.ok(userService.authenticate(request));
+    }
+
+    @PostMapping(path = "authorize")
+    public ResponseEntity<AuthorizationResponse> authorize(
+            @RequestBody AuthorizationRequest request
+    ) throws Exception {
+        AuthorizationResponse res = userService.authorize(request);
+
+        return ResponseEntity.ok(res);
     }
 
 

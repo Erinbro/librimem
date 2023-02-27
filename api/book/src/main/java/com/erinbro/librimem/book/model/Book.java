@@ -22,7 +22,7 @@ import java.util.List;
 @Setter
 @Entity(name = "Book")
 @Table(name = "book", uniqueConstraints = {
-        @UniqueConstraint(name = "id", columnNames="id")
+        @UniqueConstraint(name = "id", columnNames = "id")
 })
 public class Book {
     @Id
@@ -45,9 +45,6 @@ public class Book {
     @NotBlank(message = "The author name must not be empty")
     private String author_name;
 
-    @NotBlank(message = "The author prename must not be empty")
-    private String author_prename;
-
     @Column(name = "current_page", nullable = true)
     private String currentPage;
 
@@ -55,13 +52,13 @@ public class Book {
     private String language;
 
     @Column(name = "publishing_house",
-            nullable=true,
+            nullable = true,
             columnDefinition = ""
     )
     private String publishingHouse;
 
     @Column(name = "rating", nullable = true)
-    private  byte rating;
+    private byte rating;
 
     @CreatedDate
     @Column(name = "created_at")

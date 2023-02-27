@@ -1,5 +1,8 @@
 package com.erinbro.librimem.book.service;
 
+import com.erinbro.librimem.book.clients.webflux.UserClient;
+import com.erinbro.librimem.book.dto.AuthorizationRequestDto;
+import com.erinbro.librimem.book.dto.AuthorizationResponseDto;
 import com.erinbro.librimem.book.dto.BookResponse;
 import com.erinbro.librimem.book.exception.NotFoundException;
 import com.erinbro.librimem.book.model.Book;
@@ -22,12 +25,27 @@ import java.util.Optional;
 public class BookService {
 
 
-     private final BookRepository bookRepository;
+    private final BookRepository bookRepository;
 
-    public List<Book> getAllBooks() {
+    private final UserClient userClient;
+
+    private AuthorizationResponseDto getUserData(String token) {
+        AuthorizationRequestDto req = AuthorizationRequestDto
+                .builder()
+                .token(token)
+                .build();
+        AuthorizationResponseDto res = userClient.authorizeRequest(req);
+        return res;
+    }
+
+    public List<Book> getAllBooks(String token) throws Exception {
         log.warn("All books are fetched");
-        List<Book> requestedBooks = bookRepository.findAll();
-        return requestedBooks;
+        AuthorizationResponseDto userData = getUserData(token);
+        int userId = userData.getUserId();
+        Optional<List<Book>> requestedBooks = bookRepository
+                .findBooksByUserId(userId);
+        if (requestedBooks.isEmpty()) throw new Exception("No user");
+        return requestedBooks.get();
     }
 
     public Optional<Book> getBook(int bookId) {
@@ -37,10 +55,13 @@ public class BookService {
         return requestedBook;
     }
 
-    public Book addBook(Book newBook) {
-       Book addedBook = bookRepository.save(newBook);
+    public Book addBook(Book newBook, String token) {
+        AuthorizationResponseDto userData = getUserData(token);
+        int userId = userData.getUserId();
+        newBook.setUserId(userId);
+        Book addedBook = bookRepository.save(newBook);
         log.info("Received new book: ", newBook);
-       return addedBook;
+        return addedBook;
     }
 
     public Book updateBook(Book updatedBook) {
@@ -48,7 +69,7 @@ public class BookService {
     }
 
     public Book deleteBook(int bookId) {
-        Optional<Book> deletedBook =  bookRepository.findById(bookId);
+        Optional<Book> deletedBook = bookRepository.findById(bookId);
         bookRepository.deleteById(bookId);
         log.info("Deleted book with id {} and title {}", deletedBook.get().getId(), deletedBook.get().getTitle());
 

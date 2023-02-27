@@ -1,24 +1,20 @@
 info:
   app:
-    name: Flashcard
-    description: Manages Flashcards of LibriMem
+    name: Citation
+    description: Manage the citations of a section
     version: 1.0.0
   company:
     name: Erinbro
 
 server:
-  port: 8083
-  error:
-    include-message: always
-    include-binding-error: always
-    include-stacktrace: always
+  port: 8087
 
 spring:
   application:
-    name: flashcard
+    name: citation
   datasource:
     username: erinbro
-    url: jdbc:postgresql://localhost:5432/flashcard
+    url: jdbc:postgresql://postgres:5432/librimem
     password: erinbro
   jpa:
     hibernate:

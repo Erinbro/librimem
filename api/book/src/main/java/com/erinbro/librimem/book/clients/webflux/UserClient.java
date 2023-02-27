@@ -34,9 +34,6 @@ public class UserClient {
     public AuthorizationResponseDto authorizeRequest(AuthorizationRequestDto req) {
         log.info("Initiating Authorization request");
         log.info("clientUrl {}", clientUrl);
-        MultiValueMap<String, String> bodyValues = new LinkedMultiValueMap<>();
-
-        bodyValues.add("token", req.getToken());
 
         AuthorizationResponseDto response = this.webClient.post().uri(this.clientUrl + "/authorize")
                 .contentType(MediaType.APPLICATION_JSON)

@@ -1,5 +1,6 @@
 package com.erinbro.librimem.flashcard.controller;
 
+import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,12 +18,18 @@ public class FlashcardController {
     }
 
     @GetMapping()
-    public void getFlashcards() {}
+    public void getFlashcards() {
+    }
 
-    @GetMapping()
-    public void getFlashcard() {}
+    @GetMapping(path = "/{flashcardId}")
+    public void getFlashcard(@PathParam("flashcardId") int flashcardId) {
+    }
+
     @PutMapping()
-    public void updateFlashcard(){}
+    public void updateFlashcard() {
+    }
+
     @DeleteMapping()
-    public void deleteFlashcard() {}
+    public void deleteFlashcard() {
+    }
 }

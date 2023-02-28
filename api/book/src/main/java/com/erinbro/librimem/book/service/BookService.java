@@ -39,12 +39,12 @@ public class BookService {
     }
 
     public List<Book> getAllBooks(String token) throws Exception {
-        log.warn("All books are fetched");
         AuthorizationResponseDto userData = getUserData(token);
         int userId = userData.getUserId();
         Optional<List<Book>> requestedBooks = bookRepository
                 .findBooksByUserId(userId);
         if (requestedBooks.isEmpty()) throw new Exception("No user");
+        log.info("All books are fetched");
         return requestedBooks.get();
     }
 

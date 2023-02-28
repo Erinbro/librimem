@@ -95,16 +95,20 @@ import { MatSliderModule } from '@angular/material/slider';
 import { ChapterEffects } from './state/chapter/chapter.effects';
 import { environment } from '../environments/environment';
 import { OauthComponent } from './pages/auth/components/oauth/oauth.component';
-import { InputTextModule } from "primeng/inputtext"
-import { ButtonModule } from "primeng/button"
-import { RippleModule } from "primeng/ripple"
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { RippleModule } from 'primeng/ripple';
 import { AddHeaderInterceptor } from './services/interceptor/header-interceptor';
+import { ArticlesPageComponent } from './pages/articles/articles-page.component';
+import { ArticlesLaneComponent } from './pages/articles/articles-lane/articles-lane.component';
+import { ArticleCardComponent } from './pages/articles/article-card/article-card.component';
+import { ArticleDialogComponent } from './pages/articles/article-dialog/article-dialog.component';
 
-const primengModules = [InputTextModule, ButtonModule, RippleModule]
+const primengModules = [InputTextModule, ButtonModule, RippleModule];
 /**
  * The modules from material UI
  */
-const materialModules = []
+const materialModules = [];
 
 @NgModule({
   declarations: [
@@ -159,6 +163,10 @@ const materialModules = []
     ChapterAddedSnackBar,
     FlashcardAddedSnackBar,
     OauthComponent,
+    ArticlesPageComponent,
+    ArticlesLaneComponent,
+    ArticleCardComponent,
+    ArticleDialogComponent,
   ],
   imports: [
     MatToolbarModule,
@@ -218,14 +226,14 @@ const materialModules = []
     MatSelectModule,
     MatProgressBarModule,
     MatSliderModule,
-    [...primengModules]
+    [...primengModules],
   ],
   providers: [
     SidenavService,
     { provide: MAT_DIALOG_DATA, useValue: {} },
     ChapterStorageApi,
-    { provide: HTTP_INTERCEPTORS, useClass: AddHeaderInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AddHeaderInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

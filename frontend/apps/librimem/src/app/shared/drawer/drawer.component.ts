@@ -25,6 +25,11 @@ export class DrawerComponent implements OnInit, OnDestroy {
     path: "books"
   }
 
+  articleIcon = {
+    src: "./assets/icons/article.png", name: "Articles",
+    path: "articles"
+  }
+
   profileIcon = {
     src: "../../../assets/icons/profile.png",
     name: "Profile",
@@ -45,6 +50,8 @@ export class DrawerComponent implements OnInit, OnDestroy {
     //   path: "reader"
     // },
   ]
+
+
 
   /**
    * The direct attributes for a chapter
@@ -100,7 +107,7 @@ export class DrawerComponent implements OnInit, OnDestroy {
     console.log(`auth: ${this.authService.isAuthenticated()}`);
     this.userIsAuthenticatedSubscription = this.store.select(selectUserStateIsAuthenticated).subscribe((u) => {
       this.userIsAuthenticated = u
-      if (u) this.addBookIcon();
+      if (u) this.addBookAndArticleIcon();
     })
 
     // FIXME Replace with cookie
@@ -108,7 +115,7 @@ export class DrawerComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.addBookIcon();
+    this.addBookAndArticleIcon();
 
     this.store.select(selectSelectedBook)
       .subscribe((selectedBook) => {
@@ -221,11 +228,12 @@ export class DrawerComponent implements OnInit, OnDestroy {
   /**
    * Adds the book icon if it is not already there
    */
-  private addBookIcon() {
+  private addBookAndArticleIcon() {
     const bookIconExists = this.icons.find((i) => i.name === "Books")
 
     if (!bookIconExists) {
       this.icons.push(this.bookIcon)
+      this.icons.push(this.articleIcon)
     }
   }
 

@@ -1,4 +1,4 @@
-import { IFlashcard, IChapter, ICommentary, ICitation, ISummary, IComment, IEvent, INote, IQuestion, IOpinion, IWord, IBook, ICollection, ISubject } from "@librimem/api-interfaces"
+import { IFlashcard, IChapter, ICommentary, ICitation, ISummary, IComment, IEvent, INote, IQuestion, IOpinion, IWord, IBook, ICollection, ISubject, IArticle } from "@librimem/api-interfaces"
 import { initialBookState } from "./book/book.reducer";
 import { IEntityType } from "@librimem/api-interfaces";
 import { initialUserState, InitialUserState } from './user/user.reducer';
@@ -72,6 +72,7 @@ export interface IStore {
   // NOTE From here on begin the attributes of the entities. think abstractly!
   //
   flashcard: IStoreEntity<IFlashcard>;
+  article: IStoreEntity<IArticle>;
   word?: IStoreEntity<IWord>;
   note?: IStoreEntity<INote>;
   summary?: IStoreEntity<ISummary>;
@@ -135,5 +136,6 @@ export const globalStore: IStore = {
   question: storeEntityGenerator<IQuestion>(),
   opinion: storeEntityGenerator<IOpinion>(),
   subject: storeEntityGenerator<ISubject>(),
-  word: storeEntityGenerator<IWord>()
+  word: storeEntityGenerator<IWord>(),
+  article: storeEntityGenerator<IArticle>()
 };

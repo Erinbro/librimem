@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReaderInputComponent } from './reader-input.component';
+import { ReadableInputComponent } from './readable-input.component';
 
-describe('ReaderInputComponent', () => {
-  let component: ReaderInputComponent;
-  let fixture: ComponentFixture<ReaderInputComponent>;
+describe('ReadableInputComponent', () => {
+  let component: ReadableInputComponent;
+  let fixture: ComponentFixture<ReadableInputComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ReaderInputComponent],
+      declarations: [ReadableInputComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ReaderInputComponent);
+    fixture = TestBed.createComponent(ReadableInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

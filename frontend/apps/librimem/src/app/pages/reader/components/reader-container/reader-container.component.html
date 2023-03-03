@@ -1,0 +1,10 @@
+<div class="reader-container">
+  <!-- Here we render the Readable -->
+  <div id="readable"></div>
+  <div #prev class="reader-container__prev" (click)="triggerPrev($event)">
+    <p><</p>
+  </div>
+  <div #next class="reader-container__next" (click)="triggerNext($event)">
+    <p>></p>
+  </div>
+</div>

@@ -64,11 +64,16 @@ export const bookReducer = createReducer(
   }),
   on(bookStoreActions.SELECT_BOOK, (state, { id }) => {
     const selectedBook = state.data[id]
+
     return {
       ...state,
       selection: {
         isSelecting: true,
         data: selectedBook
+      },
+      reader: {
+        ...state.reader,
+        data: selectedBook.data
       }
     }
   }),
@@ -78,7 +83,8 @@ export const bookReducer = createReducer(
       selection: {
         ...state.selection,
         data: null
-      }
+      },
+      reader: undefined
     }
   })
   ,
@@ -104,17 +110,24 @@ export const bookReducer = createReducer(
     }
   }),
   on(bookStoreActions.ADD_BOOK, (state, { newBook }) => {
-    return state;
+    return {
+      ...state,
+      add: {
+        ...state.add,
+        isAdding: true,
+      }
+    }
   }),
   on(bookStoreActions.ADD_BOOK_SUCCESS, (state, { addedBook }) => {
-    // We add the book with iid in indexedDB
     return {
       ...state,
       data: {
         ...state.data,
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        [addedBook.iid]: addedBook
+        [addedBook.id]: addedBook
+      },
+      add: {
+        ...state.add,
+        data: addedBook
       }
     };
   }),
@@ -125,6 +138,15 @@ export const bookReducer = createReducer(
       ...state,
       data: {
         ...newData
+      }
+    }
+  }),
+  // ANCHOR readable
+  on(bookStoreActions.ADD_BOOK_READABLE, (state, { readable }) => {
+    return {
+      ...state,
+      reader: {
+        ...readable
       }
     }
   })

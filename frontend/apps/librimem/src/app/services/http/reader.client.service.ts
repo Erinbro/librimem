@@ -9,7 +9,7 @@ import { pipe } from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class ReaderClient {
+export class ReaderClientService {
   constructor(private http: HttpClient) { }
 
   /**

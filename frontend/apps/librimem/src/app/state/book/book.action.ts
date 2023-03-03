@@ -1,4 +1,4 @@
-import { IBook } from '@librimem/api-interfaces';
+import { IBook, IReadable } from '@librimem/api-interfaces';
 import { createAction, props } from '@ngrx/store';
 
 // READ
@@ -24,4 +24,6 @@ export const DELETE_BOOK = createAction("[Delete Book]", props<{ bookId: number 
 export const DELETE_BOOK_SUCCESS = createAction("[Delete Book]")
 export const DELETE_BOOK_FAILURE = createAction("[Delete Book]")
 
+// ANCHOR Readable
 
+export const ADD_BOOK_READABLE = createAction("[Add Readable Book]", props<{ readable: IReadable }>())

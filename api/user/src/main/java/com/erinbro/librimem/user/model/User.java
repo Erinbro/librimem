@@ -35,7 +35,7 @@ public class User implements UserDetails {
     private Boolean enabled;
 
     @NotBlank
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
 
     @NotBlank

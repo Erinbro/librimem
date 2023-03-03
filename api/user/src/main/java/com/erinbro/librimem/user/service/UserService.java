@@ -62,12 +62,7 @@ public class UserService implements UserDetailsService {
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getUsername(),
-                        request.getPassword()
-                )
-        );
+
 
         var user = userRepository.getUserByUsername(request.getUsername())
                 .orElseThrow(() -> new UsernameNotFoundException("Username not found"));
@@ -76,10 +71,6 @@ public class UserService implements UserDetailsService {
                 .builder()
                 .token(jwtToken)
                 .build();
-    }
-
-    public void login(UserLoginRequest req) {
-        LOGGER.info("login");
     }
 
     public AuthorizationResponse authorize(AuthorizationRequest request) throws Exception {

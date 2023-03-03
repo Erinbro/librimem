@@ -3,10 +3,12 @@ package com.erinbro.librimem.user.controller;
 import com.erinbro.librimem.user.dto.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.erinbro.librimem.user.service.UserService;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/v1/users")
 @RequiredArgsConstructor
@@ -18,16 +20,17 @@ public class UserController {
         return ResponseEntity.ok(userService.register(req));
     }
 
-    @PostMapping(path = "login")
-    public void login(@Valid @RequestBody UserLoginRequest req) {
-        userService.login(req);
-    }
 
+    // NOTE Login
     @PostMapping(path = "authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestBody AuthenticationRequest request
     ) {
-        return ResponseEntity.ok(userService.authenticate(request));
+        System.out.println("in authenticate route");
+        var res = userService.authenticate(request);
+        log.info("res: {}", res);
+
+        return ResponseEntity.ok(res);
     }
 
     @PostMapping(path = "authorize")

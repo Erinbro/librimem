@@ -36,8 +36,12 @@ export const chapterReducer = createReducer(
         [addedChapter.id]: addedChapter
       }
     }
-  })
-  ,
+  }),
+  on(chapterStoreActions.ADD_CHAPTERS, (state, { newChapters }) => {
+    return {
+      ...state,
+    }
+  }),
   on(chapterStoreActions.SELECT_CHAPTER, (state, { selectedChapter }) => {
     return {
       ...state,

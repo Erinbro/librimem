@@ -35,6 +35,27 @@ export interface IStoreEntity<T> {
     data: number[];
     isSearching: boolean;
   }
+  /**
+   * Note that not all entities need this property!
+   * The following entities could contain data in it:
+   * Book, Chapter, Article
+   */
+  reader?: {
+    /**
+     * types: BOOK, CHAPTER, Article
+     */
+    type?: string;
+    id?: number | null;
+    title?: string;
+    /**
+     * img base64 string of the Readable
+     */
+    cover?: string;
+    /**
+     * base65 string of the Readable
+     */
+    data?: string;
+  }
 
   error: string;
 
@@ -114,10 +135,16 @@ export function storeEntityGenerator<T>(): IStoreEntity<T> {
     selection: {
       data: null,
       isSelecting: false
+    },
+    reader: {
+      data: "",
+      id: null,
+      title: "",
+      cover: "",
+      type: ""
     }
   }
 }
-
 
 // export const store = {} as IStore;
 export const globalStore: IStore = {

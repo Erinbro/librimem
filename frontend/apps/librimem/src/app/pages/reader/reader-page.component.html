@@ -1,6 +1,20 @@
-<div class="reader">
-  <h3>Input html here:</h3>
-  <input #input type="file" accept=".epub" />
-  <!-- <quill-editor [textContent]="content" [readOnly]="false"></quill-editor> -->
-  <div id="area"></div>
+<div class="reader-page">
+  <!-- ANCHOR reader-container -->
+  <div class="reader-page__reader-container">
+    <librimem-reader-container />
+  </div>
+  <!-- END reader-container -->
+
+  <!-- ANCHOR EPUB Reader -->
+  <!-- <ng-container *ngIf="!isReadingPdf">
+    <h3>Input html here:</h3>
+    <input #input type="file" (change)="loadFile($event)" accept=".epub" />
+    <div #area id="area"></div>
+  </ng-container> -->
+  <!-- END EPUB Reader -->
+
+  <!-- ANCHOR PDF Reader -->
+  <!-- NOTE Display if the user selects pdf view -->
+  <!-- <ng-container *ngIf="isReadingPdf"> </ng-container> -->
+  <!-- END PDF READER -->
 </div>

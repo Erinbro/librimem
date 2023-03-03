@@ -1,4 +1,4 @@
-import { IBook, IChapter, IFlashcard, INote } from "@librimem/api-interfaces";
+import { IBook, IChapter, ICover, IFlashcard, INote } from "@librimem/api-interfaces";
 import Dexie, { Table } from "dexie";
 
 /**
@@ -9,7 +9,9 @@ export class StorageDB extends Dexie {
   chapters!: Table<IChapter, number>;
   flashcards!: Table<IFlashcard, number>;
   notes!: Table<INote, number>;
-  epubs!: Table<Blob, number>
+  epubs!: Table<{ title: string, epub: string }, number>
+  pdfs!: Table<{ title: string, epub: string }, number>
+  covers!: Table<ICover, number>
 
 
   constructor() {
@@ -19,7 +21,10 @@ export class StorageDB extends Dexie {
       // We discriminate between the id that is created in the
       // backend and the id created in the frontend
       books: '++id',
-      chapters: "++id"
+      chapters: "++id",
+      epubs: "++id",
+      pdfs: "++id",
+      covers: "++id"
     });
   }
 }

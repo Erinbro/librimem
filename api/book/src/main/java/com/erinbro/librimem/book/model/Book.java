@@ -41,6 +41,14 @@ public class Book {
     @NotBlank(message = "The title must not be empty")
     private String title;
 
+    /**
+     * The base64 data of the book
+     */
+    @Column(nullable = true, columnDefinition = "TEXT")
+    private String data;
+
+    @Column(nullable = true, columnDefinition = "TEXT")
+    private String cover;
 
     @NotBlank(message = "The author name must not be empty")
     private String author_name;

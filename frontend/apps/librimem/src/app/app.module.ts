@@ -19,7 +19,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { BookEffects } from './state/book/book.effect';
 import { ReaderPageComponent } from './pages/reader/reader-page.component';
-import { ReaderInputComponent } from './pages/reader/components/reader-input/reader-input.component';
 import { AppRoutingModule } from './app-routing.module';
 import { QuillModule } from 'ngx-quill';
 import { ToolbarComponent } from './shared/toolbar/toolbar.component';
@@ -83,7 +82,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { BookSearchCardComponent } from './pages/books/components/BookModal/components/book-search-card/book-search-card.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { AddedBookSnackBarComponent } from './pages/books/components/BookModal/components/added-book-snackbar';
 import { BookPresentationComponent } from './pages/book/components/BookPresentation/book-presentation.component';
 import { BookResourcesComponent } from './pages/book/components/BookResources/book-resources.component';
 import { MatSelectModule } from '@angular/material/select';
@@ -103,6 +101,10 @@ import { ArticlesPageComponent } from './pages/articles/articles-page.component'
 import { ArticlesLaneComponent } from './pages/articles/articles-lane/articles-lane.component';
 import { ArticleCardComponent } from './pages/articles/article-card/article-card.component';
 import { ArticleDialogComponent } from './pages/articles/article-dialog/article-dialog.component';
+import { BookStorageApi } from './storage/features/book.storage';
+import { ReaderContainerComponent } from './pages/reader/components/reader-container/reader-container.component';
+import { ReadableInputComponent } from './shared/readable-input/readable-input.component';
+import { CoverStorageService } from './storage/features/cover.storage.service';
 
 const primengModules = [InputTextModule, ButtonModule, RippleModule];
 /**
@@ -118,7 +120,6 @@ const materialModules = [];
     BookCardComponent,
     BookModalComponent,
     ReaderPageComponent,
-    ReaderInputComponent,
     SidenavComponent,
     ToolbarComponent,
     BreadcrumbComponent,
@@ -157,7 +158,6 @@ const materialModules = [];
     ChapterPresentationComponent,
     FavoriteButtonComponent,
     BookSearchCardComponent,
-    AddedBookSnackBarComponent,
     BookPresentationComponent,
     BookResourcesComponent,
     ChapterAddedSnackBar,
@@ -167,6 +167,8 @@ const materialModules = [];
     ArticlesLaneComponent,
     ArticleCardComponent,
     ArticleDialogComponent,
+    ReaderContainerComponent,
+    ReadableInputComponent,
   ],
   imports: [
     MatToolbarModule,
@@ -182,7 +184,7 @@ const materialModules = [];
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot(reducers),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    StoreDevtoolsModule.instrument(),
     // NOTE Store
     EffectsModule.forRoot([BookEffects, ChapterEffects]),
     BrowserAnimationsModule,
@@ -211,7 +213,7 @@ const materialModules = [];
     MatButtonModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: () => sessionStorage.getItem('token'),
+        tokenGetter: () => localStorage.getItem('token'),
       },
     }),
     ServiceWorkerModule.register('ngsw-worker.js', {
@@ -232,8 +234,10 @@ const materialModules = [];
     SidenavService,
     { provide: MAT_DIALOG_DATA, useValue: {} },
     ChapterStorageApi,
+    BookStorageApi,
+    CoverStorageService,
     { provide: HTTP_INTERCEPTORS, useClass: AddHeaderInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

@@ -43,9 +43,13 @@ export class BookCardComponent implements OnInit {
   constructor(private store: Store<IStore>, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    return;
   }
 
 
+  /**
+   * Selects book and goes to /books/{bookId}
+   */
   navigateToBookPage() {
     this.store.dispatch(SELECT_BOOK({ id: this.book.id }))
 

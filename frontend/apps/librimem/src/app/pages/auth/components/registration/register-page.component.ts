@@ -42,7 +42,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./register-page.component.scss'],
   providers: [AuthService]
 })
-export class RegisterPageComponent implements OnInit, OnChanges, OnDestroy {
+export class RegisterPageComponent implements OnInit, OnDestroy {
 
   authSubscription!: Subscription;
   userForm!: FormGroup
@@ -52,25 +52,18 @@ export class RegisterPageComponent implements OnInit, OnChanges, OnDestroy {
   ) {
   }
 
-
   ngOnInit(): void {
-    this.userForm = this.formBuilder.group(new User);
+    this.userForm = this.formBuilder.group(new User());
   }
-
-  ngOnChanges(): void { }
 
   ngOnDestroy(): void {
     this.authSubscription.unsubscribe()
   }
 
-
   register() {
-    console.log(`user: ${JSON.stringify(this.userForm.getRawValue())}`);
-
     this.authSubscription = this.authClientService
       .register(this.userForm.getRawValue()).subscribe((res) => {
         localStorage.setItem("token", res.token);
-        const user = new User()
         const username = this.userForm.getRawValue().username;
         this.store.dispatch(REGISTER({ username }))
         this.router.navigate(["books"])

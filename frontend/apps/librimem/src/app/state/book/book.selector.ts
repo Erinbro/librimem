@@ -52,3 +52,12 @@ export const selectSelectedBook = createSelector(selectBookState, (state) => {
   return state.selection.data;
 })
 
+// ANCHOR readable
+
+/**
+ * Selects the readable (pdf, epub, html)
+ */
+export const selectBookStateReadable = createSelector(selectBookState, (state) => {
+  return state.reader
+})
+

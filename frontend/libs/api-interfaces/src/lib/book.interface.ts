@@ -5,6 +5,14 @@ import { IEntity, IEntityType } from './entity.interface';
 export interface IBook extends IEntity {
   type: string
   title: string;
+  /**
+   * basae64 data of book
+   */
+  data?: string;
+  /**
+   * url ofcover
+   */
+  cover?: string;
   author_name: string;
   currentPage?: number;
   publishingHouse?: string;
@@ -14,7 +22,6 @@ export interface IBook extends IEntity {
    * A number from 1 to 5
    */
   rating?: number;
-  cover?: string;
 }
 
 // TODO --> IEntityStatus

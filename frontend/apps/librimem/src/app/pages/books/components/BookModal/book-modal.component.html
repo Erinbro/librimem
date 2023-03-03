@@ -1,11 +1,7 @@
 <mat-dialog-content class="book-modal">
-  <!-- <mat-dialog-actions class="book-modal__header">
-    <div class="book-modal__header__close-btn">
-      <librimem-close-button />
-    </div>
-  </mat-dialog-actions> -->
   <!-- NOTE Decides if searching or adding manually -->
   <mat-tab-group class="book-modal__tabs">
+    <!-- ANCHOR Adding -->
     <mat-tab label="Adding">
       <div class="modal__adding">
         <div class="adding__title">
@@ -21,11 +17,30 @@
             <input formControlName="author_name" matInput />
           </mat-form-field>
         </form>
+        <form [formGroup]="bookReadableForm" class="modal__adding__file">
+          <mat-label>File (Epub)</mat-label>
+          <input
+            #readableInput
+            type="file"
+            accept=".epub"
+            (change)="loadFile($event)"
+            formControlName="data"
+          />
+        </form>
+        <!-- Displays the cover of the readable -->
+        <div class="modal__cover">
+          <img #cover [src]="bookCover" alt="coder" />
+        </div>
+        <div class="modal__chapters">
+          <p *ngFor="let chapter of chapters">{{ chapter.label }}</p>
+        </div>
         <div class="adding__add">
           <button mat-button (click)="addBook()">Add</button>
         </div>
       </div>
     </mat-tab>
+    <!-- END Adding -->
+    <!-- ANCHOR Searching -->
     <mat-tab class="book-modal__tabs__searching" label="Searching">
       <div class="modal__search">
         <div class="modal__search__title">
@@ -55,5 +70,6 @@
         </div>
       </div>
     </mat-tab>
+    <!-- END Searching -->
   </mat-tab-group>
 </mat-dialog-content>

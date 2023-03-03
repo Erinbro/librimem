@@ -44,17 +44,17 @@ export class BookEffects {
     () => this.actions$.pipe(
       ofType(ADD_BOOK),
       mergeMap((action) => {
+        from(this.bookStorageApi.addBook(action.newBook as IBook)).pipe(
+          tap((a) => console.log(`newbook in IndexedDB: ${JSON.stringify(a)}`)),
+          map((res) => ADD_BOOK_SUCCESS({ addedBook: res }))
+        )
+
         return this.bookClient.addBook(action.newBook).pipe(
           tap(() => {
             console.log(`Book added to backend`)
           }),
           map((res) => ADD_BOOK_SUCCESS({ addedBook: res }))
         )
-        // Add to IndexedDB
-        // return from(this.bookStorageApi.addBook(action.newBook as IBook)).pipe(
-        //   tap((a) => console.log(`newbook: ${JSON.stringify(a)}`)),
-        //   map((res) => ADD_BOOK_SUCCESS({ addedBook: res }))
-        // )
 
       })
     )

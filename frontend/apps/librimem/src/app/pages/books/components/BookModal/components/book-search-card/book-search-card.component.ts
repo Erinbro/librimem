@@ -5,7 +5,6 @@ import { IStore } from '../../../../../../state/store';
 import { Book } from '../../../../../../models/Book';
 import { ADD_BOOK } from '../../../../../../state/book/book.action';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AddedBookSnackBarComponent } from '../added-book-snackbar';
 
 @Component({
   selector: 'librimem-book-search-card',
@@ -98,11 +97,6 @@ export class BookSearchCardComponent implements OnInit {
     newBook.title = this.book.title
     newBook.author_name = this.book.author_name as string
     this.store.dispatch(ADD_BOOK({ newBook }))
-    this.showSnackBar()
   }
-  showSnackBar() {
-    this._snackBar.openFromComponent(AddedBookSnackBarComponent, {
-      duration: 2000
-    })
-  }
+
 }

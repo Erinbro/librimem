@@ -24,6 +24,8 @@ import { IAttribute } from './attribute.interface';
 import { ITerm } from "./term.interface"
 import { ISection } from "./section.interface"
 import { IUser } from "./user.interface"
+import { IReadable } from './readable.interface';
+import { ICover } from './cover.interface';
 
-export { IArticle, IAuthor, IBook, IChapter, ICitation, IComment, ICommentary, IEntity, IEvent, IFlashcard, IGenre, INote, IOpinion, IParagraph, IQuestion, ISentence, ISubject, ISummary, ITeaching, IWord, ICollection, IEntityType, IEntityStatus, Language, IAttribute, ITerm, ISection, IUser };
+export { IArticle, IAuthor, IBook, IChapter, ICitation, IComment, ICommentary, IEntity, IEvent, IFlashcard, IGenre, INote, IOpinion, IParagraph, IQuestion, ISentence, ISubject, ISummary, ITeaching, IWord, ICollection, IEntityType, IEntityStatus, Language, IAttribute, ITerm, ISection, IUser, IReadable, ICover };
 

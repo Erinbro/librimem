@@ -1,6 +1,10 @@
 package com.erinbro.librimem.chapter.controller;
 
+import com.erinbro.librimem.chapter.clients.UserClient;
+import com.erinbro.librimem.chapter.dto.AuthorizationRequestDto;
+import com.erinbro.librimem.chapter.dto.AuthorizationResponseDto;
 import com.erinbro.librimem.chapter.dto.ChapterRequest;
+import com.erinbro.librimem.chapter.dto.ChaptersRequestDto;
 import com.erinbro.librimem.chapter.model.Chapter;
 import com.erinbro.librimem.chapter.service.ChapterService;
 import jakarta.validation.Valid;
@@ -22,20 +26,20 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ChapterController {
 
-
     private final ChapterService chapterService;
 
     /**
      * Returns all chapters from a book
      */
     @GetMapping()
-            // e.g.) /chapters?bookid=1
+    // e.g.) /chapters?bookid=1
     ResponseEntity<List<Chapter>> getChaptersFromBook(@RequestParam("bookid") Integer bookId) {
         return new ResponseEntity<>(chapterService.getChaptersFromBook(bookId), HttpStatus.OK);
     }
 
     /**
      * Returns a particular chapter from a book
+     *
      * @param chapterId
      * @return
      */
@@ -46,12 +50,20 @@ public class ChapterController {
 
     /**
      * Adds a chapter to the db
+     *
      * @param chapterRequest
      * @return
      */
     @PostMapping
     ResponseEntity<Chapter> saveChapter(@RequestBody @Valid ChapterRequest chapterRequest) {
         return new ResponseEntity<Chapter>(chapterService.saveChapter(chapterRequest), HttpStatus.OK);
+    }
+
+    @PostMapping
+    ResponseEntity<List<Chapter>> saveChapters(@RequestBody @Valid ChaptersRequestDto chaptersRequestDto, @RequestHeader("Authorization") String authHeader) {
+        String token = authHeader.substring(7);
+        this.chapterService.saveChapters(token, chaptersRequestDto);
+        return ResponseEntity.ok(chaptersRequestDto.getChapters());
     }
 
 

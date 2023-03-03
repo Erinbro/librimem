@@ -26,14 +26,16 @@ export class AuthClientService {
    * Authenticate user for a session
    */
   public login(user: IUser) {
-    this.http.post(this.url + "/authenticate", user)
+    return this.http.post<{ token: string }>(this.url + "/authenticate", user)
   }
 
   // FIXME
   /**
    * Deletes the account
    */
-  public deleteUser() { }
+  public deleteUser() {
+    return;
+  }
 
   public oauth2() {
     return this.http.get(this.url + "/oauth2")

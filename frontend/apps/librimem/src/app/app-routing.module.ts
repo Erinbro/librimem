@@ -11,6 +11,7 @@ import { RegisterPageComponent } from './pages/auth/components/registration/regi
 import { LoginPageComponent } from './pages/auth/components/login/login-page.component';
 import { HomePageComponent } from './pages/home/home-page.component';
 import { OauthComponent } from './pages/auth/components/oauth/oauth.component';
+import { ArticlesPageComponent } from './pages/articles/articles-page.component';
 
 const routes: Routes = [
   { path: "", component: HomePageComponent },
@@ -31,7 +32,8 @@ const routes: Routes = [
   { path: "auth/register", component: RegisterPageComponent },
   { path: "auth/login", component: LoginPageComponent },
   // { path: "auth/oauth", component: OauthComponent },
-  // { path: "reader", component: ReaderPageComponent },
+  { path: "articles", component: ArticlesPageComponent },
+  { path: "reader", component: ReaderPageComponent },
   { path: '**', redirectTo: '' }
 ]
 

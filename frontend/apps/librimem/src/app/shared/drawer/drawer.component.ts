@@ -39,16 +39,17 @@ export class DrawerComponent implements OnInit, OnDestroy {
   /**
    * The direct attributes for a book
    */
-  bookAttributes = [{
-    src: "../../../assets/icons/chapters.png",
-    name: "Chapters",
-    path: "books/book/chapters"
-  },
-    // {
-    //   src: "../../../assets/icons/open-book.png",
-    //   name: "Reader",
-    //   path: "reader"
-    // },
+  bookAttributes = [
+    {
+      src: "../../../assets/icons/open-book.png",
+      name: "Reader",
+      path: "reader"
+    },
+    {
+      src: "../../../assets/icons/chapters.png",
+      name: "Chapters",
+      path: "books/book/chapters"
+    },
   ]
 
 

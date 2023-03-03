@@ -3,15 +3,15 @@ import { db } from '../storage';
 import { Injectable } from '@angular/core';
 import { ChapterStorageApi } from './chapter.storage';
 
-@Injectable({
-  providedIn: "root"
-})
+@Injectable()
 /**
  * Class with CRUD methods for the book storage
  * in IndexedDB
  */
 export class BookStorageApi {
   private bookStorage = db.books
+  private epubStorage = db.epubs
+  private pdfStorage = db.pdfs
 
   constructor(private chapterStorageApi: ChapterStorageApi) { }
 
@@ -45,5 +45,7 @@ export class BookStorageApi {
     await this.chapterStorageApi.deleteAllChapterofBook(id)
     return deletedBook as IBook;
   }
+
+
 
 }

@@ -18,7 +18,6 @@
         <module>book</module>
         <module>chapter</module>
         <module>flashcard</module>
-        <module>client</module>
     </modules>
     <properties>
         <java.version>17</java.version>

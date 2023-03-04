@@ -1,0 +1,5 @@
+flyway.user=erinbro
+flyway.password=erinbro
+flyway.schemas=librimemSchema
+flyway.url=jdbc:postgresql://localhost:5432
+flyway.locations=filesystem:db/migration

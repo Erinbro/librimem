@@ -63,10 +63,7 @@ export class ReaderContainerComponent implements OnInit, OnDestroy {
 
     })
 
-    const displayed = rendition.display().then(() => {
-      console.log(`displaeydkkasjklfjaslkjdfkljaklsjdfklj`);
-
-    })
+    const displayed = rendition.display()
   }
 
 

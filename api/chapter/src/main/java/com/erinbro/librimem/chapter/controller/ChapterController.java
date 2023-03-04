@@ -59,7 +59,7 @@ public class ChapterController {
         return new ResponseEntity<Chapter>(chapterService.saveChapter(chapterRequest), HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping("/book")
     ResponseEntity<List<Chapter>> saveChapters(@RequestBody @Valid ChaptersRequestDto chaptersRequestDto, @RequestHeader("Authorization") String authHeader) {
         String token = authHeader.substring(7);
         this.chapterService.saveChapters(token, chaptersRequestDto);

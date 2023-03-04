@@ -14,7 +14,7 @@
     <name>api</name>
     <description>Demo project for Spring Boot</description>
     <modules>
-        <module>user</module>
+        <module>users</module>
         <module>book</module>
         <module>chapter</module>
         <module>flashcard</module>

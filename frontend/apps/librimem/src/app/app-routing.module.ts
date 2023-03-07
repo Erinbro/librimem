@@ -9,12 +9,10 @@ import { FlashcardsPageComponent } from './pages/flashcards/flashcards-page.comp
 import { AuthPageComponent } from './pages/auth/auth-page.component';
 import { RegisterPageComponent } from './pages/auth/components/registration/register-page.component';
 import { LoginPageComponent } from './pages/auth/components/login/login-page.component';
-import { HomePageComponent } from './pages/home/home-page.component';
 import { OauthComponent } from './pages/auth/components/oauth/oauth.component';
 import { ArticlesPageComponent } from './pages/articles/articles-page.component';
 
 const routes: Routes = [
-  { path: "", component: HomePageComponent },
   {
     path: 'books', component: BooksPageComponent, title: "Books",
   },
@@ -34,7 +32,7 @@ const routes: Routes = [
   // { path: "auth/oauth", component: OauthComponent },
   { path: "articles", component: ArticlesPageComponent },
   { path: "reader", component: ReaderPageComponent },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'books' }
 ]
 
 @NgModule({

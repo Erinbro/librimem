@@ -41,7 +41,7 @@ export class BookClient {
 
   // NOTE DELETE
   public deleteBook(bookId: number) {
-    return this.http.delete<IBook>(this.url + `/${bookId}`)
+    return this.http.delete<IBook>(`${this.url}/${bookId}`)
   }
 
 }

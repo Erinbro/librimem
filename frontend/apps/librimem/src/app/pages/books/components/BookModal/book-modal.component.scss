@@ -1,150 +1,150 @@
 .book-modal {
   width: 100%;
   height: 100%;
-  .book-modal__header {
-    .book-modal__header__close-btn {
-    }
-  }
-  mat-tab-group {
+  .book-modal__tabs {
     width: 100%;
     height: 100%;
-  }
-}
 
-.modal__adding {
-  & {
-    width: 100%;
-    height: 100%;
-  }
-  width: 100%;
-  height: 100%;
-  display: grid;
-  // grid-template-rows: fit-content fit-content fit-content;
-  grid-auto-rows: auto;
-  grid-template-areas:
-    'title title'
-    'file file'
-    'cover chapters'
-    'form form'
-    'add add';
-
-  .adding__title {
-    grid-area: title;
-    width: 100%;
-    height: fit-content;
-    padding: 1rem;
-    margin-top: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    h6 {
-      font-size: 24px;
-      font-weight: bolder;
-    }
-  }
-  .modal__adding__form {
-    grid-area: form;
-    width: 100%;
-    height: fit-content;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    mat-form-field {
-      margin-bottom: 1rem;
-    }
-  }
-  .modal__adding__file {
-    grid-area: file;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .modal__cover {
-    grid-area: cover;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    img {
-      width: 100px;
-      height: auto;
-      @media screen and (min-width: 768px) {
-        width: 200px;
+    .modal__adding {
+      & {
+        width: 100%;
+        height: 100%;
       }
-    }
-  }
-
-  .modal__chapters {
-    grid-area: chapters;
-  }
-
-  .adding__add {
-    grid-area: add;
-    padding: 1rem;
-    display: flex;
-    justify-content: center;
-    button {
-    }
-  }
-}
-
-.modal__search {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-rows: auto auto auto;
-  // grid-auto-rows: auto;
-  grid-template-areas:
-    'title'
-    'form'
-    'results';
-  .modal__search__title {
-    grid-area: title;
-    width: 100%;
-    height: fit-content;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    margin-top: 1rem;
-    h6 {
-      font-size: 24px;
-      font-weight: bolder;
-    }
-  }
-  // NOTE form
-  .modal__search__input {
-    grid-area: form;
-    padding: 1rem;
-    width: 100%;
-    height: 100%;
-    form {
       width: 100%;
       height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      .modal__search__input__btn {
+      display: grid;
+      // grid-template-rows: fit-content fit-content fit-content;
+      grid-auto-rows: auto;
+      grid-template-areas:
+        'title title'
+        'file file'
+        'cover chapters'
+        'form form'
+        'add add';
+
+      .adding__title {
+        grid-area: title;
+        width: 100%;
+        height: fit-content;
         padding: 1rem;
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        h6 {
+          font-size: 24px;
+          font-weight: bolder;
+        }
+      }
+      .modal__adding__form {
+        grid-area: form;
+        width: 100%;
+        height: fit-content;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        mat-form-field {
+          margin-bottom: 1rem;
+        }
+      }
+      .modal__adding__file {
+        grid-area: file;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .modal__adding__file__input {
+          display: none;
+        }
+      }
+      .modal__cover {
+        grid-area: cover;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        img {
+          width: 100px;
+          height: auto;
+          @media screen and (min-width: 768px) {
+            width: 200px;
+          }
+        }
+      }
+
+      .modal__chapters {
+        grid-area: chapters;
+        overflow: scroll;
+      }
+
+      .adding__add {
+        grid-area: add;
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+        button {
+        }
       }
     }
-  }
-  .modal__search__result {
-    grid-area: results;
-    width: 100%;
-    height: 100%;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
+    .modal__search {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-rows: auto auto auto;
+      // grid-auto-rows: auto;
+      grid-template-areas:
+        'title'
+        'form'
+        'results';
+      .modal__search__title {
+        grid-area: title;
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        margin-top: 1rem;
+        h6 {
+          font-size: 24px;
+          font-weight: bolder;
+        }
+      }
+      // NOTE form
+      .modal__search__input {
+        grid-area: form;
+        padding: 1rem;
+        width: 100%;
+        height: 100%;
+        form {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          .modal__search__input__btn {
+            padding: 1rem;
+          }
+        }
+      }
+      .modal__search__result {
+        grid-area: results;
+        width: 100%;
+        height: 100%;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    }
   }
 }

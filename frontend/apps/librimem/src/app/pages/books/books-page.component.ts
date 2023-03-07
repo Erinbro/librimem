@@ -19,42 +19,7 @@ import { BookModalComponent } from './components/BookModal/book-modal.component'
     </div>
 </div>
   `,
-  styles: [`
-    .books-page {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-
-      .books-page__list {
-      width: fit-content;
-      height: 100%;
-      display: grid;
-      grid-template-rows: 3fr 7fr;
-      grid-template-areas:
-      "btn"
-      "list";
-
-
-      .books-page__button {
-          grid-area: btn;
-          width: 100%;
-          height: 100%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        librimem-books-list {
-          grid-area: list;
-          width: 100%;
-          height: 100%;
-        }
-
-      }
-    }
-
-  `]
+  styleUrls: ["./books-page.component.scss"]
 })
 export class BooksPageComponent implements OnInit {
 
@@ -62,7 +27,7 @@ export class BooksPageComponent implements OnInit {
   constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
-
+    return;
   }
 
   openModal() {

@@ -67,7 +67,6 @@ import { DeleteButtonComponent } from './shared/buttons/delete-button/delete-but
 import { RegisterPageComponent } from './pages/auth/components/registration/register-page.component';
 import { LoginPageComponent } from './pages/auth/components/login/login-page.component';
 import { AuthPageComponent } from './pages/auth/auth-page.component';
-import { HomePageComponent } from './pages/home/home-page.component';
 import { BaseButtonComponent } from './shared/buttons/base-button.component';
 import { MatButtonModule } from '@angular/material/button';
 import { CloseButtonComponent } from './shared/buttons/close-button/close-button.component';
@@ -105,6 +104,9 @@ import { BookStorageApi } from './storage/features/book.storage';
 import { ReaderContainerComponent } from './pages/reader/components/reader-container/reader-container.component';
 import { ReadableInputComponent } from './shared/readable-input/readable-input.component';
 import { CoverStorageService } from './storage/features/cover.storage.service';
+import { FileUploadModule } from "primeng/fileupload"
+import { ReadableClientService } from './services/http/readable.client.service';
+import { ReadableEffects } from './state/readable/readable.effect';
 
 const primengModules = [InputTextModule, ButtonModule, RippleModule];
 /**
@@ -152,7 +154,6 @@ const materialModules = [];
     RegisterPageComponent,
     LoginPageComponent,
     AuthPageComponent,
-    HomePageComponent,
     CloseButtonComponent,
     AddButtonComponent,
     ChapterPresentationComponent,
@@ -186,7 +187,7 @@ const materialModules = [];
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument(),
     // NOTE Store
-    EffectsModule.forRoot([BookEffects, ChapterEffects]),
+    EffectsModule.forRoot([BookEffects, ChapterEffects, ReadableEffects]),
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
@@ -229,6 +230,7 @@ const materialModules = [];
     MatProgressBarModule,
     MatSliderModule,
     [...primengModules],
+    FileUploadModule
   ],
   providers: [
     SidenavService,
@@ -237,6 +239,7 @@ const materialModules = [];
     BookStorageApi,
     CoverStorageService,
     { provide: HTTP_INTERCEPTORS, useClass: AddHeaderInterceptor, multi: true },
+    ReadableClientService
   ],
   bootstrap: [AppComponent],
 })

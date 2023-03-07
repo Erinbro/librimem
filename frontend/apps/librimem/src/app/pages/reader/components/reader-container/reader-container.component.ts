@@ -2,8 +2,9 @@ import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/co
 import { Store } from '@ngrx/store';
 import { IStore } from 'apps/librimem/src/app/state/store';
 import { Subscription } from 'rxjs';
-import { selectBookStateReadable } from '../../../../state/book/book.selector';
 import ePub, { Book, Rendition } from "epubjs"
+import { selectReadableStateReadable } from '../../../../state/readable/readable.selector';
+import { IReadable } from '@librimem/api-interfaces';
 
 @Component({
   selector: 'librimem-reader-container',
@@ -22,7 +23,7 @@ export class ReaderContainerComponent implements OnInit, OnDestroy {
   /**
    * base64 string of the readable
    */
-  readable!: string;
+  readable!: IReadable;
   readableSubscription!: Subscription
   rendition!: Rendition
   epubBook!: Book
@@ -34,26 +35,21 @@ export class ReaderContainerComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.readableSubscription = this.store.select(selectBookStateReadable).subscribe((res) => {
+    this.readableSubscription = this.store.select(selectReadableStateReadable).subscribe((res) => {
       console.log(`reader data: ${res}`);
 
-      // @ts-ignore
-      if (!res && !res.data) return
-      // @ts-ignore
-      this.readable = res.data
+      if (!res) return
+
+      this.readable = res
       this.renderBook()
     })
-
-
-
-
   }
 
   renderBook() {
     const book = ePub({ encoding: "base64" })
     this.epubBook = book
 
-    book.open(this.readable)
+    book.open(this.readable.data)
 
     const rendition = book.renderTo(document.querySelector("#readable") as Element, { width: "100%", height: 300, flow: "scrolled-doc" })
     this.rendition = rendition;

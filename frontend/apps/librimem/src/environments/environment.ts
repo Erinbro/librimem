@@ -11,6 +11,7 @@ export const environment: {
   noteAPI: string;
   summaryAPI: string;
   wordAPI: string;
+  readableAPI: string
 } = {
   production: false,
   bookAPI: "http://localhost:8080/api/v1/books",
@@ -19,8 +20,8 @@ export const environment: {
   flashcardAPI: "http://localhost:8083/api/v1/flashcards",
   summaryAPI: "http://localhost:8084/api/v1/summaries",
   noteAPI: "http://localhost:8085/api/v1/notes",
-  wordAPI: "http://localhost:8086/api/v1/words"
-
+  wordAPI: "http://localhost:8086/api/v1/words",
+  readableAPI: "http://localhost:8088/api/v1/readables"
 };
 
 /*

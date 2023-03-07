@@ -8,6 +8,7 @@ import { BookStorageApi } from '../../storage/features/book.storage';
 import { LOAD_CHAPTERS, LOAD_CHAPTERS_SUCCESS, ADD_CHAPTER, ADD_CHAPTER_SUCCESS, UPDATE_CHAPTER, UPDATE_CHAPTER_SUCCESS, DELETE_CHAPTER, DELETE_CHAPTER_SUCCESS, UPDATE_CHAPTER_FAILURE } from './chapter.actions';
 import { ChapterStorageApi } from '../../storage/features/chapter.storage';
 import { Chapter } from '../../models/chapter.model';
+import { ChapterClient } from '../../services/http/chapter.client';
 
 /**
  * Service that mediates between IndexedDB and the API.
@@ -18,7 +19,9 @@ import { Chapter } from '../../models/chapter.model';
 export class ChapterEffects {
   private chapterStorageApi!: ChapterStorageApi
 
-  constructor(private actions$: Actions, private bookClient: BookClient,) {
+  constructor(private actions$: Actions, private bookClient: BookClient,
+    private chapterClient: ChapterClient
+  ) {
     this.chapterStorageApi = new ChapterStorageApi();
   }
 
@@ -33,14 +36,12 @@ export class ChapterEffects {
       // NOTE We grap the LOAD_BOOKS event
       ofType(LOAD_CHAPTERS),
       mergeMap((action) => {
-        // NOTE We do not have backend at the moment
-        // return this.bookClient.getBooks().pipe(
-        //   map((res) => LOAD_BOOKS_SUCCESS({ books: res })),
-        //   catchError(() => of(LOAD_BOOKS_FAILURE())),
-        // )
-        return from(this.chapterStorageApi.getChapters(action.bookId)).pipe(
-          map((res) => LOAD_CHAPTERS_SUCCESS({ chapters: res as IChapter[] }))
-        );
+        return this.chapterClient.getChapters(action.bookId).pipe(
+          map((res) => LOAD_CHAPTERS_SUCCESS({ chapters: res })),
+        )
+        // return from(this.chapterStorageApi.getChapters(action.bookId)).pipe(
+        //   map((res) => LOAD_CHAPTERS_SUCCESS({ chapters: res as IChapter[] }))
+        // );
       }
       )
     )
@@ -51,17 +52,13 @@ export class ChapterEffects {
       ofType(ADD_CHAPTER),
       mergeMap((action) => {
         // Add to IndexedDB
-        return from(this.chapterStorageApi.addChapter(action.newChapter as IChapter)).pipe(
-          map((res) => ADD_CHAPTER_SUCCESS({ addedChapter: res }))
-        )
-
-        // NOTE At the moment we do not have backend
-        // return this.bookClient.addBook(action.newBook).pipe(
-        //   tap(() => {
-        //     console.log(`Book added to backend`)
-        //   }),
-        //   map((res) => ADD_BOOK_SUCCESS({ addedBook: res }))
+        // return from(this.chapterStorageApi.addChapter(action.newChapter as IChapter)).pipe(
+        //   map((res) => ADD_CHAPTER_SUCCESS({ addedChapter: res }))
         // )
+
+        return this.chapterClient.addChapter(action.newChapter.entityId, action.newChapter).pipe(
+          map((res) => ADD_CHAPTER_SUCCESS({ addedChapter: res.addedChapter }))
+        )
       })
     )
   )

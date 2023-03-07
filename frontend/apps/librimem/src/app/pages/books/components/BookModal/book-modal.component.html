@@ -17,23 +17,35 @@
             <input formControlName="author_name" matInput />
           </mat-form-field>
         </form>
-        <form [formGroup]="bookReadableForm" class="modal__adding__file">
-          <mat-label>File (Epub)</mat-label>
+        <div class="modal__adding__file">
+          <div class="input__replacement bg-sky-300">
+            <!-- <button mat-icon-button matPrefix class="inline">
+              <mat-icon>attach_file</mat-icon>
+            </button> -->
+            <label for="readableInput">Input epub</label>
+          </div>
           <input
-            #readableInput
+            id="readableInput"
             type="file"
-            accept=".epub"
+            class="invisible"
+            className="modal__adding__file__input"
             (change)="loadFile($event)"
-            formControlName="data"
+            accept=".epub"
+            #readableInput
           />
-        </form>
+        </div>
         <!-- Displays the cover of the readable -->
+
         <div class="modal__cover">
-          <img #cover [src]="bookCover" alt="coder" />
+          <ng-container *ngIf="bookCover">
+            <img #cover [src]="bookCover" alt="cover" />
+          </ng-container>
         </div>
-        <div class="modal__chapters">
-          <p *ngFor="let chapter of chapters">{{ chapter.label }}</p>
-        </div>
+        <ng-container *ngIf="chapters">
+          <div class="modal__chapters border-solid border-2 border-black">
+            <p *ngFor="let chapter of chapters">{{ chapter.label }}</p>
+          </div>
+        </ng-container>
         <div class="adding__add">
           <button mat-button (click)="addBook()">Add</button>
         </div>

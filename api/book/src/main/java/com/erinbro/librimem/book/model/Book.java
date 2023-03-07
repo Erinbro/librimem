@@ -72,6 +72,13 @@ public class Book {
     @Column(name = "created_at")
     private Instant createdAt;
 
+    /**
+     * Decides if the book is publicly accessible
+     * like the gutenberg books
+     */
+    @Column(name = "is_public", nullable = true)
+    private Boolean isPublic;
+
     @LastModifiedDate
     @Column(name = "updated_at")
     private Instant updatedAt;

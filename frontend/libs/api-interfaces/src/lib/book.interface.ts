@@ -6,10 +6,6 @@ export interface IBook extends IEntity {
   type: string
   title: string;
   /**
-   * basae64 data of book
-   */
-  data?: string;
-  /**
    * url ofcover
    */
   cover?: string;

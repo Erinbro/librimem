@@ -8,6 +8,7 @@ export class Book implements Omit<IBook, "id"> {
   userId = 0;
   type: IEntityType = "BOOK";
   read = false;
+  isPublic = false;
   title = "";
   author_prename = "";
   author_name = "";

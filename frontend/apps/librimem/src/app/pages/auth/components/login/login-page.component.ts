@@ -45,7 +45,9 @@ export class LoginPageComponent implements OnInit {
     this.authClientService.login(user).subscribe((token) => {
       localStorage.setItem("token", token.token)
       this.store.dispatch(LOGIN({ user }))
-      this.router.navigate(["books"])
+      this.router.navigate(["books"]).then(() => {
+        window.location.reload()
+      })
     })
   }
 

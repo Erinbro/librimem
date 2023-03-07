@@ -18,6 +18,7 @@ import { CoverStorageService } from '../../../../storage/features/cover.storage.
 import { Cover } from '../../../../models/cover.model';
 import { ADD_CHAPTERS } from '../../../../state/chapter/chapter.actions';
 import { Chapter } from '../../../../models/chapter.model';
+import { ReadableClientService } from '../../../../services/http/readable.client.service';
 
 
 /**
@@ -67,12 +68,13 @@ export class BookModalComponent implements OnInit, OnDestroy {
    * The new book
    */
   book!: FormGroup;
-  bookReadableForm!: FormGroup;
+  /**
+   * The base64 string of the image
+   */
   bookCover!: string
   /**
    * base64 encoded data of readable
    */
-  bookData!: string;
   base64Epub!: string;
   chapters: undefined | { label: string; href: string }[]
 
@@ -84,7 +86,8 @@ export class BookModalComponent implements OnInit, OnDestroy {
     private openLibraryClient: OpenLibraryClient,
     private epubStorageService: EpubStorageService,
     private sanitization: DomSanitizer,
-    private coverStorageService: CoverStorageService
+    private coverStorageService: CoverStorageService,
+    private readableClientService: ReadableClientService
   ) { }
 
   /** NOTE Since we use BookModalComponent both for editing and adding a book
@@ -92,7 +95,6 @@ export class BookModalComponent implements OnInit, OnDestroy {
   */
   ngOnInit(): void {
     this.book = this.builder.group(new Book());
-    this.bookReadableForm = this.builder.group(new Readable())
     this.addingBookSubscription = this.store.select(selectBookStateNewBook).subscribe((res) => {
       if (!res) return
       this.addingBook = res;
@@ -112,23 +114,41 @@ export class BookModalComponent implements OnInit, OnDestroy {
 
   addBook() {
     const newBook = this.book.value as IBook
-
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     // newBook.cover = this.bookCover
-    newBook.data = this.bookData;
 
     this.store.dispatch(ADD_BOOK({ newBook }))
-    // this.dialogRef.close();
+    this.addBookReadable()
+    this.dialogRef.close();
   }
 
   addChapters(chapters: { label: string; href: string }[]) {
     console.log(`chapters: ${chapters}`);
 
-    this.chapters = chapters;
+    this.chapters = chapters
     const newChapters = this.createChapters(chapters);
 
     this.store.dispatch(ADD_CHAPTERS({ newChapters }))
+  }
+
+  /**
+   * Adds the readable to the backend
+   */
+  addBookReadable() {
+    setTimeout(() => {
+
+      const newReadable = new Readable();
+      newReadable.cover = this.bookCover;
+      newReadable.title = (this.book.getRawValue() as IBook).title
+      console.log(`id: ${JSON.stringify(this.addingBook)}`);
+
+      // NOTE The backend generates the id of the book
+      newReadable.entityId = this.addingBook.id;
+      newReadable.type = "EPUB"
+      newReadable.data = this.base64Epub
+      this.readableClientService.addReadable(newReadable).subscribe((res) => {
+        console.log(`res: ${res}`);
+      })
+    }, 250)
   }
 
   private createChapters(chaptersData: { label: string, href: string }[]): IChapter[] {
@@ -143,14 +163,22 @@ export class BookModalComponent implements OnInit, OnDestroy {
 
 
   loadFile(ev: Event) {
-    const file = this.readableInput.nativeElement.files[0]
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const file = this.readableInput.nativeElement.files[0] as File
+
+    // (this.readableInput.nativeElement as HTMLElement).click()
+
+    if (file.size) {
+      console.log(`size: ${file.size}`);
+    }
 
     const reader = new FileReader()
     reader.addEventListener("load", (event) => this.propagateBase64(event, this.addEpub.bind(this)))
     reader.readAsDataURL(file)
   }
 
-  propagateBase64(ev: Event, addEpub: (readableData: string) => void) {
+  private propagateBase64(ev: Event, addEpub: (readableData: string) => void) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const formatedUrl = ev.target.result.replace('data:application/epub+zip;base64,', '')
@@ -172,7 +200,6 @@ export class BookModalComponent implements OnInit, OnDestroy {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const formatedUrl = readableData.replace('data:application/epub+zip;base64,', '');
-    this.bookData = formatedUrl
 
     // ANCHOR Get chapters
     epub.loaded.navigation.then((toc) => {

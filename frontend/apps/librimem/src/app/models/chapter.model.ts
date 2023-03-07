@@ -9,6 +9,7 @@ export class Chapter implements Omit<IChapter, "id"> {
   userId = 0
   entityId = 0;
   type = "CHAPTER"
+  isPublic = false;
   index = ""
   title = "";
   content?: string | undefined;

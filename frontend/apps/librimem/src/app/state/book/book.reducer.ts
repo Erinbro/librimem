@@ -71,17 +71,19 @@ export const bookReducer = createReducer(
         isSelecting: true,
         data: selectedBook
       },
-      reader: {
-        ...state.reader,
-        data: selectedBook.data
-      }
     }
   }),
+  on(bookStoreActions.SELECT_BOOK_SUCCESS, (state, { readable }) => {
+    return {
+      ...state,
+    }
+  })
+  ,
   on(bookStoreActions.DESELECT_BOOK, (state) => {
     return {
       ...state,
       selection: {
-        ...state.selection,
+        isSelecting: false,
         data: null
       },
       reader: undefined
@@ -141,14 +143,4 @@ export const bookReducer = createReducer(
       }
     }
   }),
-  // ANCHOR readable
-  on(bookStoreActions.ADD_BOOK_READABLE, (state, { readable }) => {
-    return {
-      ...state,
-      reader: {
-        ...readable
-      }
-    }
-  })
-
 )

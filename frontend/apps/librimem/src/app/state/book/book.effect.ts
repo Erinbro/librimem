@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { switchMap, catchError, map, mergeMap, tap, concatMap, exhaustMap } from 'rxjs/operators';
 import { of, from, pipe } from 'rxjs';
-import { LOAD_BOOKS, LOAD_BOOKS_SUCCESS, LOAD_BOOKS_FAILURE, ADD_BOOK, ADD_BOOK_SUCCESS, UPDATE_BOOK, UPDATE_BOOK_SUCCESS, DELETE_BOOK, DELETE_BOOK_SUCCESS } from './book.action';
+import { LOAD_BOOKS, LOAD_BOOKS_SUCCESS, LOAD_BOOKS_FAILURE, ADD_BOOK, ADD_BOOK_SUCCESS, UPDATE_BOOK, UPDATE_BOOK_SUCCESS, DELETE_BOOK, DELETE_BOOK_SUCCESS, SELECT_BOOK, SELECT_BOOK_SUCCESS } from './book.action';
 import { BookClient } from '../../services/http/book.client';
 import { IBook } from "@librimem/api-interfaces"
 import { BookStorageApi } from '../../storage/features/book.storage';
+import { ReadableClientService } from '../../services/http/readable.client.service';
 
 /**
  * Service that mediates between IndexedDB and the API.
@@ -15,7 +16,8 @@ import { BookStorageApi } from '../../storage/features/book.storage';
 })
 export class BookEffects {
 
-  constructor(private actions$: Actions, private bookClient: BookClient, private bookStorageApi: BookStorageApi) { }
+  constructor(private actions$: Actions, private bookClient: BookClient, private bookStorageApi: BookStorageApi, private readableClientService: ReadableClientService
+  ) { }
 
   /*
   To handle the behaviour of the Effect when different Action instances
@@ -44,10 +46,8 @@ export class BookEffects {
     () => this.actions$.pipe(
       ofType(ADD_BOOK),
       mergeMap((action) => {
-        from(this.bookStorageApi.addBook(action.newBook as IBook)).pipe(
-          tap((a) => console.log(`newbook in IndexedDB: ${JSON.stringify(a)}`)),
-          map((res) => ADD_BOOK_SUCCESS({ addedBook: res }))
-        )
+        // from(this.bookStorageApi.addBook(action.newBook as IBook)).pipe(
+        // )
 
         return this.bookClient.addBook(action.newBook).pipe(
           tap(() => {
@@ -65,13 +65,12 @@ export class BookEffects {
     () => this.actions$.pipe(
       ofType(UPDATE_BOOK),
       mergeMap((action) => {
-        return from(this.bookStorageApi.updateBook(action.updateBook)).pipe(
+        from(this.bookStorageApi.updateBook(action.updateBook)).pipe(
+          // map((res) => UPDATE_BOOK_SUCCESS({ updatedBook: res }))
+        )
+        return this.bookClient.updateBook(action.updateBook).pipe(
           map((res) => UPDATE_BOOK_SUCCESS({ updatedBook: res }))
         )
-        // NOTE At the moment no backend
-        // return this.bookClient.updateBook(action.updateBook).pipe(
-        //   map((res) => UPDATE_BOOK_SUCCESS({ updatedBook: res }))
-        // )
       })
     )
   )
@@ -83,15 +82,13 @@ export class BookEffects {
     () => this.actions$.pipe(
       ofType(DELETE_BOOK),
       mergeMap((action) => {
-        return from(this.bookStorageApi.deleteBook(action.bookId))
-          .pipe(
-            map((res) => DELETE_BOOK_SUCCESS())
-          )
-
-        // NOTE At the moment no backend
-        // return this.bookClient.deleteBook(action.bookId).pipe(
-        //   map((res) => DELETE_BOOK_SUCCESS({ book: res }))
+        // from(this.bookStorageApi.deleteBook(action.bookId))
+        //   .pipe(
         // )
+
+        return this.bookClient.deleteBook(action.bookId).pipe(
+          map((res) => DELETE_BOOK_SUCCESS({ book: res }))
+        )
       })
     )
   )

@@ -1,5 +1,6 @@
 export interface IReadable {
   id: number;
+  entityId: number;
   /**
    * Types: BOOK, CHAPTER, ARTICLE
    */

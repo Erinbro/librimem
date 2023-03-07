@@ -36,6 +36,8 @@ export class BookPresentationComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.bookSubscription = this.store.select(selectSelectedBook).subscribe({
       next: (book) => {
+        console.log(`book: ${book}`);
+
         if (book) this.book = book
       }
     })
@@ -60,7 +62,6 @@ export class BookPresentationComponent implements OnInit, OnDestroy {
     const element = document.querySelector(".book-presentation__resources")
     const worker = html2pdf().from(element).save();
     console.log(`worker: ${worker}`);
-
   }
 
 }

@@ -12,7 +12,11 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.core.env.Environment;
 
-@SpringBootApplication()
+@SpringBootApplication(
+        exclude = {
+                org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class
+        }
+)
 @PropertySource("classpath:book-${spring.profiles.active}.properties")
 public class BookApplication {
     public static void main(String[] args) {

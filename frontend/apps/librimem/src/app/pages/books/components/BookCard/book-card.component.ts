@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { SELECT_BOOK, DELETE_BOOK } from '../../../../state/book/book.action';
 import { IStore } from '../../../../state/store';
 import { Router, ActivatedRoute } from '@angular/router';
+import { SELECT_READABLE, LOAD_READABLE } from '../../../../state/readable/readable.action';
 
 /**
  * @tutorial breadcrumb here tutorial
@@ -46,12 +47,12 @@ export class BookCardComponent implements OnInit {
     return;
   }
 
-
   /**
    * Selects book and goes to /books/{bookId}
    */
   navigateToBookPage() {
     this.store.dispatch(SELECT_BOOK({ id: this.book.id }))
+    this.store.dispatch(LOAD_READABLE({ entityId: this.book.id }))
 
     // NOTE We have to specify 'relativeTo' becauce we go to a child component
     this.router.navigate([`./${this.book.title}`], { relativeTo: this.activatedRoute })

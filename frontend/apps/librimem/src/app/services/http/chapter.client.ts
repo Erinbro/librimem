@@ -10,10 +10,6 @@ import { Observable } from 'rxjs';
 })
 export class ChapterClient {
 
-  options = {
-
-  }
-  host = environment.production ? "PRODUCTION" : "DEVELOPMENT"
 
   constructor(private http: HttpClient) { }
 
@@ -22,15 +18,15 @@ export class ChapterClient {
    * @param bookId
    * @param newChapter
    */
-  public async addChapter(bookId: number, newChapter: IChapter) {
-    return this.http.post(`${this.host}/book/chapter/${bookId}`, newChapter)
+  public addChapter(bookId: number, newChapter: IChapter) {
+    return this.http.post<{ addedChapter: IChapter }>(`${environment.chapterAPI}/book/chapter/${bookId}`, newChapter)
   }
   /**
    * Gets all chapters of a book
    * @param bookId
    */
   public getChapters(bookId: number): Observable<IChapter[]> {
-    return this.http.get(`${this.host}/book/chapter`) as Observable<IChapter[]>
+    return this.http.get(`${environment.chapterAPI}/book/chapter`) as Observable<IChapter[]>
   }
   public async getChapter() { }
   public async updateChapter() { }

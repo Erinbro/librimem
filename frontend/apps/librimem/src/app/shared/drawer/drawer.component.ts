@@ -112,9 +112,11 @@ export class DrawerComponent implements OnInit, OnDestroy {
     })
 
     // FIXME Replace with cookie
-    if (!this.userIsAuthenticated) {
+    if (!this.userIsAuthenticated || !localStorage.getItem("token")) {
       return;
     }
+    console.log(`token: ${localStorage.getItem("token")}`);
+
 
     this.addBookAndArticleIcon();
 

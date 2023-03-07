@@ -35,6 +35,7 @@ export interface IEntity {
   status?: string;
   progres?: number;
   summary?: ISummary;
+  isPublic: boolean;
   favorite: boolean;
   createdAt: string;
   updatedAt: string;

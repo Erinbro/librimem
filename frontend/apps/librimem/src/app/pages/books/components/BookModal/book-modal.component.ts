@@ -135,7 +135,6 @@ export class BookModalComponent implements OnInit, OnDestroy {
    */
   addBookReadable() {
     setTimeout(() => {
-
       const newReadable = new Readable();
       newReadable.cover = this.bookCover;
       newReadable.title = (this.book.getRawValue() as IBook).title
@@ -148,7 +147,7 @@ export class BookModalComponent implements OnInit, OnDestroy {
       this.readableClientService.addReadable(newReadable).subscribe((res) => {
         console.log(`res: ${res}`);
       })
-    }, 250)
+    }, 750)
   }
 
   private createChapters(chaptersData: { label: string, href: string }[]): IChapter[] {

@@ -46,7 +46,6 @@
         <dependency>
             <groupId>com.erinbro.librimem</groupId>
             <artifactId>clients</artifactId>
-            <version>1.0.0</version>
         </dependency>
     </dependencies>
 

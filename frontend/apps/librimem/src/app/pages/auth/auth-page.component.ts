@@ -8,27 +8,7 @@ import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'librimem-auth-page',
-  template: `
-  <div class="auth-page">
-    <ng-container *ngIf="!isAuthenticated">
-
-  <p>You are not yet logged in or are not registered.</p>
-  <div>
-    <div class="auth-page__register">
-        <librimem-primary-button content="Register" (click)="goToOtherAuthPage('register')" />
-    </div>
-    <div class="auth-page__login">
-      <librimem-primary-button content="Sign In"   (click)="goToOtherAuthPage('login')" />
-    </div>
-  </div>
-    </ng-container>
-    <ng-container *ngIf="isAuthenticated">
-      <h3>You are logged in!</h3>
-
-    </ng-container>
-
-</div>
-  `,
+  templateUrl: "./auth-page.component.html",
   styleUrls: ['./auth-page.component.scss'],
   providers: [AuthService]
 })
@@ -60,5 +40,10 @@ export class AuthPageComponent implements OnInit, OnDestroy {
     else {
       this.router.navigate(["auth", "login"])
     }
+  }
+
+  logout() {
+    window.localStorage.removeItem("token")
+    window.location.reload()
   }
 }

@@ -112,12 +112,12 @@ export class BookModalComponent implements OnInit, OnDestroy {
     this.loading = false;
   }
 
-  addBook() {
+  async addBook() {
     const newBook = this.book.value as IBook
     // newBook.cover = this.bookCover
 
     this.store.dispatch(ADD_BOOK({ newBook }))
-    this.addBookReadable()
+    await this.addBookReadable()
     this.dialogRef.close();
   }
 
@@ -133,21 +133,27 @@ export class BookModalComponent implements OnInit, OnDestroy {
   /**
    * Adds the readable to the backend
    */
-  addBookReadable() {
-    setTimeout(() => {
-      const newReadable = new Readable();
-      newReadable.cover = this.bookCover;
-      newReadable.title = (this.book.getRawValue() as IBook).title
-      console.log(`id: ${JSON.stringify(this.addingBook)}`);
+  async addBookReadable() {
+    // WAITING FOR BOOK SERVICE RESPONSE TO RESOLVE
+    let retries2 = 3
+    while (!this.addingBook) {
+      retries2--
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+    }
+    // END
 
-      // NOTE The backend generates the id of the book
-      newReadable.entityId = this.addingBook.id;
-      newReadable.type = "EPUB"
-      newReadable.data = this.base64Epub
-      this.readableClientService.addReadable(newReadable).subscribe((res) => {
-        console.log(`res: ${res}`);
-      })
-    }, 750)
+    const newReadable = new Readable();
+    newReadable.cover = this.bookCover;
+    newReadable.title = (this.book.getRawValue() as IBook).title
+
+    // NOTE The backend generates the id of the book
+    newReadable.entityId = this.addingBook.id;
+    newReadable.type = "EPUB"
+    newReadable.data = this.base64Epub
+    this.readableClientService.addReadable(newReadable).subscribe((res) => {
+      console.log(`Response from readable service: ${JSON.stringify(res.readable)}`);
+      console.log(`result from readable service: ${res}`);
+    })
   }
 
   private createChapters(chaptersData: { label: string, href: string }[]): IChapter[] {

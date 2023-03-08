@@ -1,0 +1,32 @@
+<div class="registration-page">
+  <div class="registration-page__title">
+    <h3>Please Register</h3>
+  </div>
+  <form class="registration__form" [formGroup]="userForm">
+    <div class="registration__username">
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" />
+      </mat-form-field>
+    </div>
+    <div class="registration__password">
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" />
+      </mat-form-field>
+    </div>
+  </form>
+  <div class="registration__button">
+    <librimem-primary-button
+      (click)="register()"
+      [disabled]="!userForm.valid"
+      content="Register"
+    ></librimem-primary-button>
+  </div>
+  <div class="registration-page__login-ref">
+    <p>Already have an account?</p>
+    <div class="register-ref__btn">
+      <librimem-secondary-button (click)="referToLoginPage()" content="Login" />
+    </div>
+  </div>
+</div>

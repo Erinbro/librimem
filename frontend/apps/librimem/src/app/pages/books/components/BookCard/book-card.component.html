@@ -1,0 +1,25 @@
+<div class="book-card">
+  <mat-card (click)="navigateToBookPage()">
+    <mat-card-header>
+      <!-- NOTE icon that deletes the book -->
+      <div class="card__delete" (click)="deleteBook()">
+        <librimem-delete-button (click)="deleteBook()">
+          <img
+            src="../../../../../assets/icons/delete.png"
+            alt="delete"
+            style="width: 20px; height: 20px"
+          />
+        </librimem-delete-button>
+      </div>
+    </mat-card-header>
+    <mat-card-title>
+      {{ book.title }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      <img mat-card-image src="{{ book.cover }}" />
+    </mat-card-subtitle>
+    <mat-card-content>
+      <!-- <p>language: {{ book.language }}</p> -->
+    </mat-card-content>
+  </mat-card>
+</div>

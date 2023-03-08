@@ -1,0 +1,39 @@
+<div class="auth-page">
+  <!-- ANCHOR loggedin -->
+  <div class="auth-page__notloggedin">
+    <ng-container *ngIf="!isAuthenticated">
+      <div class="notloggedin__title">
+        <h3>You are not yet logged in or are not registered.</h3>
+      </div>
+      <div class="notloggedin__body">
+        <div class="auth-page__register">
+          <librimem-primary-button
+            content="Register"
+            (click)="goToOtherAuthPage('register')"
+          />
+        </div>
+        <div class="auth-page__login">
+          <librimem-primary-button
+            content="Sign In"
+            (click)="goToOtherAuthPage('login')"
+          />
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <!-- END notloggedin -->
+  <!-- ANCHOR loggedin -->
+  <div class="auth-page__loggedin">
+    <ng-container *ngIf="isAuthenticated">
+      <div class="loggedin__title">
+        <h3>You are logged in!</h3>
+      </div>
+      <div class="loggedin__body">
+        <div class="loggedin__logout">
+          <librimem-danger-button content="logout" (click)="logout()" />
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <!-- END loggedin -->
+</div>

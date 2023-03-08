@@ -38,7 +38,6 @@ public class UserClient {
         AuthorizationResponseDto response = this.webClient.post().uri(this.clientUrl + "/authorize")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(
-                        // BodyInserters.fromFormData(bodyValues)
                         BodyInserters.fromValue(req)
                 )
                 .header("Authorization", "Bearer " + req.getToken())

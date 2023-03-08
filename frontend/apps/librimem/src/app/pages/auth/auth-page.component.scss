@@ -1,0 +1,48 @@
+.auth-page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .auth-page__notloggedin {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .notloggedin__title {
+    }
+    .notloggedin__body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      & > * {
+        padding: 1rem;
+      }
+      .auth-page__register {
+        button {
+        }
+      }
+
+      .auth-page__login {
+        button {
+        }
+      }
+    }
+  }
+
+  .auth-page__loggedin {
+    width: 100%;
+    height: 100%;
+    .loggedin__title {
+    }
+    .loggedin__body {
+      .loggedin__logout {
+      }
+    }
+  }
+}

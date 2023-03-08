@@ -12,33 +12,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'librimem-register-page',
-  template: `
-  <div class="registration-page">
-    <form class="registration__form" [formGroup]="userForm">
-      <div class="registration__username">
-        <div class="registration__username__field">
-          <mat-form-field>
-            <mat-label>Username</mat-label>
-            <input matInput formControlName="username" />
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="registration__password">
-
-        <div class="registration__password__field">
-          <mat-form-field>
-            <mat-label>Password</mat-label>
-            <input matInput type="password" formControlName="password" />
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="registration__button">
-        <librimem-primary-button (click)="register()" [disabled]="!userForm.valid" content="Register" ></librimem-primary-button>
-      </div>
-    </form>
-
-  </div>
-  `,
+  templateUrl: "./register-page.component.html",
   styleUrls: ['./register-page.component.scss'],
   providers: [AuthService]
 })
@@ -57,7 +31,7 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.authSubscription.unsubscribe()
+    // this.authSubscription.unsubscribe()
   }
 
   register() {
@@ -68,5 +42,9 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
         this.store.dispatch(REGISTER({ username }))
         this.router.navigate(["books"])
       })
+  }
+
+  referToLoginPage() {
+    this.router.navigate(["auth", "login"])
   }
 }

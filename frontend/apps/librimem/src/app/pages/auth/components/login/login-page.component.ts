@@ -9,35 +9,17 @@ import { LOGIN } from '../../../../state/user/user.actions';
 
 @Component({
   selector: 'librimem-login-page',
-  template: `
-  <div class="login-page">
-    <form [formGroup]="userForm">
-
-    <div class="login-page__username">
-      <mat-form-field>
-        <mat-label>Username</mat-label>
-        <input matInput formControlName="username" />
-      </mat-form-field>
-    </div>
-    <div class="login-page__password">
-      <mat-form-field>
-        <mat-label>Password</mat-label>
-        <input matInput type="password" formControlName="password" />
-      </mat-form-field>
-    </div>
-    </form>
-    <div class="login-page__button">
-      <librimem-primary-button (click)="login()" content="Login" />
-    </div>
-
-  </div>
-  `,
+  templateUrl: "./login-page.component.html",
   styleUrls: ['./login-page.component.scss'],
 })
 export class LoginPageComponent implements OnInit {
   userForm!: FormGroup
 
   constructor(private store: Store<IStore>, private authClientService: AuthClientService, private formBuilder: FormBuilder, private router: Router) { }
+
+  ngOnInit(): void {
+    this.userForm = this.formBuilder.group(new User())
+  }
 
   login() {
     const user = this.userForm.getRawValue()
@@ -51,7 +33,7 @@ export class LoginPageComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-    this.userForm = this.formBuilder.group(new User())
+  referToRegisterPage() {
+    this.router.navigate(["auth", "register"])
   }
 }

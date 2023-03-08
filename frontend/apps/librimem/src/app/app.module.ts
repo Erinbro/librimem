@@ -104,9 +104,10 @@ import { BookStorageApi } from './storage/features/book.storage';
 import { ReaderContainerComponent } from './pages/reader/components/reader-container/reader-container.component';
 import { ReadableInputComponent } from './shared/readable-input/readable-input.component';
 import { CoverStorageService } from './storage/features/cover.storage.service';
-import { FileUploadModule } from "primeng/fileupload"
+import { FileUploadModule } from 'primeng/fileupload';
 import { ReadableClientService } from './services/http/readable.client.service';
 import { ReadableEffects } from './state/readable/readable.effect';
+import { DangerButtonComponent } from './shared/buttons/danger-button/danger-button.component';
 
 const primengModules = [InputTextModule, ButtonModule, RippleModule];
 /**
@@ -170,6 +171,7 @@ const materialModules = [];
     ArticleDialogComponent,
     ReaderContainerComponent,
     ReadableInputComponent,
+    DangerButtonComponent,
   ],
   imports: [
     MatToolbarModule,
@@ -230,7 +232,7 @@ const materialModules = [];
     MatProgressBarModule,
     MatSliderModule,
     [...primengModules],
-    FileUploadModule
+    FileUploadModule,
   ],
   providers: [
     SidenavService,
@@ -239,8 +241,8 @@ const materialModules = [];
     BookStorageApi,
     CoverStorageService,
     { provide: HTTP_INTERCEPTORS, useClass: AddHeaderInterceptor, multi: true },
-    ReadableClientService
+    ReadableClientService,
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

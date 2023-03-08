@@ -11,29 +11,7 @@ import { SELECT_READABLE, LOAD_READABLE } from '../../../../state/readable/reada
  */
 @Component({
   selector: 'librimem-book-card',
-  template: `
-  <mat-card class="book__card" (click)="navigateToBookPage()">
-    <mat-card-title>
-      {{ book.title }}
-    </mat-card-title>
-    <mat-card-subtitle>
-      <img mat-card-image src="{{ book.cover }}" />
-    </mat-card-subtitle>
-    <mat-card-header>
-      <!-- NOTE icon that deletes the book -->
-      <div class="card__delete" (click)="deleteBook()">
-        <librimem-delete-button (click)="deleteBook()">
-          <img src="../../../../../assets/icons/delete.png" alt="delete"
-          style="width: 20px; height: 20px;"
-           />
-        </librimem-delete-button>
-      </div>
-    </mat-card-header>
-    <mat-card-content>
-      <p>language: {{ book.language }}</p>
-    </mat-card-content>
-  </mat-card>
-  `,
+  templateUrl: "./book-card.component.html",
   styleUrls: ['./book-card.component.scss'],
 })
 export class BookCardComponent implements OnInit {
@@ -60,6 +38,8 @@ export class BookCardComponent implements OnInit {
 
   // FIXME deletes book
   deleteBook() {
+    console.log(`book id: ${this.book.id}`);
+
     this.store.dispatch(DELETE_BOOK({ bookId: this.book.id }))
   }
 

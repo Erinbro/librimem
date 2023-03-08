@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit, Input } from '@angular/core';
 import { BaseButtonComponent } from '../base-button.component';
 
 @Component({
@@ -10,13 +10,10 @@ import { BaseButtonComponent } from '../base-button.component';
     min-width: 1rem;
     height: 100%;
     min-height: 1rem;
-    background-color: red !important;
   }
-
-
   .lm-delete-button img {
-    width: 0.5rem;
-    height: 0.5rem;
+    width: 0.25rem !important;
+    height: auto;
   }
   .lm-delete-button:hover {
     cursor: pointer;
@@ -25,21 +22,16 @@ import { BaseButtonComponent } from '../base-button.component';
   `],
   styleUrls: ["../base-button.component.scss"]
 })
-export class DeleteButtonComponent extends BaseButtonComponent implements AfterViewInit {
+export class DeleteButtonComponent extends BaseButtonComponent {
 
-  @ViewChild("deleteBtn")
-  private DeleteButton!: ElementRef
-
-  override classes = ["lm-delete-button"]
+  @Input() override classes = ["lm-delete-button"]
   override color = "red";
+
 
   constructor() {
     super()
   }
 
-  override ngAfterViewInit(): void {
-
-  }
 
 
 }

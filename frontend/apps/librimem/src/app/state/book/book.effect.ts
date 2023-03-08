@@ -50,9 +50,6 @@ export class BookEffects {
         // )
 
         return this.bookClient.addBook(action.newBook).pipe(
-          tap(() => {
-            console.log(`Book added to backend`)
-          }),
           map((res) => ADD_BOOK_SUCCESS({ addedBook: res }))
         )
 
@@ -81,11 +78,8 @@ export class BookEffects {
   deleteBookEffect$ = createEffect(
     () => this.actions$.pipe(
       ofType(DELETE_BOOK),
-      mergeMap((action) => {
-        // from(this.bookStorageApi.deleteBook(action.bookId))
-        //   .pipe(
-        // )
-
+      switchMap((action) => {
+        // TODO Add IndexedDB as fallback for PWA
         return this.bookClient.deleteBook(action.bookId).pipe(
           map((res) => DELETE_BOOK_SUCCESS({ book: res }))
         )

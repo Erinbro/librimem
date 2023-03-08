@@ -2,6 +2,8 @@
   --color: white;
   padding: 0.5rem;
   background-color: var(--color);
+  letter-spacing: normal;
+  font-weight: bolder;
   &:hover {
     cursor: pointer;
     background-color: var(--color);

@@ -1,36 +1,30 @@
 @import '../../../../sass/variables.scss';
 
-.book__card {
-  width: fit-content;
-
-  margin: 1rem;
+.book-card {
+  width: 100%;
+  height: fit-content;
+  margin: 3rem;
   padding: 1rem;
-
-  position: relative;
   display: grid;
   grid-template-areas:
+    'header'
     'title'
     'subtitle'
-    'header'
     'content';
+  grid-template-rows: auto;
 
   &:hover {
     cursor: pointer;
   }
 
-  mat-card-title {
-    grid-area: title;
-  }
-  mat-card-subtitle {
-    grid-area: subtitle;
-  }
-
   mat-card-header {
     grid-area: header;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: right;
     .card__delete {
-      position: absolute;
-      top: 0;
-      right: 0;
+      width: fit-content;
+      height: fit-content;
       mat-icon {
         color: red;
         &:hover {
@@ -39,6 +33,13 @@
         }
       }
     }
+  }
+
+  mat-card-title {
+    grid-area: title;
+  }
+  mat-card-subtitle {
+    grid-area: subtitle;
   }
 
   mat-card-content {

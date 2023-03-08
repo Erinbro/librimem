@@ -58,12 +58,10 @@ export abstract class BaseButtonComponent implements AfterViewInit {
     // Add the classes to the native component
     if (this.classes) {
       this.classes.forEach((c) => {
-
         (this.baseButtonComponent.nativeElement as Element)
           .classList.add(c)
       })
     }
-
     // Change color
     if (this.color) {
       const compStyles = window.getComputedStyle(this.baseButtonComponent.nativeElement)

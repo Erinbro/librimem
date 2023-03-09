@@ -27,7 +27,9 @@ export class AuthService {
 
     this.store.dispatch(AUTHENTICATED())
 
-    return this.jwtHelper.isTokenExpired(token);
+    // TODO Add jwtService for auth
+    // return this.jwtHelper.isTokenExpired(token);
+    return true
   }
 
   public getUserToken(): string {

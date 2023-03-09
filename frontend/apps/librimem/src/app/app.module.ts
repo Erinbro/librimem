@@ -215,9 +215,9 @@ const materialModules = [];
     MatCheckboxModule,
     MatButtonModule,
     JwtModule.forRoot({
-      config: {
-        tokenGetter: () => localStorage.getItem('token'),
-      },
+      // config: {
+      //   tokenGetter: () => localStorage.getItem('token'),
+      // },
     }),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
@@ -245,4 +245,4 @@ const materialModules = [];
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

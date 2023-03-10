@@ -214,11 +214,11 @@ const materialModules = [];
     MatTableModule,
     MatCheckboxModule,
     MatButtonModule,
-    JwtModule.forRoot({
-      // config: {
-      //   tokenGetter: () => localStorage.getItem('token'),
-      // },
-    }),
+    // JwtModule.forRoot({
+    // config: {
+    //   tokenGetter: () => localStorage.getItem('token'),
+    // },
+    // }),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable

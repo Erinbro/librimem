@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { IStore } from '../../state/store';
 import { IUser } from '@librimem/api-interfaces';
 import { selectUserStateUser } from '../../state/user/user.selector';
-import { JwtHelperService } from "@auth0/angular-jwt"
+//import { JwtHelperService } from "@auth0/angular-jwt"
 import { AUTHENTICATED } from '../../state/user/user.actions';
 
 @Injectable({
@@ -13,7 +13,9 @@ export class AuthService {
 
   user!: Omit<IUser, "id">
 
-  constructor(private store: Store<IStore>, public jwtHelper: JwtHelperService) {
+  constructor(private store: Store<IStore>,
+    // public jwtHelper: JwtHelperService
+  ) {
     store.select(selectUserStateUser).subscribe((user) => {
       if (!user) return;
       this.user = user;

@@ -1,4 +1,4 @@
-/bin/bash: python: command not found
+package com.erinbro.librimem.book.service;
 
 import com.erinbro.librimem.book.clients.webflux.UserClient;
 

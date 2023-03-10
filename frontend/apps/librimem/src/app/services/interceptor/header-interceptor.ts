@@ -16,7 +16,7 @@ export class AddHeaderInterceptor implements HttpInterceptor {
 
     const clonedRequest = req.clone({
       headers: req.headers
-        .append("Authorization", `Bearer ${token}`)
+        .set("Authorization", `Bearer ${token}`)
     })
 
     console.log(`The req with Authorization header:
